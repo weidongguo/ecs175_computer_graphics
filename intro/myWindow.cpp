@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <algorithm> // for std::fill
 #include <cstdio>
+#include <cmath>
 
 #define WINDOW_WIDTH 500 
 #define WINDOW_HEIGHT 250
@@ -8,7 +9,7 @@
 #ifdef DEBUG_PRINT
   #define DPRINT printf
 #else
-  #define DPRINT(...) do{}while(0)
+  #define DPRINT(...) 
 #endif
 
 void callback_display();
@@ -36,6 +37,10 @@ int main(int argc, char *argv[]){
   drawLine( p, q , (double)0xdc/255, (double)0x14/255, (double)0x3c/255 );
   drawLine( q, r , 0, 0, 1);
   drawLine( r, p , 1, 1, 0);
+  
+  int s[] = {0, 0};
+  int e[] = {50, 220};
+  drawLine(s,e, 1,0,1); 
   glutMainLoop();
   return 0;
 }
@@ -84,7 +89,7 @@ int drawLine(int point1[], int point2[], float r, float g, float b){
   
   int x, y;
   for( x = x1; x <= x2; x++){
-    y =  m * ( x - x1 ) + y1;
+    y = lround( m * ( x - x1 ) + y1 );
     drawPixel(x, y, r, g, b);
   }
 
