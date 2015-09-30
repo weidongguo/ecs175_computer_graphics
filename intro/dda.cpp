@@ -104,7 +104,7 @@ int dda( Point p1, Point p2,  float r, float g, float b){
       y_begin = p2.y;
     }
     for( x = x_begin; x <= x_end; x++){
-      y = (x - x_begin)*m + y_begin;
+      y = lround( (x - x_begin)*m + y_begin );
       drawPixel(x,y,r,g,b);
     }
   }
@@ -121,7 +121,7 @@ int dda( Point p1, Point p2,  float r, float g, float b){
       x_begin = p2.x;
     }
     for( y = y_begin; y <= y_end; y++){
-      x = ( y - y_begin) * m_bar + x_begin; 
+      x = lround( ( y - y_begin) * m_bar + x_begin ) ; 
       drawPixel(x,y,r,g,b);
     }
   }
