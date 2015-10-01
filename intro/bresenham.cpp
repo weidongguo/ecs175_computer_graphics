@@ -24,7 +24,7 @@ typedef struct {
 void callback_display();
 int drawPixel(int, int, float, float, float);
 int drawLine(Point p1, Point p2, float, float, float);
-int dda( Point p1, Point p2,  float r, float g, float b); 
+void bresenham(Point p1, Point p2, float r, float g, float b, int (*drawPixelFunct)(int,int,float,float,float) );
 
 
 float PixelBuffer[ WINDOW_WIDTH * WINDOW_HEIGHT * 3 ]; //global pixel buffer for the window
@@ -55,6 +55,7 @@ int main(int argc, char *argv[]){
   drawLine( {100, 220}, {100, 0}, 1,0,1); 
   drawLine( {50, 220}, {100,0}, 1,0,1 );
   drawLine( {100,220} , {120, 200}, 1, 0, 1 ); 
+  drawLine( {120, 200}, {400, 100}, 1,0,1 );
   glutMainLoop();
   return 0;
 }
@@ -71,7 +72,7 @@ void callback_display(){
 
 int drawPixel(int x, int y, float r, float g, float b){
   if( x >= WINDOW_WIDTH || x < 0 ||  y >= WINDOW_HEIGHT || y < 0){
-    DPRINT("ERROR: INVALID POINTS\n"); 
+    DPRINT("ERROR: INVALID POINTS (%d, %d)\n", x,y); 
     return -1;
   }
   PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 ] = r;
@@ -82,56 +83,53 @@ int drawPixel(int x, int y, float r, float g, float b){
 }
 
 int drawLine( Point p1, Point p2,  float r, float g, float b){ 
-  dda(p1, p2, r, g, b);
+  bresenham(p1, p2, r, g, b, drawPixel);//last arg is the function ptr for drawing pixel
 }
 
-int dda( Point p1, Point p2,  float r, float g, float b){ 
-  int delta_x, delta_y, x,y, x_begin, x_end, y_begin, y_end; double m;//slope
-  delta_x = p2.x - p1.x;
-  delta_y = p2.y - p1.y;
-  m = (double)delta_y / delta_x;
-  DPRINT("Slope m : %.2lf\n", m);
- 
-  if( 0 < m && m <= 1 ||  -1 <= m && m < 0 ){ //case: 0 < |m| <=1   
-    if( p1.x <= p2.x ){ // check for a point with smaller x;
-      x_begin = p1.x;
+void bresenham(Point p1, Point p2, float r, float g, float b, int(*drawPixelFunct)(int, int, float,float,float) ){
+  int step = 1;
+  int dx = p2.x - p1.x;
+  int dy = p2.y - p1.y;
+  float m = (float)(dy) / dx; DPRINT("Slope m: %.2f\n", m); 
+  int x,y, x_end, y_end;
+  
+
+  if( fabs(m) <= 1 ){
+    if( p1.x < p2.x){
+      x = p1.x;
+      y = p1.y;
       x_end = p2.x;
-      y_begin = p1.y;
     }
     else{
-      x_begin = p2.x;
+      x = p2.x;
+      y = p2.y;
       x_end = p1.x;
-      y_begin = p2.y;
     }
-    for( x = x_begin; x <= x_end; x++){
-      y = lround( (x - x_begin)*m + y_begin );
-      drawPixel(x,y,r,g,b);
+    drawPixelFunct(x,y,r,g,b);
+    int p = 2 * dy - dx; 
+    int twoDy = 2 *dy;
+    int twoDyMinusDx = 2 * (dy - dx);
+    int twoDyPlusDx = 2 * (dy + dx);
+    for( ; x <= x_end; ){
+      x++;
+      if( m > 0 && p > 0 ){
+        y = y + step;
+        p = p + twoDyMinusDx;
+      }
+      else if( m < 0 && p < 0 ){
+        y = y - step;
+        p = p + twoDyPlusDx;
+      }
+      else
+        p = p + twoDy;
+      drawPixelFunct(x,y,r,g,b);
     }
+  
   }
-  else if( m > 1 || m < -1) { 
-    double m_bar = 1/m; 
-    if(p1.y <= p2.y){
-      y_begin = p1.y;
-      y_end = p2.y;
-      x_begin = p1.x;
-    }
-    else{
-      y_begin = p2.y;
-      y_end = p1.y;
-      x_begin = p2.x;
-    }
-    for( y = y_begin; y <= y_end; y++){
-      x = lround( ( y - y_begin) * m_bar + x_begin ) ; 
-      drawPixel(x,y,r,g,b);
-    }
-  }
-  else if( m == 0 ){ // horizontal line parallel to x-axis
-    for( x = MIN(p1.x, p2.x); x <= MAX(p1.x, p2.x); x++){
-      drawPixel(x, p1.y, r,g,b);
-    }
-  }
-  else
-    DPRINT("m is bad\n");
+  else{
+    DPRINT("NOT YET DEALT WITH\n");
+    
 
+
+  }
 }
-
