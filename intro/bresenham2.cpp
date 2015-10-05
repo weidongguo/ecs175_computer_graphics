@@ -50,12 +50,12 @@ int main(int argc, char *argv[]){
   drawLine( q, r , 0, 0, 1);
   drawLine( r, p , 1, 1, 0);
   
-  drawLine( {0,0} , {50, 220}, 1,0,1); 
+  drawLine( {0,0} , {50, 220}, 1,1,1); 
   drawLine( {50, 220}, {100, 220}, 1,0,1); 
   drawLine( {100, 220}, {100, 0}, 1,0,1); 
   drawLine( {50, 220}, {100,0}, 1,0,1 );
   drawLine( {100,220} , {120, 200}, 1, 0, 1 ); 
-  //drawLine( {120, 200}, {400, 100}, 1,0,1 );
+  drawLine( {120, 200}, {400, 100}, 1,0,1 );
   glutMainLoop();
   return 0;
 }
@@ -66,7 +66,6 @@ void callback_display(){
   //glLoadIdentity();
   glDrawPixels(WINDOW_WIDTH, WINDOW_HEIGHT, GL_RGB, GL_FLOAT, PixelBuffer);
   
-  //glEnd();
   glFlush(); //force all GL commands to be executed by the actual rendering engine
 }
 
@@ -83,80 +82,107 @@ int drawPixel(int x, int y, float r, float g, float b){
 }
 
 int drawLine( Point p1, Point p2,  float r, float g, float b){ 
+  if(p1.x == p2.x){ //vertical line
+    int y,y_end; 
+    if(p1.y <= p2.y){
+      y = p1.y;
+      y_end = p2.y;
+    }else{
+      y = p2.y;
+      y_end = p1.y;
+    }
+    for(; y<=y_end; y++)
+      drawPixel(p1.x, y, r,g,b);
+    return 0;
+  }
+  else if(p1.y == p2.y){ // horizontal line
+    int x, x_end;
+    if(p1.x <= p2.x){
+      x = p1.x;
+      x_end =  p2.x;
+    }
+    else{
+      x = p2.x;
+      x_end = p1.x; 
+    }
+    for(; x <= x_end; x++)
+      drawPixel(x, p1.y, r,g,b);
+    return 0;
+  }
+
   bresenham(p1, p2, r, g, b, drawPixel);//last arg is the function ptr for drawing pixel
 }
 
-void bresenham(Point p1, Point p2, float r, float g, float b, int(*drawPixelFunct)(int, int, float,float,float) ){
-  int step = 1;
-  int dx = p2.x - p1.x;
-  int dy = p2.y - p1.y;
-  float m = (float)(dy) / dx; DPRINT("Slope m: %.2f\n", m); 
-  float m_bar = 1/m;
-  int x,y, x_end, y_end;  if( m > 0 &&  dx < 0 && dy < 0 ){ dx = abs(dx); dy = abs(dy);}
-                          if( m < 0 && dx < 0 ){ dx = -dx; dy = -dy; }
-  if( fabs(m) <= 1 ){
-    if( p1.x < p2.x){
-      x = p1.x;
-      g = p1.y;
-      x_end = p2.x;
-    }
-    else{
-      x = p2.x;
-      y = p2.y;
-      x_end = p1.x;
-    }
-    drawPixelFunct(x,y,r,g,b);
-    int p = 2 * dy - dx; 
-    int twoDy = 2 *dy;
-    int twoDyMinusDx = 2 * (dy - dx);
-    int twoDyPlusDx = 2 * (dy + dx);
-    for( ; x <= x_end; ){
-      x++;
-      if( m > 0 && p > 0 ){
-        y = y + step;
-        p = p + twoDyMinusDx;
-      }
-      else if( m < 0 && p < 0 ){
-        y = y - step;
-        p = p + twoDyPlusDx;
-      }
-      else
-        p = p + twoDy;
 
-      drawPixelFunct(x,y,r,g,b);
-    }
-  
+//  Octants:
+//   \2|1/
+//   3\|/0
+//  ---+---
+//   4/|\7
+//   /5|6\
+
+void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){
+  if(p1.x <= p2.x){
+    *x = p1.x;
+    *y = p1.y;
+    *x_end = p2.x;
+    *y_end = p2.y;
   }
-  else{ //steep slope
-    if( p1.y < p2.y){
-      y = p1.y;
-      x = p1.x;
-      y_end = p2.y;
-    }
-    else{
-      y = p2.y;
-      x = p2.x;
-      y_end = p1.y;
-    }
-    drawPixelFunct(x,y,r,g,b);
-    int twoDx = 2*dx;
-    int twoDxMinusDy= 2*(dx - dy) ;
-    int twoDxPlusDy = 2*(dx + dy);
-    int p = twoDx - dy; 
-    for(; y <= y_end; ){
-      y++; 
-      if( p > 0 && m_bar > 0){
-        x = x + step;
-        p = p + twoDxMinusDy;
-      }
-      else if( p < 0 && m_bar < 0) {
-        x = x - step;
-        p = p + twoDxPlusDy;
-      }
-      else
-        p = p + twoDx;
-      drawPixelFunct(x,y, r,g,b);
-    }
+  else{
+    *x = p2.x;
+    *y = p2.y;
+    *x_end = p1.x;
+    *y_end = p1.y;
+  }
+}
 
+void swapXY(Point *p1){
+  int tmp;
+  tmp = p1->x;
+  p1->x = p1->y;
+  p1->y = tmp;
+}
+
+void bresenham(Point pt1, Point pt2, float r, float g, float b, int(*drawPixelFunc)(int, int, float,float,float) ){
+  Point p1 = pt1;
+  Point p2 = pt2;
+  int x, y, x_end, y_end, p; 
+  int dx = (p2.x - p1.x), dy = (p2.y - p1.y); //for determining sign of slope
+  bool steep = false;
+  float m = (float)dy/(float)dx ; //find the slope first
+  DPRINT("The slope is %.2f,\tline with color %.2f,%.2f,%.2f\n", m, r,g,b); 
+  bool positive_slope;
+  if( m >= 0 )  // positive slope
+    positive_slope = true;
+  else
+    positive_slope = false;
+  
+  if( abs(m) <= 1 ){ //shallow
+    steep = false; 
+  }
+  else{ //steep
+   steep = true;
+   swapXY(&p1);
+   swapXY(&p2);
+  }
+  determineStartAndEndPoints(p1, p2, &x, &y, &x_end, &y_end);
+  //DPRINT("x: %d,\ty: %d,\tx_end: %d,\ty_end:%d\n", x, y, x_end, y_end);
+  dx = abs(x_end - x);
+  dy = abs(y_end - y);
+  drawPixelFunc(x,y,r,g,b);
+  p = 2 * dy - dx;
+  for( ; x < x_end; ){
+    x++;
+    if( p >= 0){ // if d1 - d2  >= 0, means d2 is shorter, so advance y one level up
+        positive_slope? y++:y--; 
+        p = p + 2*dy - 2*dx;
+    }
+    else // if d1 - d2 < 0; means d1 is shorter, so no change of y;
+      p = p + 2*dy;
+    
+    if(steep)
+      drawPixelFunc(y,x,r,g,b);//x and y was swapped before
+    else 
+      drawPixelFunc(x,y,r,g,b);
   }
 }
