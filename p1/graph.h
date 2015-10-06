@@ -21,11 +21,19 @@ typedef struct {
   int x;
   int y;
 } Point; 
+typedef Point Vertex;//Point and Vertex means the same thing
+
+typedef struct {
+  float r;
+  float g;
+  float b;
+}Color;
 
 class Graph {
   int window_width;
   int window_height;
-  
+  Color background_color;
+ 
   public:
     Graph(int width, int height, float* PixelBufferPtr);
     float *PixelBuffer;
@@ -34,6 +42,7 @@ class Graph {
     int dda(Point p1, Point p2, float r, float g, float b);
     int bresenham(Point p1, Point p2, float r, float, float);
     int fillScreen(float r, float g, float b);
+    int drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b);
 };
 
 

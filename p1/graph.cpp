@@ -52,6 +52,8 @@ int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){
   // all other cases are taken care below
   bresenham(p1, p2, r, g, b);
   //dda(p1,p2,r,g,b);
+  //
+  return 0;
 }
 
 int Graph::dda( Point p1, Point p2,  float r, float g, float b){ 
@@ -61,7 +63,7 @@ int Graph::dda( Point p1, Point p2,  float r, float g, float b){
   m = (double)delta_y / delta_x;
   DPRINT("Slope m : %.2lf\n", m);
  
-  if( 0 < m && m <= 1 ||  -1 <= m && m < 0 ){ //case: 0 < |m| <=1   
+  if( (0 < m && m <= 1) ||  (-1 <= m && m < 0) ){ //case: 0 < |m| <=1   
     if( p1.x <= p2.x ){ // check for a point with smaller x;
       x_begin = p1.x;
       x_end = p2.x;
@@ -99,9 +101,11 @@ int Graph::dda( Point p1, Point p2,  float r, float g, float b){
       drawPixel(x, p1.y, r,g,b);
     }
   }
-  else
+  else{
     DPRINT("m is bad\n");
-
+    return -1; 
+  }
+  return 0;
 }
 
 // helper function for the bresenham algorithm
@@ -174,6 +178,8 @@ int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){
     else 
       drawPixel(x,y,r,g,b);
   }
+
+  return 0;
 }
 
 int Graph::fillScreen(float r, float g, float b){
@@ -182,6 +188,16 @@ int Graph::fillScreen(float r, float g, float b){
     PixelBuffer[i] = r;
     PixelBuffer[i+1] = g;
     PixelBuffer[i+2] = b;
+  }
+  background_color = {r,g,b}; // save the background_color
+  return 0;
+}
+
+int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){
+  //draw a line between the first point and the last point first
+  drawLine(listOfPoints[0], listOfPoints[numberOfPoints-1], r,g,b); 
+  for(int i = 0 ; i < numberOfPoints - 1; i++){
+    drawLine(listOfPoints[i], listOfPoints[i+1], r,g,b);
   }
 }
 
