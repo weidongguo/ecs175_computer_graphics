@@ -6,10 +6,13 @@ Graph::Graph(int width, int height, float *PixelBufferPtr){
 }
 
 int Graph::drawPixel(int x, int y, float r, float g, float b){
-  if( x >= WINDOW_WIDTH || x < 0 ||  y >= WINDOW_HEIGHT || y < 0){
+  if( abs(x) > WINDOW_WIDTH/2 || abs(y) > WINDOW_HEIGHT/2){
     DPRINT("ERROR: INVALID POINTS (%d, %d)\n", x,y); 
     return -1;
-  }
+  } 
+  /* now negative x or y values are allowed for input */
+  y+=(WINDOW_HEIGHT/2); //add offset to y to work with the buffer
+  x+=(WINDOW_WIDTH/2); //add offset to x to work with the buffer
   PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 ] = r;
   PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 + 1 ] = g;
   PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 + 2 ] = b;
@@ -139,7 +142,7 @@ int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){
   else
     positive_slope = false;
   
-  if( abs(m) <= 1 ){ //shallow
+  if( fabs(m) <= 1 ){ //shallow
     steep = false; 
   }
   else{ //steep
@@ -151,7 +154,11 @@ int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){
   //DPRINT("x: %d,\ty: %d,\tx_end: %d,\ty_end:%d\n", x, y, x_end, y_end);
   dx = abs(x_end - x);
   dy = abs(y_end - y);
-  drawPixel(x,y,r,g,b);
+  //draw first point  
+  if(steep)
+    drawPixel(y,x,r,g,b);//x and y was swapped before
+  else 
+    drawPixel(x,y,r,g,b);
   p = 2 * dy - dx;
   for( ; x < x_end; ){
     x++;

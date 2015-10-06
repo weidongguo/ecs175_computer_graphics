@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
   //glClearColor(0.5,0.5,0.5,0.0); 
   PixelBuffer = new float[WINDOW_WIDTH*WINDOW_HEIGHT*3];   
   Graph graph(WINDOW_WIDTH,WINDOW_HEIGHT, PixelBuffer); 
-  graph.fillScreen(0.5,0.5,0.5);
+  graph.fillScreen(1,1,1);
   
   drawStuff(graph);
   
@@ -36,17 +36,27 @@ void callback_display(){
 }
 
 void drawStuff(Graph &graph){
-  graph.drawLine( {0,0} , {50, 220}, 1,0,1); 
+  /*graph.drawLine( {0,0} , {50, 220}, 1,0,1); 
   graph.drawLine( {50, 220}, {100, 220}, 1,0,1); 
   graph.drawLine( {100, 220}, {100, 0}, 1,0,1); 
   graph.drawLine( {50, 220}, {100,0}, 1,0,1 );
   graph.drawLine( {100,220} , {120, 200}, 1, 0, 1 ); 
   graph.drawLine( {120, 200}, {400, 100}, 1,0,1 );
-
+  
   graph.drawLine( {0, 100}, { WINDOW_WIDTH/2, 0}, 1, 0, 0);
   graph.drawLine( {WINDOW_WIDTH/2,0}, {450, 200}, 0, 0, 1);
   graph.drawLine( {450, 200}, {0, 100}, 1, 1, 0);
-
+  
+  graph.drawLine( {-500,-250}, {0,0} , 1, 0.5, 0.5);*/
+  int r = 250; 
+  for(int i = 0 ; i < r; i++ )
+    for(int j = 0; j <r; j++)
+      if( i*i + j*j == r * r){
+        graph.drawLine( {0,0}, {i,j}, 1,0,1);
+        graph.drawLine( {0,0}, {-i,j}, 1,0,1);
+        graph.drawLine( {0,0}, {i,-j}, 1,0,1);
+        graph.drawLine( {0,0}, {-i,-j}, 1,0,1);
+      }
 }
 
 
