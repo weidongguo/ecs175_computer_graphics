@@ -32,6 +32,7 @@ class Graph {
     int drawPixel(int x, int y, float r, float g, float b); 
     int drawLine(Point p1, Point p2, float r, float g, float b);
     int dda(Point p1, Point p2, float r, float g, float b);
+    int bresenham(Point p1, Point p2, float r, float, float);
     int fillScreen(float r, float g, float b);
 };
 
