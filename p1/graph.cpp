@@ -201,8 +201,4 @@ int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float 
   }
 }
 
-int Graph::drawPolygon(Polygon &poly){
-  drawPolygon(poly.listOfPoints, poly.numberOfPoints, poly.color.r, poly.color.g, poly.color.b);
-}
-
 

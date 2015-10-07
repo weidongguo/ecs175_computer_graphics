@@ -1,6 +1,6 @@
 #include "graph.h"
 #include <GL/glut.h>
-
+#include "polygon.h"
 float *PixelBuffer; // global pixel buffer
 
 void callback_display();
@@ -57,12 +57,19 @@ void drawStuff(Graph &graph){
         graph.drawLine( {0,0}, {i,-j}, 1,0,1);
         graph.drawLine( {0,0}, {-i,-j}, 1,0,1);
       }
+  
   Point points[] = { {0,0}, {50, 50}, {0,100}, {100,100} ,{150,50}, {100, 0}  };
-  Polygon poly(points, 6); 
-  points[5] = { 50, 0}; 
-
+  Polygon poly(points, 6, &graph);  // used the object graph to draw to the screen
   poly.setColor( {0.1, 0.5, 0.3} );
-  graph.drawPolygon( poly);
+  poly.draw(); 
+  poly.rotate(45);
+  poly.draw();
+
+  Point points2[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
+  Polygon poly2(points2, 4, &graph);
+  poly2.draw();
+  poly2.rotate(45);
+  poly2.draw();
 }
 
 
