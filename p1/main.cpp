@@ -57,8 +57,12 @@ void drawStuff(Graph &graph){
         graph.drawLine( {0,0}, {i,-j}, 1,0,1);
         graph.drawLine( {0,0}, {-i,-j}, 1,0,1);
       }
-  Point triangle[] = { {0,0}, {50, 50}, {0,100}, {100,100} ,{150,50}, {100, 0}  };
-  graph.drawPolygon( triangle, 6, 0.1, 0.2, 0.3  );
+  Point points[] = { {0,0}, {50, 50}, {0,100}, {100,100} ,{150,50}, {100, 0}  };
+  Polygon poly(points, 6); 
+  points[5] = { 50, 0}; 
+
+  poly.setColor( {0.1, 0.5, 0.3} );
+  graph.drawPolygon( poly);
 }
 
 
