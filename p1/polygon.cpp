@@ -76,3 +76,14 @@ void Polygon::rotate(float alpha){ //alpha is the angle
   }
 }
 
+void Polygon::translate(int x_offset, int y_offset){
+  int new_x, new_y;
+  for(int i = 0 ; i< numberOfPoints; i++){
+    new_x = listOfPoints[i].x + x_offset;
+    new_y = listOfPoints[i].y + y_offset;
+    DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
+    listOfPoints[i].x = new_x; 
+    listOfPoints[i].y = new_y;
+  }
+}
+

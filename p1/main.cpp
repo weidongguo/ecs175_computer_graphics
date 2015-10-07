@@ -66,6 +66,8 @@ void drawStuff(Graph &graph){
   poly.draw();
   poly.scale(1.8, 1.8);
   poly.draw();
+  poly.translate(-400, 50);
+  poly.draw();
 
   Point points2[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
   Polygon poly2(points2, 4, &graph);
@@ -77,6 +79,8 @@ void drawStuff(Graph &graph){
   poly2.scale(0.8, 0.8);
   poly2.draw();
   poly2.rotate(60);
+  poly2.draw();
+  poly2.translate(500, 100);
   poly2.draw();
 }
 

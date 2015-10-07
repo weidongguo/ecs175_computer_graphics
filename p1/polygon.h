@@ -20,5 +20,6 @@ class Polygon{
     void draw();
     void scale(float alpha, float beta);//factor alpha for scalling the x-value, factor beta for scalling the y-value
     void rotate(float angle);
+    void translate(int x, int y); //translating meaning shifting
 };
 #endif
