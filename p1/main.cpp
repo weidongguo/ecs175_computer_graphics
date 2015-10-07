@@ -64,11 +64,19 @@ void drawStuff(Graph &graph){
   poly.draw(); 
   poly.rotate(45);
   poly.draw();
+  poly.scale(1.8, 1.8);
+  poly.draw();
 
   Point points2[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
   Polygon poly2(points2, 4, &graph);
   poly2.draw();
+  poly2.scale(1.2, 1.2);
+  poly2.draw();
   poly2.rotate(45);
+  poly2.draw();
+  poly2.scale(0.8, 0.8);
+  poly2.draw();
+  poly2.rotate(60);
   poly2.draw();
 }
 

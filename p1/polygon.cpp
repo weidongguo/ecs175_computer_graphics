@@ -40,7 +40,18 @@ void Polygon::draw(){
 }
 
 void Polygon::scale(float alpha, float beta){
-
+  float cx = (float)centroid.x,
+        cy = (float)centroid.y,
+        new_x, new_y, x, y;
+  for(int i = 0 ; i< numberOfPoints; i++){
+    x = listOfPoints[i].x;
+    y = listOfPoints[i].y;
+    new_x = cx - alpha*cx + alpha*x;
+    new_y = cy - beta*cy + beta*y; 
+    DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
+    listOfPoints[i].x = (int)new_x; // must cast from float to integer
+    listOfPoints[i].y = (int)new_y;
+  }
 
 }
 
@@ -48,8 +59,8 @@ void Polygon::scale(float alpha, float beta){
 void Polygon::rotate(float alpha){ //alpha is the angle
   float cosAlpha = cos(alpha * PI/180),
         sinAlpha = sin(alpha * PI/180),
-        cx = centroid.x,
-        cy = centroid.y,
+        cx = (float)centroid.x,
+        cy = (float)centroid.y,
         new_x,
         new_y,
         x,y;
@@ -60,7 +71,7 @@ void Polygon::rotate(float alpha){ //alpha is the angle
     new_x = cx - cosAlpha*cx + cy*sinAlpha + cosAlpha*x - sinAlpha*y; 
     new_y = cy - cosAlpha*cy - cx*sinAlpha + cosAlpha*y + sinAlpha*x; 
     DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
-    listOfPoints[i].x = (int)new_x;
+    listOfPoints[i].x = (int)new_x; // must cast from float to integer
     listOfPoints[i].y = (int)new_y;
   }
 }
