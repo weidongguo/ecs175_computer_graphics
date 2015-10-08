@@ -200,8 +200,19 @@ void Polygon::clearContourPoints(){
     listOfContourPoints[i].clear();
   }
 }
+
+void Polygon::storeOriginalPointsToContourPoints(){
+  Point p;
+  for(int i = 0 ; i < numberOfPoints; i++){
+    p = listOfPoints[i] ;
+    listOfContourPoints[p.y+WINDOW_HEIGHT/2].push_back(p);
+  }
+}
+
 void Polygon::storeContourPoints(){
   clearContourPoints();//reset all listOfCountourPoints
+   
+  storeOriginalPointsToContourPoints();//do not want duplicates of the original points, so store it once here and ignore all other instances when encountering the same points
   _storeLinePoints(listOfPoints[0], listOfPoints[numberOfPoints-1]);//line for first point to the last point
   for(int i = 0 ; i < numberOfPoints - 1; i++){ //each line between points
     _storeLinePoints(listOfPoints[i], listOfPoints[i+1]);

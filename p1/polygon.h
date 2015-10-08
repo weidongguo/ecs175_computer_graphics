@@ -28,6 +28,7 @@ class Polygon{
     void _storeContourPoint(int x, int y);
     int  _storeLinePoints( Point p1, Point p2);
     int  _bresenham(Point pt1, Point pt2);
+    void storeOriginalPointsToContourPoints();
     void storeContourPoints();
     void clearContourPoints();
     void printListOfContourPoints();
