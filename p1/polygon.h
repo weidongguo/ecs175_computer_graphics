@@ -24,11 +24,12 @@ class Polygon{
     void scale(float alpha, float beta);//factor alpha for scalling the x-value, factor beta for scalling the y-value
     void rotate(float angle);
     void translate(int x, int y); //translating meaning shifting
-    void rasterize();
+    void rasterize(float r, float g, float b);
     void _storeContourPoint(int x, int y);
     int  _storeLinePoints( Point p1, Point p2);
     int  _bresenham(Point pt1, Point pt2);
     void storeContourPoints();
+    void clearContourPoints();
     void printListOfContourPoints();
 };
 #endif

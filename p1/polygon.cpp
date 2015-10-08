@@ -1,5 +1,6 @@
 #include "polygon.h"
 #include <cstdlib>
+#include <cstring>
 Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){
   listOfPoints = new Point[_numberOfPoints];
   for(int i = 0; i < _numberOfPoints; i++) 
@@ -193,9 +194,16 @@ int Polygon::_storeLinePoints( Point p1, Point p2){
 bool compareXValue(Point p1, Point p2){
   return p1.x <= p2.x;
 }
+
+void Polygon::clearContourPoints(){
+  for(int i = 0; i< WINDOW_HEIGHT; i++){
+    listOfContourPoints[i].clear();
+  }
+}
 void Polygon::storeContourPoints(){
-  _storeLinePoints(listOfPoints[0], listOfPoints[numberOfPoints-1]);
-  for(int i = 0 ; i < numberOfPoints - 1; i++){
+  clearContourPoints();//reset all listOfCountourPoints
+  _storeLinePoints(listOfPoints[0], listOfPoints[numberOfPoints-1]);//line for first point to the last point
+  for(int i = 0 ; i < numberOfPoints - 1; i++){ //each line between points
     _storeLinePoints(listOfPoints[i], listOfPoints[i+1]);
   }
   ///sort each scanline points by it's x-value 
@@ -216,7 +224,21 @@ void Polygon::printListOfContourPoints(){
   DPRINT("=================END OF CONTOUR POINTS=========================\n\n");
 }
 
-void Polygon::rasterize(){
-
-
+void Polygon::rasterize(float r, float g, float b){
+  for(int i = 0; i < WINDOW_HEIGHT; i++){
+    if(listOfContourPoints[i].size() > 1){ // if more than 1 point on a scanline
+      for(std::list<Point>::iterator it = listOfContourPoints[i].begin(); it != listOfContourPoints[i].end();){
+        Point p1 = *it;
+        std::advance(it, 1);
+        if(it == listOfContourPoints[i].end())
+          break;
+        Point p2 = *it;
+        DPRINT("(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+        if( abs(p2.x - p1.x) >= 1){
+         //DPRINT("SCAN LINE %d\n", i);
+         graph->drawLine(p1,p2, r, g, b); 
+        }
+      }
+    }
+  }
 }

@@ -62,9 +62,6 @@ void drawStuff(Graph &graph){
   Polygon poly(points, 6, &graph);  // used the object graph to draw to the screen
   poly.setColor( {0.1, 0.5, 0.3} );
   poly.draw(); 
-  
-  poly.storeContourPoints();
-  poly.printListOfContourPoints();
 
   poly.rotate(45);
   poly.draw();
@@ -72,6 +69,10 @@ void drawStuff(Graph &graph){
   poly.draw();
   poly.translate(-400, 50);
   poly.draw();
+  poly.storeContourPoints();
+  poly.printListOfContourPoints();
+  poly.rasterize(1,0,1);
+
 
   Point points2[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
   Polygon poly2(points2, 4, &graph);
@@ -79,7 +80,7 @@ void drawStuff(Graph &graph){
   
   poly2.storeContourPoints();
   poly2.printListOfContourPoints();
-  poly2.rasterize();
+  poly2.rasterize(0.5,0.5,0.5);
 /* 
   poly2.scale(1.2, 1.2);
   poly2.draw();
