@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <cmath>
 
-//#include "polygon.h"
 #include "common_type.h"
 
 #define WINDOW_WIDTH 1000 
@@ -28,5 +27,9 @@ class Graph {
     int fillScreen(float r, float g, float b);
     int drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b);
 };
+
+void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end);//helper function for bresenham algo
+void swapXY(Point *p1);//swap the x value of the point with its y value:  helper funcion for bresenha algo
+
 
 #endif

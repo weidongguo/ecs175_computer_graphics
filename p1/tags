@@ -1,0 +1,61 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT$/;"	m
+COMMON_TYPE_H	common_type.h	12;"	d
+Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon2
+DPRINT	common_type.h	3;"	d
+DPRINT	common_type.h	5;"	d
+GRAPH_H	graph.h	2;"	d
+Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
+Graph	graph.h	/^class Graph {$/;"	c
+MAX	common_type.h	9;"	d
+MIN	common_type.h	8;"	d
+PI	polygon.cpp	58;"	d	file:
+POLYGON_H	polygon.h	2;"	d
+PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
+PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
+Point	common_type.h	/^} Point; $/;"	t	typeref:struct:__anon1
+Polygon	polygon.cpp	/^Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){$/;"	f	class:Polygon
+Polygon	polygon.h	/^class Polygon{$/;"	c
+Vertex	common_type.h	/^typedef Point Vertex;\/\/Point and Vertex means the same thing$/;"	t
+WINDOW_HEIGHT	graph.h	11;"	d
+WINDOW_WIDTH	graph.h	10;"	d
+_bresenham	polygon.cpp	/^int Polygon::_bresenham(Point pt1, Point pt2){ \/\/for storing points, not drawing pixel$/;"	f	class:Polygon
+_storeContourPoint	polygon.cpp	/^void Polygon:: _storeContourPoint(int x, int y){$/;"	f	class:Polygon
+_storeLinePoints	polygon.cpp	/^int Polygon::_storeLinePoints( Point p1, Point p2){$/;"	f	class:Polygon
+b	common_type.h	/^  float b;$/;"	m	struct:__anon2
+background_color	graph.h	/^  Color background_color;$/;"	m	class:Graph
+bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
+callback_display	main.cpp	/^void callback_display(){$/;"	f
+centroid	polygon.h	/^  Point centroid;$/;"	m	class:Polygon
+color	polygon.h	/^  Color color; $/;"	m	class:Polygon
+dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
+determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
+draw	polygon.cpp	/^void Polygon::draw(){$/;"	f	class:Polygon
+drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
+drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
+drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
+drawStuff	main.cpp	/^void drawStuff(Graph &graph){$/;"	f
+fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
+g	common_type.h	/^  float g;$/;"	m	struct:__anon2
+graph	polygon.h	/^  Graph *graph;$/;"	m	class:Polygon
+listOfContourPoints	polygon.h	/^  std::list<Point> listOfContourPoints[WINDOW_HEIGHT];\/\/the original points + the points along the lines between the original points$/;"	m	class:Polygon
+listOfPoints	polygon.h	/^  Point *listOfPoints;  \/\/ the original points for creating the shape$/;"	m	class:Polygon
+main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
+numberOfPoints	polygon.h	/^  int numberOfPoints;$/;"	m	class:Polygon
+r	common_type.h	/^  float r;$/;"	m	struct:__anon2
+rotate	polygon.cpp	/^void Polygon::rotate(float alpha){ \/\/alpha is the angle$/;"	f	class:Polygon
+scale	polygon.cpp	/^void Polygon::scale(float alpha, float beta){$/;"	f	class:Polygon
+setCentroid	polygon.cpp	/^void Polygon::setCentroid(){$/;"	f	class:Polygon
+setColor	polygon.cpp	/^void Polygon::setColor(Color c){$/;"	f	class:Polygon
+swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
+translate	polygon.cpp	/^void Polygon::translate(int x_offset, int y_offset){$/;"	f	class:Polygon
+window_height	graph.h	/^  int window_height;$/;"	m	class:Graph
+window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
+x	common_type.h	/^  int x;$/;"	m	struct:__anon1
+y	common_type.h	/^  int y;$/;"	m	struct:__anon1
+~Polygon	polygon.cpp	/^Polygon::~Polygon(){$/;"	f	class:Polygon

@@ -108,7 +108,17 @@ int Graph::dda( Point p1, Point p2,  float r, float g, float b){
   return 0;
 }
 
-// helper function for the bresenham algorithm
+/*===================================================*/
+/* @fn        :   determineStartAndEndpoints(Point p1, Point p2, int *x, int *y, int *end, int*y_end
+ * @brief     :   determine start/end point with respect to the x value of the point, if x < x_end , x is the start
+ * @param[in] :   Point p1 - point 1, Point it's struct of { int x,y};
+ *                Point p2 - point 2,
+ * @param[out]:   int *x - the x value of the start point
+ *                int *y - the y value of the start point
+ *                int *x_end - the x value of the end point
+ *                int *y_end - the y value of the end point
+ * @note      :   helper function for bresenham algorithm
+ */
 void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){
   if(p1.x <= p2.x){
     *x = p1.x;
