@@ -7,7 +7,11 @@
 
 class Polygon{
   friend class Graph ;
-  Point *listOfPoints;  // the original points for creating the shape
+  Point *listOfPoints; 
+  Point *listOfPointsOriginal;
+  Point *listOfPointsAfterClipping;
+  int numberOfPointsOriginal;
+  int numberOfPointsAfterClipping;
   int numberOfPoints;
   Color color; 
   Graph *graph;
@@ -28,9 +32,14 @@ class Polygon{
     void _storeContourPoint(int x, int y);
     int  _storeLinePoints( Point p1, Point p2);
     int  _bresenham(Point pt1, Point pt2);
-    void storeOriginalPointsToContourPoints();
-    void storeContourPoints();
+    void storeOriginalPointsToContourPoints(); //just add the original points to the contour points buffer(std::list<Point> listOfCOntourPoints);
+    void storeContourPoints();// all the points along the contour of the polygon
     void clearContourPoints();
     void printListOfContourPoints();
+    void clip(int xMin, int yMin, int xMax, int yMax);
+    void clipXMin(int xMin);
+    void clipYmin(int yMin);
+    void ClipXMax(int xMax);
+    void clipYMax(int yMax);
 };
 #endif

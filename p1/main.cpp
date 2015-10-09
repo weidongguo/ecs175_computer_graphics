@@ -1,6 +1,7 @@
-#include "graph.h"
 #include <GL/glut.h>
+#include "graph.h"
 #include "polygon.h"
+#include "line.h"
 float *PixelBuffer; // global pixel buffer
 
 void callback_display();
@@ -62,23 +63,29 @@ void drawStuff(Graph &graph){
   Polygon poly(points, 6, &graph);  // used the object graph to draw to the screen
   poly.setColor( {0.1, 0.5, 0.3} );
   poly.draw(); 
+  poly.clip(60,60, 80,80 );//
+  poly.rasterize(0.3,0.4,0.5);
 
   poly.rotate(45);
   poly.draw();
   poly.scale(1.8, 1.8);
   poly.draw();
-  poly.translate(-400, 50);
-  poly.draw();
-  poly.storeContourPoints();
-  poly.printListOfContourPoints();
-  poly.rasterize(1,0,1);
 
+  poly.translate(-400, 50);
+  
+  poly.draw();
+  poly.rasterize(1,0,1);
+ 
+  poly.scale(0.2, 0.2);
+  poly.rotate(45);
+  poly.translate(400, -200);
+  poly.draw();
+  poly.rasterize(1, 0, 1);
 
   Point points2[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
   Polygon poly2(points2, 4, &graph);
   poly2.draw();
   
-  poly2.storeContourPoints();
   poly2.printListOfContourPoints();
   poly2.rasterize(0.5,0.5,0.5);
 /* 
@@ -92,6 +99,15 @@ void drawStuff(Graph &graph){
   poly2.draw();
   poly2.translate(500, 100);
   poly2.draw();*/
+  Point points3[] = { {100, 150}, {150, 150}, {175, 125}, {200, 150}, {275, 150}, { 275, 100}, {200, 100 }, {175, 50}, {150, 100}, {100, 100}};
+  Polygon poly3(points3, 10, &graph);
+  poly3.translate(200,0);
+  poly3.draw();
+  poly3.rasterize(0.3, 0.9, 0.4);
+
+  Line line1( {-100,0} , {-200, 50}, &graph );
+  line1.setColor(0.3, 0.8, 0.9); 
+  line1.draw();
 }
 
 

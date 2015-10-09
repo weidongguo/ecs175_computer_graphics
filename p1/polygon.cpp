@@ -2,11 +2,11 @@
 #include <cstdlib>
 #include <cstring>
 Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){
-  listOfPoints = new Point[_numberOfPoints];
+  listOfPoints = listOfPointsOriginal = new Point[_numberOfPoints];
   for(int i = 0; i < _numberOfPoints; i++) 
     listOfPoints[i] = listOfPts[i];
   
-  numberOfPoints = _numberOfPoints;
+  numberOfPoints = numberOfPointsOriginal = _numberOfPoints;
   color = {0,0,0} ;// by default black
   graph = ptr_graph;
   setCentroid();//set once in the beginning
@@ -236,7 +236,8 @@ void Polygon::printListOfContourPoints(){
 }
 
 void Polygon::rasterize(float r, float g, float b){
-  for(int i = 0; i < WINDOW_HEIGHT; i++){
+  storeContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
+  for(int i = 0; i < WINDOW_HEIGHT; i++){ //for each scanline
     if(listOfContourPoints[i].size() > 1){ // if more than 1 point on a scanline
       for(std::list<Point>::iterator it = listOfContourPoints[i].begin(); it != listOfContourPoints[i].end();){
         Point p1 = *it;
@@ -244,12 +245,65 @@ void Polygon::rasterize(float r, float g, float b){
         if(it == listOfContourPoints[i].end())
           break;
         Point p2 = *it;
-        DPRINT("(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
-        if( abs(p2.x - p1.x) >= 1){
-         //DPRINT("SCAN LINE %d\n", i);
-         graph->drawLine(p1,p2, r, g, b); 
+        //DPRINT("(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+        if( abs(p2.x - p1.x) >= 1 ){
+          graph->drawLine(p1,p2, r, g, b); 
+         
         }
       }
     }
   }
+}
+/*
+void Polygon::clipXMin(int xMin){
+  int firstIndex = -1;
+  //int _numberOfPointsAfterClipping = numberOfPointsAfterClipping;
+  for(int i = 0 ; i < numberOfPointsAfterClipping; i++){ //for clipping away the original points
+    if(listOfPointsAfterClipping[i].x < xMin){
+      numberOfPointsAfterClipping--;
+      for(int j = i; j < numberOfPointsAfterCLipping ; j++) //get rid of the outside points by shifting elements to the left 
+        listOfPointsAfterClipping[i] = listOfPointsAfterClipping[i+1];
+      
+      if(firstIndex == -1)
+        firstIndex = i; // for later on inserting the new vertices(points) after removing some of the original points
+    }
+  }
+  for(int i = 0; i< WINDOW_HEIGHT; i++){ //for adding new points after beling clipped along the line xMin
+    Iterator it = listOfContourPoints[i].begin();
+    Point p;
+    for( ; it != listOfContourPoints[i].end(); it++){
+      p = *it;
+      if(p.min == xMin){ // more CARE NEEDED for p1 to p2 or p2 to p1
+        for(int j = numberOfPointsAfterClipping; j > firstIndex; j--) // shifting to the right to vacate space for new points
+          listOfPointsAfterClipping[j] = listOfPointsAfterClipping[j-1] ; 
+        }
+        listOfPointsAfterClipping[firstIndex] = p;
+      }
+    }
+  }
+
+}*/
+void Polygon::clipYmin(int yMin){
+
+}
+void Polygon::ClipXMax(int xMax){
+
+}
+void Polygon::clipYMax(int yMax){
+
+}
+
+
+void Polygon::clip(int xMin, int yMin, int xMax, int yMax){
+  listOfPointsAfterClipping = new Point[numberOfPointsOriginal*2];//max number of points that can be after clipping
+  memcpy(listOfPointsAfterClipping, listOfPointsOriginal, numberOfPointsOriginal*sizeof(Point) ); 
+  numberOfPointsAfterClipping = numberOfPointsOriginal; //true in the beginning before a single clip
+  /* 
+  for(int i = 0 ; i < numberOfPointsAfterClipping; i++){
+    Point p = listOfPointsAfterClipping[i];
+    DPRINT("BEING CLIPPED: (%d, %d)\n", p.x, p.y);
+
+  }*/
+   
+  
 }

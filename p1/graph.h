@@ -13,6 +13,7 @@
 
 class Graph {
   friend class Polygon; 
+  friend class Line;
   int window_width;
   int window_height;
   Color background_color;
