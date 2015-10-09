@@ -10,6 +10,10 @@
 
 #ifndef COMMON_TYPE_H
 #define COMMON_TYPE_H
+
+typedef unsigned char uint8;
+typedef char          int8; 
+
 typedef struct {
   int x;
   int y;

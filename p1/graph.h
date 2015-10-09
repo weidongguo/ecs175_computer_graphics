@@ -12,8 +12,8 @@
 
 
 class Graph {
-  friend class Polygon; 
-  friend class Line;
+  friend class Polygon; //not used
+  friend class Line; //not used
   int window_width;
   int window_height;
   Color background_color;

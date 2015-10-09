@@ -6,15 +6,18 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT$/;"	m
 COMMON_TYPE_H	common_type.h	12;"	d
+ClipXMax	polygon.cpp	/^void Polygon::ClipXMax(int xMax){$/;"	f	class:Polygon
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon2
 DPRINT	common_type.h	3;"	d
 DPRINT	common_type.h	5;"	d
 GRAPH_H	graph.h	2;"	d
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
+Line	line.cpp	/^Line::Line(Point p1, Point p2, Graph *g){$/;"	f	class:Line
+Line	line.h	/^class Line{$/;"	c
 MAX	common_type.h	9;"	d
 MIN	common_type.h	8;"	d
-PI	polygon.cpp	58;"	d	file:
+PI	polygon.cpp	59;"	d	file:
 POLYGON_H	polygon.h	2;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
@@ -32,9 +35,18 @@ background_color	graph.h	/^  Color background_color;$/;"	m	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
 callback_display	main.cpp	/^void callback_display(){$/;"	f
 centroid	polygon.h	/^  Point centroid;$/;"	m	class:Polygon
+clearContourPoints	polygon.cpp	/^void Polygon::clearContourPoints(){$/;"	f	class:Polygon
+clip	line.cpp	/^void Line::clip(){$/;"	f	class:Line
+clip	polygon.cpp	/^void Polygon::clip(int xMin, int yMin, int xMax, int yMax){$/;"	f	class:Polygon
+clipYMax	polygon.cpp	/^void Polygon::clipYMax(int yMax){$/;"	f	class:Polygon
+clipYmin	polygon.cpp	/^void Polygon::clipYmin(int yMin){$/;"	f	class:Polygon
+cohenSutherland	line.cpp	/^void Line::cohenSutherland(){$/;"	f	class:Line
+color	line.h	/^  Color color;$/;"	m	class:Line
 color	polygon.h	/^  Color color; $/;"	m	class:Polygon
+compareXValue	polygon.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
 dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
+draw	line.cpp	/^void Line::draw(){$/;"	f	class:Line
 draw	polygon.cpp	/^void Polygon::draw(){$/;"	f	class:Polygon
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
@@ -42,16 +54,29 @@ drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberO
 drawStuff	main.cpp	/^void drawStuff(Graph &graph){$/;"	f
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
 g	common_type.h	/^  float g;$/;"	m	struct:__anon2
+graph	line.h	/^  Graph *graph; \/\/ Graph *graph the object contains all drawing method$/;"	m	class:Line
 graph	polygon.h	/^  Graph *graph;$/;"	m	class:Polygon
 listOfContourPoints	polygon.h	/^  std::list<Point> listOfContourPoints[WINDOW_HEIGHT];\/\/the original points + the points along the lines between the original points$/;"	m	class:Polygon
-listOfPoints	polygon.h	/^  Point *listOfPoints;  \/\/ the original points for creating the shape$/;"	m	class:Polygon
+listOfPoints	polygon.h	/^  Point *listOfPoints; $/;"	m	class:Polygon
+listOfPointsAfterClipping	polygon.h	/^  Point *listOfPointsAfterClipping;$/;"	m	class:Polygon
+listOfPointsOriginal	polygon.h	/^  Point *listOfPointsOriginal;$/;"	m	class:Polygon
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
 numberOfPoints	polygon.h	/^  int numberOfPoints;$/;"	m	class:Polygon
+numberOfPointsAfterClipping	polygon.h	/^  int numberOfPointsAfterClipping;$/;"	m	class:Polygon
+numberOfPointsOriginal	polygon.h	/^  int numberOfPointsOriginal;$/;"	m	class:Polygon
+pairOfPoints	line.h	/^  Point pairOfPoints[2]; \/\/ straight line consist of two points only$/;"	m	class:Line
+pairOfPointsAfterClipping	line.h	/^  Point pairOfPointsAfterClipping[2]; \/\/new line after clipping$/;"	m	class:Line
+pairOfPointsOriginal	line.h	/^  Point pairOfPointsOriginal[2]; \/\/ \/\/original two points $/;"	m	class:Line
+printListOfContourPoints	polygon.cpp	/^void Polygon::printListOfContourPoints(){$/;"	f	class:Polygon
 r	common_type.h	/^  float r;$/;"	m	struct:__anon2
+rasterize	polygon.cpp	/^void Polygon::rasterize(float r, float g, float b){$/;"	f	class:Polygon
 rotate	polygon.cpp	/^void Polygon::rotate(float alpha){ \/\/alpha is the angle$/;"	f	class:Polygon
 scale	polygon.cpp	/^void Polygon::scale(float alpha, float beta){$/;"	f	class:Polygon
 setCentroid	polygon.cpp	/^void Polygon::setCentroid(){$/;"	f	class:Polygon
+setColor	line.cpp	/^void Line::setColor(float r, float g, float b){$/;"	f	class:Line
 setColor	polygon.cpp	/^void Polygon::setColor(Color c){$/;"	f	class:Polygon
+storeContourPoints	polygon.cpp	/^void Polygon::storeContourPoints(){$/;"	f	class:Polygon
+storeOriginalPointsToContourPoints	polygon.cpp	/^void Polygon::storeOriginalPointsToContourPoints(){$/;"	f	class:Polygon
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
 translate	polygon.cpp	/^void Polygon::translate(int x_offset, int y_offset){$/;"	f	class:Polygon
 window_height	graph.h	/^  int window_height;$/;"	m	class:Graph

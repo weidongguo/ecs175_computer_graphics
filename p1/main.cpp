@@ -108,6 +108,8 @@ void drawStuff(Graph &graph){
   Line line1( {-100,0} , {-200, 50}, &graph );
   line1.setColor(0.3, 0.8, 0.9); 
   line1.draw();
+  line1.clip( -150, -100, 10, 50 );
+  line1.draw();
 }
 
 
