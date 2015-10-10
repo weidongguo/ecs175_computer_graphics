@@ -89,7 +89,7 @@ void Polygon::translate(int x_offset, int y_offset){
 }
 
 void Polygon:: _storeContourPoint(int x, int y){
-  listOfContourPoints[y+WINDOW_HEIGHT/2].push_back( {x,y} ); 
+  listOfContourPoints[y+graph->window_height/2].push_back( {x,y} ); 
   // y + WINDOW_HEIGHT/2 since we have negative coordinates but we need positive indexing in the array
 }
 
@@ -196,7 +196,7 @@ bool compareXValue(Point p1, Point p2){
 }
 
 void Polygon::clearContourPoints(){
-  for(int i = 0; i< WINDOW_HEIGHT; i++){
+  for(int i = 0; i< graph->window_height; i++){
     listOfContourPoints[i].clear();
   }
 }
@@ -205,7 +205,7 @@ void Polygon::storeOriginalPointsToContourPoints(){
   Point p;
   for(int i = 0 ; i < numberOfPoints; i++){
     p = listOfPoints[i] ;
-    listOfContourPoints[p.y+WINDOW_HEIGHT/2].push_back(p);
+    listOfContourPoints[p.y+graph->window_height/2].push_back(p);
   }
 }
 
@@ -218,7 +218,7 @@ void Polygon::storeContourPoints(){
     _storeLinePoints(listOfPoints[i], listOfPoints[i+1]);
   }
   ///sort each scanline points by it's x-value 
-  for(int i = 0 ; i < WINDOW_HEIGHT; i++){
+  for(int i = 0 ; i < graph->window_height; i++){
     if(!listOfContourPoints[i].empty())
       listOfContourPoints[i].sort(compareXValue);
   }
@@ -226,7 +226,7 @@ void Polygon::storeContourPoints(){
 
 void Polygon::printListOfContourPoints(){
   DPRINT("\n=================START OF CONTOUR POINTS=======================\n");
-  for(int i = 0; i< WINDOW_HEIGHT; i++){
+  for(int i = 0; i< graph->window_height; i++){
     for(std::list<Point>::iterator it = listOfContourPoints[i].begin(); it != listOfContourPoints[i].end(); it++)
       DPRINT("(%d, %d)  ", (*it).x, (*it).y);
     if(!listOfContourPoints[i].empty()) 
@@ -237,7 +237,7 @@ void Polygon::printListOfContourPoints(){
 
 void Polygon::rasterize(float r, float g, float b){
   storeContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
-  for(int i = 0; i < WINDOW_HEIGHT; i++){ //for each scanline
+  for(int i = 0; i < graph->window_height; i++){ //for each scanline
     if(listOfContourPoints[i].size() > 1){ // if more than 1 point on a scanline
       for(std::list<Point>::iterator it = listOfContourPoints[i].begin(); it != listOfContourPoints[i].end();){
         Point p1 = *it;

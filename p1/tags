@@ -24,23 +24,28 @@ PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
 Point	common_type.h	/^} Point; $/;"	t	typeref:struct:__anon1
 Polygon	polygon.cpp	/^Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){$/;"	f	class:Polygon
 Polygon	polygon.h	/^class Polygon{$/;"	c
+SET_ABOVE_CODE	line.cpp	6;"	d	file:
+SET_BOTTOM_CODE	line.cpp	5;"	d	file:
+SET_LEFT_CODE	line.cpp	3;"	d	file:
+SET_RIGHT_CODE	line.cpp	4;"	d	file:
 Vertex	common_type.h	/^typedef Point Vertex;\/\/Point and Vertex means the same thing$/;"	t
 WINDOW_HEIGHT	graph.h	11;"	d
 WINDOW_WIDTH	graph.h	10;"	d
 _bresenham	polygon.cpp	/^int Polygon::_bresenham(Point pt1, Point pt2){ \/\/for storing points, not drawing pixel$/;"	f	class:Polygon
 _storeContourPoint	polygon.cpp	/^void Polygon:: _storeContourPoint(int x, int y){$/;"	f	class:Polygon
 _storeLinePoints	polygon.cpp	/^int Polygon::_storeLinePoints( Point p1, Point p2){$/;"	f	class:Polygon
+accept	line.cpp	/^bool accept(uint8 region_code1, uint8 region_code2){ \/\/accept for sure$/;"	f
 b	common_type.h	/^  float b;$/;"	m	struct:__anon2
 background_color	graph.h	/^  Color background_color;$/;"	m	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
 callback_display	main.cpp	/^void callback_display(){$/;"	f
 centroid	polygon.h	/^  Point centroid;$/;"	m	class:Polygon
 clearContourPoints	polygon.cpp	/^void Polygon::clearContourPoints(){$/;"	f	class:Polygon
-clip	line.cpp	/^void Line::clip(){$/;"	f	class:Line
+clip	line.cpp	/^void Line::clip(int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Line
 clip	polygon.cpp	/^void Polygon::clip(int xMin, int yMin, int xMax, int yMax){$/;"	f	class:Polygon
 clipYMax	polygon.cpp	/^void Polygon::clipYMax(int yMax){$/;"	f	class:Polygon
 clipYmin	polygon.cpp	/^void Polygon::clipYmin(int yMin){$/;"	f	class:Polygon
-cohenSutherland	line.cpp	/^void Line::cohenSutherland(){$/;"	f	class:Line
+cohenSutherland	line.cpp	/^int Line::cohenSutherland(int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Line
 color	line.h	/^  Color color;$/;"	m	class:Line
 color	polygon.h	/^  Color color; $/;"	m	class:Polygon
 compareXValue	polygon.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
@@ -52,10 +57,13 @@ drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g,
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
 drawStuff	main.cpp	/^void drawStuff(Graph &graph){$/;"	f
+encode	line.cpp	/^uint8 encode(Point p, int xMin, int xMax, int yMin, int yMax){$/;"	f
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
 g	common_type.h	/^  float g;$/;"	m	struct:__anon2
 graph	line.h	/^  Graph *graph; \/\/ Graph *graph the object contains all drawing method$/;"	m	class:Line
 graph	polygon.h	/^  Graph *graph;$/;"	m	class:Polygon
+inside	line.cpp	/^bool inside(uint8 region_code){ \/\/inside the clipping region$/;"	f
+int8	common_type.h	/^typedef char          int8; $/;"	t
 listOfContourPoints	polygon.h	/^  std::list<Point> listOfContourPoints[WINDOW_HEIGHT];\/\/the original points + the points along the lines between the original points$/;"	m	class:Polygon
 listOfPoints	polygon.h	/^  Point *listOfPoints; $/;"	m	class:Polygon
 listOfPointsAfterClipping	polygon.h	/^  Point *listOfPointsAfterClipping;$/;"	m	class:Polygon
@@ -64,12 +72,13 @@ main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
 numberOfPoints	polygon.h	/^  int numberOfPoints;$/;"	m	class:Polygon
 numberOfPointsAfterClipping	polygon.h	/^  int numberOfPointsAfterClipping;$/;"	m	class:Polygon
 numberOfPointsOriginal	polygon.h	/^  int numberOfPointsOriginal;$/;"	m	class:Polygon
-pairOfPoints	line.h	/^  Point pairOfPoints[2]; \/\/ straight line consist of two points only$/;"	m	class:Line
+pairOfPoints	line.h	/^  Point *pairOfPoints; \/\/ pointer to the current pair of points$/;"	m	class:Line
 pairOfPointsAfterClipping	line.h	/^  Point pairOfPointsAfterClipping[2]; \/\/new line after clipping$/;"	m	class:Line
 pairOfPointsOriginal	line.h	/^  Point pairOfPointsOriginal[2]; \/\/ \/\/original two points $/;"	m	class:Line
 printListOfContourPoints	polygon.cpp	/^void Polygon::printListOfContourPoints(){$/;"	f	class:Polygon
 r	common_type.h	/^  float r;$/;"	m	struct:__anon2
 rasterize	polygon.cpp	/^void Polygon::rasterize(float r, float g, float b){$/;"	f	class:Polygon
+reject	line.cpp	/^bool reject(uint8 region_code1, uint8 region_code2){ $/;"	f
 rotate	polygon.cpp	/^void Polygon::rotate(float alpha){ \/\/alpha is the angle$/;"	f	class:Polygon
 scale	polygon.cpp	/^void Polygon::scale(float alpha, float beta){$/;"	f	class:Polygon
 setCentroid	polygon.cpp	/^void Polygon::setCentroid(){$/;"	f	class:Polygon
@@ -77,8 +86,10 @@ setColor	line.cpp	/^void Line::setColor(float r, float g, float b){$/;"	f	class:
 setColor	polygon.cpp	/^void Polygon::setColor(Color c){$/;"	f	class:Polygon
 storeContourPoints	polygon.cpp	/^void Polygon::storeContourPoints(){$/;"	f	class:Polygon
 storeOriginalPointsToContourPoints	polygon.cpp	/^void Polygon::storeOriginalPointsToContourPoints(){$/;"	f	class:Polygon
+swapPoints	line.cpp	/^void swapPoints(Point *p1, Point *p2){$/;"	f
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
 translate	polygon.cpp	/^void Polygon::translate(int x_offset, int y_offset){$/;"	f	class:Polygon
+uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
 window_height	graph.h	/^  int window_height;$/;"	m	class:Graph
 window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
 x	common_type.h	/^  int x;$/;"	m	struct:__anon1

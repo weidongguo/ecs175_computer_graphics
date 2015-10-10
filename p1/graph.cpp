@@ -6,16 +6,16 @@ Graph::Graph(int width, int height, float *PixelBufferPtr){
 }
 
 int Graph::drawPixel(int x, int y, float r, float g, float b){
-  if( abs(x) > WINDOW_WIDTH/2 || abs(y) > WINDOW_HEIGHT/2){
+  if( abs(x) > window_width/2 || abs(y) > window_height/2){
     DPRINT("ERROR: INVALID POINTS (%d, %d)\n", x,y); 
     return -1;
   } 
   /* now negative x or y values are allowed for input */
-  y+=(WINDOW_HEIGHT/2); //add offset to y to work with the buffer
-  x+=(WINDOW_WIDTH/2); //add offset to x to work with the buffer
-  PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 ] = r;
-  PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 + 1 ] = g;
-  PixelBuffer[ y * WINDOW_WIDTH * 3 + x * 3 + 2 ] = b;
+  y+=(window_height/2); //add offset to y to work with the buffer
+  x+=(window_width/2); //add offset to x to work with the buffer
+  PixelBuffer[ y * window_width * 3 + x * 3 ] = r;
+  PixelBuffer[ y * window_width * 3 + x * 3 + 1 ] = g;
+  PixelBuffer[ y * window_width * 3 + x * 3 + 2 ] = b;
 
   return 0;
 }
