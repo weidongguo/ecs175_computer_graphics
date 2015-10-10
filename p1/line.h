@@ -21,7 +21,7 @@ uint8 encode(Point p, int xMin, int xMax, int yMin, int yMax);
 bool inside(uint8 region_code); //inside the clipping region
 bool reject(uint8 region_code1, uint8 region_code2); 
 bool accept(uint8 region_code1, uint8 region_code2); //accept for sure
-
+void swapPoints(Point *p1, Point *p2);
 
 
 

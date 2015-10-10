@@ -105,11 +105,19 @@ void drawStuff(Graph &graph){
   poly3.draw();
   poly3.rasterize(0.3, 0.9, 0.4);
 
-  Line line1( {-100,0} , {-200, 50}, &graph );
-  line1.setColor(0.3, 0.8, 0.9); 
-  line1.draw();
+  Line line1( {-125, 0}, {-125, 80} , &graph );
   line1.clip( -150, -100, 10, 50 );
-  line1.draw();
+
+  Line line2( {-175, 30}, { -50, 30}, &graph );
+  line2.clip( -150, -100, 10, 50 );
+
+  Line line3( {-175,0}, {-125, 80}, &graph );
+  line3.draw();
+  line3.clip( -150, -100, 10, 50);
+
+  Line line4( {-140, 45}, {-120, 15 }, &graph);
+  line4.draw();
+  line4.clip(-150, -100, 10, 50);
 }
 
 
