@@ -16,7 +16,7 @@ class Polygon{
   Color color; 
   Graph *graph;
   Point centroid;
-  std::list<Point> listOfContourPoints[WINDOW_HEIGHT];//the original points + the points along the lines between the original points
+  std::list<Point> *listOfContourPoints;//the original points + the points along the lines between the original points
                                                       // the y-value is used for indexing contour points at each scanline
 
   public:

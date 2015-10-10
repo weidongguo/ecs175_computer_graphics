@@ -9,6 +9,7 @@ Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){
   numberOfPoints = numberOfPointsOriginal = _numberOfPoints;
   color = {0,0,0} ;// by default black
   graph = ptr_graph;
+  listOfContourPoints = new std::list<Point>[graph->window_height];
   setCentroid();//set once in the beginning
 }
 Polygon::~Polygon(){
@@ -16,6 +17,10 @@ Polygon::~Polygon(){
   if(listOfPoints != 0) {
     delete[] listOfPoints; 
     listOfPoints = 0; 
+  }
+  if(listOfContourPoints!=0){
+    delete[] listOfContourPoints;
+    listOfContourPoints = 0;
   }
 }
 
