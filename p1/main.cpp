@@ -2,25 +2,36 @@
 #include "graph.h"
 #include "polygon.h"
 #include "line.h"
+#include <iostream>
+#include <cstring>
 float *PixelBuffer; // global pixel buffer
+int window_width = 1000;//by default
+int window_height = 500;//by default
+int numberOfPolygons;
 
 void callback_display();
 void drawStuff(Graph &);
+void readHeaders(int *window_width, int *window_height, int *numberOfPolygons);
+void readPolygons(Graph *graph, Polygon **polygons);
 
 int main(int argc, char *argv[]){
   glutInit(&argc, argv);  //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB );
 
-  glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+  readHeaders(&window_width, &window_height, &numberOfPolygons);//read from file for the window-dimension and numberOfPolygons there are 
+  
+  glutInitWindowSize(window_width, window_height);
   glutInitWindowPosition(100, 100); 
   int windowID = glutCreateWindow("First Window");
   
-  //glClearColor(0.5,0.5,0.5,0.0); 
-  PixelBuffer = new float[WINDOW_WIDTH*WINDOW_HEIGHT*3];   
-  Graph graph(WINDOW_WIDTH,WINDOW_HEIGHT, PixelBuffer); 
+  glClearColor(1,1,1,0.0); //the background_color_buffer underneath the pixelbuffer
+  PixelBuffer = new float[window_width*window_height*3];   
+  Graph graph(window_width,window_height, PixelBuffer); 
   graph.fillScreen(1,1,1);
   
-  drawStuff(graph);
+  Polygon *polygons[numberOfPolygons];
+  readPolygons(&graph, polygons);
+  //drawStuff(graph);
   
   glutDisplayFunc(callback_display);
   glutMainLoop();
@@ -29,9 +40,9 @@ int main(int argc, char *argv[]){
 
 
 void callback_display(){
-  //glClear(GL_COLOR_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
-  glDrawPixels(WINDOW_WIDTH, WINDOW_HEIGHT, GL_RGB, GL_FLOAT, PixelBuffer);
+  glDrawPixels(window_width, window_height, GL_RGB, GL_FLOAT, PixelBuffer);
   
   glFlush(); //force all GL commands to be executed by the actual rendering engine
 }
@@ -130,4 +141,37 @@ void drawStuff(Graph &graph){
   
 }
 
+void readHeaders(int*window_width, int*window_height, int*numberOfPolygons){
+  int sizeOfBuffer = 256;
+  char buffer[sizeOfBuffer], *charPtr; 
+  
+  //prime the pump
+  std::cin.getline(buffer, sizeOfBuffer); // first line contains window dimension info
+  charPtr = strtok(buffer, " ");
+  *window_width = atoi(charPtr);
+  charPtr =strtok(0, "\0");
+  *window_height = atoi(charPtr);
+  std::cin.getline(buffer, sizeOfBuffer); //skip a line
+  std::cin.getline(buffer, sizeOfBuffer); // contains number of polygon
+  *numberOfPolygons = atoi(buffer);
+  DPRINT("window_width: %d, window_height: %d, numberOfPolygons: %d\n", *window_width, *window_height, *numberOfPolygons);
+}
 
+void readPolygons(Graph *graph, Polygon **polygons){ 
+  int sizeOfBuffer = 256, numberOfPoints;
+  char buffer[sizeOfBuffer], *charPtr; 
+  
+  while(std::cin.getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polygon
+    std::cin.getline(buffer, sizeOfBuffer); 
+
+    numberOfPoints =  atoi(buffer); 
+    for(int i = 0 ; i < numberOfPoints; i++){ // read "numberOfPoints" points 
+      std::cin.getline(buffer, sizeOfBuffer);
+      std::cout << buffer<< std::endl;
+    }
+    std::cout << std::endl;
+    if(std::cin.eof()) //end of file - done!!
+      break;
+
+  }
+}

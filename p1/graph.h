@@ -7,10 +7,6 @@
 
 #include "common_type.h"
 
-#define WINDOW_WIDTH 1000 
-#define WINDOW_HEIGHT 500 
-
-
 class Graph {
   friend class Polygon; //not used
   friend class Line; //not used
