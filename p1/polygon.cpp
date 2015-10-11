@@ -10,6 +10,9 @@ Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){
   color = {0,0,0} ;// by default black
   graph = ptr_graph;
   listOfContourPoints = new std::list<Point>[graph->window_height];
+  
+  listOfPointsAfterClipping = new Point[numberOfPointsOriginal*2];//max number of points that can be after clipping
+
   setCentroid();//set once in the beginning
 }
 Polygon::~Polygon(){
@@ -266,12 +269,123 @@ void Polygon::displayClippingRegion(int xMin, int xMax, int yMin, int yMax){
 
 }
 void Polygon::clip(int xMin, int xMax, int yMin, int yMax){
-  listOfPointsAfterClipping = new Point[numberOfPointsOriginal*2];//max number of points that can be after clipping
-  //memcpy(listOfPointsAfterClipping, listOfPointsOriginal, numberOfPointsOriginal*sizeof(Point) ); 
-  Line *line[numberOfPointsOriginal];
+  /*Line *line[numberOfPointsOriginal];
   for(int i = 0 ; i< numberOfPointsOriginal; i++){ //initialze each line e.g. if numberOfpointsOriginal = 3, {p1, p2}, {p2, p3}, { p3,p1}
     line[i] = new Line(listOfPointsOriginal[i], listOfPointsOriginal[ (i+1) % numberOfPointsOriginal ], graph); 
-  }
+  }*/
   displayClippingRegion(xMin, xMax, yMin, yMax); 
-  
+ 
+  sutherlandHodgman(xMin, xMax, yMin, yMax);
+  /*
+  //deallocate each line
+  for(int i = 0 ; i < numberOfPointsOriginal; i++){
+    delete (line[i]);
+  }
+  */
 }
+
+void Polygon::sutherlandHodgman(int xMin, int xMax, int yMin, int yMax){
+  std::list<Point> output;
+  
+  memcpy(listOfPointsAfterClipping, listOfPointsOriginal, numberOfPointsOriginal*sizeof(Point) ); 
+  numberOfPointsAfterClipping = numberOfPointsOriginal; //it's true in the beginning 
+
+  
+  for(Boundary b = LEFT; b <= TOP; b=b+1){//for each clipping edge
+    for(int i = 0 ; i < numberOfPointsAfterClipping; i++){ // for each line to be clipped
+      Point p1 = listOfPointsAfterClipping[i]; 
+      Point p2 = listOfPointsAfterClipping[ (i+1)% numberOfPointsAfterClipping ];
+      if( cross( p1, p2, b, xMin, xMax, yMin, yMax) ){ //in-out or out-in
+        if( inside(p1, b, xMin, xMax, yMin, yMax) ){ // in-out -> intersection point
+          output.push_back( intersect(p1,p2,b,xMin, xMax, yMin, yMax)); 
+          DPRINT("IN-OUT\n");
+        }
+        else{ // out-in -> intersection point and p2
+          output.push_back(intersect(p1,p2,b,xMin, xMax, yMin, yMax)); 
+          output.push_back(p2);
+          DPRINT("OUT_IN\n");
+        }
+      }
+      else{ //in-in or out-out
+        if(inside(p2, b, xMin, xMax, yMin, yMax)){// in-in -> p2
+             output.push_back(p2);
+             DPRINT("IN-IN\n");
+        } //else out-out -> do nothing
+        else
+          DPRINT("OUT-OUT\n");
+      }
+    } //end for
+    
+    // transfer the output to listOfPointsAfterClipping
+    numberOfPointsAfterClipping = output.size();
+    int i = 0;
+    for( std::list<Point>::iterator it = output.begin(); it != output.end(); it++){
+      listOfPointsAfterClipping[i] = (*it);
+      DPRINT("After Clipping: (%d, %d)\n", listOfPointsAfterClipping[i].x, listOfPointsAfterClipping[i].y);
+      i++;
+    }
+    DPRINT("\n\n");
+    output.clear();
+  }
+  DPRINT(">>>new size: %d\n", numberOfPointsAfterClipping);
+  //erase the original one from the display
+#if 1
+  Color c = color;
+  setColor(graph->background_color);
+  draw();
+  //display the clipped polygon;
+  listOfPoints = listOfPointsAfterClipping;
+  numberOfPoints = numberOfPointsAfterClipping;
+  setColor(c); 
+  draw();
+#endif
+}
+
+
+bool Polygon::inside(Point p, Boundary b, int xMin, int xMax, int yMin, int yMax){ //static method
+  switch(b){
+    case LEFT:  if(p.x < xMin) return false; break;
+    case RIGHT: if(p.x > xMax) return false; break;
+    case TOP:   if(p.y > yMax) return false; break;
+    case BOTTOM:if(p.y < yMin) return false; break;
+  }
+  return true;
+}
+
+bool Polygon::cross(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax){
+  return inside(p1, b, xMin, xMax, yMin, yMax) != inside(p2, b, xMin, xMax, yMin, yMax); 
+}
+
+Point Polygon::intersect(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax){
+  Point newP;
+  float m;
+  if( p1.x - p2.x != 0 )  // else, divided by 0
+    m = (float)(p2.y - p1.y)/ (p2.x - p1.x);
+ 
+  switch(b){
+    case LEFT:
+      newP.y = m*(xMin - p1.x) + p1.y;
+      newP.x = xMin;
+      break;
+    case RIGHT:
+      newP.y = m*(xMax - p1.x) + p1.y;
+      newP.x = xMax;
+      break;
+    case BOTTOM:
+      newP.y = yMin;
+      if(p1.x - p2.x !=0) 
+        newP.x = (yMin - p1.y)/m + p1.x;
+      else  
+        newP.x = p1.x;
+      break;
+    case TOP:
+      newP.y = yMax;
+      if(p1.x - p2.x !=0)
+        newP.x = (yMax - p1.y)/m + p1.x;
+      else
+        newP.x = p1.x;
+      break;
+  }
+  return newP;
+}
+

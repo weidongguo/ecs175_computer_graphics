@@ -6,6 +6,12 @@
 #include "line.h"
 #include <list>
 
+#define LEFT 0
+#define RIGHT 1
+#define BOTTOM 2
+#define TOP 3
+typedef int Boundary;
+
 class Polygon{
   friend class Graph ;
   Point *listOfPoints; 
@@ -38,6 +44,13 @@ class Polygon{
     void clearContourPoints();
     void printListOfContourPoints();
     void clip(int xMin, int xMax, int yMin, int yMax);
+    void sutherlandHodgman(int xMin, int xMax, int yMin, int yMax);
     void displayClippingRegion(int xMin, int xMax, int yMin, int yMax);
+    
+    //helper functions for sutherlandHodgman();   
+    static bool inside(Point p, Boundary b, int xMin, int xMax, int yMin, int yMax);
+    static bool cross(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax); 
+    static Point intersect(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax);
 };
+
 #endif

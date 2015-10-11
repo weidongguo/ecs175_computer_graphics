@@ -63,7 +63,7 @@ void drawStuff(Graph &graph){
   Polygon poly(points, 6, &graph);  // used the object graph to draw to the screen
   poly.setColor( {0.1, 0.5, 0.3} );
   poly.draw(); 
-  poly.clip(60,60, 80,80 );//
+  //poly.clip(60,60, 80,80 );//
   poly.rasterize(0.3,0.4,0.5);
 
   poly.rotate(45);
