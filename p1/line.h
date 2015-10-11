@@ -17,6 +17,7 @@ class Line{
   void setColor(float r, float g, float b); 
   void draw();// draw your self a line
   void clip(int, int, int, int);
+  void clip(ClipRegion cr);
   int  cohenSutherland(int xMin, int xMax, int yMin, int yMax);
 };
 

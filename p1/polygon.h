@@ -25,6 +25,7 @@ class Polygon{
   Point centroid;
   std::list<Point> *listOfContourPoints;//the original points + the points along the lines between the original points
                                                       // the y-value is used for indexing contour points at each scanline
+  bool isRasterized;
 
   public:
     Polygon(Point * listOfPts, int numOfPoints, Graph *ptr_graph);
@@ -32,10 +33,14 @@ class Polygon{
     void setColor(Color);
     void setCentroid();
     void draw();
+    void draw(Color color);
+    void draw(float r, float g, float b);
     void scale(float alpha, float beta);//factor alpha for scalling the x-value, factor beta for scalling the y-value
     void rotate(float angle);
     void translate(int x, int y); //translating meaning shifting
     void rasterize(float r, float g, float b);
+    void rasterize(Color color);
+    void rasterize();
     void _storeContourPoint(int x, int y);
     int  _storeLinePoints( Point p1, Point p2);
     int  _bresenham(Point pt1, Point pt2);
@@ -44,6 +49,7 @@ class Polygon{
     void clearContourPoints();
     void printListOfContourPoints();
     void clip(int xMin, int xMax, int yMin, int yMax);
+    void clip(ClipRegion cr);
     void sutherlandHodgman(int xMin, int xMax, int yMin, int yMax);
     void displayClippingRegion(int xMin, int xMax, int yMin, int yMax);
     

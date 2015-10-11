@@ -10,20 +10,25 @@ Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){
   color = {0,0,0} ;// by default black
   graph = ptr_graph;
   listOfContourPoints = new std::list<Point>[graph->window_height];
-  
+   
   listOfPointsAfterClipping = new Point[numberOfPointsOriginal*2];//max number of points that can be after clipping
-
+  
+  isRasterized = false;
   setCentroid();//set once in the beginning
 }
 Polygon::~Polygon(){
   DPRINT("DESTRUCTOR CALLED\n"); 
-  if(listOfPoints != 0) {
-    delete[] listOfPoints; 
-    listOfPoints = 0; 
+  if(listOfPointsOriginal != 0) {
+    delete[] listOfPointsOriginal; 
+    listOfPointsOriginal = 0; 
   }
   if(listOfContourPoints!=0){
     delete[] listOfContourPoints;
     listOfContourPoints = 0;
+  }
+  if(listOfPointsAfterClipping !=0){
+    delete[] listOfPointsAfterClipping;
+    listOfPointsAfterClipping = 0;
   }
 }
 
@@ -44,8 +49,16 @@ void Polygon::setColor(Color c){
   color = c;
 }
 
+
 void Polygon::draw(){
-  graph->drawPolygon(listOfPoints, numberOfPoints, color.r, color.g, color.b);
+  draw(color.r, color.g, color.b);
+}
+
+void Polygon::draw(Color c){
+  draw(c.r, c.g, c.b);
+}
+void Polygon::draw(float r, float g, float b){
+  graph->drawPolygon(listOfPoints, numberOfPoints, r,g,b); 
 }
 
 void Polygon::scale(float alpha, float beta){
@@ -58,8 +71,8 @@ void Polygon::scale(float alpha, float beta){
     new_x = cx - alpha*cx + alpha*x;
     new_y = cy - beta*cy + beta*y; 
     DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
-    listOfPoints[i].x = (int)new_x; // must cast from float to integer
-    listOfPoints[i].y = (int)new_y;
+    listOfPoints[i].x = round(new_x); // must cast from float to integer
+    listOfPoints[i].y = round(new_y);
   }
 
 }
@@ -80,8 +93,8 @@ void Polygon::rotate(float alpha){ //alpha is the angle
     new_x = cx - cosAlpha*cx + cy*sinAlpha + cosAlpha*x - sinAlpha*y; 
     new_y = cy - cosAlpha*cy - cx*sinAlpha + cosAlpha*y + sinAlpha*x; 
     DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
-    listOfPoints[i].x = (int)new_x; // must cast from float to integer
-    listOfPoints[i].y = (int)new_y;
+    listOfPoints[i].x = (int)round(new_x); // must cast from float to integer
+    listOfPoints[i].y = (int)round(new_y);
   }
 }
 
@@ -243,7 +256,16 @@ void Polygon::printListOfContourPoints(){
   DPRINT("=================END OF CONTOUR POINTS=========================\n\n");
 }
 
+void Polygon::rasterize(){
+  rasterize(color.r, color.g, color.b);
+}
+
+void Polygon::rasterize(Color c){
+  rasterize(c.r, c.g, c.b);
+}
+
 void Polygon::rasterize(float r, float g, float b){
+  isRasterized = true;
   storeContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
   for(int i = 0; i < graph->window_height; i++){ //for each scanline
     if(listOfContourPoints[i].size() > 1){ // if more than 1 point on a scanline
@@ -268,20 +290,15 @@ void Polygon::displayClippingRegion(int xMin, int xMax, int yMin, int yMax){
   graph->drawPolygon(points, 4, 0.3, 1.0, 0.2);
 
 }
+
+
+void Polygon::clip(ClipRegion cr){
+  clip(cr.xMin, cr.xMax, cr.yMin, cr.yMax);
+}
+
 void Polygon::clip(int xMin, int xMax, int yMin, int yMax){
-  /*Line *line[numberOfPointsOriginal];
-  for(int i = 0 ; i< numberOfPointsOriginal; i++){ //initialze each line e.g. if numberOfpointsOriginal = 3, {p1, p2}, {p2, p3}, { p3,p1}
-    line[i] = new Line(listOfPointsOriginal[i], listOfPointsOriginal[ (i+1) % numberOfPointsOriginal ], graph); 
-  }*/
   displayClippingRegion(xMin, xMax, yMin, yMax); 
- 
   sutherlandHodgman(xMin, xMax, yMin, yMax);
-  /*
-  //deallocate each line
-  for(int i = 0 ; i < numberOfPointsOriginal; i++){
-    delete (line[i]);
-  }
-  */
 }
 
 void Polygon::sutherlandHodgman(int xMin, int xMax, int yMin, int yMax){
@@ -321,23 +338,25 @@ void Polygon::sutherlandHodgman(int xMin, int xMax, int yMin, int yMax){
     int i = 0;
     for( std::list<Point>::iterator it = output.begin(); it != output.end(); it++){
       listOfPointsAfterClipping[i] = (*it);
-      DPRINT("After Clipping: (%d, %d)\n", listOfPointsAfterClipping[i].x, listOfPointsAfterClipping[i].y);
+      //DPRINT("After Clipping: (%d, %d)\n", listOfPointsAfterClipping[i].x, listOfPointsAfterClipping[i].y);
       i++;
     }
     DPRINT("\n\n");
     output.clear();
   }
   DPRINT(">>>new size: %d\n", numberOfPointsAfterClipping);
-  //erase the original one from the display
-#if 1
-  Color c = color;
-  setColor(graph->background_color);
-  draw();
+#if 1  
+    //erase the original one from the display
+  isRasterized?rasterize(graph->background_color):draw(graph->background_color);
+    
   //display the clipped polygon;
-  listOfPoints = listOfPointsAfterClipping;
-  numberOfPoints = numberOfPointsAfterClipping;
-  setColor(c); 
-  draw();
+  if(numberOfPointsAfterClipping > 0){    
+    listOfPoints = listOfPointsAfterClipping;
+    numberOfPoints = numberOfPointsAfterClipping;
+    isRasterized?rasterize():draw();
+    listOfPoints = listOfPointsOriginal;
+    numberOfPoints = numberOfPointsOriginal;
+  }
 #endif
 }
 

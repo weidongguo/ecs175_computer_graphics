@@ -28,6 +28,9 @@ void Line::draw(){
     graph->drawLine(pairOfPoints[0], pairOfPoints[1], color.r, color.g, color.b);
 }
 
+void Line::clip(ClipRegion cr){
+  clip(cr.xMin, cr.xMax, cr.yMin, cr.yMax);
+}
 void Line::clip(int xMin, int xMax, int yMin, int yMax){
      //erase original lines by filling the line with background color
   Color bgColor = graph->background_color;

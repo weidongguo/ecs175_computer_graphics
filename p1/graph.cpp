@@ -205,10 +205,13 @@ int Graph::fillScreen(float r, float g, float b){
 
 int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){
   //draw a line between the first point and the last point first
+  if(numberOfPoints < 2)
+    return -1;
   drawLine(listOfPoints[0], listOfPoints[numberOfPoints-1], r,g,b); 
   for(int i = 0 ; i < numberOfPoints - 1; i++){
     drawLine(listOfPoints[i], listOfPoints[i+1], r,g,b);
   }
+  return 0;
 }
 
 

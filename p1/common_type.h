@@ -26,4 +26,12 @@ typedef struct {
   float g;
   float b;
 }Color;
+
+typedef struct{
+  int xMin;
+  int xMax;
+  int yMin;
+  int yMax;
+}ClipRegion;
+
 #endif
