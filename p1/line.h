@@ -1,3 +1,6 @@
+#ifndef LINE_H
+#define LINE_H
+
 #include "common_type.h"
 #include "graph.h"
 
@@ -9,6 +12,7 @@ class Line{
   Color color;
 
   public: 
+  friend class Polygon;
   Line(Point p1, Point p2, Graph *g); //constructor of a line only requires two points; 
   void setColor(float r, float g, float b); 
   void draw();// draw your self a line
@@ -24,4 +28,4 @@ bool accept(uint8 region_code1, uint8 region_code2); //accept for sure
 void swapPoints(Point *p1, Point *p2);
 
 
-
+#endif // LINE_H

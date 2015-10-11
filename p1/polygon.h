@@ -3,6 +3,7 @@
 
 #include "common_type.h"
 #include "graph.h"
+#include "line.h"
 #include <list>
 
 class Polygon{
@@ -36,10 +37,7 @@ class Polygon{
     void storeContourPoints();// all the points along the contour of the polygon
     void clearContourPoints();
     void printListOfContourPoints();
-    void clip(int xMin, int yMin, int xMax, int yMax);
-    void clipXMin(int xMin);
-    void clipYmin(int yMin);
-    void ClipXMax(int xMax);
-    void clipYMax(int yMax);
+    void clip(int xMin, int xMax, int yMin, int yMax);
+    void displayClippingRegion(int xMin, int xMax, int yMin, int yMax);
 };
 #endif

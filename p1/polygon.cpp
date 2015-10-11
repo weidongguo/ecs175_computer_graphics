@@ -259,56 +259,19 @@ void Polygon::rasterize(float r, float g, float b){
     }
   }
 }
-/*
-void Polygon::clipXMin(int xMin){
-  int firstIndex = -1;
-  //int _numberOfPointsAfterClipping = numberOfPointsAfterClipping;
-  for(int i = 0 ; i < numberOfPointsAfterClipping; i++){ //for clipping away the original points
-    if(listOfPointsAfterClipping[i].x < xMin){
-      numberOfPointsAfterClipping--;
-      for(int j = i; j < numberOfPointsAfterCLipping ; j++) //get rid of the outside points by shifting elements to the left 
-        listOfPointsAfterClipping[i] = listOfPointsAfterClipping[i+1];
-      
-      if(firstIndex == -1)
-        firstIndex = i; // for later on inserting the new vertices(points) after removing some of the original points
-    }
-  }
-  for(int i = 0; i< WINDOW_HEIGHT; i++){ //for adding new points after beling clipped along the line xMin
-    Iterator it = listOfContourPoints[i].begin();
-    Point p;
-    for( ; it != listOfContourPoints[i].end(); it++){
-      p = *it;
-      if(p.min == xMin){ // more CARE NEEDED for p1 to p2 or p2 to p1
-        for(int j = numberOfPointsAfterClipping; j > firstIndex; j--) // shifting to the right to vacate space for new points
-          listOfPointsAfterClipping[j] = listOfPointsAfterClipping[j-1] ; 
-        }
-        listOfPointsAfterClipping[firstIndex] = p;
-      }
-    }
-  }
 
-}*/
-void Polygon::clipYmin(int yMin){
+void Polygon::displayClippingRegion(int xMin, int xMax, int yMin, int yMax){
+  Point points[] = { {xMin, yMin}, {xMin, yMax}, {xMax, yMax}, {xMax, yMin} }; 
+  graph->drawPolygon(points, 4, 0.3, 1.0, 0.2);
 
 }
-void Polygon::ClipXMax(int xMax){
-
-}
-void Polygon::clipYMax(int yMax){
-
-}
-
-
-void Polygon::clip(int xMin, int yMin, int xMax, int yMax){
+void Polygon::clip(int xMin, int xMax, int yMin, int yMax){
   listOfPointsAfterClipping = new Point[numberOfPointsOriginal*2];//max number of points that can be after clipping
-  memcpy(listOfPointsAfterClipping, listOfPointsOriginal, numberOfPointsOriginal*sizeof(Point) ); 
-  numberOfPointsAfterClipping = numberOfPointsOriginal; //true in the beginning before a single clip
-  /* 
-  for(int i = 0 ; i < numberOfPointsAfterClipping; i++){
-    Point p = listOfPointsAfterClipping[i];
-    DPRINT("BEING CLIPPED: (%d, %d)\n", p.x, p.y);
-
-  }*/
-   
+  //memcpy(listOfPointsAfterClipping, listOfPointsOriginal, numberOfPointsOriginal*sizeof(Point) ); 
+  Line *line[numberOfPointsOriginal];
+  for(int i = 0 ; i< numberOfPointsOriginal; i++){ //initialze each line e.g. if numberOfpointsOriginal = 3, {p1, p2}, {p2, p3}, { p3,p1}
+    line[i] = new Line(listOfPointsOriginal[i], listOfPointsOriginal[ (i+1) % numberOfPointsOriginal ], graph); 
+  }
+  displayClippingRegion(xMin, xMax, yMin, yMax); 
   
 }

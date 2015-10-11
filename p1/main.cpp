@@ -118,6 +118,11 @@ void drawStuff(Graph &graph){
   Line line4( {-140, 45}, {-120, 15 }, &graph);
   line4.draw();
   line4.clip(-150, -100, 10, 50);
+
+  Point points4[] = { {200, 100}, {300, -50}, {400, 150} };
+  Polygon poly4(points4, 3, &graph);
+  poly4.draw();
+  poly4.clip( 250, 350, -30, 120);
 }
 
 

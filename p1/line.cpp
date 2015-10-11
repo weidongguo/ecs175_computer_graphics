@@ -15,7 +15,6 @@ Line::Line(Point p1, Point p2, Graph *g){
   color.g = 0;
   color.b = 0;
 }
-
 void Line::setColor(float r, float g, float b){
   color.r = r;
   color.g = g;
