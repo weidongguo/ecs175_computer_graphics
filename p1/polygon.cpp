@@ -62,6 +62,8 @@ void Polygon::draw(float r, float g, float b){
 }
 
 void Polygon::scale(float alpha, float beta){
+  isRasterized?rasterize(graph->background_color):draw(graph->background_color); // clear the original polygon from the pixel buffer
+
   float cx = (float)centroid.x,
         cy = (float)centroid.y,
         new_x, new_y, x, y;
@@ -71,14 +73,16 @@ void Polygon::scale(float alpha, float beta){
     new_x = cx - alpha*cx + alpha*x;
     new_y = cy - beta*cy + beta*y; 
     DPRINT("new points (%d, %d)\n", (int)new_x, (int)new_y);
-    listOfPoints[i].x = round(new_x); // must cast from float to integer
-    listOfPoints[i].y = round(new_y);
+    listOfPoints[i].x = (int)round(new_x); // must cast from float to integer
+    listOfPoints[i].y = (int)round(new_y);
   }
 
 }
 
 #define PI 3.1415926
 void Polygon::rotate(float alpha){ //alpha is the angle
+  isRasterized?rasterize(graph->background_color):draw(graph->background_color); // clear the original polygon from the pixel buffer
+
   float cosAlpha = cos(alpha * PI/180),
         sinAlpha = sin(alpha * PI/180),
         cx = (float)centroid.x,
@@ -99,6 +103,8 @@ void Polygon::rotate(float alpha){ //alpha is the angle
 }
 
 void Polygon::translate(int x_offset, int y_offset){
+  isRasterized?rasterize(graph->background_color):draw(graph->background_color); // clear the original polygon from the pixel buffer
+  
   int new_x, new_y;
   for(int i = 0 ; i< numberOfPoints; i++){
     new_x = listOfPoints[i].x + x_offset;
@@ -110,7 +116,8 @@ void Polygon::translate(int x_offset, int y_offset){
 }
 
 void Polygon:: _storeContourPoint(int x, int y){
-  listOfContourPoints[y+graph->window_height/2].push_back( {x,y} ); 
+  if(! graph->outOfBound(x,y) )
+    listOfContourPoints[y+graph->window_height/2].push_back( {x,y} ); 
   // y + WINDOW_HEIGHT/2 since we have negative coordinates but we need positive indexing in the array
 }
 

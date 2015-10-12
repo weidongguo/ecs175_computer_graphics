@@ -12,7 +12,7 @@ class Graph {
   friend class Line; //not used
   int window_width;
   int window_height;
-  Color background_color;
+  public:Color background_color;
  
   public:
     Graph(int width, int height, float* PixelBufferPtr);
@@ -23,6 +23,7 @@ class Graph {
     int bresenham(Point p1, Point p2, float r, float, float);
     int fillScreen(float r, float g, float b);
     int drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b);
+    bool outOfBound(int x, int y);
 };
 
 void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end);//helper function for bresenham algo

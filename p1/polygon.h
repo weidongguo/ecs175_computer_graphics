@@ -52,7 +52,7 @@ class Polygon{
     void clip(ClipRegion cr);
     void sutherlandHodgman(int xMin, int xMax, int yMin, int yMax);
     void displayClippingRegion(int xMin, int xMax, int yMin, int yMax);
-    
+   
     //helper functions for sutherlandHodgman();   
     static bool inside(Point p, Boundary b, int xMin, int xMax, int yMin, int yMax);
     static bool cross(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax); 

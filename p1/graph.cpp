@@ -214,4 +214,6 @@ int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float 
   return 0;
 }
 
-
+bool Graph::outOfBound(int x, int y){
+  return ( abs(x) > window_width/2 || abs(y) > window_height/2);
+}

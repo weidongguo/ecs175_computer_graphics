@@ -1,0 +1,6137 @@
+cscope 15 $HOME/ECS175/p1               0000027710
+	@common_type.h
+
+1 
+	~<c¡dio
+>
+
+2 #ifdeà
+DEBUG_PRINT
+
+
+3 
+	#DPRINT
+ 
+´štf
+
+
+	)
+
+5 
+	#DPRINT
+(...)
+
+	)
+
+8 
+	#MIN
+(
+x
+,
+y
+è((x<=y)?x:y)
+
+	)
+
+9 
+	#MAX
+(
+x
+,
+y
+è((x>y)?x:y)
+
+	)
+
+11 #iâdeà
+COMMON_TYPE_H
+
+
+12 
+	#COMMON_TYPE_H
+
+
+	)
+
+14 
+	tušt8
+;
+
+15 
+	tšt8
+;
+
+18 
+	mx
+;
+
+19 
+	my
+;
+
+20 } 
+	tPošt
+;
+
+22 
+Pošt
+ 
+	tV”‹x
+;
+
+25 
+	mr
+;
+
+26 
+	mg
+;
+
+27 
+	mb
+;
+
+28 }
+	tCŞÜ
+;
+
+31 
+	mxMš
+;
+
+32 
+	mxMax
+;
+
+33 
+	myMš
+;
+
+34 
+	myMax
+;
+
+35 }
+	tClRegiÚ
+;
+
+	@graph.cpp
+
+1 
+	~"g¿ph.h
+"
+
+2 
+	gG¿ph
+::
+	$G¿ph
+(
+width
+, 
+height
+, *
+Pix–BufãrPŒ
+){
+
+3 
+Pix–Bufãr
+ = 
+Pix–BufãrPŒ
+;
+
+4 
+wšdow_width
+ = 
+width
+;
+
+5 
+wšdow_height
+ = 
+height
+;
+
+6 
+	}
+}
+
+8 
+	gG¿ph
+::
+	$d¿wPix–
+(
+x
+, 
+y
+, 
+r
+, 
+g
+, 
+b
+){
+
+9 ifĞ
+	`abs
+(
+x
+è> 
+wšdow_width
+/2 ||‡bs(
+y
+è> 
+wšdow_height
+/2){
+
+10 
+	`DPRINT
+("ERROR: INVALID POINTS (%d, %d)\n", 
+x
+,
+y
+);
+
+14 
+y
++=(
+wšdow_height
+/2);
+
+15 
+x
++=(
+wšdow_width
+/2);
+
+16 
+Pix–Bufãr
+[ 
+y
+ * 
+wšdow_width
+ * 3 + 
+x
+ * 3 ] = 
+r
+;
+
+17 
+Pix–Bufãr
+[ 
+y
+ * 
+wšdow_width
+ * 3 + 
+x
+ * 3 + 1 ] = 
+g
+;
+
+18 
+Pix–Bufãr
+[ 
+y
+ * 
+wšdow_width
+ * 3 + 
+x
+ * 3 + 2 ] = 
+b
+;
+
+21 
+	}
+}
+
+23 
+	gG¿ph
+::
+	$d¿wLše
+Ğ
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+r
+, 
+g
+, 
+b
+){
+
+24 if(
+p1
+.
+x
+ =ğ
+p2
+.x){
+
+25 
+y
+,
+y_’d
+;
+
+26 if(
+p1
+.
+y
+ <ğ
+p2
+.y){
+
+27 
+y
+ = 
+p1
+.y;
+
+28 
+y_’d
+ = 
+p2
+.
+y
+;
+
+30 
+y
+ = 
+p2
+.y;
+
+31 
+y_’d
+ = 
+p1
+.
+y
+;
+
+33 ; 
+y
+<=
+y_’d
+; y++)
+
+34 
+	`d¿wPix–
+(
+p1
+.
+x
+, 
+y
+, 
+r
+,
+g
+,
+b
+);
+
+37 if(
+p1
+.
+y
+ =ğ
+p2
+.y){
+
+38 
+x
+, 
+x_’d
+;
+
+39 if(
+p1
+.
+x
+ <ğ
+p2
+.x){
+
+40 
+x
+ = 
+p1
+.x;
+
+41 
+x_’d
+ = 
+p2
+.
+x
+;
+
+44 
+x
+ = 
+p2
+.x;
+
+45 
+x_’d
+ = 
+p1
+.
+x
+;
+
+47 ; 
+x
+ <ğ
+x_’d
+; x++)
+
+48 
+	`d¿wPix–
+(
+x
+, 
+p1
+.
+y
+, 
+r
+,
+g
+,
+b
+);
+
+53 
+	`b»£nham
+(
+p1
+, 
+p2
+, 
+r
+, 
+g
+, 
+b
+);
+
+57 
+	}
+}
+
+59 
+	gG¿ph
+::
+	$dda
+Ğ
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+r
+, 
+g
+, 
+b
+){
+
+60 
+d–_x
+, 
+d–_y
+, 
+x
+,
+y
+, 
+x_begš
+, 
+x_’d
+, 
+y_begš
+, 
+y_’d
+; 
+m
+;
+
+61 
+d–_x
+ = 
+p2
+.
+x
+ - 
+p1
+.x;
+
+62 
+d–_y
+ = 
+p2
+.
+y
+ - 
+p1
+.y;
+
+63 
+m
+ = ()
+d–_y
+ / 
+d–_x
+;
+
+64 
+	`DPRINT
+("Slİm : %.2lf\n", 
+m
+);
+
+66 ifĞ(0 < 
+m
+ && m <= 1) || (-1 <= m && m < 0) ){
+
+67 ifĞ
+p1
+.
+x
+ <ğ
+p2
+.x ){
+
+68 
+x_begš
+ = 
+p1
+.
+x
+;
+
+69 
+x_’d
+ = 
+p2
+.
+x
+;
+
+70 
+y_begš
+ = 
+p1
+.
+y
+;
+
+73 
+x_begš
+ = 
+p2
+.
+x
+;
+
+74 
+x_’d
+ = 
+p1
+.
+x
+;
+
+75 
+y_begš
+ = 
+p2
+.
+y
+;
+
+77  
+x
+ = 
+x_begš
+; x <ğ
+x_’d
+; x++){
+
+78 
+y
+ = 
+	`Ìound
+Ğ(
+x
+ - 
+x_begš
+)*
+m
+ + 
+y_begš
+ );
+
+79 
+	`d¿wPix–
+(
+x
+,
+y
+,
+r
+,
+g
+,
+b
+);
+
+82 ifĞ
+m
+ > 1 || m < -1) {
+
+83 
+m_b¬
+ = 1/
+m
+;
+
+84 if(
+p1
+.
+y
+ <ğ
+p2
+.y){
+
+85 
+y_begš
+ = 
+p1
+.
+y
+;
+
+86 
+y_’d
+ = 
+p2
+.
+y
+;
+
+87 
+x_begš
+ = 
+p1
+.
+x
+;
+
+90 
+y_begš
+ = 
+p2
+.
+y
+;
+
+91 
+y_’d
+ = 
+p1
+.
+y
+;
+
+92 
+x_begš
+ = 
+p2
+.
+x
+;
+
+94  
+y
+ = 
+y_begš
+; y <ğ
+y_’d
+; y++){
+
+95 
+x
+ = 
+	`Ìound
+ĞĞ
+y
+ - 
+y_begš
+è* 
+m_b¬
+ + 
+x_begš
+ ) ;
+
+96 
+	`d¿wPix–
+(
+x
+,
+y
+,
+r
+,
+g
+,
+b
+);
+
+99 ifĞ
+m
+ == 0 ){
+
+100  
+x
+ = 
+	`MIN
+(
+p1
+.x, 
+p2
+.x); x <ğ
+	`MAX
+(p1.x,…2.x); x++){
+
+101 
+	`d¿wPix–
+(
+x
+, 
+p1
+.
+y
+, 
+r
+,
+g
+,
+b
+);
+
+105 
+	`DPRINT
+("m is bad\n");
+
+109 
+	}
+}
+
+122 
+	$d‘”mšeS¹AndEndPošts
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, *
+x
+, *
+y
+, *
+x_’d
+, *
+y_’d
+){
+
+123 if(
+p1
+.
+x
+ <ğ
+p2
+.x){
+
+124 *
+x
+ = 
+p1
+.x;
+
+125 *
+y
+ = 
+p1
+.y;
+
+126 *
+x_’d
+ = 
+p2
+.
+x
+;
+
+127 *
+y_’d
+ = 
+p2
+.
+y
+;
+
+130 *
+x
+ = 
+p2
+.x;
+
+131 *
+y
+ = 
+p2
+.y;
+
+132 *
+x_’d
+ = 
+p1
+.
+x
+;
+
+133 *
+y_’d
+ = 
+p1
+.
+y
+;
+
+135 
+	}
+}
+
+138 
+	$sw­XY
+(
+Pošt
+ *
+p1
+){
+
+139 
+tmp
+;
+
+140 
+tmp
+ = 
+p1
+->
+x
+;
+
+141 
+p1
+->
+x
+ =…1->
+y
+;
+
+142 
+p1
+->
+y
+ = 
+tmp
+;
+
+143 
+	}
+}
+
+145 
+	gG¿ph
+::
+	$b»£nham
+(
+Pošt
+ 
+±1
+, Pošˆ
+±2
+, 
+r
+, 
+g
+, 
+b
+ ){
+
+146 
+Pošt
+ 
+p1
+ = 
+±1
+;
+
+147 
+Pošt
+ 
+p2
+ = 
+±2
+;
+
+148 
+x
+, 
+y
+, 
+x_’d
+, 
+y_’d
+, 
+p
+;
+
+149 
+dx
+ = (
+p2
+.
+x
+ - 
+p1
+.x), 
+dy
+ = (p2.
+y
+ -…1.y);
+
+150 
+boŞ
+ 
+¡“p
+ = 
+çl£
+;
+
+151 
+m
+ = ()
+dy
+/()
+dx
+ ;
+
+152 
+	`DPRINT
+("Th¦İi %.2f,\šw™h cŞÜ %.2f,%.2f,%.2f\n", 
+m
+, 
+r
+,
+g
+,
+b
+);
+
+153 
+boŞ
+ 
+pos™ive_¦İe
+;
+
+154 ifĞ
+m
+ >= 0 )
+
+155 
+pos™ive_¦İe
+ = 
+Œue
+;
+
+157 
+pos™ive_¦İe
+ = 
+çl£
+;
+
+159 ifĞ
+	`çbs
+(
+m
+) <= 1 ){
+
+160 
+¡“p
+ = 
+çl£
+;
+
+163 
+¡“p
+ = 
+Œue
+;
+
+164 
+	`sw­XY
+(&
+p1
+);
+
+165 
+	`sw­XY
+(&
+p2
+);
+
+167 
+	`d‘”mšeS¹AndEndPošts
+(
+p1
+, 
+p2
+, &
+x
+, &
+y
+, &
+x_’d
+, &
+y_’d
+);
+
+169 
+dx
+ = 
+	`abs
+(
+x_’d
+ - 
+x
+);
+
+170 
+dy
+ = 
+	`abs
+(
+y_’d
+ - 
+y
+);
+
+172 if(
+¡“p
+)
+
+173 
+	`d¿wPix–
+(
+y
+,
+x
+,
+r
+,
+g
+,
+b
+);
+
+175 
+	`d¿wPix–
+(
+x
+,
+y
+,
+r
+,
+g
+,
+b
+);
+
+176 
+p
+ = 2 * 
+dy
+ - 
+dx
+;
+
+177  ; 
+x
+ < 
+x_’d
+; ){
+
+178 
+x
+++;
+
+179 ifĞ
+p
+ >= 0){
+
+180 
+pos™ive_¦İe
+? 
+y
+++:y--;
+
+181 
+p
+ =… + 2*
+dy
+ - 2*
+dx
+;
+
+184 
+p
+ =… + 2*
+dy
+;
+
+186 if(
+¡“p
+)
+
+187 
+	`d¿wPix–
+(
+y
+,
+x
+,
+r
+,
+g
+,
+b
+);
+
+189 
+	`d¿wPix–
+(
+x
+,
+y
+,
+r
+,
+g
+,
+b
+);
+
+193 
+	}
+}
+
+195 
+	gG¿ph
+::
+	$flSü“n
+(
+r
+, 
+g
+, 
+b
+){
+
+196 
+bufãrSize
+ = 
+wšdow_width
+ * 
+wšdow_height
+ * 3;
+
+197 
+i
+ = 0; i < 
+bufãrSize
+; i+=3){
+
+198 
+Pix–Bufãr
+[
+i
+] = 
+r
+;
+
+199 
+Pix–Bufãr
+[
+i
++1] = 
+g
+;
+
+200 
+Pix–Bufãr
+[
+i
++2] = 
+b
+;
+
+202 
+background_cŞÜ
+ = {
+r
+,
+g
+,
+b
+};
+
+204 
+	}
+}
+
+206 
+	gG¿ph
+::
+	$d¿wPŞygÚ
+Ğ
+Pošt
+ *
+li¡OfPošts
+, 
+numb”OfPošts
+, 
+r
+, 
+g
+, 
+b
+){
+
+208 if(
+numb”OfPošts
+ < 2)
+
+210 
+	`d¿wLše
+(
+li¡OfPošts
+[0],†i¡OfPošts[
+numb”OfPošts
+-1], 
+r
+,
+g
+,
+b
+);
+
+211 
+i
+ = 0 ; i < 
+numb”OfPošts
+ - 1; i++){
+
+212 
+	`d¿wLše
+(
+li¡OfPošts
+[
+i
+],†i¡OfPošts[i+1], 
+r
+,
+g
+,
+b
+);
+
+215 
+	}
+}
+
+	@graph.h
+
+1 #iâdeà
+GRAPH_H
+
+
+2 
+	#GRAPH_H
+
+
+	)
+
+4 
+	~<c¡dio
+>
+
+5 
+	~<®gÜ™hm
+>
+
+6 
+	~<cm©h
+>
+
+8 
+	~"commÚ_ty³.h
+"
+
+10 şas 
+	cG¿ph
+ {
+
+11 
+ä›nd
+ 
+şass
+ 
+	mPŞygÚ
+;
+
+12 
+ä›nd
+ 
+şass
+ 
+	mLše
+;
+
+13 
+	mwšdow_width
+;
+
+14 
+	mwšdow_height
+;
+
+15 
+	mpublic
+:
+CŞÜ
+ 
+background_cŞÜ
+;
+
+17 
+	mpublic
+:
+
+18 
+G¿ph
+(
+width
+, 
+height
+, * 
+Pix–BufãrPŒ
+);
+
+19 *
+	mPix–Bufãr
+;
+
+20 
+d¿wPix–
+(
+x
+, 
+y
+, 
+r
+, 
+g
+, 
+b
+);
+
+21 
+d¿wLše
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+r
+, 
+g
+, 
+b
+);
+
+22 
+dda
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+r
+, 
+g
+, 
+b
+);
+
+23 
+b»£nham
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+r
+, , );
+
+24 
+flSü“n
+(
+r
+, 
+g
+, 
+b
+);
+
+25 
+d¿wPŞygÚ
+Ğ
+Pošt
+ *
+li¡OfPošts
+, 
+numb”OfPošts
+, 
+r
+, 
+g
+, 
+b
+);
+
+28 
+d‘”mšeS¹AndEndPošts
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, *
+x
+, *
+y
+, *
+x_’d
+, *
+y_’d
+);
+
+29 
+sw­XY
+(
+Pošt
+ *
+p1
+);
+
+	@line.cpp
+
+1 
+	~"lše.h
+"
+
+3 
+	#SET_LEFT_CODE
+ 0x01
+
+4 
+	#SET_RIGHT_CODE
+ 0x02
+
+5 
+	#SET_BOTTOM_CODE
+ 0x04
+
+6 
+	#SET_ABOVE_CODE
+ 0x08
+
+7 
+
+	)
+
+9 
+	gLše
+::
+	$Lše
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+G¿ph
+ *
+g
+){
+
+10 
+·œOfPoštsOrigš®
+[0]=
+·œOfPoštsAá”Clpšg
+[0]=
+p1
+;
+
+11 
+·œOfPoštsOrigš®
+[1]=
+·œOfPoštsAá”Clpšg
+[1]=
+p2
+;
+
+12 
+·œOfPošts
+ = 
+·œOfPoštsOrigš®
+;
+
+13 
+g¿ph
+ = 
+g
+;
+
+14 
+cŞÜ
+.
+r
+ = 0;
+
+15 
+cŞÜ
+.
+g
+ = 0;
+
+16 
+cŞÜ
+.
+b
+ = 0;
+
+17 
+	}
+}
+
+18 
+	gLše
+::
+	$£tCŞÜ
+(
+r
+, 
+g
+, 
+b
+){
+
+19 
+cŞÜ
+.
+r
+ =„;
+
+20 
+cŞÜ
+.
+g
+ = g;
+
+21 
+cŞÜ
+.
+b
+ = b;
+
+22 
+	}
+}
+
+24 
+	gLše
+::
+	$d¿w
+(){
+
+25 ifĞ
+·œOfPošts
+ == 0)
+
+26 
+	`DPRINT
+("<>===<> POINTS ARE CLIPPED\n");
+
+28 
+g¿ph
+->
+	`d¿wLše
+(
+·œOfPošts
+[0],…aœOfPošts[1], 
+cŞÜ
+.
+r
+, cŞÜ.
+g
+, cŞÜ.
+b
+);
+
+29 
+	}
+}
+
+31 
+	gLše
+::
+	$ş
+(
+ClRegiÚ
+ 
+ü
+){
+
+32 
+	`ş
+(
+ü
+.
+xMš
+, cr.
+xMax
+, cr.
+yMš
+, cr.
+yMax
+);
+
+33 
+	}
+}
+
+34 
+	gLše
+::
+	$ş
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+36 
+CŞÜ
+ 
+bgCŞÜ
+ = 
+g¿ph
+->
+background_cŞÜ
+;
+
+37 
+g¿ph
+->
+	`d¿wLše
+(
+·œOfPoštsOrigš®
+[0],…aœOfPoštsOrigš®[1], 
+bgCŞÜ
+.
+r
+, bgCŞÜ.
+g
+, bgCŞÜ.
+b
+);
+
+39 
+”rÜCode
+ = 
+	`coh’Suth”Ïnd
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+40 ifĞ
+”rÜCode
+ == 0 ){
+
+41 
+g¿ph
+->
+	`d¿wLše
+(
+·œOfPošts
+[0],…aœOfPošts[1], 
+cŞÜ
+.
+r
+, cŞÜ.
+g
+, cŞÜ.
+b
+);
+
+45 
+Pošt
+ 
+şpšgRegiÚ
+[] = { {
+xMš
+, 
+yMš
+}, {xMš, 
+yMax
+}, {
+xMax
+, yMax}, {xMax, yMin} };
+
+46 
+g¿ph
+->
+	`d¿wPŞygÚ
+(
+şpšgRegiÚ
+, 4, 0.1 , 1, 0.5 );
+
+47 
+	}
+}
+
+50 
+	gLše
+::
+	$coh’Suth”Ïnd
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+51 
+Pošt
+ 
+p1
+, 
+p2
+; 
+m
+;
+
+52 
+ušt8
+ 
+p1_»giÚ_code
+, 
+p2_»giÚ_code
+;
+
+53 
+p1
+ = 
+·œOfPoštsOrigš®
+[0];
+
+54 
+p2
+ = 
+·œOfPoštsOrigš®
+[1];
+
+56 
+Œue
+){
+
+57 
+p1_»giÚ_code
+ = 
+	`’code
+(
+p1
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+58 
+p2_»giÚ_code
+ = 
+	`’code
+(
+p2
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+59 ifĞ
+	`acû±
+(
+p1_»giÚ_code
+, 
+p2_»giÚ_code
+) ){
+
+60 
+·œOfPoštsAá”Clpšg
+[0] = 
+p1
+;
+
+61 
+·œOfPoštsAá”Clpšg
+[1] = 
+p2
+;
+
+62 
+·œOfPošts
+ = 
+·œOfPoštsAá”Clpšg
+;
+
+65 ifĞ
+	`»jeù
+(
+p1_»giÚ_code
+, 
+p2_»giÚ_code
+) ){
+
+66 
+·œOfPošts
+ = 0;
+
+70 ifĞ
+	`šside
+(
+p1_»giÚ_code
+) ){
+
+71 
+¡d
+::
+	`sw­
+(
+p1_»giÚ_code
+, 
+p2_»giÚ_code
+);
+
+72 
+	`sw­Pošts
+(&
+p1
+, &
+p2
+);
+
+75 ifĞ
+p2
+.
+x
+ - 
+p1
+.x != 0)
+
+76 
+m
+ = ()(
+p2
+.
+y
+-
+p1
+.y)/Õ2.
+x
+-p1.x);
+
+77 ifĞ
+p1_»giÚ_code
+ & 
+SET_LEFT_CODE
+){
+
+78 
+p1
+.
+y
+ = 
+m
+*(
+xMš
+ -…1.
+x
+) +…1.y;
+
+79 
+p1
+.
+x
+ = 
+xMš
+;
+
+81 ifĞ
+p1_»giÚ_code
+ & 
+SET_RIGHT_CODE
+){
+
+82 
+p1
+.
+y
+ = 
+m
+*(
+xMax
+ -…1.
+x
+) +…1.y;
+
+83 
+p1
+.
+x
+ = 
+xMax
+;
+
+85 ifĞ
+p1_»giÚ_code
+ & 
+SET_BOTTOM_CODE
+){
+
+87 if(
+p1
+.
+x
+ !ğ
+p2
+.x)
+
+88 
+p1
+.
+x
+ = (
+yMš
+ -…1.
+y
+)/
+m
+ +…1.x;
+
+89 
+p1
+.
+y
+ = 
+yMš
+;
+
+91 ifĞ
+p1_»giÚ_code
+ & 
+SET_ABOVE_CODE
+){
+
+92 if(
+p1
+.
+x
+ !=
+p2
+.x)
+
+93 
+p1
+.
+x
+ = (
+yMax
+ -…1.
+y
+)/ 
+m
+ +…1.x;
+
+94 
+p1
+.
+y
+ = 
+yMax
+;
+
+98 
+	}
+}
+
+113 
+ušt8
+ 
+	$’code
+(
+Pošt
+ 
+p
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+114 
+ušt8
+ 
+»giÚ_code
+ = 0x00;
+
+115 if(
+p
+.
+x
+ < 
+xMš
+)
+
+116 
+»giÚ_code
+ |ğ
+SET_LEFT_CODE
+;
+
+117 if(
+p
+.
+x
+ > 
+xMax
+)
+
+118 
+»giÚ_code
+ |ğ
+SET_RIGHT_CODE
+;
+
+119 if(
+p
+.
+y
+ < 
+yMš
+)
+
+120 
+»giÚ_code
+ |ğ
+SET_BOTTOM_CODE
+;
+
+121 if(
+p
+.
+y
+ > 
+yMax
+)
+
+122 
+»giÚ_code
+ |ğ
+SET_ABOVE_CODE
+;
+
+123  
+»giÚ_code
+;
+
+124 
+	}
+}
+
+127 
+boŞ
+ 
+	$šside
+(
+ušt8
+ 
+»giÚ_code
+){
+
+128  !
+»giÚ_code
+;
+
+129 
+	}
+}
+
+136 
+boŞ
+ 
+	$»jeù
+(
+ušt8
+ 
+»giÚ_code1
+, ušt8 
+»giÚ_code2
+){
+
+137  (
+boŞ
+)(
+»giÚ_code1
+ & 
+»giÚ_code2
+) ;
+
+138 
+	}
+}
+
+141 
+boŞ
+ 
+	$acû±
+(
+ušt8
+ 
+»giÚ_code1
+, ušt8 
+»giÚ_code2
+){
+
+142  !(
+»giÚ_code1
+ | 
+»giÚ_code2
+);
+
+143 
+	}
+}
+
+147 
+	$sw­Pošts
+(
+Pošt
+ *
+p1
+, Pošˆ*
+p2
+){
+
+148 
+Pošt
+ 
+tmp
+;
+
+149 
+tmp
+ = *
+p1
+;
+
+150 *
+p1
+ = *
+p2
+;
+
+151 *
+p2
+ = 
+tmp
+;
+
+152 
+	}
+}
+
+	@line.h
+
+1 #iâdeà
+LINE_H
+
+
+2 
+	#LINE_H
+
+
+	)
+
+4 
+	~"commÚ_ty³.h
+"
+
+5 
+	~"g¿ph.h
+"
+
+7 şas 
+	cLše
+{
+
+8 
+Pošt
+ *
+	m·œOfPošts
+;
+
+9 
+Pošt
+ 
+	m·œOfPoštsOrigš®
+[2];
+
+10 
+Pošt
+ 
+	m·œOfPoštsAá”Clpšg
+[2];
+
+11 
+G¿ph
+ *
+	mg¿ph
+;
+
+12 
+CŞÜ
+ 
+	mcŞÜ
+;
+
+14 
+	mpublic
+:
+
+15 
+ä›nd
+ 
+şass
+ 
+PŞygÚ
+;
+
+16 
+Lše
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+G¿ph
+ *
+g
+);
+
+17 
+£tCŞÜ
+(
+r
+, 
+g
+, 
+b
+);
+
+18 
+d¿w
+();
+
+19 
+ş
+(, , , );
+
+20 
+ş
+(
+ClRegiÚ
+ 
+ü
+);
+
+21 
+coh’Suth”Ïnd
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+25 
+ušt8
+ 
+’code
+(
+Pošt
+ 
+p
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+26 
+boŞ
+ 
+šside
+(
+ušt8
+ 
+»giÚ_code
+);
+
+27 
+boŞ
+ 
+»jeù
+(
+ušt8
+ 
+»giÚ_code1
+, ušt8 
+»giÚ_code2
+);
+
+28 
+boŞ
+ 
+acû±
+(
+ušt8
+ 
+»giÚ_code1
+, ušt8 
+»giÚ_code2
+);
+
+29 
+sw­Pošts
+(
+Pošt
+ *
+p1
+, Pošˆ*
+p2
+);
+
+	@main.cpp
+
+1 
+	~<GL/glut.h
+>
+
+2 
+	~"g¿ph.h
+"
+
+3 
+	~"pŞygÚ.h
+"
+
+4 
+	~"lše.h
+"
+
+5 
+	~<io¡»am
+>
+
+6 
+	~<c¡ršg
+>
+
+7 *
+	gPix–Bufãr
+;
+
+8 
+	gwšdow_width
+ = 1000;
+
+9 
+	gwšdow_height
+ = 500;
+
+10 
+	gnumb”OfPŞygÚs
+;
+
+12 
+ÿÎback_di¥Ïy
+();
+
+13 
+d¿wStuff
+(
+G¿ph
+ &);
+
+14 
+»adH—d”s
+(*
+wšdow_width
+, *
+wšdow_height
+, *
+numb”OfPŞygÚs
+);
+
+15 
+»adPŞygÚs
+(
+G¿ph
+ *
+g¿ph
+, 
+PŞygÚ
+ **
+pŞygÚs
+, 
+numb”OfPŞygÚs
+);
+
+17 
+	$maš
+(
+¬gc
+, *
+¬gv
+[]){
+
+18 
+	`glutIn™
+(&
+¬gc
+, 
+¬gv
+);
+
+19 
+	`glutIn™Di¥ÏyMode
+(
+GLUT_SINGLE
+ | 
+GLUT_RGB
+ );
+
+21 
+	`»adH—d”s
+(&
+wšdow_width
+, &
+wšdow_height
+, &
+numb”OfPŞygÚs
+);
+
+23 
+	`glutIn™WšdowSize
+(
+wšdow_width
+, 
+wšdow_height
+);
+
+24 
+	`glutIn™WšdowPos™iÚ
+(100, 100);
+
+25 
+wšdowID
+ = 
+	`glutC»©eWšdow
+("First Window");
+
+27 
+	`glCË¬CŞÜ
+(1,1,1,0.0);
+
+28 
+Pix–Bufãr
+ = 
+Ãw
+ [
+wšdow_width
+*
+wšdow_height
+*3];
+
+29 
+G¿ph
+ 
+	`g¿ph
+(
+wšdow_width
+,
+wšdow_height
+, 
+Pix–Bufãr
+);
+
+30 
+g¿ph
+.
+	`flSü“n
+(1,1,1);
+
+32 
+PŞygÚ
+ *
+pŞygÚs
+[
+numb”OfPŞygÚs
+];
+
+33 
+	`»adPŞygÚs
+(&
+g¿ph
+, 
+pŞygÚs
+, 
+numb”OfPŞygÚs
+);
+
+34 
+ClRegiÚ
+ 
+ü
+ = { -150, 150, -150, 150};
+
+35 
+i
+ = 0 ; i< 
+numb”OfPŞygÚs
+; i++){
+
+36 
+pŞygÚs
+[
+i
+]->
+	`d¿w
+();
+
+37 
+pŞygÚs
+[
+i
+]->
+	`¿¡”ize
+();
+
+38 
+pŞygÚs
+[
+i
+]->
+	`rÙ©e
+(45);
+
+39 
+pŞygÚs
+[
+i
+]->
+	`¿¡”ize
+();
+
+40 
+pŞygÚs
+[
+i
+]->
+	`sÿË
+(1.5,1.5);
+
+41 
+pŞygÚs
+[
+i
+]->
+	`¿¡”ize
+();
+
+47 
+	`glutDi¥ÏyFunc
+(
+ÿÎback_di¥Ïy
+);
+
+48 
+	`glutMašLoİ
+();
+
+50 
+	}
+}
+
+53 
+	$ÿÎback_di¥Ïy
+(){
+
+54 
+	`glCË¬
+(
+GL_COLOR_BUFFER_BIT
+);
+
+55 
+	`glLßdId’t™y
+();
+
+56 
+	`glD¿wPix–s
+(
+wšdow_width
+, 
+wšdow_height
+, 
+GL_RGB
+, 
+GL_FLOAT
+, 
+Pix–Bufãr
+);
+
+58 
+	`glFlush
+();
+
+59 
+	}
+}
+
+61 
+	$d¿wStuff
+(
+G¿ph
+ &
+g¿ph
+){
+
+74 
+ClRegiÚ
+ 
+ü
+ = { -300, 300, -150, 150};
+
+75 
+Pošt
+ 
+pošts
+[] = { {0,0}, {50, 50}, {0,100}, {100,100} ,{150,50}, {100, 0} };
+
+76 
+PŞygÚ
+ 
+	`pŞy
+(
+pošts
+, 6, &
+g¿ph
+);
+
+77 
+pŞy
+.
+	`£tCŞÜ
+( {0.1, 0.5, 0.3} );
+
+78 
+pŞy
+.
+	`d¿w
+();
+
+80 
+pŞy
+.
+	`¿¡”ize
+(0.3,0.4,0.5);
+
+82 
+pŞy
+.
+	`rÙ©e
+(45);
+
+83 
+pŞy
+.
+	`d¿w
+();
+
+84 
+pŞy
+.
+	`sÿË
+(2, 2);
+
+89 
+pŞy
+.
+	`Œª¦©e
+(-400, 50);
+
+90 
+pŞy
+.
+	`d¿w
+();
+
+91 
+pŞy
+.
+	`¿¡”ize
+(1,0,1);
+
+92 
+pŞy
+.
+	`ş
+(
+ü
+);
+
+94 
+pŞy
+.
+	`sÿË
+(0.2, 0.2);
+
+95 
+pŞy
+.
+	`rÙ©e
+(45);
+
+96 
+pŞy
+.
+	`Œª¦©e
+(400, -200);
+
+97 
+pŞy
+.
+	`d¿w
+();
+
+99 
+pŞy
+.
+	`ş
+(
+ü
+);
+
+102 
+Pošt
+ 
+pošts2
+[] = { {-200, -200}, {-100, -200}, {-100, -100}, {-200, -100} };
+
+103 
+PŞygÚ
+ 
+	`pŞy2
+(
+pošts2
+, 4, &
+g¿ph
+);
+
+104 
+pŞy2
+.
+	`£tCŞÜ
+({ 0.5, 0.5, 0.5});
+
+105 
+pŞy2
+.
+	`d¿w
+();
+
+107 
+pŞy2
+.
+	`´štLi¡OfCÚtourPošts
+();
+
+108 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+110 
+pŞy2
+.
+	`sÿË
+(1.2, 1.2);
+
+111 
+pŞy2
+.
+	`d¿w
+();
+
+112 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+113 
+pŞy2
+.
+	`rÙ©e
+(45);
+
+114 
+pŞy2
+.
+	`d¿w
+();
+
+115 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+116 
+pŞy2
+.
+	`sÿË
+(0.8, 0.8);
+
+117 
+pŞy2
+.
+	`d¿w
+();
+
+118 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+119 
+pŞy2
+.
+	`rÙ©e
+(60);
+
+120 
+pŞy2
+.
+	`d¿w
+();
+
+121 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+122 
+pŞy2
+.
+	`Œª¦©e
+(550, 100);
+
+123 
+pŞy2
+.
+	`d¿w
+();
+
+124 
+pŞy2
+.
+	`ş
+(
+ü
+);
+
+126 
+Pošt
+ 
+pošts3
+[] = { {100, 150}, {150, 150}, {175, 125}, {200, 150}, {275, 150}, { 275, 100}, {200, 100 }, {175, 50}, {150, 100}, {100, 100}};
+
+127 
+PŞygÚ
+ 
+	`pŞy3
+(
+pošts3
+, 10, &
+g¿ph
+);
+
+128 
+pŞy3
+.
+	`Œª¦©e
+(200,0);
+
+129 
+pŞy3
+.
+	`d¿w
+();
+
+130 
+pŞy3
+.
+	`¿¡”ize
+(0.3, 0.9, 0.4);
+
+131 
+pŞy3
+.
+	`ş
+(
+ü
+);
+
+134 
+ClRegiÚ
+ 
+ül
+ = {-150, -100, 10, 50} ;
+
+135 
+Lše
+ 
+	`lše2
+Ğ{-175, 30}, { -175, 80}, &
+g¿ph
+ );
+
+136 
+lše2
+.
+	`d¿w
+();
+
+137 
+lše2
+.
+	`ş
+(
+ül
+);
+
+139 
+Lše
+ 
+	`lše3
+Ğ{-175,0}, {-125, 80}, &
+g¿ph
+ );
+
+140 
+lše3
+.
+	`d¿w
+();
+
+141 
+lše3
+.
+	`ş
+( -150, -100, 10, 50);
+
+143 
+Lše
+ 
+	`lše4
+Ğ{-140, 45}, {-120, 15 }, &
+g¿ph
+);
+
+144 
+lše4
+.
+	`d¿w
+();
+
+145 
+lše4
+.
+	`ş
+(-150, -100, 10, 50);
+
+147 
+Pošt
+ 
+pošts4
+[] = { {200, 100}, {300, -50}, {400, 150} };
+
+148 
+PŞygÚ
+ 
+	`pŞy4
+(
+pošts4
+, 3, &
+g¿ph
+);
+
+149 
+pŞy4
+.
+	`d¿w
+();
+
+150 
+pŞy4
+.
+	`ş
+(
+ü
+);
+
+153 
+	}
+}
+
+165 
+	$»adH—d”s
+(*
+wšdow_width
+, *
+wšdow_height
+, *
+numb”OfPŞygÚs
+){
+
+166 
+sizeOfBufãr
+ = 256;
+
+167 
+bufãr
+[
+sizeOfBufãr
+], *
+ch¬PŒ
+;
+
+170 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+);
+
+171 
+ch¬PŒ
+ = 
+	`¡¹ok
+(
+bufãr
+, " ");
+
+172 *
+wšdow_width
+ = 
+	`©oi
+(
+ch¬PŒ
+);
+
+173 
+ch¬PŒ
+ =
+	`¡¹ok
+(0, "\0");
+
+174 *
+wšdow_height
+ = 
+	`©oi
+(
+ch¬PŒ
+);
+
+175 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+);
+
+176 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+);
+
+177 *
+numb”OfPŞygÚs
+ = 
+	`©oi
+(
+bufãr
+);
+
+178 
+	`DPRINT
+("wšdow_width: %d, wšdow_height: %d,‚umb”OfPŞygÚs: %d\n", *
+wšdow_width
+, *
+wšdow_height
+, *
+numb”OfPŞygÚs
+);
+
+179 
+	}
+}
+
+190 
+	$»adPŞygÚs
+(
+G¿ph
+ *
+g¿ph
+, 
+PŞygÚ
+ **
+pŞygÚs
+, 
+numb”OfPŞygÚs
+){
+
+191 
+sizeOfBufãr
+ = 256, 
+numb”OfPošts
+, 
+x
+, 
+y
+, 
+numb”OfPŞygÚsAÌ—dyProûs£d
+ = 0;
+
+192 
+bufãr
+[
+sizeOfBufãr
+], *
+ch¬PŒ
+;
+
+193 
+Pošt
+ *
+li¡OfPošts
+;
+
+195 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+)) {
+
+196 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+);
+
+197 
+numb”OfPošts
+ = 
+	`©oi
+(
+bufãr
+);
+
+199 
+li¡OfPošts
+ = 
+Ãw
+ 
+Pošt
+[
+numb”OfPošts
+];
+
+200 
+i
+ = 0 ; i < 
+numb”OfPošts
+; i++){
+
+201 
+¡d
+::
+cš
+.
+	`g‘lše
+(
+bufãr
+, 
+sizeOfBufãr
+);
+
+202 
+ch¬PŒ
+ = 
+	`¡¹ok
+(
+bufãr
+, " ");
+
+203 
+x
+ = 
+	`©oi
+(
+ch¬PŒ
+);
+
+204 
+ch¬PŒ
+ = 
+	`¡¹ok
+(0, "\0");
+
+205 
+y
+ = 
+	`©oi
+(
+ch¬PŒ
+);
+
+206 
+li¡OfPošts
+[
+i
+] = {
+x
+,
+y
+};
+
+207 
+	`DPRINT
+("(%d, %d)\n", 
+x
+, 
+y
+);
+
+209 
+pŞygÚs
+[
+numb”OfPŞygÚsAÌ—dyProûs£d
+] = 
+Ãw
+ 
+	`PŞygÚ
+(
+li¡OfPošts
+, 
+numb”OfPošts
+, 
+g¿ph
+);
+
+210 
+d–‘e
+ [] 
+li¡OfPošts
+;
+
+212 
+	`DPRINT
+("\n");
+
+213 ifĞ++
+numb”OfPŞygÚsAÌ—dyProûs£d
+ =ğ
+numb”OfPŞygÚs
+)
+
+215 if(
+¡d
+::
+cš
+.
+	`eof
+())
+
+218 
+	}
+}
+
+	@polygon.cpp
+
+1 
+	~"pŞygÚ.h
+"
+
+2 
+	~<c¡dlib
+>
+
+3 
+	~<c¡ršg
+>
+
+4 
+	gPŞygÚ
+::
+	$PŞygÚ
+(
+Pošt
+ * 
+li¡OfPts
+, 
+_numb”OfPošts
+, 
+G¿ph
+ *
+±r_g¿ph
+){
+
+5 
+li¡OfPošts
+ = 
+li¡OfPoštsOrigš®
+ = 
+Ãw
+ 
+Pošt
+[
+_numb”OfPošts
+];
+
+6 
+i
+ = 0; i < 
+_numb”OfPošts
+; i++)
+
+7 
+li¡OfPošts
+[
+i
+] = 
+li¡OfPts
+[i];
+
+9 
+numb”OfPošts
+ = 
+numb”OfPoštsOrigš®
+ = 
+_numb”OfPošts
+;
+
+10 
+cŞÜ
+ = {0,0,0} ;
+
+11 
+g¿ph
+ = 
+±r_g¿ph
+;
+
+12 
+li¡OfCÚtourPošts
+ = 
+Ãw
+ 
+¡d
+::
+li¡
+<
+Pošt
+>[
+g¿ph
+->
+wšdow_height
+];
+
+14 
+li¡OfPoštsAá”Clpšg
+ = 
+Ãw
+ 
+Pošt
+[
+numb”OfPoštsOrigš®
+*2];
+
+16 
+isRa¡”ized
+ = 
+çl£
+;
+
+17 
+	`£tC’Œoid
+();
+
+18 
+	}
+}
+
+19 
+	gPŞygÚ
+::~
+	$PŞygÚ
+(){
+
+20 
+	`DPRINT
+("DESTRUCTOR CALLED\n");
+
+21 if(
+li¡OfPoštsOrigš®
+ != 0) {
+
+22 
+d–‘e
+[] 
+li¡OfPoštsOrigš®
+;
+
+23 
+li¡OfPoštsOrigš®
+ = 0;
+
+25 if(
+li¡OfCÚtourPošts
+!=0){
+
+26 
+d–‘e
+[] 
+li¡OfCÚtourPošts
+;
+
+27 
+li¡OfCÚtourPošts
+ = 0;
+
+29 if(
+li¡OfPoštsAá”Clpšg
+ !=0){
+
+30 
+d–‘e
+[] 
+li¡OfPoštsAá”Clpšg
+;
+
+31 
+li¡OfPoštsAá”Clpšg
+ = 0;
+
+33 
+	}
+}
+
+36 
+	gPŞygÚ
+::
+	$£tC’Œoid
+(){
+
+37 
+sumOfXs
+ = 0, 
+sumOfYs
+ = 0;
+
+38 
+i
+ = 0 ; i < 
+numb”OfPošts
+; i++){
+
+39 
+sumOfXs
+ +ğ
+li¡OfPošts
+[
+i
+].
+x
+;
+
+40 
+sumOfYs
+ +ğ
+li¡OfPošts
+[
+i
+].
+y
+;
+
+43 
+ûÁroid
+.
+x
+ = 
+sumOfXs
+ / 
+numb”OfPošts
+;
+
+44 
+ûÁroid
+.
+y
+ = 
+sumOfYs
+ / 
+numb”OfPošts
+;
+
+45 
+	`DPRINT
+("ûÁroid i (%d, %d)\n", 
+ûÁroid
+.
+x
+, c’Œoid.
+y
+);
+
+46 
+	}
+}
+
+48 
+	gPŞygÚ
+::
+	$£tCŞÜ
+(
+CŞÜ
+ 
+c
+){
+
+49 
+cŞÜ
+ = 
+c
+;
+
+50 
+	}
+}
+
+53 
+	gPŞygÚ
+::
+	$d¿w
+(){
+
+54 
+	`d¿w
+(
+cŞÜ
+.
+r
+, cŞÜ.
+g
+, cŞÜ.
+b
+);
+
+55 
+	}
+}
+
+57 
+	gPŞygÚ
+::
+	$d¿w
+(
+CŞÜ
+ 
+c
+){
+
+58 
+	`d¿w
+(
+c
+.
+r
+, c.
+g
+, c.
+b
+);
+
+59 
+	}
+}
+
+60 
+	gPŞygÚ
+::
+	$d¿w
+(
+r
+, 
+g
+, 
+b
+){
+
+61 
+g¿ph
+->
+	`d¿wPŞygÚ
+(
+li¡OfPošts
+, 
+numb”OfPošts
+, 
+r
+,
+g
+,
+b
+);
+
+62 
+	}
+}
+
+64 
+	gPŞygÚ
+::
+	$sÿË
+(
+®pha
+, 
+b‘a
+){
+
+65 
+isRa¡”ized
+?
+	`¿¡”ize
+(
+g¿ph
+->
+background_cŞÜ
+):
+	`d¿w
+(graph->background_color);
+
+67 
+cx
+ = ()
+ûÁroid
+.
+x
+,
+
+68 
+cy
+ = ()
+ûÁroid
+.
+y
+,
+
+69 
+Ãw_x
+, 
+Ãw_y
+, 
+x
+, 
+y
+;
+
+70 
+i
+ = 0 ; i< 
+numb”OfPošts
+; i++){
+
+71 
+x
+ = 
+li¡OfPošts
+[
+i
+].x;
+
+72 
+y
+ = 
+li¡OfPošts
+[
+i
+].y;
+
+73 
+Ãw_x
+ = 
+cx
+ - 
+®pha
+*cx +‡Íha*
+x
+;
+
+74 
+Ãw_y
+ = 
+cy
+ - 
+b‘a
+*cy + b‘a*
+y
+;
+
+75 
+	`DPRINT
+("Ãw…ošt (%d, %d)\n", ()
+Ãw_x
+, ()
+Ãw_y
+);
+
+76 
+li¡OfPošts
+[
+i
+].
+x
+ = 
+	`round
+(
+Ãw_x
+);
+
+77 
+li¡OfPošts
+[
+i
+].
+y
+ = 
+	`round
+(
+Ãw_y
+);
+
+80 
+	}
+}
+
+82 
+	#PI
+ 3.1415926
+
+	)
+
+83 
+	gPŞygÚ
+::
+	$rÙ©e
+(
+®pha
+){
+
+84 
+isRa¡”ized
+?
+	`¿¡”ize
+(
+g¿ph
+->
+background_cŞÜ
+):
+	`d¿w
+(graph->background_color);
+
+86 
+cosAÍha
+ = 
+	`cos
+(
+®pha
+ * 
+PI
+/180),
+
+87 
+sšAÍha
+ = 
+	`sš
+(
+®pha
+ * 
+PI
+/180),
+
+88 
+cx
+ = ()
+ûÁroid
+.
+x
+,
+
+89 
+cy
+ = ()
+ûÁroid
+.
+y
+,
+
+90 
+Ãw_x
+,
+
+91 
+Ãw_y
+,
+
+92 
+x
+,
+y
+;
+
+94 
+i
+ = 0 ; i< 
+numb”OfPošts
+; i++){
+
+95 
+x
+ = 
+li¡OfPošts
+[
+i
+].x;
+
+96 
+y
+ = 
+li¡OfPošts
+[
+i
+].y;
+
+97 
+Ãw_x
+ = 
+cx
+ - 
+cosAÍha
+*cx + 
+cy
+*
+sšAÍha
+ + cosAÍha*
+x
+ - sšAÍha*
+y
+;
+
+98 
+Ãw_y
+ = 
+cy
+ - 
+cosAÍha
+*cy - 
+cx
+*
+sšAÍha
+ + cosAÍha*
+y
+ + sšAÍha*
+x
+;
+
+99 
+	`DPRINT
+("Ãw…ošt (%d, %d)\n", ()
+Ãw_x
+, ()
+Ãw_y
+);
+
+100 
+li¡OfPošts
+[
+i
+].
+x
+ = ()
+	`round
+(
+Ãw_x
+);
+
+101 
+li¡OfPošts
+[
+i
+].
+y
+ = ()
+	`round
+(
+Ãw_y
+);
+
+103 
+	}
+}
+
+105 
+	gPŞygÚ
+::
+	$Œª¦©e
+(
+x_off£t
+, 
+y_off£t
+){
+
+106 
+isRa¡”ized
+?
+	`¿¡”ize
+(
+g¿ph
+->
+background_cŞÜ
+):
+	`d¿w
+(graph->background_color);
+
+108 
+Ãw_x
+, 
+Ãw_y
+;
+
+109 
+i
+ = 0 ; i< 
+numb”OfPošts
+; i++){
+
+110 
+Ãw_x
+ = 
+li¡OfPošts
+[
+i
+].
+x
+ + 
+x_off£t
+;
+
+111 
+Ãw_y
+ = 
+li¡OfPošts
+[
+i
+].
+y
+ + 
+y_off£t
+;
+
+112 
+	`DPRINT
+("Ãw…ošt (%d, %d)\n", ()
+Ãw_x
+, ()
+Ãw_y
+);
+
+113 
+li¡OfPošts
+[
+i
+].
+x
+ = 
+Ãw_x
+;
+
+114 
+li¡OfPošts
+[
+i
+].
+y
+ = 
+Ãw_y
+;
+
+116 
+	}
+}
+
+118 
+	gPŞygÚ
+:: 
+	$_¡ÜeCÚtourPošt
+(
+x
+, 
+y
+){
+
+119 
+li¡OfCÚtourPošts
+[
+y
++
+g¿ph
+->
+wšdow_height
+/2].
+	`push_back
+Ğ{
+x
+,y} );
+
+121 
+	}
+}
+
+124 
+	gPŞygÚ
+::
+	$_b»£nham
+(
+Pošt
+ 
+±1
+, Pošˆ
+±2
+){
+
+125 
+Pošt
+ 
+p1
+ = 
+±1
+;
+
+126 
+Pošt
+ 
+p2
+ = 
+±2
+;
+
+127 
+x
+, 
+y
+, 
+x_’d
+, 
+y_’d
+, 
+p
+;
+
+128 
+dx
+ = (
+p2
+.
+x
+ - 
+p1
+.x), 
+dy
+ = (p2.
+y
+ -…1.y);
+
+129 
+boŞ
+ 
+¡“p
+ = 
+çl£
+;
+
+130 
+m
+ = ()
+dy
+/()
+dx
+ ;
+
+131 
+boŞ
+ 
+pos™ive_¦İe
+;
+
+132 ifĞ
+m
+ >= 0 )
+
+133 
+pos™ive_¦İe
+ = 
+Œue
+;
+
+135 
+pos™ive_¦İe
+ = 
+çl£
+;
+
+137 ifĞ
+	`çbs
+(
+m
+) <= 1 ){
+
+138 
+¡“p
+ = 
+çl£
+;
+
+141 
+¡“p
+ = 
+Œue
+;
+
+142 
+	`sw­XY
+(&
+p1
+);
+
+143 
+	`sw­XY
+(&
+p2
+);
+
+145 
+	`d‘”mšeS¹AndEndPošts
+(
+p1
+, 
+p2
+, &
+x
+, &
+y
+, &
+x_’d
+, &
+y_’d
+);
+
+147 
+dx
+ = 
+	`abs
+(
+x_’d
+ - 
+x
+);
+
+148 
+dy
+ = 
+	`abs
+(
+y_’d
+ - 
+y
+);
+
+154 
+p
+ = 2 * 
+dy
+ - 
+dx
+;
+
+157 
+x_’d
+--;
+
+159  ; 
+x
+ < 
+x_’d
+; ){
+
+160 
+x
+++;
+
+161 ifĞ
+p
+ >= 0){
+
+162 
+pos™ive_¦İe
+? 
+y
+++:y--;
+
+163 
+p
+ =… + 2*
+dy
+ - 2*
+dx
+;
+
+166 
+p
+ =… + 2*
+dy
+;
+
+168 if(
+¡“p
+)
+
+169 
+	`_¡ÜeCÚtourPošt
+(
+y
+,
+x
+);
+
+171 
+	`_¡ÜeCÚtourPošt
+(
+x
+,
+y
+);
+
+175 
+	}
+}
+
+178 
+	gPŞygÚ
+::
+	$_¡ÜeLšePošts
+Ğ
+Pošt
+ 
+p1
+, Pošˆ
+p2
+){
+
+179 if(
+p1
+.
+x
+ =ğ
+p2
+.x){
+
+180 
+y
+,
+y_’d
+;
+
+181 if(
+p1
+.
+y
+ <ğ
+p2
+.y){
+
+182 
+y
+ = 
+p1
+.y;
+
+183 
+y_’d
+ = 
+p2
+.
+y
+;
+
+185 
+y
+ = 
+p2
+.y;
+
+186 
+y_’d
+ = 
+p1
+.
+y
+;
+
+189 
+y
+++;
+
+190 
+y_’d
+--;
+
+192 ; 
+y
+<=
+y_’d
+; y++)
+
+193 
+	`_¡ÜeCÚtourPošt
+(
+p1
+.
+x
+, 
+y
+);
+
+196 if(
+p1
+.
+y
+ =ğ
+p2
+.y){
+
+197 
+x
+, 
+x_’d
+;
+
+198 if(
+p1
+.
+x
+ <ğ
+p2
+.x){
+
+199 
+x
+ = 
+p1
+.x;
+
+200 
+x_’d
+ = 
+p2
+.
+x
+;
+
+203 
+x
+ = 
+p2
+.x;
+
+204 
+x_’d
+ = 
+p1
+.
+x
+;
+
+207 
+x
+++;
+
+208 
+x_’d
+--;
+
+210 ; 
+x
+ <ğ
+x_’d
+; x++)
+
+211 
+	`_¡ÜeCÚtourPošt
+(
+x
+, 
+p1
+.
+y
+);
+
+216 
+	`_b»£nham
+(
+p1
+, 
+p2
+);
+
+219 
+	}
+}
+
+221 
+boŞ
+ 
+	$com·»XV®ue
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+){
+
+222  
+p1
+.
+x
+ <ğ
+p2
+.x;
+
+223 
+	}
+}
+
+225 
+	gPŞygÚ
+::
+	$ş—rCÚtourPošts
+(){
+
+226 
+i
+ = 0; i< 
+g¿ph
+->
+wšdow_height
+; i++){
+
+227 
+li¡OfCÚtourPošts
+[
+i
+].
+	`ş—r
+();
+
+229 
+	}
+}
+
+231 
+	gPŞygÚ
+::
+	$¡ÜeOrigš®PoštsToCÚtourPošts
+(){
+
+232 
+Pošt
+ 
+p
+;
+
+233 
+i
+ = 0 ; i < 
+numb”OfPošts
+; i++){
+
+234 
+p
+ = 
+li¡OfPošts
+[
+i
+] ;
+
+235 
+li¡OfCÚtourPošts
+[
+p
+.
+y
++
+g¿ph
+->
+wšdow_height
+/2].
+	`push_back
+(p);
+
+237 
+	}
+}
+
+239 
+	gPŞygÚ
+::
+	$¡ÜeCÚtourPošts
+(){
+
+240 
+	`ş—rCÚtourPošts
+();
+
+242 
+	`¡ÜeOrigš®PoštsToCÚtourPošts
+();
+
+243 
+	`_¡ÜeLšePošts
+(
+li¡OfPošts
+[0],†i¡OfPošts[
+numb”OfPošts
+-1]);
+
+244 
+i
+ = 0 ; i < 
+numb”OfPošts
+ - 1; i++){
+
+245 
+	`_¡ÜeLšePošts
+(
+li¡OfPošts
+[
+i
+],†istOfPoints[i+1]);
+
+248 
+i
+ = 0 ; i < 
+g¿ph
+->
+wšdow_height
+; i++){
+
+249 if(!
+li¡OfCÚtourPošts
+[
+i
+].
+	`em±y
+())
+
+250 
+li¡OfCÚtourPošts
+[
+i
+].
+	`sÜt
+(
+com·»XV®ue
+);
+
+252 
+	}
+}
+
+254 
+	gPŞygÚ
+::
+	$´štLi¡OfCÚtourPošts
+(){
+
+255 
+	`DPRINT
+("\n=================START OF CONTOUR POINTS=======================\n");
+
+256 
+i
+ = 0; i< 
+g¿ph
+->
+wšdow_height
+; i++){
+
+257 
+¡d
+::
+li¡
+<
+Pošt
+>::
+™”©Ü
+ 
+™
+ = 
+li¡OfCÚtourPošts
+[
+i
+].
+	`begš
+(); iˆ!ğli¡OfCÚtourPošts[i].
+	`’d
+(); it++)
+
+258 
+	`DPRINT
+("(%d, %dè ", (*
+™
+).
+x
+, (*™).
+y
+);
+
+259 if(!
+li¡OfCÚtourPošts
+[
+i
+].
+	`em±y
+())
+
+260 
+	`DPRINT
+("\n");
+
+262 
+	`DPRINT
+("=================END OF CONTOUR POINTS=========================\n\n");
+
+263 
+	}
+}
+
+265 
+	gPŞygÚ
+::
+	$¿¡”ize
+(){
+
+266 
+	`¿¡”ize
+(
+cŞÜ
+.
+r
+, cŞÜ.
+g
+, cŞÜ.
+b
+);
+
+267 
+	}
+}
+
+269 
+	gPŞygÚ
+::
+	$¿¡”ize
+(
+CŞÜ
+ 
+c
+){
+
+270 
+	`¿¡”ize
+(
+c
+.
+r
+, c.
+g
+, c.
+b
+);
+
+271 
+	}
+}
+
+273 
+	gPŞygÚ
+::
+	$¿¡”ize
+(
+r
+, 
+g
+, 
+b
+){
+
+274 
+isRa¡”ized
+ = 
+Œue
+;
+
+275 
+	`¡ÜeCÚtourPošts
+();
+
+276 
+i
+ = 0; i < 
+g¿ph
+->
+wšdow_height
+; i++){
+
+277 if(
+li¡OfCÚtourPošts
+[
+i
+].
+	`size
+() > 1){
+
+278 
+¡d
+::
+li¡
+<
+Pošt
+>::
+™”©Ü
+ 
+™
+ = 
+li¡OfCÚtourPošts
+[
+i
+].
+	`begš
+(); iˆ!ğli¡OfCÚtourPošts[i].
+	`’d
+();){
+
+279 
+Pošt
+ 
+p1
+ = *
+™
+;
+
+280 
+¡d
+::
+	`advªû
+(
+™
+, 1);
+
+281 if(
+™
+ =ğ
+li¡OfCÚtourPošts
+[
+i
+].
+	`’d
+())
+
+283 
+Pošt
+ 
+p2
+ = *
+™
+;
+
+285 ifĞ
+	`abs
+(
+p2
+.
+x
+ - 
+p1
+.x) >= 1 ){
+
+286 
+g¿ph
+->
+	`d¿wLše
+(
+p1
+,
+p2
+, 
+r
+, 
+g
+, 
+b
+);
+
+292 
+	}
+}
+
+294 
+	gPŞygÚ
+::
+	$di¥ÏyClpšgRegiÚ
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+295 
+Pošt
+ 
+pošts
+[] = { {
+xMš
+, 
+yMš
+}, {xMš, 
+yMax
+}, {
+xMax
+, yMax}, {xMax, yMin} };
+
+296 
+g¿ph
+->
+	`d¿wPŞygÚ
+(
+pošts
+, 4, 0.3, 1.0, 0.2);
+
+298 
+	}
+}
+
+301 
+	gPŞygÚ
+::
+	$ş
+(
+ClRegiÚ
+ 
+ü
+){
+
+302 
+	`ş
+(
+ü
+.
+xMš
+, cr.
+xMax
+, cr.
+yMš
+, cr.
+yMax
+);
+
+303 
+	}
+}
+
+305 
+	gPŞygÚ
+::
+	$ş
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+306 
+	`di¥ÏyClpšgRegiÚ
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+307 
+	`suth”ÏndHodgmª
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+308 
+	}
+}
+
+310 
+	gPŞygÚ
+::
+	$suth”ÏndHodgmª
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+311 
+¡d
+::
+li¡
+<
+Pošt
+> 
+ouut
+;
+
+313 
+	`memıy
+(
+li¡OfPoštsAá”Clpšg
+, 
+li¡OfPoštsOrigš®
+, 
+numb”OfPoštsOrigš®
+*(
+Pošt
+) );
+
+314 
+numb”OfPoštsAá”Clpšg
+ = 
+numb”OfPoštsOrigš®
+;
+
+317 
+Bound¬y
+ 
+b
+ = 
+LEFT
+; b <ğ
+TOP
+; b=b+1){
+
+318 
+i
+ = 0 ; i < 
+numb”OfPoštsAá”Clpšg
+; i++){
+
+319 
+Pošt
+ 
+p1
+ = 
+li¡OfPoštsAá”Clpšg
+[
+i
+];
+
+320 
+Pošt
+ 
+p2
+ = 
+li¡OfPoštsAá”Clpšg
+[ (
+i
++1)% 
+numb”OfPoštsAá”Clpšg
+ ];
+
+321 ifĞ
+	`üoss
+Ğ
+p1
+, 
+p2
+, 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+) ){
+
+322 ifĞ
+	`šside
+(
+p1
+, 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+) ){
+
+323 
+ouut
+.
+	`push_back
+Ğ
+	`š‹r£ù
+(
+p1
+,
+p2
+,
+b
+,
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+));
+
+324 
+	`DPRINT
+("IN-OUT\n");
+
+327 
+ouut
+.
+	`push_back
+(
+	`š‹r£ù
+(
+p1
+,
+p2
+,
+b
+,
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+));
+
+328 
+ouut
+.
+	`push_back
+(
+p2
+);
+
+329 
+	`DPRINT
+("OUT_IN\n");
+
+333 if(
+	`šside
+(
+p2
+, 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+)){
+
+334 
+ouut
+.
+	`push_back
+(
+p2
+);
+
+335 
+	`DPRINT
+("IN-IN\n");
+
+338 
+	`DPRINT
+("OUT-OUT\n");
+
+343 
+numb”OfPoštsAá”Clpšg
+ = 
+ouut
+.
+	`size
+();
+
+344 
+i
+ = 0;
+
+345  
+¡d
+::
+li¡
+<
+Pošt
+>::
+™”©Ü
+ 
+™
+ = 
+ouut
+.
+	`begš
+(); iˆ!ğouut.
+	`’d
+(); it++){
+
+346 
+li¡OfPoštsAá”Clpšg
+[
+i
+] = (*
+™
+);
+
+348 
+i
+++;
+
+350 
+	`DPRINT
+("\n\n");
+
+351 
+ouut
+.
+	`ş—r
+();
+
+353 
+	`DPRINT
+(">>>Ãw size: %d\n", 
+numb”OfPoštsAá”Clpšg
+);
+
+356 
+isRa¡”ized
+?
+	`¿¡”ize
+(
+g¿ph
+->
+background_cŞÜ
+):
+	`d¿w
+(graph->background_color);
+
+359 if(
+numb”OfPoštsAá”Clpšg
+ > 0){
+
+360 
+li¡OfPošts
+ = 
+li¡OfPoštsAá”Clpšg
+;
+
+361 
+numb”OfPošts
+ = 
+numb”OfPoštsAá”Clpšg
+;
+
+362 
+isRa¡”ized
+?
+	`¿¡”ize
+():
+	`d¿w
+();
+
+363 
+li¡OfPošts
+ = 
+li¡OfPoštsOrigš®
+;
+
+364 
+numb”OfPošts
+ = 
+numb”OfPoštsOrigš®
+;
+
+367 
+	}
+}
+
+370 
+boŞ
+ 
+	gPŞygÚ
+::
+	$šside
+(
+Pošt
+ 
+p
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+371 
+b
+){
+
+372 
+LEFT
+: if(
+p
+.
+x
+ < 
+xMš
+è 
+çl£
+; ;
+
+373 
+RIGHT
+: if(
+p
+.
+x
+ > 
+xMax
+è 
+çl£
+; ;
+
+374 
+TOP
+: if(
+p
+.
+y
+ > 
+yMax
+è 
+çl£
+; ;
+
+375 
+BOTTOM
+:if(
+p
+.
+y
+ < 
+yMš
+è 
+çl£
+; ;
+
+377  
+Œue
+;
+
+378 
+	}
+}
+
+380 
+boŞ
+ 
+	gPŞygÚ
+::
+	$üoss
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+381  
+	`šside
+(
+p1
+, 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+è!ğšside(
+p2
+, b, xMin, xMax, yMin, yMax);
+
+382 
+	}
+}
+
+384 
+Pošt
+ 
+	gPŞygÚ
+::
+	$š‹r£ù
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+){
+
+385 
+Pošt
+ 
+ÃwP
+;
+
+386 
+m
+;
+
+387 ifĞ
+p1
+.
+x
+ - 
+p2
+.x != 0 )
+
+388 
+m
+ = ()(
+p2
+.
+y
+ - 
+p1
+.y)/ (p2.
+x
+ -…1.x);
+
+390 
+b
+){
+
+391 
+LEFT
+:
+
+392 
+ÃwP
+.
+y
+ = 
+m
+*(
+xMš
+ - 
+p1
+.
+x
+) +…1.y;
+
+393 
+ÃwP
+.
+x
+ = 
+xMš
+;
+
+395 
+RIGHT
+:
+
+396 
+ÃwP
+.
+y
+ = 
+m
+*(
+xMax
+ - 
+p1
+.
+x
+) +…1.y;
+
+397 
+ÃwP
+.
+x
+ = 
+xMax
+;
+
+399 
+BOTTOM
+:
+
+400 
+ÃwP
+.
+y
+ = 
+yMš
+;
+
+401 if(
+p1
+.
+x
+ - 
+p2
+.x !=0)
+
+402 
+ÃwP
+.
+x
+ = (
+yMš
+ - 
+p1
+.
+y
+)/
+m
+ +…1.x;
+
+404 
+ÃwP
+.
+x
+ = 
+p1
+.x;
+
+406 
+TOP
+:
+
+407 
+ÃwP
+.
+y
+ = 
+yMax
+;
+
+408 if(
+p1
+.
+x
+ - 
+p2
+.x !=0)
+
+409 
+ÃwP
+.
+x
+ = (
+yMax
+ - 
+p1
+.
+y
+)/
+m
+ +…1.x;
+
+411 
+ÃwP
+.
+x
+ = 
+p1
+.x;
+
+414  
+ÃwP
+;
+
+415 
+	}
+}
+
+	@polygon.h
+
+1 #iâdeà
+POLYGON_H
+
+
+2 
+	#POLYGON_H
+
+
+	)
+
+4 
+	~"commÚ_ty³.h
+"
+
+5 
+	~"g¿ph.h
+"
+
+6 
+	~"lše.h
+"
+
+7 
+	~<li¡
+>
+
+9 
+	#LEFT
+ 0
+
+	)
+
+10 
+	#RIGHT
+ 1
+
+	)
+
+11 
+	#BOTTOM
+ 2
+
+	)
+
+12 
+	#TOP
+ 3
+
+	)
+
+13 
+	tBound¬y
+;
+
+15 şas 
+	cPŞygÚ
+{
+
+16 
+ä›nd
+ 
+şass
+ 
+	mG¿ph
+ ;
+
+17 
+Pošt
+ *
+	mli¡OfPošts
+;
+
+18 
+Pošt
+ *
+	mli¡OfPoštsOrigš®
+;
+
+19 
+Pošt
+ *
+	mli¡OfPoštsAá”Clpšg
+;
+
+20 
+	mnumb”OfPoštsOrigš®
+;
+
+21 
+	mnumb”OfPoštsAá”Clpšg
+;
+
+22 
+	mnumb”OfPošts
+;
+
+23 
+CŞÜ
+ 
+	mcŞÜ
+;
+
+24 
+G¿ph
+ *
+	mg¿ph
+;
+
+25 
+Pošt
+ 
+	mûÁroid
+;
+
+26 
+	m¡d
+::
+li¡
+<
+Pošt
+> *
+li¡OfCÚtourPošts
+;
+
+28 
+boŞ
+ 
+	misRa¡”ized
+;
+
+30 
+	mpublic
+:
+
+31 
+PŞygÚ
+(
+Pošt
+ * 
+li¡OfPts
+, 
+numOfPošts
+, 
+G¿ph
+ *
+±r_g¿ph
+);
+
+32 ~
+PŞygÚ
+();
+
+33 
+£tCŞÜ
+(
+CŞÜ
+);
+
+34 
+£tC’Œoid
+();
+
+35 
+d¿w
+();
+
+36 
+d¿w
+(
+CŞÜ
+ 
+cŞÜ
+);
+
+37 
+d¿w
+(
+r
+, 
+g
+, 
+b
+);
+
+38 
+sÿË
+(
+®pha
+, 
+b‘a
+);
+
+39 
+rÙ©e
+(
+ªgË
+);
+
+40 
+Œª¦©e
+(
+x
+, 
+y
+);
+
+41 
+¿¡”ize
+(
+r
+, 
+g
+, 
+b
+);
+
+42 
+¿¡”ize
+(
+CŞÜ
+ 
+cŞÜ
+);
+
+43 
+¿¡”ize
+();
+
+44 
+_¡ÜeCÚtourPošt
+(
+x
+, 
+y
+);
+
+45 
+_¡ÜeLšePošts
+Ğ
+Pošt
+ 
+p1
+, Pošˆ
+p2
+);
+
+46 
+_b»£nham
+(
+Pošt
+ 
+±1
+, Pošˆ
+±2
+);
+
+47 
+¡ÜeOrigš®PoštsToCÚtourPošts
+();
+
+48 
+¡ÜeCÚtourPošts
+();
+
+49 
+ş—rCÚtourPošts
+();
+
+50 
+´štLi¡OfCÚtourPošts
+();
+
+51 
+ş
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+52 
+ş
+(
+ClRegiÚ
+ 
+ü
+);
+
+53 
+suth”ÏndHodgmª
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+54 
+di¥ÏyClpšgRegiÚ
+(
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+57 
+boŞ
+ 
+šside
+(
+Pošt
+ 
+p
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+58 
+boŞ
+ 
+üoss
+(
+Pošt
+ 
+p1
+, Pošˆ
+p2
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+59 
+Pošt
+ 
+š‹r£ù
+(Pošˆ
+p1
+, Pošˆ
+p2
+, 
+Bound¬y
+ 
+b
+, 
+xMš
+, 
+xMax
+, 
+yMš
+, 
+yMax
+);
+
+	@/usr/include/GL/glut.h
+
+1 #iâdeà 
+__GLUT_H__
+
+
+2 
+	#__GLUT_H__
+
+
+	)
+
+17 
+	~"ä“glut_¡d.h
+"
+
+	@
+1
+.
+1
+/usr/include
+9
+102
+common_type.h
+graph.cpp
+graph.h
+line.cpp
+line.h
+main.cpp
+polygon.cpp
+polygon.h
+/usr/include/GL/glut.h
