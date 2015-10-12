@@ -2,15 +2,17 @@
 #include "graph.h"
 #include "polygon.h"
 #include "line.h"
+#include "userInput.h"
 #include <iostream>
 #include <cstring>
-#include <AntTweakBar.h>
+//#include <AntTweakBar.h>
 
 float *PixelBuffer; // global pixel buffer
 int numberOfPolygons;
 Polygon **globalPolygons;
 Graph *globalGraph;
-Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5} };
+std::string input_buffer;
+Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
 
 void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
@@ -79,44 +81,49 @@ void callback_menu(int state){
       printf("Clipping Region: xMin = %d, xMax = %d, yMin = %d, yMax = %d\n", window.cr.xMin, window.cr.xMax, window.cr.yMin, window.cr.yMax);
       printf("Rotation Angle: %.2f\n", window.tf.rotation_angle);
       printf("Scale Factor: Alpha = %.2f,  Beta = %.2f\n", window.tf.scale_alpha, window.tf.scale_beta);
-      printf("Translation Factor: x = %d, y = %d\n", window.tf.translation_x, window.tf.translation_y);
+      printf("Translation Factor: x = %d, y = %d\n", window.tf.x_offset, window.tf.y_offset);
       printf("=================End of Status==================\n");
+      break;
+    case MENU_GRAB_ROTATION_ANGLE:
+      window.state = STATE_GRAB_DATA_ROTATION_ANGLE;
+      printf("Please enter the rotation angle:\n"); 
       break;
   }
 }
 
 void callback_keyboard(unsigned char key, int x, int y){
-  DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
+  //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
   int x_offset =0, y_offset = 0;  float scaleFactor = 1, angle = 0; bool isClipping = false;
+  
+  if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE){
+    if(key == '\n' || key =='\r'){
+      window.state = STATE_GRAB_COMMANDS;
+      window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer);
+      window.inputBuffer->clear();
+      std::cout << "\nAngle Recorded!\nBack to Command Mode."<< std::endl;
+    }
+    else{
+      std::cout << key; std::cout.flush();
+      *(window.inputBuffer) += key;
+    }
+    return;
+  }
+
   if( isdigit(key) ){
     window.selectedObject = key % window.numberOfPolygons;
     return;
   }
-  char c;
-  if( key == 'i'){
-    printf("x_offset:");
-    char buffer[256];
-    std::cin.ignore(1000,'\n'); 
-    std::cin.getline(buffer, 256);
-    DPRINT("printed char %c\n", c);
-  }
+
   switch(key){
-    case 'l': x_offset = 20;break;
-    case 'h': x_offset = -20;break;
-    case 'j': y_offset = -20;break;
-    case 'k': y_offset = 20;break;
-    case '=': scaleFactor = 1.2;break;
-    case '-': scaleFactor = 0.8;break;
-    case 'r': angle = 5; break;
+    case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break;
+    case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break;
+    case 'r': globalPolygons[window.selectedObject]->rotate(window.tf.rotation_angle); break;
     case 'c': isClipping = true; break;
     default: return;
   }
   if(isClipping)
     globalPolygons[window.selectedObject]->clip(window.cr); 
   else{ 
-    globalPolygons[window.selectedObject]->translate(x_offset, y_offset);
-    globalPolygons[window.selectedObject]->scale(scaleFactor, scaleFactor);
-    globalPolygons[window.selectedObject]->rotate(angle);
     globalPolygons[window.selectedObject]->rasterize();
   } 
   glutPostRedisplay();
@@ -285,9 +292,15 @@ void createMenu(void){
   glutAddMenuEntry("DDA", MENU_DDA);
   glutAddMenuEntry("Bresenham", MENU_BRESENHAM);
 
+  int subMenuId_grabInput = glutCreateMenu(callback_menu);
+  glutAddMenuEntry("Rotation Angle", MENU_GRAB_ROTATION_ANGLE);
+  glutAddMenuEntry("Scaling Factors", MENU_GRAB_SCALE_FACTORS);
+  glutAddMenuEntry("Translation Factors", MENU_GRAB_TRANSLATION_FACTORS);
+
   int menuId = glutCreateMenu(callback_menu);
   glutAddSubMenu("Draw Line", subMenuId_drawLine);   
   glutAddMenuEntry("Status", MENU_STATUS);
+  glutAddSubMenu("Grab Input", subMenuId_grabInput); 
 
   glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <string>
 #ifdef DEBUG_PRINT
   #define DPRINT printf
 #else
@@ -35,8 +36,8 @@ typedef struct{
 }ClipRegion;
 
 typedef struct{
-  int translation_x;
-  int translation_y;
+  int x_offset;
+  int y_offset;
   float scale_alpha;
   float scale_beta;
   float rotation_angle;
@@ -49,9 +50,22 @@ typedef struct{
   int selectedObject;
   ClipRegion cr;
   Transformation tf;   
+  int state;
+  std::string *inputBuffer;
 } Window;
 
+// for window
+#define STATE_GRAB_COMMANDS 0
+#define STATE_GRAB_DATA_ROTATION_ANGLE    1
+#define STATE_GRAB_DATA_TRANSLATION_FACTORS 2
+#define STATE_GRAB_DATA_SCALE_FACTORS 3
+
+//for menu
 #define MENU_DDA 2
 #define MENU_BRESENHAM 3
 #define MENU_STATUS 4
+#define MENU_GRAB_ROTATION_ANGLE 5
+#define MENU_GRAB_TRANSLATION_FACTORS 6
+#define MENU_GRAB_SCALE_FACTORS 7
+
 #endif
