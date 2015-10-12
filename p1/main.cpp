@@ -86,7 +86,11 @@ void callback_menu(int state){
       break;
     case MENU_GRAB_ROTATION_ANGLE:
       window.state = STATE_GRAB_DATA_ROTATION_ANGLE;
-      printf("Please enter the rotation angle:\n"); 
+      printf("Please enter the rotation angle (format <float> ; e.g. 6.5):\n"); 
+      break;
+    case MENU_GRAB_SCALE_FACTORS:
+      window.state = STATE_GRAB_DATA_SCALE_FACTORS;
+      printf("Please enter the scale factors (format <float><space><float> ; e.g. 1.2 1.2)\n");
       break;
   }
 }
@@ -95,12 +99,17 @@ void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
   int x_offset =0, y_offset = 0;  float scaleFactor = 1, angle = 0; bool isClipping = false;
   
-  if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE){
+  if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE || window.state == STATE_GRAB_DATA_SCALE_FACTORS){
     if(key == '\n' || key =='\r'){
+      if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE) 
+        window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer);
+      
+      else if(window.state == STATE_GRAB_DATA_SCALE_FACTORS)
+        parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta);
+      
       window.state = STATE_GRAB_COMMANDS;
-      window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer);
       window.inputBuffer->clear();
-      std::cout << "\nAngle Recorded!\nBack to Command Mode."<< std::endl;
+      std::cout << "\nData Recorded!\nBack to Command Mode."<< std::endl;
     }
     else{
       std::cout << key; std::cout.flush();
@@ -296,6 +305,7 @@ void createMenu(void){
   glutAddMenuEntry("Rotation Angle", MENU_GRAB_ROTATION_ANGLE);
   glutAddMenuEntry("Scaling Factors", MENU_GRAB_SCALE_FACTORS);
   glutAddMenuEntry("Translation Factors", MENU_GRAB_TRANSLATION_FACTORS);
+  glutAddMenuEntry("Clip Region", MENU_GRAB_CLIP_REGION); 
 
   int menuId = glutCreateMenu(callback_menu);
   glutAddSubMenu("Draw Line", subMenuId_drawLine);   
