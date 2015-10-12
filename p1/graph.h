@@ -19,6 +19,7 @@ class Graph {
     float *PixelBuffer;
     int drawPixel(int x, int y, float r, float g, float b); 
     int drawLine(Point p1, Point p2, float r, float g, float b);
+    int drawLine(Point p1, Point p2, float r, float g, float b, int method);
     int dda(Point p1, Point p2, float r, float g, float b);
     int bresenham(Point p1, Point p2, float r, float, float);
     int fillScreen(float r, float g, float b);
@@ -29,5 +30,7 @@ class Graph {
 void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end);//helper function for bresenham algo
 void swapXY(Point *p1);//swap the x value of the point with its y value:  helper funcion for bresenha algo
 
+#define BRESENHAM 0
+#define DDA 1
 
 #endif

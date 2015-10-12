@@ -4,12 +4,22 @@
 #include "line.h"
 #include <iostream>
 #include <cstring>
-float *PixelBuffer; // global pixel buffer
-int window_width = 1000;//by default
-int window_height = 500;//by default
-int numberOfPolygons;
+#include <AntTweakBar.h>
 
+float *PixelBuffer; // global pixel buffer
+int numberOfPolygons;
+Polygon **globalPolygons;
+Graph *globalGraph;
+Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5} };
+
+void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
+void callback_idle();
+void callback_menu(int state);
+void createMenu();
+
+void setupGUI();
+
 void drawStuff(Graph &);
 void readHeaders(int *window_width, int *window_height, int *numberOfPolygons);
 void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons);
@@ -18,60 +28,113 @@ int main(int argc, char *argv[]){
   glutInit(&argc, argv);  //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB );
 
-  readHeaders(&window_width, &window_height, &numberOfPolygons);//read from file for the window-dimension and numberOfPolygons there are 
+  readHeaders(&window.width, &window.height, &window.numberOfPolygons);//read from file for the window-dimension and numberOfPolygons there are 
   
-  glutInitWindowSize(window_width, window_height);
+  glutInitWindowSize(window.width, window.height);
   glutInitWindowPosition(100, 100); 
-  int windowID = glutCreateWindow("First Window");
+  int windowID = glutCreateWindow("Project 1");
   
   glClearColor(1,1,1,0.0); //the background_color_buffer underneath the pixelbuffer
-  PixelBuffer = new float[window_width*window_height*3];   
-  Graph graph(window_width,window_height, PixelBuffer); 
+  PixelBuffer = new float[window.width*window.height*3];   
+  Graph graph(window.width,window.height, PixelBuffer); globalGraph = &graph;
   graph.fillScreen(1,1,1);
   
-  Polygon *polygons[numberOfPolygons];
-  readPolygons(&graph, polygons, numberOfPolygons);
+  Polygon *polygons[window.numberOfPolygons];
+  globalPolygons = polygons;
+  readPolygons(&graph, polygons, window.numberOfPolygons);
   ClipRegion cr = { -150, 150, -150, 150};
 
-  for(int i = 0 ; i< numberOfPolygons; i++){
+  for(int i = 0 ; i< window.numberOfPolygons; i++){
     polygons[i]->draw();
     polygons[i]->rasterize();
-    polygons[i]->rotate(45);
-    polygons[i]->rasterize();
-    polygons[i]->translate(50, 10); 
-    polygons[i]->rasterize();
-    polygons[i]->clip(cr);
+    //polygons[i]->clip(cr);
   }
   
+  //setupGUI();
+
   //drawStuff(graph);
-  
+  //callback registration:
+  glutKeyboardFunc(callback_keyboard); 
   glutDisplayFunc(callback_display);
+  
+  createMenu();
+
+  glutSetCursor(GLUT_CURSOR_CROSSHAIR);
+  
   glutMainLoop();
   return 0;
 }
 
+void callback_menu(int state){
+  switch(state){
+    case MENU_DDA:
+      globalGraph->drawLine({-450, -200}, {-300, -100}, 0.5, 0.5, 0.5, DDA);
+      break;
+    case MENU_BRESENHAM:
+      globalGraph->drawLine({-450, -200}, {-300, -150}, 0.5, 0.5, 0.5, BRESENHAM);
+      break;
+    case MENU_STATUS:
+      printf("======================Status====================\n");
+      printf("Window Size is %d x %d\n", window.width, window.height);
+      printf("Clipping Region: xMin = %d, xMax = %d, yMin = %d, yMax = %d\n", window.cr.xMin, window.cr.xMax, window.cr.yMin, window.cr.yMax);
+      printf("Rotation Angle: %.2f\n", window.tf.rotation_angle);
+      printf("Scale Factor: Alpha = %.2f,  Beta = %.2f\n", window.tf.scale_alpha, window.tf.scale_beta);
+      printf("Translation Factor: x = %d, y = %d\n", window.tf.translation_x, window.tf.translation_y);
+      printf("=================End of Status==================\n");
+      break;
+  }
+}
+
+void callback_keyboard(unsigned char key, int x, int y){
+  DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
+  int x_offset =0, y_offset = 0;  float scaleFactor = 1, angle = 0; bool isClipping = false;
+  if( isdigit(key) ){
+    window.selectedObject = key % window.numberOfPolygons;
+    return;
+  }
+  char c;
+  if( key == 'i'){
+    printf("x_offset:");
+    char buffer[256];
+    std::cin.ignore(1000,'\n'); 
+    std::cin.getline(buffer, 256);
+    DPRINT("printed char %c\n", c);
+  }
+  switch(key){
+    case 'l': x_offset = 20;break;
+    case 'h': x_offset = -20;break;
+    case 'j': y_offset = -20;break;
+    case 'k': y_offset = 20;break;
+    case '=': scaleFactor = 1.2;break;
+    case '-': scaleFactor = 0.8;break;
+    case 'r': angle = 5; break;
+    case 'c': isClipping = true; break;
+    default: return;
+  }
+  if(isClipping)
+    globalPolygons[window.selectedObject]->clip(window.cr); 
+  else{ 
+    globalPolygons[window.selectedObject]->translate(x_offset, y_offset);
+    globalPolygons[window.selectedObject]->scale(scaleFactor, scaleFactor);
+    globalPolygons[window.selectedObject]->rotate(angle);
+    globalPolygons[window.selectedObject]->rasterize();
+  } 
+  glutPostRedisplay();
+}
 
 void callback_display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
-  glDrawPixels(window_width, window_height, GL_RGB, GL_FLOAT, PixelBuffer);
-  
+  glDrawPixels(window.width, window.height, GL_RGB, GL_FLOAT, PixelBuffer);
+ 
   glFlush(); //force all GL commands to be executed by the actual rendering engine
+  
+ // TwDraw();
+  //glutSwapBuffers();
+  //glutPostRedisplay();
 }
 
 void drawStuff(Graph &graph){
-  /*graph.drawLine( {0,0} , {50, 220}, 1,0,1); 
-  graph.drawLine( {50, 220}, {100, 220}, 1,0,1); 
-  graph.drawLine( {100, 220}, {100, 0}, 1,0,1); 
-  graph.drawLine( {50, 220}, {100,0}, 1,0,1 );
-  graph.drawLine( {100,220} , {120, 200}, 1, 0, 1 ); 
-  graph.drawLine( {120, 200}, {400, 100}, 1,0,1 );
-  
-  graph.drawLine( {0, 100}, { WINDOW_WIDTH/2, 0}, 1, 0, 0);
-  graph.drawLine( {WINDOW_WIDTH/2,0}, {450, 200}, 0, 0, 1);
-  graph.drawLine( {450, 200}, {0, 100}, 1, 1, 0);
-  
-  graph.drawLine( {-500,-250}, {0,0} , 1, 0.5, 0.5);*/
   ClipRegion cr = { -300, 300, -150, 150}; 
   Point points[] = { {0,0}, {50, 50}, {0,100}, {100,100} ,{150,50}, {100, 0}  };
   Polygon poly(points, 6, &graph);  // used the object graph to draw to the screen
@@ -149,7 +212,6 @@ void drawStuff(Graph &graph){
   Polygon poly4(points4, 3, &graph);
   poly4.draw();
   poly4.clip(cr); 
-
   
 }
 
@@ -218,3 +280,25 @@ void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){
   }
 }
 
+void createMenu(void){     
+  int subMenuId_drawLine = glutCreateMenu(callback_menu);
+  glutAddMenuEntry("DDA", MENU_DDA);
+  glutAddMenuEntry("Bresenham", MENU_BRESENHAM);
+
+  int menuId = glutCreateMenu(callback_menu);
+  glutAddSubMenu("Draw Line", subMenuId_drawLine);   
+  glutAddMenuEntry("Status", MENU_STATUS);
+
+  glutAttachMenu(GLUT_RIGHT_BUTTON);
+}
+
+
+/*
+void setupGUI(){
+  TwInit(TW_OPENGL, 0);  
+  TwWindowSize(200,200);
+  TwBar *myBar;
+  myBar = TwNewBar("Status");
+  float f = 100;
+  TwAddVarRW(myBar, "Float", TW_TYPE_FLOAT, &f, "");
+}*/

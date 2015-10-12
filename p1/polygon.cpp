@@ -76,7 +76,7 @@ void Polygon::scale(float alpha, float beta){
     listOfPoints[i].x = (int)round(new_x); // must cast from float to integer
     listOfPoints[i].y = (int)round(new_y);
   }
-
+  setCentroid();//set the new centroid
 }
 
 #define PI 3.1415926
@@ -100,6 +100,7 @@ void Polygon::rotate(float alpha){ //alpha is the angle
     listOfPoints[i].x = (int)round(new_x); // must cast from float to integer
     listOfPoints[i].y = (int)round(new_y);
   }
+  setCentroid();//set the new centroid;
 }
 
 void Polygon::translate(int x_offset, int y_offset){
@@ -113,6 +114,7 @@ void Polygon::translate(int x_offset, int y_offset){
     listOfPoints[i].x = new_x; 
     listOfPoints[i].y = new_y;
   }
+  setCentroid(); // set the enw centroid after translating
 }
 
 void Polygon:: _storeContourPoint(int x, int y){

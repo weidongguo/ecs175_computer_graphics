@@ -34,4 +34,24 @@ typedef struct{
   int yMax;
 }ClipRegion;
 
+typedef struct{
+  int translation_x;
+  int translation_y;
+  float scale_alpha;
+  float scale_beta;
+  float rotation_angle;
+}Transformation;
+
+typedef struct{
+  int width;
+  int height;
+  int numberOfPolygons;
+  int selectedObject;
+  ClipRegion cr;
+  Transformation tf;   
+} Window;
+
+#define MENU_DDA 2
+#define MENU_BRESENHAM 3
+#define MENU_STATUS 4
 #endif
