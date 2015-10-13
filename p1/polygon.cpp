@@ -306,7 +306,7 @@ void Polygon::clip(ClipRegion cr){
 }
 
 void Polygon::clip(int xMin, int xMax, int yMin, int yMax){
-  displayClippingRegion(xMin, xMax, yMin, yMax); 
+  //displayClippingRegion(xMin, xMax, yMin, yMax); 
   sutherlandHodgman(xMin, xMax, yMin, yMax);
 }
 

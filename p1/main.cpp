@@ -64,12 +64,12 @@ int main(int argc, char *argv[]){
 void callback_menu(int state){
   switch(state){
     case MENU_DRAW_DDA:
-      globalLine[0] = new Line( {-500, 0}, {100, 0}, globalGraph);
-      globalLine[0]->draw(); 
+      window.state = STATE_GRAB_DATA_DRAW_DDA;
+      printf("Please enter two points for line drawing using DDA (format <x0> <y0> <x1> <y1> e.g. 0 0 50 50 )\n");
       break;
     case MENU_DRAW_BRESENHAM:
-      globalLine[1] = new Line( {-100, -230}, {0,0}, globalGraph); 
-      globalLine[1]->draw(); 
+      printf("Please enter two points for line drawing using BRESENHAM (format <x0> <y0> <x1> <y1> e.g. 0 0 50 50 )\n");
+      window.state = STATE_GRAB_DATA_DRAW_BRESENHAM; 
       break;
     case MENU_CLIP_DDA:
       if( globalLine[0] != 0 )
@@ -109,7 +109,7 @@ void callback_menu(int state){
 
 void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
-  int x_offset =0, y_offset = 0;  float scaleFactor = 1, angle = 0; bool isClipping = false;
+  bool isClipping = false; Point p1, p2;
   
   if( isGrabbingData(window.state) ){
     if(key == '\n' || key =='\r'){ // if press ENTER, process the input data
@@ -125,6 +125,20 @@ void callback_keyboard(unsigned char key, int x, int y){
           break;
         case STATE_GRAB_DATA_CLIP_REGION:
           parseBufferForClipRegion(window.inputBuffer, &window.cr);
+          break;
+        case STATE_GRAB_DATA_DRAW_DDA:
+          parseBufferForLine(window.inputBuffer, &p1, &p2);
+          if(globalLine[0] != 0)
+            delete globalLine[0]; // free the previous line
+          globalLine[0] = new Line( p1, p2, globalGraph);
+          globalLine[0] -> draw(DDA); 
+          break;
+        case STATE_GRAB_DATA_DRAW_BRESENHAM: 
+          parseBufferForLine(window.inputBuffer, &p1, &p2); 
+          if(globalLine[1] != 0)
+            delete globalLine[1];
+          globalLine[1] = new Line( p1, p2, globalGraph);
+          globalLine[1]->draw(BRESENHAM); 
           break;
       } 
       window.state = STATE_GRAB_COMMANDS; // resume to grab commands mode
@@ -169,7 +183,7 @@ void callback_display(){
   
  // TwDraw();
   //glutSwapBuffers();
-  //glutPostRedisplay();
+  glutPostRedisplay();
 }
 
 

@@ -16,6 +16,7 @@ class Line{
   Line(Point p1, Point p2, Graph *g); //constructor of a line only requires two points; 
   void setColor(float r, float g, float b); 
   void draw();// draw your self a line
+  void draw(int method); 
   void clip(int, int, int, int);
   void clip(ClipRegion cr);
   int  cohenSutherland(int xMin, int xMax, int yMin, int yMax);

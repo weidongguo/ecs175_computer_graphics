@@ -22,10 +22,14 @@ void Line::setColor(float r, float g, float b){
 }
 
 void Line::draw(){
+  draw(BRESENHAM);
+}
+
+void Line::draw(int method){
   if( pairOfPoints == 0)
     DPRINT("<>===<> POINTS ARE CLIPPED\n");
   else
-    graph->drawLine(pairOfPoints[0], pairOfPoints[1], color.r, color.g, color.b);
+    graph->drawLine(pairOfPoints[0], pairOfPoints[1], color.r, color.g, color.b, method);
 }
 
 void Line::clip(ClipRegion cr){
@@ -42,8 +46,8 @@ void Line::clip(int xMin, int xMax, int yMin, int yMax){
   }//else, the entire line is rejected (since it's off the clipping region)
 
   //draw the clipping region
-  Point clippingRegion[] = { {xMin, yMin}, {xMin, yMax}, {xMax, yMax}, {xMax, yMin} };
-  graph->drawPolygon(clippingRegion, 4, 0.1 , 1, 0.5 ); 
+/*  Point clippingRegion[] = { {xMin, yMin}, {xMin, yMax}, {xMax, yMax}, {xMax, yMin} };
+  graph->drawPolygon(clippingRegion, 4, 0.1 , 1, 0.5 ); */
 }
 
 //an efficient method to clip a line
