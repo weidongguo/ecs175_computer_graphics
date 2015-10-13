@@ -100,5 +100,8 @@
    Furthermore, please note that line clipping uses the same clip region parameters as the polygons. Again, it can been view
    form right-click -> status . The status will be shown to the console
     
-   One more caveat for line clipping. When clipping, it will redraw the original line with background color, and then draw the clipped line
+   One more caveat for line clipping. When clipping, it will redraw the original line with background color, and then draw the new line.
+   This is important in one scenario. Let say if we have a polygon in red. And then I am drawing a line on top of this red polygon. If user clip 
+   line right now, the program will redraw the original line with background color. Thus, the clipped away part(the part that's no longer here) of
+   the line will erase part of the pixelBuffer where the red polygons live.
 
