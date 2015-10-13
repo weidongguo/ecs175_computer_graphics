@@ -6,7 +6,21 @@
                    and y can take value from -250 to 250. If the objects are drawn out side of the bounds, it might get a seg fault.
                    Similarly, if user scale, translate, or rotate in away that the x or y value is out of bound, it might get a seg fault or weird
                    behavior will be observed
+   All algorithm specified in the project handout is imolemented
+   dda                graph.cpp 
+   bresenham          graph.cpp
+   rasterizing        polygons.cpp
+   rotation           polygons.cpp
+   tranlsation        polygons.cpp
+   scale              polygons.cpp
+   sutherlandHodgman  polygons.cpp
+   cohenSutherland    line.cpp
+   
+   The function that implements them are all named after the algorithm, so i am not including the line numbers
 
+   For rasterization, all convex polygons work. Some concave polygons also work ( concave horizontally is working fine, concave vertically is not
+   working);
+  
 2. To compile the source code, please run the command "make" since I have a makefile ready
 3. To execute the program, please type a.out < datafile
    a. datafile is the file that will be redirected to stdin 
