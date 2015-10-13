@@ -1,7 +1,7 @@
-ARG = -lglut -lGL -lm -g -Wall #-DDEBUG_PRINT 
+ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT 
 
-a.out: main.o graph.o polygon.o line.o userInput.o
-	g++ $(ARG) main.o graph.o polygon.o line.o userInput.o
+a.out: main.o graph.o polygon.o line.o user_io.o
+	g++ $(ARG) main.o graph.o polygon.o line.o user_io.o
 
 main.o: main.cpp graph.h	
 	g++ $(ARG) -c main.cpp 
@@ -14,8 +14,8 @@ polygon.o: polygon.h graph.h
 line.o: line.h graph.h
 	g++ $(ARG) -c line.cpp
 
-userInput.o: userInput.h
-	g++ $(ARG) -c userInput.cpp
+user_io: user_io.h
+	g++ $(ARG) -c user_io.cpp
 
 clean:
 	rm -f *.out *.o

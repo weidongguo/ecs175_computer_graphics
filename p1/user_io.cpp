@@ -1,4 +1,4 @@
-#include "userInput.h"
+#include "user_io.h"
 float parseBufferForRotationAngle(std::string *buffer){
   const char *charPtr = buffer->c_str();
   return atof(charPtr);  
@@ -40,3 +40,31 @@ bool isGrabbingData(int state){
   return ( state == STATE_GRAB_DATA_ROTATION_ANGLE || state == STATE_GRAB_DATA_SCALE_FACTORS || state == STATE_GRAB_DATA_TRANSLATION_FACTORS ||
            state == STATE_GRAB_DATA_CLIP_REGION ) ;
 }
+
+
+/*================================================================*/
+/* @fn      :    void savePolygonsToFile(Polygons **polygons, int numberOfPolygons, char *filename)
+ * @brief   :    store the number of polygons, and the points for each polygon to a file in the same format as the datafile
+ *
+ * @return  :    none
+ */
+/*void savePolygonsToFile(Polygon **polygons, Window *window, const char *filename){
+  printf("Saving polygons to a file: %s\n...\nDone.\n", filename);
+  std::ofstream ofs(filename, std::ofstream::out);
+  ofs << window->width << " " << window->height << "\n\n";  //dimension of opengl window <width><space><height>
+  ofs << window->numberOfPolygons; // number of polygons <numberOfPolygons>
+  
+  int numberOfPoints, numberOfPolygons = window->numberOfPolygons, x, y;
+  for(int i = 0 ; i < numberOfPolygons ; i++){
+    ofs << "\n\n" ; 
+    numberOfPoints = polygons[i]->numberOfPoints;
+    ofs << numberOfPoints << "\n";  // <numberOfPoints>
+    for(int j = 0 ; j < numberOfPoints; j++){
+      x = polygons[i]->listOfPoints[j].x;
+      y = polygons[i]->listOfPoints[j].y;
+      ofs << x << " " << y << "\n"; // <x><space><y>
+    }
+  }
+
+  ofs.close();
+}*/

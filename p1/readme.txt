@@ -59,17 +59,18 @@
    Data Recorded!                                                                       <- 1st message displayed aftering pressing ENTER 
    Back to Command Mode.                                                                <- 2nd message displayed aftering pressing ENTER
 
-6. To select a polygon, user can type the key 0, 1, 2, 3, ... , 9.
+6. In Command Mode, to select a polygon, user can type the key 0, 1, 2, 3, ... , 9.
    The id is defined in the order that they were specified in the datafile
    The first polygon has id 0; the second polygon has id 1 and so on. (Currently, it only supports up to 9 polygons);
    So any operation done will only affect the selected polygon
 
-7. To rotate, user can press the key 'r'    (r for rotate)
+7. In Command Mode, to rotate, user can press the key 'r'    (r for rotate)
    To translate, user can press the key 't' (t for translate)
    To scale,  user can press the key 'z'    (z for zoom)
    To clip, user can press the key 'c'      (c for clip)
-   All of the above commands(operations) are executed using the parameter shown in status (the output is directed to console);
+   All of the above commands(operations) are executed using the parameter shown in status 
    
-   //not yet implemented:To save the polygons currently being displayed to a output datafile,  user can press the key 's' (s for save)
+   To save the polygons currently being displayed to a output datafile,  user can press the key 's' (s for save)
+   The output file will be named "output"
 
 

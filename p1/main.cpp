@@ -2,27 +2,23 @@
 #include "graph.h"
 #include "polygon.h"
 #include "line.h"
-#include "userInput.h"
+#include "user_io.h"
 #include <iostream>
 #include <cstring>
 //#include <AntTweakBar.h>
 
 float *PixelBuffer; // global pixel buffer
-int numberOfPolygons;
 Polygon **globalPolygons;
 Graph *globalGraph;
 std::string input_buffer;
+
 Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
 
 void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
-void callback_idle();
 void callback_menu(int state);
 void createMenu();
 
-void setupGUI();
-
-void drawStuff(Graph &);
 void readHeaders(int *window_width, int *window_height, int *numberOfPolygons);
 void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons);
 
@@ -48,11 +44,11 @@ int main(int argc, char *argv[]){
   readPolygons(&graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
 
   for(int i = 0 ; i< window.numberOfPolygons; i++){ //display the polygons read from the datafile
+    polygons[i]->setColor( { (float)i/window.numberOfPolygons , 0.3, 0.4 } );
     polygons[i]->draw();
     polygons[i]->rasterize();
   }
   
-  //drawStuff(graph);
   //callback registration:
   glutKeyboardFunc(callback_keyboard); 
   glutDisplayFunc(callback_display);
@@ -141,6 +137,7 @@ void callback_keyboard(unsigned char key, int x, int y){
     case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
     case 'r': globalPolygons[window.selectedObject]->rotate(window.tf.rotation_angle); break; //rotation
     case 'c': isClipping = true; break; //clipping
+    case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
     default: return;
   }
   if(isClipping)
@@ -231,6 +228,8 @@ void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){
   }
 }
 
+
+//create the pop of menu that can be triggered by right cliking within the opengl window
 void createMenu(void){     
   int subMenuId_drawLine = glutCreateMenu(callback_menu);
   glutAddMenuEntry("DDA", MENU_DDA);

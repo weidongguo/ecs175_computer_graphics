@@ -1,14 +1,17 @@
-#ifndef USERINPUT_H
-#define USERINPUT_H
+#ifndef USER_IO_H
+#define USER_IO_H
 #include <string>
 #include <cstring>
 #include <cstdlib>
+#include <fstream>
 #include "common_type.h"
+#include "polygon.h"
 float parseBufferForRotationAngle(std::string *buffer);
 void parseBufferForScaleFactors(std::string *buffer, float *alpha, float *beta);
 void parseBufferForTranslationFactors(std::string *buffer, int *x, int *y);
 void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr);
 bool isGrabbingData(int state);
+void savePolygonsToFile(Polygon **polygons, Window *window, const char *filename);
 // for window
 #define STATE_GRAB_COMMANDS                 0
 #define STATE_GRAB_DATA_ROTATION_ANGLE      1

@@ -5,6 +5,7 @@
 #include "graph.h"
 #include "line.h"
 #include <list>
+#include <fstream>
 
 #define LEFT 0
 #define RIGHT 1
@@ -14,7 +15,7 @@ typedef int Boundary;
 
 class Polygon{
   friend class Graph ;
-  Point *listOfPoints; 
+  public: Point *listOfPoints; 
   Point *listOfPointsOriginal;
   Point *listOfPointsAfterClipping;
   int numberOfPointsOriginal;
@@ -57,6 +58,8 @@ class Polygon{
     static bool inside(Point p, Boundary b, int xMin, int xMax, int yMin, int yMax);
     static bool cross(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax); 
     static Point intersect(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax);
+    static void savePolygonsToFile(Polygon **polygons, Window *window, const char *filename);
+
 };
 
 #endif
