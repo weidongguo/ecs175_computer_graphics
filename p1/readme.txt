@@ -36,7 +36,7 @@
 4. The program starts up by drawing and rasterizing all the polygons specified in the datafile 
 5. If user right click within the openGl window, a menu will pop up. User can click on "status" to see the default parameters for rotation,
    translation, scaling, and clipping. The output of the status will be directed to the console (note that console will only act as 2nd display in 
-   my program)
+   my program. THE FOCUS SHOULD ALWAYS BE THE opengl window, the console only for displaying)
    For example, 
    ======================Status====================
    Window Size is 1000 x 500
@@ -70,7 +70,21 @@
    To clip, user can press the key 'c'      (c for clip)
    All of the above commands(operations) are executed using the parameter shown in status 
    
-   To save the polygons currently being displayed to a output datafile,  user can press the key 's' (s for save)
+   To save the polygons currently being displayed to a output file,  user can press the key 's' (s for save)
    The output file will be named "output"
 
+   Please note that lines will not be saved to the output file
+
+8. To simply draw a line. User can do a right-click -> draw -> choose either DDA or Bresenham. Next, the user will then be prompted
+   to enter 2 points in the following format <x0> <y0> <x1> <y1> (there is a space between each integer ). This prompt will again be displayed
+   at the console
+
+   To clip the line, user can do right-click -> clip -> choose to clip the line that was either drew by DDA or Bresenham
+   Please note that if you draw a 3rd line using either of the method, it will work, but the old line that was drew
+   using the same method will not be erased from the buffer.
+   And the reference to the old line that was drew using that same method is lost;
+   Furthermore, please note that line clipping uses the same clip region parameters as the polygons. Again, it can been view
+   form right-click -> status . The status will be shown to the console
+    
+   One more caveat for line clipping. When clipping, it will redraw the original line with background color, and then draw the clipped line
 
