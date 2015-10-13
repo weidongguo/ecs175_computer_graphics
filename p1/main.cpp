@@ -86,55 +86,69 @@ void callback_menu(int state){
       break;
     case MENU_GRAB_ROTATION_ANGLE:
       window.state = STATE_GRAB_DATA_ROTATION_ANGLE;
-      printf("Please enter the rotation angle (format <float> ; e.g. 6.5):\n"); 
+      printf("Please enter the rotation angle ( format <float> ; e.g. 6.5):\n"); 
       break;
     case MENU_GRAB_SCALE_FACTORS:
       window.state = STATE_GRAB_DATA_SCALE_FACTORS;
-      printf("Please enter the scale factors (format <float><space><float> ; e.g. 1.2 1.2)\n");
+      printf("Please enter the scale factors ( format <float><space><float> ; e.g. 1.2 1.2 ):\n");
+      break;
+    case MENU_GRAB_TRANSLATION_FACTORS:
+      window.state = STATE_GRAB_DATA_TRANSLATION_FACTORS; // will be used in callback_keyboard()
+      printf("Please enter the translation factors ( format <int><space><int> ; e.g. 30 -40 ):\n");
       break;
   }
+}
+
+bool isGrabbingData(int state){
+  return (state == STATE_GRAB_DATA_ROTATION_ANGLE || state == STATE_GRAB_DATA_SCALE_FACTORS || state == STATE_GRAB_DATA_TRANSLATION_FACTORS) ;
 }
 
 void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
   int x_offset =0, y_offset = 0;  float scaleFactor = 1, angle = 0; bool isClipping = false;
   
-  if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE || window.state == STATE_GRAB_DATA_SCALE_FACTORS){
-    if(key == '\n' || key =='\r'){
-      if(window.state == STATE_GRAB_DATA_ROTATION_ANGLE) 
-        window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer);
-      
-      else if(window.state == STATE_GRAB_DATA_SCALE_FACTORS)
-        parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta);
-      
-      window.state = STATE_GRAB_COMMANDS;
-      window.inputBuffer->clear();
+  if( isGrabbingData(window.state) ){
+    if(key == '\n' || key =='\r'){ // if press ENTER, process the input data
+      switch(window.state){
+        case STATE_GRAB_DATA_ROTATION_ANGLE:
+          window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer); 
+          break;
+        case STATE_GRAB_DATA_SCALE_FACTORS:
+          parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta); 
+          break;
+        case STATE_GRAB_DATA_TRANSLATION_FACTORS:
+          parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
+          break;
+      } 
+      window.state = STATE_GRAB_COMMANDS; // resume to grab commands mode
+      window.inputBuffer->clear(); //clear buffer so it'll be ready for next time
       std::cout << "\nData Recorded!\nBack to Command Mode."<< std::endl;
     }
-    else{
-      std::cout << key; std::cout.flush();
-      *(window.inputBuffer) += key;
+    else{ // else continue storing input in a buffer
+      std::cout << key; std::cout.flush(); //echo to the console
+      *(window.inputBuffer) += key; //storing part
     }
     return;
   }
 
-  if( isdigit(key) ){
+  if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
     window.selectedObject = key % window.numberOfPolygons;
     return;
   }
 
-  switch(key){
-    case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break;
-    case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break;
-    case 'r': globalPolygons[window.selectedObject]->rotate(window.tf.rotation_angle); break;
-    case 'c': isClipping = true; break;
+  switch(key){ // control commands
+    case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break; //translation
+    case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
+    case 'r': globalPolygons[window.selectedObject]->rotate(window.tf.rotation_angle); break; //rotation
+    case 'c': isClipping = true; break; //clipping
     default: return;
   }
   if(isClipping)
     globalPolygons[window.selectedObject]->clip(window.cr); 
   else{ 
     globalPolygons[window.selectedObject]->rasterize();
-  } 
+  }
+
   glutPostRedisplay();
 }
 
