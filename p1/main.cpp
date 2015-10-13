@@ -11,6 +11,7 @@ float *PixelBuffer; // global pixel buffer
 Polygon **globalPolygons;
 Graph *globalGraph;
 std::string input_buffer;
+Line *globalLine[2]; //one for demonstrating dda, the other one for demonstrating bresenham
 
 Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
 
@@ -62,11 +63,21 @@ int main(int argc, char *argv[]){
 
 void callback_menu(int state){
   switch(state){
-    case MENU_DDA:
-      globalGraph->drawLine({-450, -200}, {-300, -100}, 0.5, 0.5, 0.5, DDA);
+    case MENU_DRAW_DDA:
+      globalLine[0] = new Line( {-500, 0}, {100, 0}, globalGraph);
+      globalLine[0]->draw(); 
       break;
-    case MENU_BRESENHAM:
-      globalGraph->drawLine({-450, -200}, {-300, -150}, 0.5, 0.5, 0.5, BRESENHAM);
+    case MENU_DRAW_BRESENHAM:
+      globalLine[1] = new Line( {-100, -230}, {0,0}, globalGraph); 
+      globalLine[1]->draw(); 
+      break;
+    case MENU_CLIP_DDA:
+      if( globalLine[0] != 0 )
+        globalLine[0]->clip(window.cr);
+      break;
+    case MENU_CLIP_BRESENHAM:
+      if( globalLine[1] !=0 )
+        globalLine[1]->clip(window.cr);
       break;
     case MENU_STATUS:
       printf("======================Status====================\n");
@@ -231,9 +242,18 @@ void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){
 
 //create the pop of menu that can be triggered by right cliking within the opengl window
 void createMenu(void){     
-  int subMenuId_drawLine = glutCreateMenu(callback_menu);
-  glutAddMenuEntry("DDA", MENU_DDA);
-  glutAddMenuEntry("Bresenham", MENU_BRESENHAM);
+  int subSubMenuId_lineDraw = glutCreateMenu(callback_menu); 
+  glutAddMenuEntry("DDA", MENU_DRAW_DDA);
+  glutAddMenuEntry("Bresenham", MENU_DRAW_BRESENHAM);
+
+  int subSubMenuId_lineClip = glutCreateMenu( callback_menu); 
+  glutAddMenuEntry("the line drew using DDA", MENU_CLIP_DDA);
+  glutAddMenuEntry("the line drew using Bresenham", MENU_CLIP_BRESENHAM);
+
+
+  int subMenuId_line = glutCreateMenu(callback_menu);
+  glutAddSubMenu("Draw", subSubMenuId_lineDraw); 
+  glutAddSubMenu("Clip", subSubMenuId_lineClip);
 
   int subMenuId_grabInput = glutCreateMenu(callback_menu);
   glutAddMenuEntry("Rotation Angle", MENU_GRAB_ROTATION_ANGLE);
@@ -242,7 +262,7 @@ void createMenu(void){
   glutAddMenuEntry("Clip Region", MENU_GRAB_CLIP_REGION); 
 
   int menuId = glutCreateMenu(callback_menu);
-  glutAddSubMenu("Draw Line", subMenuId_drawLine);   
+  glutAddSubMenu("Line", subMenuId_line);   
   glutAddMenuEntry("Status", MENU_STATUS);
   glutAddSubMenu("Grab Input", subMenuId_grabInput); 
 

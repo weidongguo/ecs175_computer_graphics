@@ -20,8 +20,10 @@ void savePolygonsToFile(Polygon **polygons, Window *window, const char *filename
 #define STATE_GRAB_DATA_CLIP_REGION         4
 
 //for menu
-#define MENU_DDA                      2
-#define MENU_BRESENHAM                3
+#define MENU_CLIP_DDA                      0
+#define MENU_CLIP_BRESENHAM                1
+#define MENU_DRAW_DDA                      2
+#define MENU_DRAW_BRESENHAM                3
 #define MENU_STATUS                   4
 #define MENU_GRAB_ROTATION_ANGLE      5
 #define MENU_GRAB_TRANSLATION_FACTORS 6
