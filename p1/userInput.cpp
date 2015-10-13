@@ -21,3 +21,17 @@ void parseBufferForTranslationFactors(std::string *buffer, int *x_offset, int *y
   *y_offset = atoi(char_ptr);
   delete [] c_str; // deallocate memroy
 }
+
+void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr){
+  char *c_str = new char[buffer->length()+1], *char_ptr;
+  strcpy(c_str, buffer->c_str());
+  char_ptr = strtok(c_str, " ");
+  cr->xMin = atoi(char_ptr);
+  char_ptr = strtok(0, " ");
+  cr->xMax = atoi(char_ptr);
+  char_ptr = strtok(0, " ");
+  cr->yMin = atoi(char_ptr);
+  char_ptr = strtok(0, "\0");
+  cr->yMax = atoi(char_ptr);
+  delete [] c_str; //deallocate unused memory
+}

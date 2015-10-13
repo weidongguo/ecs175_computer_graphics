@@ -96,11 +96,16 @@ void callback_menu(int state){
       window.state = STATE_GRAB_DATA_TRANSLATION_FACTORS; // will be used in callback_keyboard()
       printf("Please enter the translation factors ( format <int><space><int> ; e.g. 30 -40 ):\n");
       break;
+    case MENU_GRAB_CLIP_REGION:
+      window.state = STATE_GRAB_DATA_CLIP_REGION;
+      printf("Please enter the xMin xMax yMin yMax for the clip region ( e.g. -150 150 -200 200 ):\n"); 
+      break;
   }
 }
 
 bool isGrabbingData(int state){
-  return (state == STATE_GRAB_DATA_ROTATION_ANGLE || state == STATE_GRAB_DATA_SCALE_FACTORS || state == STATE_GRAB_DATA_TRANSLATION_FACTORS) ;
+  return ( state == STATE_GRAB_DATA_ROTATION_ANGLE || state == STATE_GRAB_DATA_SCALE_FACTORS || state == STATE_GRAB_DATA_TRANSLATION_FACTORS ||
+           state == STATE_GRAB_DATA_CLIP_REGION ) ;
 }
 
 void callback_keyboard(unsigned char key, int x, int y){
@@ -118,6 +123,9 @@ void callback_keyboard(unsigned char key, int x, int y){
           break;
         case STATE_GRAB_DATA_TRANSLATION_FACTORS:
           parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
+          break;
+        case STATE_GRAB_DATA_CLIP_REGION:
+          parseBufferForClipRegion(window.inputBuffer, &window.cr);
           break;
       } 
       window.state = STATE_GRAB_COMMANDS; // resume to grab commands mode
