@@ -8,7 +8,7 @@ float parseBufferForRotationAngle(std::string *buffer);
 void parseBufferForScaleFactors(std::string *buffer, float *alpha, float *beta);
 void parseBufferForTranslationFactors(std::string *buffer, int *x, int *y);
 void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr);
-
+bool isGrabbingData(int state);
 // for window
 #define STATE_GRAB_COMMANDS                 0
 #define STATE_GRAB_DATA_ROTATION_ANGLE      1

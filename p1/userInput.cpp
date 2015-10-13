@@ -35,3 +35,8 @@ void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr){
   cr->yMax = atoi(char_ptr);
   delete [] c_str; //deallocate unused memory
 }
+
+bool isGrabbingData(int state){
+  return ( state == STATE_GRAB_DATA_ROTATION_ANGLE || state == STATE_GRAB_DATA_SCALE_FACTORS || state == STATE_GRAB_DATA_TRANSLATION_FACTORS ||
+           state == STATE_GRAB_DATA_CLIP_REGION ) ;
+}

@@ -1,7 +1,7 @@
-ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT # -Wl,-rpath '-Wl,$$ORIGIN/AntTweakBar/lib'
+ARG = -lglut -lGL -lm -g -Wall #-DDEBUG_PRINT 
 
 a.out: main.o graph.o polygon.o line.o userInput.o
-	g++ $(ARG) main.o graph.o polygon.o line.o userInput.o #AntTweakBar/lib/libAntTweakBar.so
+	g++ $(ARG) main.o graph.o polygon.o line.o userInput.o
 
 main.o: main.cpp graph.h	
 	g++ $(ARG) -c main.cpp 
