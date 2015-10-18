@@ -6,7 +6,9 @@
 #include <fstream>
 #include "common_type.h"
 #include "polygon.h"
+#include "polyhedron.h"
 #include <iostream>
+
 
 float parseBufferForRotationAngle(std::string *buffer);
 void parseBufferForScaleFactors(std::string *buffer, float *alpha, float *beta);
@@ -16,6 +18,7 @@ void parseBufferForLine(std::string *buffer, Point *p1, Point *p2);
 bool isGrabbingData(int state);
 void readHeaders(std::ifstream *ifs, int *window_width, int *window_height, int *numberOfPolygons);
 void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons);
+void readPolyhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra); 
 void readFile(std::ifstream &ifs);
 // for window
 #define STATE_GRAB_COMMANDS                 0

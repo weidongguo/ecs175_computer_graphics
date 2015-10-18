@@ -21,7 +21,18 @@ typedef struct {
   int z;
 } Point; 
 
+typedef struct {
+  float x;
+  float y;
+  float z;
+} Point_3D;
+
 typedef Point Vertex;//Point and Vertex means the same thing
+
+typedef struct {
+  int p1Index;  
+  int p2Index;
+} Edge;
 
 typedef struct {
   float r;
@@ -48,6 +59,7 @@ typedef struct{
   int width;
   int height;
   int numberOfPolygons;
+  int numberOfPolyhedra; 
   int selectedObject;
   ClipRegion cr;
   Transformation tf;   

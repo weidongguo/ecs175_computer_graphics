@@ -73,7 +73,7 @@ void readFile(std::ifstream &ifs){
  * @return    :     none
  */
 
-void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfPolygons){
+void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfObjects){
   int sizeOfBuffer = 256;
   char buffer[sizeOfBuffer], *charPtr; 
   
@@ -85,7 +85,7 @@ void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*nu
   *window_height = atoi(charPtr);
   ifs->getline(buffer, sizeOfBuffer); //skip a line
   ifs->getline(buffer, sizeOfBuffer); // contains number of polygon
-  *numberOfPolygons = atoi(buffer);
+  *numberOfObjects = atoi(buffer);
   DPRINT("window_width: %d, window_height: %d, numberOfPolygons: %d\n", *window_width, *window_height, *numberOfPolygons);
 }
 
@@ -100,7 +100,7 @@ void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*nu
  */
 
 void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons){ 
-  int sizeOfBuffer = 256, numberOfPoints, x, y, z, numberOfPolygonsAlreadyProcessed = 0;
+  int sizeOfBuffer = 256, numberOfPoints, x, y, numberOfPolygonsAlreadyProcessed = 0;
   char buffer[sizeOfBuffer], *charPtr; 
   Point *listOfPoints;
   
@@ -113,9 +113,9 @@ void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numb
       ifs->getline(buffer, sizeOfBuffer); //get a 3D point
       charPtr = strtok(buffer, " ");
       x = atoi(charPtr); //x value;
-      charPtr = strtok(0, " ");
+      charPtr = strtok(0, "\0");
       y = atoi(charPtr);//y value
-      listOfPoints[i] = {x,y};
+      listOfPoints[i] = {x,y,0};
       DPRINT("(%d, %d)\n", x, y);
     }
     polygons[numberOfPolygonsAlreadyProcessed] = new Polygon(listOfPoints, numberOfPoints, graph); 
@@ -123,6 +123,66 @@ void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numb
     
     DPRINT("\n"); 
     if( ++numberOfPolygonsAlreadyProcessed == numberOfPolygons) // already processed the desired number of polygons done!!
+      break;
+    if(ifs->eof()) //end of file - done!!
+      break;
+  }
+}
+
+/*========================================================================*/
+/* @fn        :   void readPolhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra);
+ * @brief     :   read data from an input file stream  and build polyhedra using the data 
+ * @param[in] :   std::ifstream *ifs   - pointer to the input file stream
+ * @param[in] :   Graph *graph         - an object for drawing pixel and related drawing methods, one of the param used to construct Polyhdron object
+ * @param[in] :   int numberOfPolyhedra - number of polyhedra
+ * @param[out]:   Polyhedron **polyhedra   - the output: polyhdera created by the info specified in the file
+ * @return    :   none
+ */
+
+void readPolyhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra){ 
+
+  int sizeOfBuffer = 256, numberOfPoints, numberOfEdges, numberOfPolyhedraAlreadyProcessed = 0;
+  float x, y , z;
+  int p1Index, p2Index; 
+  char buffer[sizeOfBuffer], *charPtr; 
+  Point_3D *listOfPoints; Edge *listOfEdges;
+  while(ifs->getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polyhedron
+    ifs->getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polyhedron 
+    numberOfPoints =  atoi(buffer); 
+     
+    listOfPoints = new Point_3D[numberOfPoints];
+    for(int i = 0 ; i < numberOfPoints; i++){ // form a listOfPoints;
+      ifs->getline(buffer, sizeOfBuffer); //get a 3D point
+      charPtr = strtok(buffer, " ");
+      x = atof(charPtr); //x value;
+      charPtr = strtok(0, " ");
+      y = atof(charPtr);//y value
+      charPtr = strtok(0, "\0");
+      z = atof(charPtr);
+      listOfPoints[i] = {x,y,z};
+      printf("(%.2f, %.2f, %.2f)\n", x, y, z);
+    }
+    
+    //read edges
+    ifs->getline(buffer, sizeOfBuffer); // read the number of edges
+    numberOfEdges = atoi(buffer);
+    listOfEdges = new Edge[numberOfEdges];
+    for(int i = 0, offset = -1 ; i < numberOfEdges; i++){
+      ifs->getline(buffer, sizeOfBuffer);
+      charPtr = strtok(buffer, " ");
+      p1Index = atoi(charPtr);
+      charPtr = strtok(0, "\0");
+      p2Index = atoi(charPtr);
+      listOfEdges[i] = { p1Index + offset, p2Index + offset};  // make point 1 to have index (1 - 1) = 0
+      printf("Edge %d %d\n", p1Index, p2Index);
+    } 
+    
+    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graph, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges);
+    delete [] listOfPoints;
+    delete [] listOfEdges;
+
+    DPRINT("\n"); 
+    if( ++numberOfPolyhedraAlreadyProcessed == numberOfPolyhedra) // already processed the desired number of polyhedra done!!
       break;
     if(ifs->eof()) //end of file - done!!
       break;

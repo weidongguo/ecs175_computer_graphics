@@ -13,7 +13,7 @@ Graph *globalGraph;
 std::string input_buffer;
 Line *globalLine[2]; //one for demonstrating dda, the other one for demonstrating bresenham
 
-Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
+Window window = {1000, 500, 0, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
 
 void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
@@ -38,17 +38,23 @@ int main(int argc, char *argv[]){
   globalGraph = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
   graph.fillScreen(1,1,1); // white background
   
-  Polygon *polygons[window.numberOfPolygons];
-  globalPolygons = polygons;
+  //Polygon *polygons[window.numberOfPolygons];
+  //globalPolygons = polygons;
   
-  readPolygons(&ifs, &graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
-
+  //readolygons(&ifs, &graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
+  
+/*
   for(int i = 0 ; i< window.numberOfPolygons; i++){ //display the polygons read from the datafile
     polygons[i]->setColor( { (float)i/window.numberOfPolygons , 0.3, 0.4 } );
     polygons[i]->draw();
     polygons[i]->rasterize();
   }
+*/  
   
+  Polyhedron *polyhedra[window.numberOfPolyhedra];
+  DPRINT("Read polyhedra\n"); 
+  readPolyhedra(&ifs, &graph, polyhedra, window.numberOfPolyhedra); 
+
   //callback registration:
   glutKeyboardFunc(callback_keyboard); 
   glutDisplayFunc(callback_display);

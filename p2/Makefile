@@ -1,21 +1,26 @@
-ARG = -lglut -lGL -lm -g -Wall -std=c++11 #-DDEBUG_PRINT 
+ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT 
 
-a.out: main.o graph.o polygon.o line.o user_io.o
-	g++ $(ARG) main.o graph.o polygon.o line.o user_io.o
+C = g++
+
+a.out: main.o graph.o polygon.o line.o user_io.o polyhedron.o
+	$(C) $(ARG) main.o graph.o polygon.o line.o user_io.o polyhedron.o
 
 main.o: main.cpp graph.h	
-	g++ $(ARG) -c main.cpp 
+	$(C) $(ARG) -c main.cpp 
 
 graph.o: graph.h
-	g++ $(ARG) -c graph.cpp 
+	$(C) $(ARG) -c graph.cpp 
 polygon.o: polygon.h graph.h
-	g++ $(ARG) -c polygon.cpp
+	$(C) $(ARG) -c polygon.cpp
 
 line.o: line.h graph.h
-	g++ $(ARG) -c line.cpp
+	$(C) $(ARG) -c line.cpp
 
 user_io: user_io.h
-	g++ $(ARG) -c user_io.cpp
+	$(C) $(ARG) -c user_io.cpp
+
+polyhedron.o: polyhedron.h graph.h
+	$(C) $(ARG) -c polyhedron.cpp	
 
 clean:
 	rm -f *.out *.o
