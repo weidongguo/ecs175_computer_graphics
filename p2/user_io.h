@@ -14,9 +14,9 @@ void parseBufferForTranslationFactors(std::string *buffer, int *x, int *y);
 void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr);
 void parseBufferForLine(std::string *buffer, Point *p1, Point *p2);
 bool isGrabbingData(int state);
-void readHeaders(int *window_width, int *window_height, int *numberOfPolygons);
-void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons);
-
+void readHeaders(std::ifstream *ifs, int *window_width, int *window_height, int *numberOfPolygons);
+void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons);
+void readFile(std::ifstream &ifs);
 // for window
 #define STATE_GRAB_COMMANDS                 0
 #define STATE_GRAB_DATA_ROTATION_ANGLE      1

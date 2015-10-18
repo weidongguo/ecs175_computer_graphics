@@ -55,57 +55,66 @@ bool isGrabbingData(int state){
            state == STATE_GRAB_DATA_CLIP_REGION  || state == STATE_GRAB_DATA_DRAW_DDA || state == STATE_GRAB_DATA_DRAW_BRESENHAM) ;
 }
 
+void readFile(std::ifstream &ifs){
+  char cinBuffer[256];
+  std::cout<<"Please enter name of the input file: "; std::cout.flush();
+  std::cin.getline(cinBuffer, 256);
+  ifs.open (cinBuffer, std::ifstream::in);
+}
+
 /*=====================================================================*/
-/* @fn        :     void readHeaders(int*window_width, int*window_height, int*numberOfPolygons)
+/* @fn        :     void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfPolygons)
  * @brief     :     prime the pump - reads the header info from the stdin(redirected from a file to stdin), 
  *                  the header contains info about the dimension of the window and the numebr of polygons there are
+ * @param[in] :     std::ifstream *ifs    - pointer to the input file stream
  * @param[out]:     int *window_width     - for storing window_width
  * @param[out]:     int *window_height    - for storing window_height
  * @param[out]:     int *numberOfPolygons - for storing the number of polygons
  * @return    :     none
  */
 
-void readHeaders(int*window_width, int*window_height, int*numberOfPolygons){
+void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfPolygons){
   int sizeOfBuffer = 256;
   char buffer[sizeOfBuffer], *charPtr; 
   
   //prime the pump
-  std::cin.getline(buffer, sizeOfBuffer); // first line contains window dimension info
+  ifs->getline(buffer, sizeOfBuffer); // first line contains window dimension info
   charPtr = strtok(buffer, " ");
   *window_width = atoi(charPtr);
   charPtr =strtok(0, "\0 ");
   *window_height = atoi(charPtr);
-  std::cin.getline(buffer, sizeOfBuffer); //skip a line
-  std::cin.getline(buffer, sizeOfBuffer); // contains number of polygon
+  ifs->getline(buffer, sizeOfBuffer); //skip a line
+  ifs->getline(buffer, sizeOfBuffer); // contains number of polygon
   *numberOfPolygons = atoi(buffer);
   DPRINT("window_width: %d, window_height: %d, numberOfPolygons: %d\n", *window_width, *window_height, *numberOfPolygons);
 }
 
 /*========================================================================*/
-/* @fn        :   void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons);
+/* @fn        :   void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons);
  * @brief     :   read data from stdin(a file redirected to stdin) and build polygons using the data init
+ * @param[in] :   std::ifstream *ifs   - pointer to the input file stream
  * @param[in] :   Graph *graph         - an object for drawing pixel and related drawing methods, one of the param used to construct a Polygon object
  * @param[in] :   int numberOfPolygons - number of polygons
  * @param[out]:   Polygon **polygons   - the output: polygons created by the info specified in the file
  * @return    :   none
  */
 
-void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){ 
-  int sizeOfBuffer = 256, numberOfPoints, x, y, numberOfPolygonsAlreadyProcessed = 0;
+void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons){ 
+  int sizeOfBuffer = 256, numberOfPoints, x, y, z, numberOfPolygonsAlreadyProcessed = 0;
   char buffer[sizeOfBuffer], *charPtr; 
   Point *listOfPoints;
   
-  while(std::cin.getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polygon
-    std::cin.getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polygon 
+  while(ifs->getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polygon
+    ifs->getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polygon 
     numberOfPoints =  atoi(buffer); 
      
     listOfPoints = new Point[numberOfPoints];
     for(int i = 0 ; i < numberOfPoints; i++){ // form a listOfPoints;
-      std::cin.getline(buffer, sizeOfBuffer); //get a point
+      ifs->getline(buffer, sizeOfBuffer); //get a 3D point
       charPtr = strtok(buffer, " ");
       x = atoi(charPtr); //x value;
-      charPtr = strtok(0, "\0 ");
-      y = atoi(charPtr);
+      charPtr = strtok(0, " ");
+      y = atoi(charPtr);//y value
       listOfPoints[i] = {x,y};
       DPRINT("(%d, %d)\n", x, y);
     }
@@ -115,7 +124,7 @@ void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){
     DPRINT("\n"); 
     if( ++numberOfPolygonsAlreadyProcessed == numberOfPolygons) // already processed the desired number of polygons done!!
       break;
-    if(std::cin.eof()) //end of file - done!!
+    if(ifs->eof()) //end of file - done!!
       break;
   }
 }

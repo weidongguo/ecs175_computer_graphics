@@ -23,8 +23,10 @@ void createMenu();
 int main(int argc, char *argv[]){
   glutInit(&argc, argv); //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB );
-
-  readHeaders(&window.width, &window.height, &window.numberOfPolygons);//read from datafile for the window-dimension and numberOfPolygons there are 
+  
+  std::ifstream ifs;
+  readFile(ifs);
+  readHeaders(&ifs, &window.width, &window.height, &window.numberOfPolygons);//read from datafile for the window-dimension and numberOfPolygons there are 
   
   glutInitWindowSize(window.width, window.height);
   glutInitWindowPosition(100, 100); 
@@ -39,7 +41,7 @@ int main(int argc, char *argv[]){
   Polygon *polygons[window.numberOfPolygons];
   globalPolygons = polygons;
   
-  readPolygons(&graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
+  readPolygons(&ifs, &graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
 
   for(int i = 0 ; i< window.numberOfPolygons; i++){ //display the polygons read from the datafile
     polygons[i]->setColor( { (float)i/window.numberOfPolygons , 0.3, 0.4 } );
@@ -153,7 +155,7 @@ void callback_keyboard(unsigned char key, int x, int y){
     window.selectedObject = key % window.numberOfPolygons;
     return;
   }
-
+  char cinBuffer[256];
   switch(key){ // control commands
     case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break; //translation
     case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
@@ -177,7 +179,7 @@ void callback_display(){
   glDrawPixels(window.width, window.height, GL_RGB, GL_FLOAT, PixelBuffer);
  
   glFlush(); //force all GL commands to be executed by the actual rendering engine
-  
+
  // TwDraw();
   //glutSwapBuffers();
   glutPostRedisplay();

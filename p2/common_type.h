@@ -18,6 +18,7 @@ typedef char          int8;
 typedef struct {
   int x;
   int y;
+  int z;
 } Point; 
 
 typedef Point Vertex;//Point and Vertex means the same thing
