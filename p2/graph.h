@@ -10,6 +10,7 @@
 class Graph {
   friend class Polygon; //not used
   friend class Line; //not used
+  friend class Polyhedron ;
   int window_width;
   int window_height;
   public:Color background_color;

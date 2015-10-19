@@ -81,8 +81,12 @@ int main(int argc, char *argv[]){
   DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
   
+  float delta, xMin, yMin, zMin;
   for(int i = 0 ; i < window.numberOfPolyhedra; i++){
     polyhedra[i]->printAttributes();
+    Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+    polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
+    polyhedra[i]->draw();
   }
   //callback registration:
   glutSetWindow(mainWindowID);

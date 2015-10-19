@@ -115,7 +115,7 @@ void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numb
       x = atoi(charPtr); //x value;
       charPtr = strtok(0, "\0");
       y = atoi(charPtr);//y value
-      listOfPoints[i] = {x,y,0};
+      listOfPoints[i] = {x,y};
       DPRINT("(%d, %d)\n", x, y);
     }
     polygons[numberOfPolygonsAlreadyProcessed] = new Polygon(listOfPoints, numberOfPoints, graph); 

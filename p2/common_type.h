@@ -10,8 +10,8 @@
   #define DPRINT(...) 
 #endif
 
-#define MIN(x,y) ((x<=y)?x:y)
-#define MAX(x,y) ((x>y)?x:y)
+#define MIN(x,y) ( ( (x)<=(y) )? (x):(y) )
+#define MAX(x,y) ( ( (x)> (y) )? (x):(y) )
 
 
 typedef unsigned char uint8;
@@ -20,7 +20,6 @@ typedef char          int8;
 typedef struct {
   int x;
   int y;
-  int z;
 } Point; 
 
 typedef struct {
