@@ -4,16 +4,18 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT $/;"	m
+ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
 BOTTOM	polygon.h	12;"	d
 BRESENHAM	graph.h	33;"	d
 Boundary	polygon.h	/^typedef int Boundary;$/;"	t
+C	Makefile	/^C = g++$/;"	m
 COMMON_TYPE_H	common_type.h	13;"	d
-ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon3
-Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon2
+ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon5
+Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon4
 DDA	graph.h	34;"	d
 DPRINT	common_type.h	4;"	d
 DPRINT	common_type.h	6;"	d
+Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon3
 GRAPH_H	graph.h	2;"	d
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
@@ -22,47 +24,56 @@ LINE_H	line.h	2;"	d
 Line	line.cpp	/^Line::Line(Point p1, Point p2, Graph *g){$/;"	f	class:Line
 Line	line.h	/^class Line{$/;"	c
 MAX	common_type.h	10;"	d
-MENU_BRESENHAM	user_io.h	24;"	d
-MENU_DDA	user_io.h	23;"	d
-MENU_GRAB_CLIP_REGION	user_io.h	29;"	d
-MENU_GRAB_ROTATION_ANGLE	user_io.h	26;"	d
-MENU_GRAB_SCALE_FACTORS	user_io.h	28;"	d
-MENU_GRAB_TRANSLATION_FACTORS	user_io.h	27;"	d
-MENU_STATUS	user_io.h	25;"	d
+MENU_CLIP_BRESENHAM	user_io.h	34;"	d
+MENU_CLIP_DDA	user_io.h	33;"	d
+MENU_DRAW_BRESENHAM	user_io.h	36;"	d
+MENU_DRAW_DDA	user_io.h	35;"	d
+MENU_GRAB_CLIP_REGION	user_io.h	41;"	d
+MENU_GRAB_ROTATION_ANGLE	user_io.h	38;"	d
+MENU_GRAB_SCALE_FACTORS	user_io.h	40;"	d
+MENU_GRAB_TRANSLATION_FACTORS	user_io.h	39;"	d
+MENU_STATUS	user_io.h	37;"	d
 MIN	common_type.h	9;"	d
 PI	polygon.cpp	82;"	d	file:
 POLYGON_H	polygon.h	2;"	d
+POLYHEDRON_H	polyhedron.h	2;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
 Point	common_type.h	/^} Point; $/;"	t	typeref:struct:__anon1
+Point_3D	common_type.h	/^} Point_3D;$/;"	t	typeref:struct:__anon2
 Polygon	polygon.cpp	/^Polygon::Polygon(Point * listOfPts, int _numberOfPoints, Graph *ptr_graph){$/;"	f	class:Polygon
 Polygon	polygon.h	/^class Polygon{$/;"	c
+Polyhedron	polyhedron.cpp	/^Polyhedron::Polyhedron(Graph *_graph, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges){ $/;"	f	class:Polyhedron
+Polyhedron	polyhedron.h	/^class Polyhedron {$/;"	c
 RIGHT	polygon.h	11;"	d
 SET_ABOVE_CODE	line.cpp	6;"	d	file:
 SET_BOTTOM_CODE	line.cpp	5;"	d	file:
 SET_LEFT_CODE	line.cpp	3;"	d	file:
 SET_RIGHT_CODE	line.cpp	4;"	d	file:
-STATE_GRAB_COMMANDS	user_io.h	16;"	d
-STATE_GRAB_DATA_CLIP_REGION	user_io.h	20;"	d
-STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	17;"	d
-STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	19;"	d
-STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	18;"	d
+STATE_GRAB_COMMANDS	user_io.h	24;"	d
+STATE_GRAB_DATA_CLIP_REGION	user_io.h	28;"	d
+STATE_GRAB_DATA_DRAW_BRESENHAM	user_io.h	30;"	d
+STATE_GRAB_DATA_DRAW_DDA	user_io.h	29;"	d
+STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	25;"	d
+STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	27;"	d
+STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	26;"	d
 TOP	polygon.h	13;"	d
-Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon4
+Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon6
 USER_IO_H	user_io.h	2;"	d
 Vertex	common_type.h	/^typedef Point Vertex;\/\/Point and Vertex means the same thing$/;"	t
-Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon5
+Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon7
 _bresenham	polygon.cpp	/^int Polygon::_bresenham(Point pt1, Point pt2){ \/\/for storing points, not drawing pixel$/;"	f	class:Polygon
 _storeContourPoint	polygon.cpp	/^void Polygon:: _storeContourPoint(int x, int y){$/;"	f	class:Polygon
 _storeLinePoints	polygon.cpp	/^int Polygon::_storeLinePoints( Point p1, Point p2){$/;"	f	class:Polygon
 accept	line.cpp	/^bool accept(uint8 region_code1, uint8 region_code2){ \/\/accept for sure$/;"	f
-b	common_type.h	/^  float b;$/;"	m	struct:__anon2
+b	common_type.h	/^  float b;$/;"	m	struct:__anon4
 background_color	graph.h	/^  public:Color background_color;$/;"	m	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
 callback_display	main.cpp	/^void callback_display(){$/;"	f
 callback_keyboard	main.cpp	/^void callback_keyboard(unsigned char key, int x, int y){$/;"	f
 callback_menu	main.cpp	/^void callback_menu(int state){$/;"	f
 centroid	polygon.h	/^  Point centroid;$/;"	m	class:Polygon
+centroid	polyhedron.h	/^  Point_3D centroid;$/;"	m	class:Polyhedron
 clearContourPoints	polygon.cpp	/^void Polygon::clearContourPoints(){$/;"	f	class:Polygon
 clip	line.cpp	/^void Line::clip(ClipRegion cr){$/;"	f	class:Line
 clip	line.cpp	/^void Line::clip(int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Line
@@ -72,13 +83,14 @@ cohenSutherland	line.cpp	/^int Line::cohenSutherland(int xMin, int xMax, int yMi
 color	line.h	/^  Color color;$/;"	m	class:Line
 color	polygon.h	/^  Color color; $/;"	m	class:Polygon
 compareXValue	polygon.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
-cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon5
+cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon7
 createMenu	main.cpp	/^void createMenu(void){     $/;"	f
 cross	polygon.cpp	/^bool Polygon::cross(Point p1, Point p2, Boundary b, int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Polygon
 dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
 displayClippingRegion	polygon.cpp	/^void Polygon::displayClippingRegion(int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Polygon
 draw	line.cpp	/^void Line::draw(){$/;"	f	class:Line
+draw	line.cpp	/^void Line::draw(int method){$/;"	f	class:Line
 draw	polygon.cpp	/^void Polygon::draw(){$/;"	f	class:Polygon
 draw	polygon.cpp	/^void Polygon::draw(Color c){$/;"	f	class:Polygon
 draw	polygon.cpp	/^void Polygon::draw(float r, float g, float b){$/;"	f	class:Polygon
@@ -88,13 +100,14 @@ drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
 encode	line.cpp	/^uint8 encode(Point p, int xMin, int xMax, int yMin, int yMax){$/;"	f
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
-g	common_type.h	/^  float g;$/;"	m	struct:__anon2
+g	common_type.h	/^  float g;$/;"	m	struct:__anon4
 globalGraph	main.cpp	/^Graph *globalGraph;$/;"	v
+globalLine	main.cpp	/^Line *globalLine[2]; \/\/one for demonstrating dda, the other one for demonstrating bresenham$/;"	v
 globalPolygons	main.cpp	/^Polygon **globalPolygons;$/;"	v
 graph	line.h	/^  Graph *graph; \/\/ Graph *graph the object contains all drawing method$/;"	m	class:Line
 graph	polygon.h	/^  Graph *graph;$/;"	m	class:Polygon
-height	common_type.h	/^  int height;$/;"	m	struct:__anon5
-inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon5
+height	common_type.h	/^  int height;$/;"	m	struct:__anon7
+inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon7
 input_buffer	main.cpp	/^std::string input_buffer;$/;"	v
 inside	line.cpp	/^bool inside(uint8 region_code){ \/\/inside the clipping region$/;"	f
 inside	polygon.cpp	/^bool Polygon::inside(Point p, Boundary b, int xMin, int xMax, int yMin, int yMax){ \/\/static method$/;"	f	class:Polygon
@@ -103,59 +116,74 @@ intersect	polygon.cpp	/^Point Polygon::intersect(Point p1, Point p2, Boundary b,
 isGrabbingData	user_io.cpp	/^bool isGrabbingData(int state){$/;"	f
 isRasterized	polygon.h	/^  bool isRasterized;$/;"	m	class:Polygon
 listOfContourPoints	polygon.h	/^  std::list<Point> *listOfContourPoints;\/\/the original points + the points along the lines between the original points$/;"	m	class:Polygon
+listOfEdges	polyhedron.h	/^  Edge *listOfEdges; $/;"	m	class:Polyhedron
 listOfPoints	polygon.h	/^  public: Point *listOfPoints; $/;"	m	class:Polygon
+listOfPoints	polyhedron.h	/^  Point_3D* listOfPoints;$/;"	m	class:Polyhedron
 listOfPointsAfterClipping	polygon.h	/^  Point *listOfPointsAfterClipping;$/;"	m	class:Polygon
 listOfPointsOriginal	polygon.h	/^  Point *listOfPointsOriginal;$/;"	m	class:Polygon
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
+numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
 numberOfPoints	polygon.h	/^  int numberOfPoints;$/;"	m	class:Polygon
+numberOfPoints	polyhedron.h	/^  int numberOfPoints;$/;"	m	class:Polyhedron
 numberOfPointsAfterClipping	polygon.h	/^  int numberOfPointsAfterClipping;$/;"	m	class:Polygon
 numberOfPointsOriginal	polygon.h	/^  int numberOfPointsOriginal;$/;"	m	class:Polygon
-numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon5
+numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon7
+numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon7
 outOfBound	graph.cpp	/^bool Graph::outOfBound(int x, int y){$/;"	f	class:Graph
+p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon3
+p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon3
 pairOfPoints	line.h	/^  Point *pairOfPoints; \/\/ pointer to the current pair of points$/;"	m	class:Line
 pairOfPointsAfterClipping	line.h	/^  Point pairOfPointsAfterClipping[2]; \/\/new line after clipping$/;"	m	class:Line
 pairOfPointsOriginal	line.h	/^  Point pairOfPointsOriginal[2]; \/\/ \/\/original two points $/;"	m	class:Line
 parseBufferForClipRegion	user_io.cpp	/^void parseBufferForClipRegion(std::string *buffer, ClipRegion *cr){$/;"	f
+parseBufferForLine	user_io.cpp	/^void parseBufferForLine(std::string *buffer, Point *p1, Point *p2){$/;"	f
 parseBufferForRotationAngle	user_io.cpp	/^float parseBufferForRotationAngle(std::string *buffer){$/;"	f
 parseBufferForScaleFactors	user_io.cpp	/^void parseBufferForScaleFactors(std::string *buffer, float *alpha, float *beta){$/;"	f
 parseBufferForTranslationFactors	user_io.cpp	/^void parseBufferForTranslationFactors(std::string *buffer, int *x_offset, int *y_offset){$/;"	f
 printListOfContourPoints	polygon.cpp	/^void Polygon::printListOfContourPoints(){$/;"	f	class:Polygon
-r	common_type.h	/^  float r;$/;"	m	struct:__anon2
+r	common_type.h	/^  float r;$/;"	m	struct:__anon4
 rasterize	polygon.cpp	/^void Polygon::rasterize(){$/;"	f	class:Polygon
 rasterize	polygon.cpp	/^void Polygon::rasterize(Color c){$/;"	f	class:Polygon
 rasterize	polygon.cpp	/^void Polygon::rasterize(float r, float g, float b){$/;"	f	class:Polygon
-readHeaders	main.cpp	/^void readHeaders(int*window_width, int*window_height, int*numberOfPolygons){$/;"	f
-readPolygons	main.cpp	/^void readPolygons(Graph *graph, Polygon **polygons, int numberOfPolygons){ $/;"	f
+readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
+readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfObjects){$/;"	f
+readPolygons	user_io.cpp	/^void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numberOfPolygons){ $/;"	f
+readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f
 reject	line.cpp	/^bool reject(uint8 region_code1, uint8 region_code2){ $/;"	f
 rotate	polygon.cpp	/^void Polygon::rotate(float alpha){ \/\/alpha is the angle$/;"	f	class:Polygon
-rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon4
+rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon6
 savePolygonsToFile	polygon.cpp	/^void Polygon::savePolygonsToFile(Polygon **polygons, Window *window, const char *filename){$/;"	f	class:Polygon
 scale	polygon.cpp	/^void Polygon::scale(float alpha, float beta){$/;"	f	class:Polygon
-scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon4
-scale_beta	common_type.h	/^  float scale_beta;$/;"	m	struct:__anon4
-selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon5
+scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon6
+scale_beta	common_type.h	/^  float scale_beta;$/;"	m	struct:__anon6
+selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon7
 setCentroid	polygon.cpp	/^void Polygon::setCentroid(){$/;"	f	class:Polygon
+setCentroid	polyhedron.cpp	/^void Polyhedron::setCentroid(){$/;"	f	class:Polyhedron
 setColor	line.cpp	/^void Line::setColor(float r, float g, float b){$/;"	f	class:Line
 setColor	polygon.cpp	/^void Polygon::setColor(Color c){$/;"	f	class:Polygon
-state	common_type.h	/^  int state;$/;"	m	struct:__anon5
+state	common_type.h	/^  int state;$/;"	m	struct:__anon7
 storeContourPoints	polygon.cpp	/^void Polygon::storeContourPoints(){$/;"	f	class:Polygon
 storeOriginalPointsToContourPoints	polygon.cpp	/^void Polygon::storeOriginalPointsToContourPoints(){$/;"	f	class:Polygon
 sutherlandHodgman	polygon.cpp	/^void Polygon::sutherlandHodgman(int xMin, int xMax, int yMin, int yMax){$/;"	f	class:Polygon
 swapPoints	line.cpp	/^void swapPoints(Point *p1, Point *p2){$/;"	f
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
-tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon5
+tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon7
 translate	polygon.cpp	/^void Polygon::translate(int x_offset, int y_offset){$/;"	f	class:Polygon
 uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
-width	common_type.h	/^  int width;$/;"	m	struct:__anon5
-window	main.cpp	/^Window window = {1000, 500, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };$/;"	v
+width	common_type.h	/^  int width;$/;"	m	struct:__anon7
+window	main.cpp	/^Window window = {1000, 500, 0, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };$/;"	v
 window_height	graph.h	/^  int window_height;$/;"	m	class:Graph
 window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
+x	common_type.h	/^  float x;$/;"	m	struct:__anon2
 x	common_type.h	/^  int x;$/;"	m	struct:__anon1
-xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon3
-xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon3
-x_offset	common_type.h	/^  int x_offset;$/;"	m	struct:__anon4
+xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon5
+xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon5
+x_offset	common_type.h	/^  int x_offset;$/;"	m	struct:__anon6
+y	common_type.h	/^  float y;$/;"	m	struct:__anon2
 y	common_type.h	/^  int y;$/;"	m	struct:__anon1
-yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon3
-yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon3
-y_offset	common_type.h	/^  int y_offset;$/;"	m	struct:__anon4
+yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon5
+yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon5
+y_offset	common_type.h	/^  int y_offset;$/;"	m	struct:__anon6
+z	common_type.h	/^  float z;$/;"	m	struct:__anon2
+z	common_type.h	/^  int z;$/;"	m	struct:__anon1
 ~Polygon	polygon.cpp	/^Polygon::~Polygon(){$/;"	f	class:Polygon

@@ -2,7 +2,7 @@
 #define POLYHEDRON_H
 
 #include "common_type.h"
-#include "polygon.h"
+#include "graph.h"
 
 class Polyhedron {
   Point_3D* listOfPoints;
@@ -13,9 +13,12 @@ class Polyhedron {
 
   Point_3D centroid;
 
+  Graph **graphs;
+
   public:
-  Polyhedron(Graph *_graph, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges);
+  Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges);
   void setCentroid();
+  void printAttributes();
 };
 
 #endif

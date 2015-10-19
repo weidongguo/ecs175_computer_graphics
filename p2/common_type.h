@@ -1,5 +1,9 @@
+#ifndef COMMON_TYPE_H
+#define COMMON_TYPE_H
+
 #include <cstdio>
 #include <string>
+
 #ifdef DEBUG_PRINT
   #define DPRINT printf
 #else
@@ -9,8 +13,6 @@
 #define MIN(x,y) ((x<=y)?x:y)
 #define MAX(x,y) ((x>y)?x:y)
 
-#ifndef COMMON_TYPE_H
-#define COMMON_TYPE_H
 
 typedef unsigned char uint8;
 typedef char          int8; 
@@ -65,6 +67,7 @@ typedef struct{
   Transformation tf;   
   int state;
   std::string *inputBuffer;
+  void **graphs;
 } Window;
 
 #endif

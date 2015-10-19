@@ -9,55 +9,84 @@
 
 float *PixelBuffer; // global pixel buffer
 Polygon **globalPolygons;
-Graph *globalGraph;
+Graph *globalGraphs[4];
 std::string input_buffer;
 Line *globalLine[2]; //one for demonstrating dda, the other one for demonstrating bresenham
 
-Window window = {1000, 500, 0, 0, 0, {-200, 200, -200, 200}, {20, 20, 1.2, 1.2, 5}, STATE_GRAB_COMMANDS, &input_buffer };
+Window window;
+
+float *SubWindowPixelBuffer1;
+float *SubWindowPixelBuffer2;
+float *SubWindowPixelBuffer3;
 
 void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
+void callback_subdisplay1();
+void callback_subdisplay2();
+void callback_subdisplay3();
 void callback_menu(int state);
 void createMenu();
+void windowInit(Window *window);
 
 int main(int argc, char *argv[]){
   glutInit(&argc, argv); //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB );
   
+  windowInit(&window);
+
   std::ifstream ifs;
   readFile(ifs);
-  readHeaders(&ifs, &window.width, &window.height, &window.numberOfPolygons);//read from datafile for the window-dimension and numberOfPolygons there are 
+  readHeaders(&ifs, &window.width, &window.height, &window.numberOfPolyhedra);//read from datafile for the window-dimension and numberOfPolyhedra there are 
   
   glutInitWindowSize(window.width, window.height);
   glutInitWindowPosition(100, 100); 
-  int windowID = glutCreateWindow("Project 1");
-  
-  glClearColor(1,1,1,0.0); //the background_color_buffer underneath the pixelbuffer
+
+  // initialize the pixel buffers
   PixelBuffer = new float[window.width*window.height*3];   
+  SubWindowPixelBuffer1 = new float[ (window.width* window.height/4) * 3];
+  SubWindowPixelBuffer2 = new float[ (window.width* window.height/4) * 3];
+  SubWindowPixelBuffer3 = new float[ (window.width* window.height/4) * 3];
+  
+  // create sub-windows and their callback functions
+  int mainWindowID = glutCreateWindow("Project 2");
+  glutDisplayFunc(callback_display);
+
+  int subWindowID1 = glutCreateSubWindow(mainWindowID, 0, 0, window.width/2, window.height/2);
+  glutDisplayFunc(callback_subdisplay1);
+
+  int subWindowID2 = glutCreateSubWindow(mainWindowID, window.width/2, 0, window.width/2, window.height/2);
+  glutDisplayFunc(callback_subdisplay2);
+
+  int subWindowID3 = glutCreateSubWindow(mainWindowID, 0, window.height/2, window.width/2, window.height/2);
+  glutDisplayFunc(callback_subdisplay3);
+
+
   Graph graph(window.width,window.height, PixelBuffer); 
-  globalGraph = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
+  globalGraphs[0] = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
   graph.fillScreen(1,1,1); // white background
   
-  //Polygon *polygons[window.numberOfPolygons];
-  //globalPolygons = polygons;
-  
-  //readolygons(&ifs, &graph, polygons, window.numberOfPolygons); // read the remaining part of the datafile
-  
-/*
-  for(int i = 0 ; i< window.numberOfPolygons; i++){ //display the polygons read from the datafile
-    polygons[i]->setColor( { (float)i/window.numberOfPolygons , 0.3, 0.4 } );
-    polygons[i]->draw();
-    polygons[i]->rasterize();
-  }
-*/  
-  
-  Polyhedron *polyhedra[window.numberOfPolyhedra];
-  DPRINT("Read polyhedra\n"); 
-  readPolyhedra(&ifs, &graph, polyhedra, window.numberOfPolyhedra); 
+  Graph subGraph1(window.width/2, window.height/2, SubWindowPixelBuffer1);
+  subGraph1.fillScreen(0.9,0.9,0.9);
+  globalGraphs[1] = &subGraph1; 
 
+  Graph subGraph2(window.width/2, window.height/2, SubWindowPixelBuffer2);
+  subGraph2.fillScreen(0.7, 0.7, 0.7);
+  globalGraphs[2] = &subGraph2; 
+
+  Graph subGraph3(window.width/2, window.height/2, SubWindowPixelBuffer3);
+  subGraph3.fillScreen(0.5,0.5,0.5);
+  globalGraphs[3] = &subGraph3;
+
+  Polyhedron *polyhedra[window.numberOfPolyhedra];
+  DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
+  readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
+  
+  for(int i = 0 ; i < window.numberOfPolyhedra; i++){
+    polyhedra[i]->printAttributes();
+  }
   //callback registration:
+  glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 
-  glutDisplayFunc(callback_display);
   createMenu();
   
   
@@ -135,14 +164,14 @@ void callback_keyboard(unsigned char key, int x, int y){
           parseBufferForLine(window.inputBuffer, &p1, &p2);
           if(globalLine[0] != 0)
             delete globalLine[0]; // free the previous line
-          globalLine[0] = new Line( p1, p2, globalGraph);
+          globalLine[0] = new Line( p1, p2, globalGraphs[0]);
           globalLine[0] -> draw(DDA); 
           break;
         case STATE_GRAB_DATA_DRAW_BRESENHAM: 
           parseBufferForLine(window.inputBuffer, &p1, &p2); 
           if(globalLine[1] != 0)
             delete globalLine[1];
-          globalLine[1] = new Line( p1, p2, globalGraph);
+          globalLine[1] = new Line( p1, p2, globalGraphs[0]);
           globalLine[1]->draw(BRESENHAM); 
           break;
       } 
@@ -180,14 +209,33 @@ void callback_keyboard(unsigned char key, int x, int y){
 }
 
 void callback_display(){
-  glClear(GL_COLOR_BUFFER_BIT);
+  //glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
   glDrawPixels(window.width, window.height, GL_RGB, GL_FLOAT, PixelBuffer);
  
   glFlush(); //force all GL commands to be executed by the actual rendering engine
 
- // TwDraw();
-  //glutSwapBuffers();
+  glutPostRedisplay();
+}
+
+void callback_subdisplay1(){
+  //glClear(GL_COLOR_BUFFER_BIT);
+  glDrawPixels(window.width/2, window.height/2, GL_RGB, GL_FLOAT, SubWindowPixelBuffer1);
+  glFlush(); //force all GL commands to be executed by the actual rendering engine
+  glutPostRedisplay();
+}
+
+void callback_subdisplay2(){
+  //glClear(GL_COLOR_BUFFER_BIT);
+  glDrawPixels(window.width/2, window.height/2, GL_RGB, GL_FLOAT, SubWindowPixelBuffer2);
+  glFlush(); //force all GL commands to be executed by the actual rendering engine
+  glutPostRedisplay();
+}
+
+void callback_subdisplay3(){
+  //glClear(GL_COLOR_BUFFER_BIT);
+  glDrawPixels(window.width/2, window.height/2, GL_RGB, GL_FLOAT, SubWindowPixelBuffer3);
+  glFlush(); //force all GL commands to be executed by the actual rendering engine
   glutPostRedisplay();
 }
 
@@ -218,6 +266,18 @@ void createMenu(void){
   glutAddSubMenu("Grab Input", subMenuId_grabInput); 
 
   glutAttachMenu(GLUT_RIGHT_BUTTON);
+}
+
+void windowInit(Window *window){
+  window->width = 1000;
+  window->height = 500;
+  window->numberOfPolygons = 0;
+  window->numberOfPolyhedra = 0;
+  window->cr = { -200, 200, -200, 200};
+  window->tf = { 20, 20, 1.2, 1.2, 5};
+  window->state = STATE_GRAB_COMMANDS;
+  window->inputBuffer = &input_buffer;
+  window->graphs = (void**)globalGraphs;
 }
 
 

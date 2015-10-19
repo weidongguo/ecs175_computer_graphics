@@ -1,6 +1,6 @@
 #include "polyhedron.h"
 
-Polyhedron::Polyhedron(Graph *_graph, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges){ 
+Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges){ 
   listOfEdges = new Edge[_numberOfEdges];
   listOfPoints = new Point_3D[_numberOfPoints]; 
   for(int i = 0 ; i < _numberOfEdges; i++)
@@ -11,6 +11,9 @@ Polyhedron::Polyhedron(Graph *_graph, Point_3D *_listOfPoints, int _numberOfPoin
  
   numberOfEdges = _numberOfEdges;
   numberOfPoints = _numberOfPoints;
+  graphs = _graphs;
+
+  setCentroid();
 }
 
 void Polyhedron::setCentroid(){
@@ -24,4 +27,19 @@ void Polyhedron::setCentroid(){
   centroid.x = xSum / numberOfPoints;
   centroid.y = ySum / numberOfPoints;
   centroid.z = zSum / numberOfPoints; 
+}
+
+void Polyhedron::printAttributes(){
+  Point_3D p; Edge e;
+  printf("---------Polyhedron Attributes----------------------\n");
+  for(int i = 0 ; i < numberOfPoints; i++){
+    p = listOfPoints[i]; 
+    printf("(%.2f, %.2f, %.2f)\n", p.x, p.y, p.z);
+  }
+  for(int i = 0 ; i < numberOfEdges; i++){
+    e = listOfEdges[i];
+    printf("Edge %d %d\n", e.p1Index+1, e.p2Index+1);
+  }
+  printf("Centroid (%.2f, %.2f, %.2f)\n", centroid.x, centroid.y, centroid.z);
+
 }

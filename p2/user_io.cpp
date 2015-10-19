@@ -130,16 +130,16 @@ void readPolygons(std::ifstream *ifs, Graph *graph, Polygon **polygons, int numb
 }
 
 /*========================================================================*/
-/* @fn        :   void readPolhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra);
+/* @fn        :   void readPolhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra);
  * @brief     :   read data from an input file stream  and build polyhedra using the data 
  * @param[in] :   std::ifstream *ifs   - pointer to the input file stream
- * @param[in] :   Graph *graph         - an object for drawing pixel and related drawing methods, one of the param used to construct Polyhdron object
+ * @param[in] :   Graph **graphs         - list of graphs for drawing pixel and related drawing methods, each graph takes up 1 quadrant of screen
  * @param[in] :   int numberOfPolyhedra - number of polyhedra
  * @param[out]:   Polyhedron **polyhedra   - the output: polyhdera created by the info specified in the file
  * @return    :   none
  */
 
-void readPolyhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int numberOfPolyhedra){ 
+void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ 
 
   int sizeOfBuffer = 256, numberOfPoints, numberOfEdges, numberOfPolyhedraAlreadyProcessed = 0;
   float x, y , z;
@@ -177,7 +177,7 @@ void readPolyhedra(std::ifstream *ifs, Graph *graph, Polyhedron **polyhedra, int
       printf("Edge %d %d\n", p1Index, p2Index);
     } 
     
-    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graph, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges);
+    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges);
     delete [] listOfPoints;
     delete [] listOfEdges;
 
