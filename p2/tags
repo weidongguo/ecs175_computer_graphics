@@ -34,7 +34,7 @@ MENU_GRAB_SCALE_FACTORS	user_io.h	40;"	d
 MENU_GRAB_TRANSLATION_FACTORS	user_io.h	39;"	d
 MENU_STATUS	user_io.h	37;"	d
 MIN	common_type.h	13;"	d
-PI	polygon.cpp	82;"	d	file:
+PI	common_type.h	16;"	d
 POLYGON_H	polygon.h	2;"	d
 POLYHEDRON_H	polyhedron.h	2;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
@@ -101,13 +101,17 @@ draw	polygon.cpp	/^void Polygon::draw(){$/;"	f	class:Polygon
 draw	polygon.cpp	/^void Polygon::draw(Color c){$/;"	f	class:Polygon
 draw	polygon.cpp	/^void Polygon::draw(float r, float g, float b){$/;"	f	class:Polygon
 draw	polyhedron.cpp	/^void Polyhedron::draw(){$/;"	f	class:Polyhedron
+draw	polyhedron.cpp	/^void Polyhedron::draw(Color c){$/;"	f	class:Polyhedron
+draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	class:Polyhedron
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
+drawLine	polyhedron.cpp	/^void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){$/;"	f	class:Polyhedron
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
 encode	line.cpp	/^uint8 encode(Point p, int xMin, int xMax, int yMin, int yMax){$/;"	f
+erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
-findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *xMin, float *yMin, float *zMin){$/;"	f	class:Polyhedron
+findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *_xMin, float *_yMin, float *_zMin){$/;"	f	class:Polyhedron
 g	common_type.h	/^  float g;$/;"	m	struct:__anon4
 globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
 globalLine	main.cpp	/^Line *globalLine[2]; \/\/one for demonstrating dda, the other one for demonstrating bresenham$/;"	v
@@ -133,6 +137,7 @@ listOfPointsAfterClipping	polygon.h	/^  Point *listOfPointsAfterClipping;$/;"	m	
 listOfPointsNDC	polyhedron.h	/^  Point_3D* listOfPointsNDC;$/;"	m	class:Polyhedron
 listOfPointsOriginal	polygon.h	/^  Point *listOfPointsOriginal;$/;"	m	class:Polygon
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
+minus	polyhedron.cpp	/^Point_3D Polyhedron:: minus(Point_3D p1, Point_3D p2){$/;"	f	class:Polyhedron
 numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
 numberOfPoints	polygon.h	/^  int numberOfPoints;$/;"	m	class:Polygon
 numberOfPoints	polyhedron.h	/^  int numberOfPoints;$/;"	m	class:Polyhedron
@@ -163,9 +168,12 @@ readPolygons	user_io.cpp	/^void readPolygons(std::ifstream *ifs, Graph *graph, P
 readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f
 reject	line.cpp	/^bool reject(uint8 region_code1, uint8 region_code2){ $/;"	f
 rotate	polygon.cpp	/^void Polygon::rotate(float alpha){ \/\/alpha is the angle$/;"	f	class:Polygon
+rotate	polyhedron.cpp	/^void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){$/;"	f	class:Polyhedron
 rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon6
 savePolygonsToFile	polygon.cpp	/^void Polygon::savePolygonsToFile(Polygon **polygons, Window *window, const char *filename){$/;"	f	class:Polygon
 scale	polygon.cpp	/^void Polygon::scale(float alpha, float beta){$/;"	f	class:Polygon
+scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha){$/;"	f	class:Polyhedron
+scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha, float beta, float gamma){$/;"	f	class:Polyhedron
 scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon6
 scale_beta	common_type.h	/^  float scale_beta;$/;"	m	struct:__anon6
 selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon7
@@ -182,7 +190,10 @@ swapPoints	line.cpp	/^void swapPoints(Point *p1, Point *p2){$/;"	f
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
 tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon7
 translate	polygon.cpp	/^void Polygon::translate(int x_offset, int y_offset){$/;"	f	class:Polygon
+translate	polyhedron.cpp	/^void Polyhedron::translate(float x_offset, float y_offset, float z_offset){$/;"	f	class:Polyhedron
 uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
+unitVector	polyhedron.cpp	/^Point_3D Polyhedron:: unitVector(Point_3D p){$/;"	f	class:Polyhedron
+updateScreen	main.cpp	/^void updateScreen(Polyhedron **polyhedra){$/;"	f
 width	common_type.h	/^  int width;$/;"	m	struct:__anon7
 window	main.cpp	/^Window window;$/;"	v
 windowInit	main.cpp	/^void windowInit(Window *window){$/;"	f

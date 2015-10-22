@@ -20,6 +20,7 @@ class Polyhedron {
   Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges);
   void setCentroid();
   void printAttributes();
+  void drawLine(Point_3D p1, Point_3D p2, float r, float g, float b);
   void draw();
   void draw(Color c);
   void draw(float r, float g, float b);
@@ -30,7 +31,9 @@ class Polyhedron {
   void scale(float alpha, float beta, float gamma);
   void scale(float alpha);
   void translate(float x_offset, float y_offset, float z_offset);
-
+  void rotate(Point_3D p1, Point_3D p2, float angle);
+  static Point_3D minus(Point_3D p1, Point_3D p2); 
+  static Point_3D unitVector(Point_3D p);
 
 };
 

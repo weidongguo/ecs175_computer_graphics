@@ -79,7 +79,6 @@ void Polygon::scale(float alpha, float beta){
   setCentroid();//set the new centroid
 }
 
-#define PI 3.1415926
 void Polygon::rotate(float alpha){ //alpha is the angle
   isRasterized?rasterize(graph->background_color):draw(graph->background_color); // clear the original polygon from the pixel buffer
 

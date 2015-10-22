@@ -71,6 +71,19 @@ void Polyhedron::draw(float r, float g, float b){
   }
 }
 
+void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){
+    int scaleX = graphs[1]->window_width, 
+        scaleY = graphs[1]->window_height;
+    
+    scaleX = scaleY = MIN(scaleX,scaleY);
+
+    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,r,g,b);
+    //xz-plane
+    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, r, g,b);
+    //yz-plane
+    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b);
+}
+
 void Polyhedron::erase(){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
   scaleX = scaleY = MIN(scaleX,scaleY);
@@ -202,4 +215,54 @@ void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
 
   setCentroid(); // set the enw centroid after translating
 }
+
+void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
+  drawLine(p1, p2, 1, 0 , 0);   
+  Point_3D dl = minus(p1, p2);  
+  dl = unitVector(dl);
+
+  float Tx = p1.x,
+        Ty = p1.y,
+        Tz = p1.z,
+        dx = dl.x,
+        dy = dl.y,
+        dz = dl.z,
+        l = sqrt( dy*dy + dz * dz),
+        dy_l = dy/l,
+        dz_l = dz/l,
+        cosAlpha = cos(angle * PI / 180),
+        sinAlpha = sin(angle * PI / 180),
+        x, y , z, 
+        newX,
+        newY,
+        newZ;
+        
+        for(int i = 0 ; i < numberOfPoints; i++){
+          x = listOfPoints[i].x;
+          y = listOfPoints[i].y;
+          z = listOfPoints[i].z;
+
+          newX = Tx + Ty*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) - Tz*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) - Tx*(dx*dx + cosAlpha*l*l) - y*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) + z*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) + x*(dx*dx + cosAlpha*l*l); 
+
+          newY = Ty - Ty*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l * dy_l * l * l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + Tz*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + y*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l *dy_l *l*l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - z*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - Tx*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l) + x*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l); 
+        
+          newZ = Tz - Tz*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) - Ty*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + z*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + y*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + Tx*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l) - x*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l);
+          
+          listOfPoints[i].x = newX;
+          listOfPoints[i].y = newY;
+          listOfPoints[i].z = newZ;
+        }
+
+        setCentroid();
+}
+
+Point_3D Polyhedron:: minus(Point_3D p1, Point_3D p2){
+  return { p2.x - p1.x, p2.y-p1.y, p2.z - p1.z };
+}
+
+Point_3D Polyhedron:: unitVector(Point_3D p){
+  float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
+  return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
+}
+
 

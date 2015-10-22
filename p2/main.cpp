@@ -9,6 +9,7 @@
 
 float *PixelBuffer; // global pixel buffer
 Polygon **globalPolygons;
+Polyhedron **globalPolyhedra;
 Graph *globalGraphs[4];
 std::string input_buffer;
 Line *globalLine[2]; //one for demonstrating dda, the other one for demonstrating bresenham
@@ -79,18 +80,18 @@ int main(int argc, char *argv[]){
   globalGraphs[3] = &subGraph3;
 
   Polyhedron *polyhedra[window.numberOfPolyhedra];
+  globalPolyhedra = polyhedra;
   DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
   
   float delta, xMin, yMin, zMin;
-  for(int i = 0 ; i < window.numberOfPolyhedra; i++){
+  for(int i = 0 ; i < window.numberOfPolyhedra ; i++){
     polyhedra[i]->printAttributes();
     Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
     polyhedra[i]->draw();
   }
-  polyhedra[0]->scale(1);
-  polyhedra[0]->translate(0, 2, 0);
+  polyhedra[0]->rotate({0,0,0} , {1, 1, 1}, 30);
   updateScreen(polyhedra);
   
   //callback registration:
@@ -203,16 +204,13 @@ void callback_keyboard(unsigned char key, int x, int y){
   switch(key){ // control commands
     case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break; //translation
     case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
-    case 'r': globalPolygons[window.selectedObject]->rotate(window.tf.rotation_angle); break; //rotation
+    case 'r': globalPolyhedra[window.selectedObject]->rotate({0, 0,0}, {1, 1, 1}, 2); break; //rotation
     case 'c': isClipping = true; break; //clipping
     case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
     default: return;
   }
-  if(isClipping)
-    globalPolygons[window.selectedObject]->clip(window.cr); 
-  else{ 
-    globalPolygons[window.selectedObject]->rasterize();
-  }
+  
+  updateScreen(globalPolyhedra);
 
   glutPostRedisplay();
 }
