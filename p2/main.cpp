@@ -27,6 +27,7 @@ void callback_subdisplay3();
 void callback_menu(int state);
 void createMenu();
 void windowInit(Window *window);
+void updateScreen(Polyhedron **polyhedra);
 
 int main(int argc, char *argv[]){
   glutInit(&argc, argv); //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
@@ -88,6 +89,10 @@ int main(int argc, char *argv[]){
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
     polyhedra[i]->draw();
   }
+  polyhedra[0]->scale(1);
+  polyhedra[0]->translate(0, 2, 0);
+  updateScreen(polyhedra);
+  
   //callback registration:
   glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 
@@ -284,4 +289,15 @@ void windowInit(Window *window){
   window->graphs = (void**)globalGraphs;
 }
 
+void updateScreen(Polyhedron **polyhedra){
+  float delta, xMin, yMin, zMin;
+  for(int i = 0 ; i < window.numberOfPolyhedra; i++){ // clear what we have before
+    polyhedra[i]->erase();
+  }
+  for(int i = 0; i < window.numberOfPolyhedra; i++){
+    Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+    polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
+    polyhedra[i]->draw();
+  }
+}
 

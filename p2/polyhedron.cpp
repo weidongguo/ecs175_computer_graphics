@@ -46,9 +46,14 @@ void Polyhedron::printAttributes(){
   printf("----------End of Polyhedron Attributes-----------------\n");
 
 }
-
-
 void Polyhedron::draw(){
+  draw(0.0, 0.0, 1.0);
+}
+void Polyhedron::draw(Color c){
+  draw(c.r, c.g, c.b);
+}
+
+void Polyhedron::draw(float r, float g, float b){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
   scaleX = scaleY = MIN(scaleX,scaleY);
   //scaleX = scaleY = 10; 
@@ -58,13 +63,35 @@ void Polyhedron::draw(){
     p1 = listOfPointsNDC[p1Index];
     p2 = listOfPointsNDC[p2Index];
     //xy-plane 
-    graphs[1]->drawLine( {p1.x * scaleX, p1.y*scaleY}, {p2.x*scaleX, p2.y*scaleY} ,0,0,1);
+    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,r,g,b);
     //xz-plane
-    graphs[2]->drawLine( {p1.x * scaleX,  p1.z *scaleY}, {p2.x*scaleX, p2.z*scaleY}, 0, 0,1);
+    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, r, g,b);
     //yz-plane
-    graphs[3]->drawLine( {p1.y * scaleX, p1.z *scaleY}, {p2.y*scaleX, p2.z *scaleY}, 0, 0, 1);
+    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b);
   }
 }
+
+void Polyhedron::erase(){
+  int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
+  scaleX = scaleY = MIN(scaleX,scaleY);
+  Color c; 
+  for(int i = 0 ; i < numberOfEdges; i++){
+    p1Index = listOfEdges[i].p1Index;
+    p2Index = listOfEdges[i].p2Index;
+    p1 = listOfPointsNDC[p1Index];
+    p2 = listOfPointsNDC[p2Index];
+    //xy-plane 
+    c = graphs[1]->background_color; 
+    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,c.r, c.g, c.b);
+    //xz-plane
+    c = graphs[2]->background_color;
+    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, c.r, c.g, c.b);
+    //yz-plane
+    c = graphs[3]->background_color;
+    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, c.r, c.g, c.b);
+  }
+}
+
 
 void Polyhedron::setNDC(float delta, float xMin, float yMin, float zMin){
   if(listOfPointsNDC != 0 && listOfPoints!=0){
@@ -136,3 +163,43 @@ void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, fl
   DPRINT("DELTA : %.2f\n xMin : %.2f\n yMin : %.2f\n zMin : %.2f\n", *delta, xMin, yMin, zMin);
 
 }
+
+void Polyhedron::scale(float alpha){
+  scale(alpha, alpha, alpha); //scale by the same factor for all 3 dimensions 
+}
+
+void Polyhedron::scale(float alpha, float beta, float gamma){
+  float Cx = centroid.x,
+        Cy = centroid.y,
+        Cz = centroid.z,
+        newX, newY, newZ, x, y, z;
+  for(int i = 0 ; i < numberOfPoints; i ++){
+    x = listOfPoints[i].x;
+    y = listOfPoints[i].y;
+    z = listOfPoints[i].z;
+
+    newX = Cx - Cx*alpha + alpha*x;
+    newY = Cy - Cy*beta + beta*y; 
+    newZ = Cz - Cz*gamma + gamma*z;
+
+    listOfPoints[i].x = newX;
+    listOfPoints[i].y = newY;
+    listOfPoints[i].z = newZ;
+  }
+  
+  setCentroid(); //  after transformation, there will be a new centroid for later use
+}
+void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
+  float  new_x, new_y, new_z;
+  for(int i = 0 ; i< numberOfPoints; i++){
+    new_x = listOfPoints[i].x + x_offset;
+    new_y = listOfPoints[i].y + y_offset;
+    new_z = listOfPoints[i].z + z_offset;
+    listOfPoints[i].x = new_x; 
+    listOfPoints[i].y = new_y;
+    listOfPoints[i].z = new_z;
+  }
+
+  setCentroid(); // set the enw centroid after translating
+}
+
