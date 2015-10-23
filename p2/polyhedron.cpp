@@ -62,6 +62,11 @@ void Polyhedron::draw(float r, float g, float b){
     p2Index = listOfEdges[i].p2Index;
     p1 = listOfPointsNDC[p1Index];
     p2 = listOfPointsNDC[p2Index];
+    
+    if( !(isNDC(p1) && isNDC(p2)) ){
+      printf("<>=======<> From Polyhedron::draw() : NDC is not valid\n");
+      return;
+    }
     //xy-plane 
     graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,r,g,b);
     //xz-plane
@@ -150,7 +155,7 @@ void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, fl
   xMax = xMin = listOfPoints[0].x;
   yMax = yMin = listOfPoints[0].y;
   zMax = zMin = listOfPoints[0].z;
-
+  DPRINT("INITIAL min max POINTS at findNDCParams %.2f, %.2f %.2f\n", xMax, yMax, zMax);
  //find master  max and min
   for(int  j = 0 ; j < numberOfPolyhedra; j++){
     listOfPoints = polyhedra[j]->listOfPoints; 
@@ -245,13 +250,20 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
         newY,
         newZ;
         
+        //special case: rotates about x-axis,  dy = 0 && dz == 0 implies l = 0. If l = 0, dy/l = undefined
+        //we can fix this general formula by setting dz_l = 1, dy_l = 0;
+        if( l == 0){
+          dz_l = 1;
+          dy_l = 0;
+        } // it means simply skips M21(rotate about x-axis), and go straight to M22(rotate-about y-axis), to get to into the b3(z_axis)
+
         for(int i = 0 ; i < numberOfPoints; i++){
           x = listOfPoints[i].x;
           y = listOfPoints[i].y;
           z = listOfPoints[i].z;
 
           newX = Tx + Ty*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) - Tz*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) - Tx*(dx*dx + cosAlpha*l*l) - y*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) + z*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) + x*(dx*dx + cosAlpha*l*l); 
-
+          DPRINT("new x after rotation: %.2f\n", newX);
           newY = Ty - Ty*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l * dy_l * l * l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + Tz*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + y*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l *dy_l *l*l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - z*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - Tx*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l) + x*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l); 
         
           newZ = Tz - Tz*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) - Ty*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + z*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + y*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + Tx*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l) - x*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l);

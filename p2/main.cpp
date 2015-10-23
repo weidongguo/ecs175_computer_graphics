@@ -134,7 +134,7 @@ void callback_menu(int state){
       printf("Window Size is %d x %d\n", window.width, window.height);
       printf("Clipping Region: xMin = %d, xMax = %d, yMin = %d, yMax = %d\n", window.cr.xMin, window.cr.xMax, window.cr.yMin, window.cr.yMax);
       printf("Rotation Angle: %.2f\n", window.tf.rotation_angle);
-      printf("Scale Factor: Alpha = %.2f,  Beta = %.2f\n", window.tf.scale_alpha, window.tf.scale_beta);
+      printf("Scale Factor: Alpha = %.2f\n", window.tf.scale_alpha);
       printf("Translation Factor: x = %.2f, y = %.2f, z = %.2f\n", window.tf.x_offset, window.tf.y_offset, window.tf.z_offset);
       printf("=================End of Status==================\n");
       break;
@@ -168,7 +168,7 @@ void callback_keyboard(unsigned char key, int x, int y){
           window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer); 
           break;
         case STATE_GRAB_DATA_SCALE_FACTORS:
-          parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta); 
+          //parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta); 
           break;
         case STATE_GRAB_DATA_TRANSLATION_FACTORS:
           //parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
@@ -286,12 +286,12 @@ void windowInit(Window *window){
   window->numberOfPolygons = 0;
   window->numberOfPolyhedra = 0;
   window->cr = { -200, 200, -200, 200};
-  window->tf = { 5, 5, 5, 1.2, 1.2, 5};
+  window->tf = { 3, 3, 3, 1.2, 3};
   window->state = STATE_GRAB_COMMANDS;
   window->inputBuffer = &input_buffer;
   window->graphs = (void**)globalGraphs;
-  window->pairOfPointsForRotAxis[0] = { -1.5, -1.5 , -1.5};
-  window->pairOfPointsForRotAxis[1] = { 1.5, 1.5, 1.5};
+  window->pairOfPointsForRotAxis[0] = { 0,0,0};
+  window->pairOfPointsForRotAxis[1] = { 1, 0,0};
 }
 
 void updateScreen(Polyhedron **polyhedra){
@@ -302,15 +302,16 @@ void updateScreen(Polyhedron **polyhedra){
     DPRINT("ERASED Polygon %d\n", i+1); 
   }
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+  
   for(int i = 0; i < window.numberOfPolyhedra -1; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     polyhedra[i]->draw();
   }
-  
-  //last one
+   //last one
   //draw the rotional axis - it's always the last polyhedron of the list of polyhedra ( not really a polyhedron, but rather a line living in 3d world)
   int indexOfRotAxis = window.numberOfPolyhedra-1;
   polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
   polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
+
 }
 

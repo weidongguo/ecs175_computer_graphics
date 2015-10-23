@@ -54,7 +54,6 @@ typedef struct{
   float y_offset;
   float z_offset;
   float scale_alpha;
-  float scale_beta;
   float rotation_angle;
 }Transformation;
 
