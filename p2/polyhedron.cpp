@@ -230,7 +230,6 @@ void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
 }
 
 void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
-  //drawLine(p1, p2, 1, 0 , 0);   
   Point_3D dl = minus(p1, p2);  
   dl = unitVector(dl);
 
@@ -261,9 +260,15 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
           x = listOfPoints[i].x;
           y = listOfPoints[i].y;
           z = listOfPoints[i].z;
-
+           
+          //formula obtained by doing M = M5 * M42 * M41 * M3 * M22 *M21 * M1  where M41 undo M22, M42 undo M21, M5 undo M1
+          //the matrix compuataion was done by hand with Matlab's help
+          //in the code, one can just use the final formula
+          //newX = M[at row 1];
+          //newY = M[at row 2];
+          //newZ = M[at row 3];
           newX = Tx + Ty*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) - Tz*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) - Tx*(dx*dx + cosAlpha*l*l) - y*(dz_l*l*sinAlpha - dx*dy_l*l + cosAlpha*dx*dy_l*l) + z*(dx*dz_l*l + dy_l*l*sinAlpha - cosAlpha*dx*dz_l*l) + x*(dx*dx + cosAlpha*l*l); 
-          DPRINT("new x after rotation: %.2f\n", newX);
+          
           newY = Ty - Ty*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l * dy_l * l * l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + Tz*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) + y*(dz_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dy_l *dy_l *l*l - dx*dy_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - z*(- dy_l*dz_l*l*l + dy_l*(cosAlpha*dz_l + dx*dy_l*sinAlpha) + dx*dz_l*(dz_l*sinAlpha - cosAlpha*dx*dy_l)) - Tx*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l) + x*(l*(dz_l*sinAlpha - cosAlpha*dx*dy_l) + dx*dy_l*l); 
         
           newZ = Tz - Tz*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) - Ty*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + z*(dy_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dz_l*dz_l*l*l + dx*dz_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + y*(dy_l*dz_l*l*l - dz_l*(cosAlpha*dy_l - dx*dz_l*sinAlpha) + dx*dy_l*(dy_l*sinAlpha + cosAlpha*dx*dz_l)) + Tx*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l) - x*(l*(dy_l*sinAlpha + cosAlpha*dx*dz_l) - dx*dz_l*l);
@@ -288,3 +293,9 @@ Point_3D Polyhedron:: unitVector(Point_3D p){
 bool Polyhedron::isNDC(Point_3D p){
   return !( p.x < 0 || p.x > 1 || p.y <0 || p.y > 1 || p.z < 0 || p.y >1);
 }
+
+void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints){
+  polyhedra[numberOfPolyhedra-1]->listOfPoints[0] = pairOfPoints[0];
+  polyhedra[numberOfPolyhedra-1]->listOfPoints[1] = pairOfPoints[1];
+}
+

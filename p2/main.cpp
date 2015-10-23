@@ -87,24 +87,22 @@ int main(int argc, char *argv[]){
   //in addition of the polyhedra read from the datafile:
   //add a  an rotional axis
   Edge edge = {0 , 1};
-  polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.pairOfPointsForRotAxis ,2, &edge, 1);
+  polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.tf.pairOfPointsForRotAxis ,2, &edge, 1);
 
-
+  
   float delta, xMin, yMin, zMin;
+  Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+  //first time showing the polyhedra;
   for(int i = 0 ; i < window.numberOfPolyhedra ; i++){
     polyhedra[i]->printAttributes();
-    Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
     polyhedra[i]->draw();
   }
-  
-  updateScreen(polyhedra);
   
   //callback registration:
   glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 
   createMenu();
-  
   
   glutSetCursor(GLUT_CURSOR_CROSSHAIR);
   glutMainLoop();
@@ -112,47 +110,54 @@ int main(int argc, char *argv[]){
 }
 
 void callback_menu(int state){
+  Point_3D p1, p2;
   switch(state){
-    case MENU_DRAW_DDA:
-      window.state = STATE_GRAB_DATA_DRAW_DDA;
-      printf("Please enter two points for line drawing using DDA (format <x0> <y0> <x1> <y1> e.g. 0 0 50 50 )\n");
-      break;
-    case MENU_DRAW_BRESENHAM:
-      printf("Please enter two points for line drawing using BRESENHAM (format <x0> <y0> <x1> <y1> e.g. 0 0 50 50 )\n");
-      window.state = STATE_GRAB_DATA_DRAW_BRESENHAM; 
-      break;
-    case MENU_CLIP_DDA:
-      if( globalLine[0] != 0 )
-        globalLine[0]->clip(window.cr);
-      break;
-    case MENU_CLIP_BRESENHAM:
-      if( globalLine[1] !=0 )
-        globalLine[1]->clip(window.cr);
-      break;
     case MENU_STATUS:
       printf("======================Status====================\n");
       printf("Window Size is %d x %d\n", window.width, window.height);
-      printf("Clipping Region: xMin = %d, xMax = %d, yMin = %d, yMax = %d\n", window.cr.xMin, window.cr.xMax, window.cr.yMin, window.cr.yMax);
-      printf("Rotation Angle: %.2f\n", window.tf.rotation_angle);
+      p1 = window.tf.pairOfPointsForRotAxis[0];
+      p2 = window.tf.pairOfPointsForRotAxis[1];
+      printf("Rotation Axis (%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f) Angle: %.2f\n", p1.x, p1.y, p1.z, p2.x, p2.y, p2.z, window.tf.rotation_angle);
+
       printf("Scale Factor: Alpha = %.2f\n", window.tf.scale_alpha);
       printf("Translation Factor: x = %.2f, y = %.2f, z = %.2f\n", window.tf.x_offset, window.tf.y_offset, window.tf.z_offset);
       printf("=================End of Status==================\n");
       break;
     case MENU_GRAB_ROTATION_ANGLE:
-      window.state = STATE_GRAB_DATA_ROTATION_ANGLE;
+      //window.state = STATE_GRAB_DATA_ROTATION_ANGLE;
+      printf("Please enter the two points defining the rotation axis\n");
+      printf("Point 1's x: ");
+      scanf("%f", &window.tf.pairOfPointsForRotAxis[0].x); 
+      printf("Point 1's y: ");
+      scanf("%f", &window.tf.pairOfPointsForRotAxis[0].y); 
+      printf("Point 1's z: ");
+      scanf("%f", &window.tf.pairOfPointsForRotAxis[0].z); 
+      printf("Point 2's x: ");
+      scanf("%f", &window.tf.pairOfPointsForRotAxis[1].x); 
+      printf("Point 2's y: ");
+      scanf("%f",&window.tf.pairOfPointsForRotAxis[1].y); 
+      printf("Point 2's z: ");
+      scanf("%f", &window.tf.pairOfPointsForRotAxis[1].z); 
       printf("Please enter the rotation angle ( format <float> ; e.g. 6.5):\n"); 
+      scanf("%f", &window.tf.rotation_angle);
+      Polyhedron::updateRotationAxis(globalPolyhedra, window.numberOfPolyhedra, window.tf.pairOfPointsForRotAxis);
+      updateScreen(globalPolyhedra);
       break;
     case MENU_GRAB_SCALE_FACTORS:
-      window.state = STATE_GRAB_DATA_SCALE_FACTORS;
-      printf("Please enter the scale factors ( format <float><space><float> ; e.g. 1.2 1.2 ):\n");
+      //window.state = STATE_GRAB_DATA_SCALE_FACTORS;
+      printf("Please enter the scale factors ( format <float> ; e.g. 1.2 ):\n");
+      scanf("%f", &window.tf.scale_alpha); 
+      printf("Scale factor %.2f recorded!\n", window.tf.scale_alpha);
       break;
     case MENU_GRAB_TRANSLATION_FACTORS:
-      window.state = STATE_GRAB_DATA_TRANSLATION_FACTORS; // will be used in callback_keyboard()
-      printf("Please enter the translation factors ( format <int><space><int> ; e.g. 30 -40 ):\n");
-      break;
-    case MENU_GRAB_CLIP_REGION:
-      window.state = STATE_GRAB_DATA_CLIP_REGION;
-      printf("Please enter the xMin xMax yMin yMax for the clip region ( e.g. -150 150 -200 200 ):\n"); 
+      //window.state = STATE_GRAB_DATA_TRANSLATION_FACTORS; // will be used in callback_keyboard()
+      printf("Please enter the translation factor x: ");
+      scanf("%f", &window.tf.x_offset);
+      printf("Please enter the translation factor y: ");
+      scanf("%f", &window.tf.y_offset);
+      printf("Please enter the translation factor z: ");
+      scanf("%f", &window.tf.z_offset);
+      printf("Translation factors (%.2f, %.2f, %.2f) recorded!\n", window.tf.x_offset, window.tf.y_offset, window.tf.z_offset);
       break;
   }
 }
@@ -210,7 +215,7 @@ void callback_keyboard(unsigned char key, int x, int y){
   switch(key){ // control commands
     case 't': globalPolyhedra[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset, window.tf.z_offset); break; //translation
     case 'z': globalPolyhedra[window.selectedObject]->scale(window.tf.scale_alpha); break; //scale
-    case 'r': globalPolyhedra[window.selectedObject]->rotate(window.pairOfPointsForRotAxis[0], window.pairOfPointsForRotAxis[1],window.tf.rotation_angle); break; //rotation
+    case 'r': globalPolyhedra[window.selectedObject]->rotate(window.tf.pairOfPointsForRotAxis[0], window.tf.pairOfPointsForRotAxis[1],window.tf.rotation_angle); break; //rotation
     case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
     default: return;
   }
@@ -253,30 +258,14 @@ void callback_subdisplay3(){
 
 //create the pop of menu that can be triggered by right cliking within the opengl window
 void createMenu(void){     
-  int subSubMenuId_lineDraw = glutCreateMenu(callback_menu); 
-  glutAddMenuEntry("DDA", MENU_DRAW_DDA);
-  glutAddMenuEntry("Bresenham", MENU_DRAW_BRESENHAM);
-
-  int subSubMenuId_lineClip = glutCreateMenu( callback_menu); 
-  glutAddMenuEntry("the line drew using DDA", MENU_CLIP_DDA);
-  glutAddMenuEntry("the line drew using Bresenham", MENU_CLIP_BRESENHAM);
-
-
-  int subMenuId_line = glutCreateMenu(callback_menu);
-  glutAddSubMenu("Draw", subSubMenuId_lineDraw); 
-  glutAddSubMenu("Clip", subSubMenuId_lineClip);
-
   int subMenuId_grabInput = glutCreateMenu(callback_menu);
-  glutAddMenuEntry("Rotation Angle", MENU_GRAB_ROTATION_ANGLE);
+  glutAddMenuEntry("Rotation Axis & Angle", MENU_GRAB_ROTATION_ANGLE);
   glutAddMenuEntry("Scaling Factors", MENU_GRAB_SCALE_FACTORS);
   glutAddMenuEntry("Translation Factors", MENU_GRAB_TRANSLATION_FACTORS);
-  glutAddMenuEntry("Clip Region", MENU_GRAB_CLIP_REGION); 
 
   int menuId = glutCreateMenu(callback_menu);
-  glutAddSubMenu("Line", subMenuId_line);   
   glutAddMenuEntry("Status", MENU_STATUS);
   glutAddSubMenu("Grab Input", subMenuId_grabInput); 
-
   glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
@@ -290,8 +279,8 @@ void windowInit(Window *window){
   window->state = STATE_GRAB_COMMANDS;
   window->inputBuffer = &input_buffer;
   window->graphs = (void**)globalGraphs;
-  window->pairOfPointsForRotAxis[0] = { 0,0,0};
-  window->pairOfPointsForRotAxis[1] = { 1, 0,0};
+  window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
+  window->tf.pairOfPointsForRotAxis[1] = { 1,0,0};
 }
 
 void updateScreen(Polyhedron **polyhedra){

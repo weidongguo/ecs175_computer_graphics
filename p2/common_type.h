@@ -55,6 +55,7 @@ typedef struct{
   float z_offset;
   float scale_alpha;
   float rotation_angle;
+  Point_3D pairOfPointsForRotAxis[2];
 }Transformation;
 
 typedef struct{
@@ -68,7 +69,6 @@ typedef struct{
   int state;
   std::string *inputBuffer;
   void **graphs;
-  Point_3D pairOfPointsForRotAxis[2];
 } Window;
 
 #endif

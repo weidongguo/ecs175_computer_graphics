@@ -1,7 +1,8 @@
+Project 2
 1. Name:      Weidong Guo
    Username:  weidongg
    Email:     wdguo@ucdavis.edu
-   
+    
    Important Note: My origin is at the center of the openGl window. If the dimension is 1000x500, then x can take value from -500 to 500
                    and y can take value from -250 to 250. If the objects are drawn out side of the bounds, it might get a seg fault.
                    Similarly, if user scale, translate, or rotate in away that the x or y value is out of bound, it might get a seg fault or weird
