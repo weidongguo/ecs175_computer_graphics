@@ -50,8 +50,9 @@ typedef struct{
 }ClipRegion;
 
 typedef struct{
-  int x_offset;
-  int y_offset;
+  float x_offset;
+  float y_offset;
+  float z_offset;
   float scale_alpha;
   float scale_beta;
   float rotation_angle;

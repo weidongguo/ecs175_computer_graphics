@@ -135,7 +135,7 @@ void callback_menu(int state){
       printf("Clipping Region: xMin = %d, xMax = %d, yMin = %d, yMax = %d\n", window.cr.xMin, window.cr.xMax, window.cr.yMin, window.cr.yMax);
       printf("Rotation Angle: %.2f\n", window.tf.rotation_angle);
       printf("Scale Factor: Alpha = %.2f,  Beta = %.2f\n", window.tf.scale_alpha, window.tf.scale_beta);
-      printf("Translation Factor: x = %d, y = %d\n", window.tf.x_offset, window.tf.y_offset);
+      printf("Translation Factor: x = %.2f, y = %.2f, z = %.2f\n", window.tf.x_offset, window.tf.y_offset, window.tf.z_offset);
       printf("=================End of Status==================\n");
       break;
     case MENU_GRAB_ROTATION_ANGLE:
@@ -171,7 +171,7 @@ void callback_keyboard(unsigned char key, int x, int y){
           parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta); 
           break;
         case STATE_GRAB_DATA_TRANSLATION_FACTORS:
-          parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
+          //parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
           break;
         case STATE_GRAB_DATA_CLIP_REGION:
           parseBufferForClipRegion(window.inputBuffer, &window.cr);
@@ -203,15 +203,14 @@ void callback_keyboard(unsigned char key, int x, int y){
   }
 
   if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
-    window.selectedObject = key % window.numberOfPolygons;
+    window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
     return;
   }
   char cinBuffer[256];
   switch(key){ // control commands
-    case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break; //translation
-    case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
-    case 'r': globalPolyhedra[window.selectedObject]->rotate(window.pairOfPointsForRotAxis[0], window.pairOfPointsForRotAxis[1], 2); break; //rotation
-    case 'c': isClipping = true; break; //clipping
+    case 't': globalPolyhedra[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset, window.tf.z_offset); break; //translation
+    case 'z': globalPolyhedra[window.selectedObject]->scale(window.tf.scale_alpha); break; //scale
+    case 'r': globalPolyhedra[window.selectedObject]->rotate(window.pairOfPointsForRotAxis[0], window.pairOfPointsForRotAxis[1],window.tf.rotation_angle); break; //rotation
     case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
     default: return;
   }
@@ -287,7 +286,7 @@ void windowInit(Window *window){
   window->numberOfPolygons = 0;
   window->numberOfPolyhedra = 0;
   window->cr = { -200, 200, -200, 200};
-  window->tf = { 20, 20, 1.2, 1.2, 5};
+  window->tf = { 5, 5, 5, 1.2, 1.2, 5};
   window->state = STATE_GRAB_COMMANDS;
   window->inputBuffer = &input_buffer;
   window->graphs = (void**)globalGraphs;
