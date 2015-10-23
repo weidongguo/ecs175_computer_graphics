@@ -3,6 +3,7 @@
 
 #include "common_type.h"
 #include "graph.h"
+#include <fstream>
 
 class Polyhedron {
   Point_3D* listOfPoints;
@@ -34,7 +35,8 @@ class Polyhedron {
   void rotate(Point_3D p1, Point_3D p2, float angle);
   static Point_3D minus(Point_3D p1, Point_3D p2); 
   static Point_3D unitVector(Point_3D p);
-  static void updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints);
+  static void updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints);//rot axis is the last element of polyhedra
+  static void savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename);
 
 };
 

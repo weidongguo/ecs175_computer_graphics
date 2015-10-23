@@ -28,6 +28,7 @@ void callback_subdisplay3();
 void callback_menu(int state);
 void createMenu();
 void windowInit(Window *window);
+void drawPolyhedra(Polyhedron **polyhedra);
 void updateScreen(Polyhedron **polyhedra);
 
 int main(int argc, char *argv[]){
@@ -89,16 +90,8 @@ int main(int argc, char *argv[]){
   Edge edge = {0 , 1};
   polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.tf.pairOfPointsForRotAxis ,2, &edge, 1);
 
-  
-  float delta, xMin, yMin, zMin;
-  Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
-  //first time showing the polyhedra;
-  for(int i = 0 ; i < window.numberOfPolyhedra ; i++){
-    polyhedra[i]->printAttributes();
-    polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
-    polyhedra[i]->draw();
-  }
-  
+  drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
+    
   //callback registration:
   glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 
@@ -164,49 +157,6 @@ void callback_menu(int state){
 
 void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
-  bool isClipping = false; Point p1, p2;
-  
-  if( isGrabbingData(window.state) ){
-    if(key == '\n' || key =='\r'){ // if press ENTER, process the input data
-      switch(window.state){
-        case STATE_GRAB_DATA_ROTATION_ANGLE:
-          window.tf.rotation_angle = parseBufferForRotationAngle(window.inputBuffer); 
-          break;
-        case STATE_GRAB_DATA_SCALE_FACTORS:
-          //parseBufferForScaleFactors(window.inputBuffer, &window.tf.scale_alpha, &window.tf.scale_beta); 
-          break;
-        case STATE_GRAB_DATA_TRANSLATION_FACTORS:
-          //parseBufferForTranslationFactors(window.inputBuffer, &window.tf.x_offset, &window.tf.y_offset); 
-          break;
-        case STATE_GRAB_DATA_CLIP_REGION:
-          parseBufferForClipRegion(window.inputBuffer, &window.cr);
-          break;
-        case STATE_GRAB_DATA_DRAW_DDA:
-          parseBufferForLine(window.inputBuffer, &p1, &p2);
-          if(globalLine[0] != 0)
-            delete globalLine[0]; // free the previous line
-          globalLine[0] = new Line( p1, p2, globalGraphs[0]);
-          globalLine[0] -> draw(DDA); 
-          break;
-        case STATE_GRAB_DATA_DRAW_BRESENHAM: 
-          parseBufferForLine(window.inputBuffer, &p1, &p2); 
-          if(globalLine[1] != 0)
-            delete globalLine[1];
-          globalLine[1] = new Line( p1, p2, globalGraphs[0]);
-          globalLine[1]->draw(BRESENHAM); 
-          break;
-      } 
-      window.state = STATE_GRAB_COMMANDS; // resume to grab commands mode
-      window.inputBuffer->clear(); //clear buffer so it'll be ready for next time
-      std::cout << "\nData Recorded!\nBack to Command Mode."<< std::endl;
-    }
-    else{ // else continue storing input in a buffer
-      std::cout << key; std::cout.flush(); //echo to the console
-      *(window.inputBuffer) += key; //storing part
-    }
-    return;
-  }
-
   if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
     window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
     return;
@@ -216,7 +166,7 @@ void callback_keyboard(unsigned char key, int x, int y){
     case 't': globalPolyhedra[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset, window.tf.z_offset); break; //translation
     case 'z': globalPolyhedra[window.selectedObject]->scale(window.tf.scale_alpha); break; //scale
     case 'r': globalPolyhedra[window.selectedObject]->rotate(window.tf.pairOfPointsForRotAxis[0], window.tf.pairOfPointsForRotAxis[1],window.tf.rotation_angle); break; //rotation
-    case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
+    case 's': Polyhedron::savePolyhedraToFile(globalPolyhedra, &window, "output"); break;// saving the polygons 
     default: return;
   }
   
@@ -270,8 +220,8 @@ void createMenu(void){
 }
 
 void windowInit(Window *window){
-  window->width = 1000;
-  window->height = 500;
+  window->width = 800;
+  window->height = 600;
   window->numberOfPolygons = 0;
   window->numberOfPolyhedra = 0;
   window->cr = { -200, 200, -200, 200};
@@ -280,16 +230,20 @@ void windowInit(Window *window){
   window->inputBuffer = &input_buffer;
   window->graphs = (void**)globalGraphs;
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
-  window->tf.pairOfPointsForRotAxis[1] = { 1,0,0};
+  window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
 }
 
 void updateScreen(Polyhedron **polyhedra){
-  float delta, xMin, yMin, zMin;
   for(int i = 0 ; i < window.numberOfPolyhedra; i++){ // clear what we have before
     DPRINT("ERASING Polygon %d ...\n", i+1); 
     polyhedra[i]->erase(); // make sure that there are something for it to be erased
     DPRINT("ERASED Polygon %d\n", i+1); 
   }
+  drawPolyhedra(polyhedra);  
+}
+
+void drawPolyhedra(Polyhedron **polyhedra){
+  float delta, xMin, yMin, zMin;
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
   
   for(int i = 0; i < window.numberOfPolyhedra -1; i++){ // all the polyhedra EXCEPT for the last one
@@ -301,6 +255,5 @@ void updateScreen(Polyhedron **polyhedra){
   int indexOfRotAxis = window.numberOfPolyhedra-1;
   polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
   polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
-
 }
 

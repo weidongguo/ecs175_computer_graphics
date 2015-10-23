@@ -88,7 +88,36 @@ void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){
     //yz-plane
     graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b); */
 }
+void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename){
+  int numberOfPoints, numberOfEdges, numberOfPolyhedra = window->numberOfPolyhedra-1, p1Index1, p2Index2 ; float x, y, z;
 
+  printf("Saving polyhedra to a file: %s\n...\nDone.\n", filename); fflush(stdout);//
+  std::ofstream ofs(filename, std::ofstream::out);
+  ofs << window->width << " " << window->height << "\n\n";  //dimension of opengl window <width><space><height>
+  ofs << numberOfPolyhedra << "\n"; // number of polyhedra <numberOfPolyhedra>
+  
+  for(int i = 0 ; i < numberOfPolyhedra ; i++){
+    ofs << "\n" ; 
+    numberOfPoints = polyhedra[i]->numberOfPoints;
+    ofs << numberOfPoints << "\n";  // <numberOfPoints>
+    for(int j = 0 ; j < numberOfPoints; j++){
+      x = polyhedra[i]->listOfPoints[j].x;
+      y = polyhedra[i]->listOfPoints[j].y;
+      z = polyhedra[i]->listOfPoints[j].z;
+      ofs << x << " " << y << " " << z << "\n"; // <x> <y> <z>
+    }
+
+    numberOfEdges = polyhedra[i]->numberOfEdges;
+    ofs << numberOfEdges << "\n";
+    for(int j = 0 ; j < numberOfEdges; j++){
+      p1Index1 = polyhedra[i]->listOfEdges[j].p1Index + 1; // name edge starting from 1
+      p2Index2 = polyhedra[i]->listOfEdges[j].p2Index + 1;
+      ofs << p1Index1 << " " << p2Index2 << "\n";
+    }
+  }
+
+  ofs.close();
+}
 void Polyhedron::erase(){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
   scaleX = scaleY = MIN(scaleX,scaleY);

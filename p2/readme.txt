@@ -1,4 +1,4 @@
-Project 2
+Project 2 [outdated, straight copy from project 1]
 1. Name:      Weidong Guo
    Username:  weidongg
    Email:     wdguo@ucdavis.edu
