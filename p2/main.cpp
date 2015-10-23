@@ -79,11 +79,17 @@ int main(int argc, char *argv[]){
   subGraph3.fillScreen(0.5,0.5,0.5);
   globalGraphs[3] = &subGraph3;
 
-  Polyhedron *polyhedra[window.numberOfPolyhedra];
+  Polyhedron *polyhedra[window.numberOfPolyhedra+1];
   globalPolyhedra = polyhedra;
   DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
   
+  //in addition of the polyhedra read from the datafile:
+  //add a  an rotional axis
+  Edge edge = {0 , 1};
+  polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.pairOfPointsForRotAxis ,2, &edge, 1);
+
+
   float delta, xMin, yMin, zMin;
   for(int i = 0 ; i < window.numberOfPolyhedra ; i++){
     polyhedra[i]->printAttributes();
@@ -91,7 +97,7 @@ int main(int argc, char *argv[]){
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin); 
     polyhedra[i]->draw();
   }
-  polyhedra[0]->rotate({0,0,0} , {1, 1, 1}, 30);
+  
   updateScreen(polyhedra);
   
   //callback registration:
@@ -204,7 +210,7 @@ void callback_keyboard(unsigned char key, int x, int y){
   switch(key){ // control commands
     case 't': globalPolygons[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset); break; //translation
     case 'z': globalPolygons[window.selectedObject]->scale(window.tf.scale_alpha, window.tf.scale_beta); break; //scale
-    case 'r': globalPolyhedra[window.selectedObject]->rotate({0, 0,0}, {1, 1, 1}, 2); break; //rotation
+    case 'r': globalPolyhedra[window.selectedObject]->rotate(window.pairOfPointsForRotAxis[0], window.pairOfPointsForRotAxis[1], 2); break; //rotation
     case 'c': isClipping = true; break; //clipping
     case 's': Polygon::savePolygonsToFile(globalPolygons, &window, "output"); break;// saving the polygons 
     default: return;
@@ -285,17 +291,27 @@ void windowInit(Window *window){
   window->state = STATE_GRAB_COMMANDS;
   window->inputBuffer = &input_buffer;
   window->graphs = (void**)globalGraphs;
+  window->pairOfPointsForRotAxis[0] = { -1.5, -1.5 , -1.5};
+  window->pairOfPointsForRotAxis[1] = { 1.5, 1.5, 1.5};
 }
 
 void updateScreen(Polyhedron **polyhedra){
   float delta, xMin, yMin, zMin;
   for(int i = 0 ; i < window.numberOfPolyhedra; i++){ // clear what we have before
-    polyhedra[i]->erase();
+    DPRINT("ERASING Polygon %d ...\n", i+1); 
+    polyhedra[i]->erase(); // make sure that there are something for it to be erased
+    DPRINT("ERASED Polygon %d\n", i+1); 
   }
-  for(int i = 0; i < window.numberOfPolyhedra; i++){
-    Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+  Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
+  for(int i = 0; i < window.numberOfPolyhedra -1; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     polyhedra[i]->draw();
   }
+  
+  //last one
+  //draw the rotional axis - it's always the last polyhedron of the list of polyhedra ( not really a polyhedron, but rather a line living in 3d world)
+  int indexOfRotAxis = window.numberOfPolyhedra-1;
+  polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
+  polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
 }
 

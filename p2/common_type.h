@@ -68,6 +68,7 @@ typedef struct{
   int state;
   std::string *inputBuffer;
   void **graphs;
+  Point_3D pairOfPointsForRotAxis[2];
 } Window;
 
 #endif

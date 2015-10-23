@@ -63,16 +63,16 @@ void Polyhedron::draw(float r, float g, float b){
     p1 = listOfPointsNDC[p1Index];
     p2 = listOfPointsNDC[p2Index];
     //xy-plane 
-    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,r,g,b);
+    graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,r,g,b);
     //xz-plane
-    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, r, g,b);
+    graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, r, g,b);
     //yz-plane
-    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b);
+    graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, r, g, b);
   }
 }
 
 void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){
-    int scaleX = graphs[1]->window_width, 
+    /*int scaleX = graphs[1]->window_width, 
         scaleY = graphs[1]->window_height;
     
     scaleX = scaleY = MIN(scaleX,scaleY);
@@ -81,7 +81,7 @@ void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){
     //xz-plane
     graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, r, g,b);
     //yz-plane
-    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b);
+    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b); */
 }
 
 void Polyhedron::erase(){
@@ -93,15 +93,23 @@ void Polyhedron::erase(){
     p2Index = listOfEdges[i].p2Index;
     p1 = listOfPointsNDC[p1Index];
     p2 = listOfPointsNDC[p2Index];
+   
+    if( !(isNDC(p1) && isNDC(p2)) ){
+      printf("<>=======<> From Polyhedron::erase() : NDC is not valid\n");
+      return;
+    }
     //xy-plane 
     c = graphs[1]->background_color; 
-    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,c.r, c.g, c.b);
+    graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,c.r,c.g,c.b);
+    
     //xz-plane
     c = graphs[2]->background_color;
-    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, c.r, c.g, c.b);
+    graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
+    
     //yz-plane
     c = graphs[3]->background_color;
-    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, c.r, c.g, c.b);
+    graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
+
   }
 }
 
@@ -217,7 +225,7 @@ void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
 }
 
 void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
-  drawLine(p1, p2, 1, 0 , 0);   
+  //drawLine(p1, p2, 1, 0 , 0);   
   Point_3D dl = minus(p1, p2);  
   dl = unitVector(dl);
 
@@ -265,4 +273,6 @@ Point_3D Polyhedron:: unitVector(Point_3D p){
   return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
 }
 
-
+bool Polyhedron::isNDC(Point_3D p){
+  return !( p.x < 0 || p.x > 1 || p.y <0 || p.y > 1 || p.z < 0 || p.y >1);
+}
