@@ -1,4 +1,4 @@
-ARG = -lglut -lGL -lm -g -Wall -DDEBUG_PRINT 
+ARG = -lglut -lGL -lm -g -Wall #-DDEBUG_PRINT 
 
 a.out: main.o graph.o polygon.o line.o user_io.o
 	g++ $(ARG) main.o graph.o polygon.o line.o user_io.o

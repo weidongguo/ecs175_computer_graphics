@@ -25,7 +25,7 @@ int main(int argc, char *argv[]){
   glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   glutInitWindowPosition(100, 100); 
   int windowID = glutCreateWindow("First Window");
-  
+ 
   glClearColor(0,0,0,0); 
   glutDisplayFunc(callback_display);
   
@@ -41,6 +41,15 @@ int main(int argc, char *argv[]){
   int s[] = {0, 0};
   int e[] = {50, 220};
   drawLine(s,e, 1,0,1); 
+
+int m_Width = 100, m_Height = 100;
+glViewport ( 0, 0, m_Width, m_Height );
+glMatrixMode ( GL_PROJECTION );
+glLoadIdentity ();
+glOrtho ( 0.0f, m_Width, 0.0, m_Height, 1.0, -1.0 );
+glMatrixMode ( GL_MODELVIEW );  
+glLoadIdentity ();
+
   glutMainLoop();
   return 0;
 }

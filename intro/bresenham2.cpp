@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
 
   glutDisplayFunc(callback_display);
   
-  //std::fill(PixelBuffer, PixelBuffer+WINDOW_WIDTH*WINDOW_HEIGHT*3, 0.9); 
+  std::fill(PixelBuffer, PixelBuffer+WINDOW_WIDTH*WINDOW_HEIGHT*3, 0.9); 
   drawPixel(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 1, 1, 1 );
   Point p = {0, 100};
   Point q = {WINDOW_WIDTH/2, 0};
