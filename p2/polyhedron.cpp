@@ -93,7 +93,7 @@ void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, con
 
   printf("Saving polyhedra to a file: %s\n...\nDone.\n", filename); fflush(stdout);//
   std::ofstream ofs(filename, std::ofstream::out);
-  ofs << window->width << " " << window->height << "\n\n";  //dimension of opengl window <width><space><height>
+  
   ofs << numberOfPolyhedra << "\n"; // number of polyhedra <numberOfPolyhedra>
   
   for(int i = 0 ; i < numberOfPolyhedra ; i++){

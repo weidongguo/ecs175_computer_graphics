@@ -31,12 +31,6 @@ void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*nu
   char buffer[sizeOfBuffer], *charPtr; 
   
   //prime the pump
-  ifs->getline(buffer, sizeOfBuffer); // first line contains window dimension info
-  charPtr = strtok(buffer, " ");
-  *window_width = atoi(charPtr);
-  charPtr =strtok(0, "\0 ");
-  *window_height = atoi(charPtr);
-  ifs->getline(buffer, sizeOfBuffer); //skip a line
   ifs->getline(buffer, sizeOfBuffer); // contains number of polygon
   *numberOfObjects = atoi(buffer);
   DPRINT("window_width: %d, window_height: %d, numberOfPolygons: %d\n", *window_width, *window_height, *numberOfPolygons);

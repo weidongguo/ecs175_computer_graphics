@@ -25,13 +25,8 @@ Project 2
       The bottom-right is the *main window* 
 
    b. more on datafile:
-      The 1st line of the datafile contains the dimension of the openGl window(so called "viewport on screen" as mentioned in assignemt sheet) 
-      and the rest of lines specify the polyhedra
 
       For example,
-
-      800 600                          dimension of the opengl window
-
       2                                number of polyhedra(objects)
 
       4                                4 points (for the 1st object)
