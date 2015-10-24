@@ -21,7 +21,7 @@ int Graph::drawPixel(int x, int y, float r, float g, float b){
 }
 
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){
-  drawLine(p1,p2,r,g,b,BRESENHAM);
+  return drawLine(p1,p2,r,g,b,BRESENHAM);
 }
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ 
   if(p1.x == p2.x){ //vertical line

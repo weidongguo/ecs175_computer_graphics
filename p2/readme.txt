@@ -2,7 +2,13 @@ Project 2
 1. Name:      Weidong Guo
    Username:  weidongg
    Email:     wdguo@ucdavis.edu
-  
+
+   3D Translation                                           polyhedron.cpp line 247 - 259
+   3D Rotation About an Arbitray Axis                       polyhedron.cpp line 261 - 311
+   3D Scalling                                              polyhedron.cpp line 225 - 246
+   Orthnographic projections(xy-plane, xz-plane, yz-plane)  polyhedron.cpp line 56  - 77
+   NDC (Normalized Device Cordinates)                       polyhedron.cpp line 151 - 220
+
 2. To compile the source code, please run the command "make" since I have a makefile ready
 3. To execute the program, please type a.out
    a. You will then be prompted to enter a input file
@@ -67,7 +73,8 @@ Project 2
    user to choose from getting input for rotation, scale, or translation.
    If anyone of those is selected, there will be a prompt displayed in the console asking for input. There is also a format description and an
    example input next to the prompt to give an idea what is the appropriate format of the input.
-   User can enter the input from the console. 
+   If user do a right-click on the *main window*, then hover the mouse at Grab Input, then click on Translation Factors,
+   a prompt will be displayed at the console.
     
    For example,
   
@@ -76,7 +83,8 @@ Project 2
    Please enter the translation factor z: 3
    Translation factors (1.00, 2.00, 3.00) recorded!
 
-   Another example of entering inputs when doing a right-click -> Grab Input -> Rotation Axis & Angle
+   
+   Example of entering inputs when doing a right-click -> Grab Input -> Rotation Axis & Angle
    There will be a prompt at the console.
 
    Please enter the two points defining the rotation axis
@@ -90,6 +98,12 @@ Project 2
    -3.3
    Rotation Axis (-3.00, -2.00, 1.00) (4.00, 10.00, -4.00) Angle: -3.30 saved
 
+   
+   Example of entering inputs hwen doing a right-click -> Grab Input -> Scaling Factors
+   
+   Please enter the scale factors ( format <float> ; e.g. 1.2 ):
+   0.8
+   Scale factor 0.80 recorded!
 
 5. With the cursor on the opengl's *main window*, user can select a polyhedron by typing the key 0, 1, 2, 3, ... , 9  
    The id is defined in the order that they were specified in the datafile

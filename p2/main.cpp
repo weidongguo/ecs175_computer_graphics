@@ -1,18 +1,14 @@
 #include <GL/glut.h>
 #include "graph.h"
-#include "polygon.h"
-#include "line.h"
 #include "user_io.h"
 #include <iostream>
 #include <cstring>
 //#include <AntTweakBar.h>
 
 float *PixelBuffer; // global pixel buffer
-Polygon **globalPolygons;
 Polyhedron **globalPolyhedra;
 Graph *globalGraphs[4];
 std::string input_buffer;
-Line *globalLine[2]; //one for demonstrating dda, the other one for demonstrating bresenham
 
 Window window;
 
@@ -166,7 +162,6 @@ void callback_keyboard(unsigned char key, int x, int y){
     printf("Object with ID %d is selected\n", window.selectedObject); 
     return;
   }
-  char cinBuffer[256];
   switch(key){ // control commands
     case 't': globalPolyhedra[window.selectedObject]->translate(window.tf.x_offset, window.tf.y_offset, window.tf.z_offset); break; //translation
     case 'z': globalPolyhedra[window.selectedObject]->scale(window.tf.scale_alpha); break; //scale
