@@ -52,12 +52,19 @@ int main(int argc, char *argv[]){
 
   int subWindowID1 = glutCreateSubWindow(mainWindowID, 0, 0, window.width/2, window.height/2);
   glutDisplayFunc(callback_subdisplay1);
+  glutKeyboardFunc(callback_keyboard); 
+  createMenu();
+
 
   int subWindowID2 = glutCreateSubWindow(mainWindowID, window.width/2, 0, window.width/2, window.height/2);
   glutDisplayFunc(callback_subdisplay2);
+  glutKeyboardFunc(callback_keyboard); 
+  createMenu();
 
   int subWindowID3 = glutCreateSubWindow(mainWindowID, 0, window.height/2, window.width/2, window.height/2);
   glutDisplayFunc(callback_subdisplay3);
+  glutKeyboardFunc(callback_keyboard); 
+  createMenu();
 
 
   Graph graph(window.width,window.height, PixelBuffer); 

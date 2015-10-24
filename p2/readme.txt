@@ -23,6 +23,8 @@ Project 2
       After succesfully loading the file, the window will be created and render the polyhedra read from the datafile
       Please note that I use 3 subwindows for the xy-plane(top-left), xz-plane(top-right), and the yz-plane(bottom-left)
       The bottom-right is the *main window* 
+      
+      NOTE: the RED rotational axis is always being displayed.
 
    b. more on datafile:
 
@@ -64,11 +66,11 @@ Project 2
    Translation Factor: x = 3.00, y = 3.00, z = 3.00
    =================End of Status==================
 
-   To change these parameter, user can again right click within the *main window*, and then select "Grab Input". A submenu will pop up and have the
+   To change these parameter, user can again right click within the opengl's window, and then select "Grab Input". A submenu will pop up and have the
    user to choose from getting input for rotation, scale, or translation.
    If anyone of those is selected, there will be a prompt displayed in the console asking for input. There is also a format description and an
    example input next to the prompt to give an idea what is the appropriate format of the input.
-   If user do a right-click on the *main window*, then hover the mouse at Grab Input, then click on Translation Factors,
+   If user do a right-click within the opengl's window, then hover the mouse at Grab Input, then click on Translation Factors,
    a prompt will be displayed at the console.
     
    For example,
@@ -100,13 +102,13 @@ Project 2
    0.8
    Scale factor 0.80 recorded!
 
-5. With the cursor on the opengl's *main window*, user can select a polyhedron by typing the key 0, 1, 2, 3, ... , 9  
+5. With the opengl's window being selected,  user can select a polyhedron by typing the key 0, 1, 2, 3, ... , 9  
    The id is defined in the order that they were specified in the datafile
    The first object has id 0; the second object has id 1 and so on. (Currently, it only supports up to 9 objects);
    So any transformation done will only affect the currently selected object
    When the object is selected, its attributes will be printed to the console ( e.g. the vertex coordinates and edges).
 
-6. With the cursor on the opengl's *main window*,
+6. With the opengl's window being selected, 
    To rotate, user can press the key 'r'    (r for rotate)
    To translate, user can press the key 't' (t for translate)
    To scale,  user can press the key 'z'    (z for zoom)
