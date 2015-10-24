@@ -56,6 +56,8 @@ void Polyhedron::draw(Color c){
 void Polyhedron::draw(float r, float g, float b){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
   scaleX = scaleY = MIN(scaleX,scaleY);
+  scaleX--;
+  scaleY--;
   //scaleX = scaleY = 10; 
   for(int i = 0 ; i < numberOfEdges; i++){
     p1Index = listOfEdges[i].p1Index;
@@ -109,6 +111,8 @@ void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, con
 void Polyhedron::erase(){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
   scaleX = scaleY = MIN(scaleX,scaleY);
+  scaleX--;
+  scaleY--;
   Color c; 
   for(int i = 0 ; i < numberOfEdges; i++){
     p1Index = listOfEdges[i].p1Index;
