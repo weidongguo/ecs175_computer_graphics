@@ -104,6 +104,7 @@ Project 2
    The id is defined in the order that they were specified in the datafile
    The first object has id 0; the second object has id 1 and so on. (Currently, it only supports up to 9 objects);
    So any transformation done will only affect the currently selected object
+   When the object is selected, its attributes will be printed to the console ( e.g. the vertex coordinates and edges).
 
 6. With the cursor on the opengl's *main window*,
    To rotate, user can press the key 'r'    (r for rotate)

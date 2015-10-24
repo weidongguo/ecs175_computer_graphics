@@ -35,15 +35,15 @@ void Polyhedron::printAttributes(){
   printf("------------Polyhedron Attributes----------------------\n");
   for(int i = 0 ; i < numberOfPoints; i++){
     p = listOfPoints[i]; 
-    printf("(%.2f, %.2f, %.2f)\n", p.x, p.y, p.z);
+    printf("Vertex %d:  (%.2f, %.2f, %.2f)\n", i+1, p.x, p.y, p.z);
   }
   for(int i = 0 ; i < numberOfEdges; i++){
     e = listOfEdges[i];
-    printf("Edge %d %d\n", e.p1Index+1, e.p2Index+1);
+    printf("Edge: %d %d\n", e.p1Index+1, e.p2Index+1);
   }
   printf("Centroid (%.2f, %.2f, %.2f)\n", centroid.x, centroid.y, centroid.z);
   
-  printf("----------End of Polyhedron Attributes-----------------\n");
+  printf("----------End of Polyhedron Attributes-----------------\n\n");
 
 }
 void Polyhedron::draw(){
@@ -76,18 +76,6 @@ void Polyhedron::draw(float r, float g, float b){
   }
 }
 
-void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){
-    /*int scaleX = graphs[1]->window_width, 
-        scaleY = graphs[1]->window_height;
-    
-    scaleX = scaleY = MIN(scaleX,scaleY);
-
-    graphs[1]->drawLine( {p1.x * scaleX, p1.y * scaleY}, { p2.x*scaleX, p2.y*scaleY} ,r,g,b);
-    //xz-plane
-    graphs[2]->drawLine( {p1.x * scaleX, p1.z * scaleY}, { p2.x*scaleX, p2.z*scaleY}, r, g,b);
-    //yz-plane
-    graphs[3]->drawLine( {p1.y * scaleX, p1.z * scaleY}, { p2.y*scaleX, p2.z *scaleY}, r, g, b); */
-}
 void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename){
   int numberOfPoints, numberOfEdges, numberOfPolyhedra = window->numberOfPolyhedra-1, p1Index1, p2Index2 ; float x, y, z;
 

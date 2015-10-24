@@ -159,7 +159,8 @@ void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
   if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
     window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
-    printf("Object with ID %d is selected\n", window.selectedObject); 
+    printf("\nObject with ID %d is selected\n", window.selectedObject);
+    globalPolyhedra[window.selectedObject]->printAttributes();
     return;
   }
   switch(key){ // control commands
