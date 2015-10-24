@@ -1,108 +1,108 @@
-Project 2 [outdated, straight copy from project 1]
+Project 2 
 1. Name:      Weidong Guo
    Username:  weidongg
    Email:     wdguo@ucdavis.edu
-    
-   Important Note: My origin is at the center of the openGl window. If the dimension is 1000x500, then x can take value from -500 to 500
-                   and y can take value from -250 to 250. If the objects are drawn out side of the bounds, it might get a seg fault.
-                   Similarly, if user scale, translate, or rotate in away that the x or y value is out of bound, it might get a seg fault or weird
-                   behavior will be observed
-   All algorithm specified in the project handout is imolemented
-   dda                graph.cpp 
-   bresenham          graph.cpp
-   rasterizing        polygons.cpp
-   rotation           polygons.cpp
-   tranlsation        polygons.cpp
-   scale              polygons.cpp
-   sutherlandHodgman  polygons.cpp
-   cohenSutherland    line.cpp
-   
-   The function that implements them are all named after the algorithm, so i am not including the line numbers
-
-   For rasterization, all convex polygons work. Some concave polygons also work ( concave horizontally is working fine, concave vertically is not
-   working);
   
 2. To compile the source code, please run the command "make" since I have a makefile ready
-3. To execute the program, please type a.out < datafile
-   a. datafile is the file that will be redirected to stdin 
-   b. a.out is the executable for the program
+3. To execute the program, please type a.out
+   a. You will then be prompted to enter a input file
+      For exampke, 
+
+      [weidongg@pc55 p2]$ a.out
+      Please enter name of the input file: notTheRightFile
+      Error: file not found, please try again
+      Please enter name of the input file: datafile
+      Successfully loaded file
+      
+      After succesfully loading the file, the window will be created and render the polyhedra read from the datafile
+      Please note that I use 3 subwindows for the xy-plane(top-left), xz-plane(top-right), and the yz-plane(bottom-left)
+      The bottom-right is the *main window* 
+
+   b. more on datafile:
+      The 1st line of the datafile contains the dimension of the openGl window(so called "viewport on screen" as mentioned in assignemt sheet) 
+      and the rest of lines specify the polyhedra
+
+      For example,
+
+      800 600                          dimension of the opengl window
+
+      2                                number of polyhedra(objects)
+
+      4                                4 points (for the 1st object)
+      0.0 0.0 0.0             
+      1.0 0.0 0.0
+      0.0 1.0 0.0
+      0.0 0.0 1.0
+      6                                6 edges (for the 1st object)
+      1 2
+      1 3
+      1 4
+      2 3
+      2 4
+      3 4
+
+      3                                3 points (for the 2st object)
+      2.0 1.0 0 
+      1.0 0 2.0
+      2.0 2.0 1.0
+      3                                3 edges (for the 2nd object); 
+      1 2
+      2 3
+      3 1
+
+      You can find sample input datafiles in the same directory; they are named datafile, datafile2, datafile3, datafile4, and datafile5
+
+4. If user right click within the openGl window, a menu will pop up. User can click on "status" to see the default parameters for rotation,
+   translation, and scaling. The output of the status will be directed to the console 
    
-   c. more on datafile:
-   The 1st line of the datafile contains the dimension of the openGl window(so called "viewport on screen" as mentioned in assignemt sheet) 
-   and the rest of lines specify
-   the points of the polygons. In other words, other than the 1st line of the datafile, the rest follows the same format as the one
-   introduced in the project 1's assignment sheet.
-   
-   For example,
-   1000 500         dimension of the opengl window
-   2                number of polygons
-
-   4                number of points for the 1st polygon
-   0 0              coordinate of 1st point
-   0 100            coordinate of 2nd point
-   100 100          coordinate of 3rd point
-   100 0            coordinate of 4th point
-
-   3                number of points for the 2nd polygon
-   -100 -100        coordinate of 1st point
-   -200 -200        coordinate of 2nd point
-   -190 -150        coordinate of 3rd point
-
-4. The program starts up by drawing and rasterizing all the polygons specified in the datafile 
-5. If user right click within the openGl window, a menu will pop up. User can click on "status" to see the default parameters for rotation,
-   translation, scaling, and clipping. The output of the status will be directed to the console (note that console will only act as 2nd display in 
-   my program. THE FOCUS SHOULD ALWAYS BE THE opengl window, the console only for displaying)
    For example, 
    ======================Status====================
-   Window Size is 1000 x 500
-   Clipping Region: xMin = -200, xMax = 200, yMin = -200, yMax = 200
-   Rotation Angle: 5.00
-   Scale Factor: Alpha = 1.20,  Beta = 1.20
-   Translation Factor: x = 20, y = 20
+   Window Size is 800 x 600
+   Rotation Axis (0.00, 0.00, 0.00) (1.00, 1.00, 1.00) Angle: 3.00
+   Scale Factor: Alpha = 1.20
+   Translation Factor: x = 3.00, y = 3.00, z = 3.00
    =================End of Status==================
 
-   To change these parameter, user can again right click within the openGl window, and then select "Grab Input". A submenu will pop up and have the
-   user to choose from getting input for rotation, scale, translation, or clip region.
+   To change these parameter, user can again right click within the *main window*, and then select "Grab Input". A submenu will pop up and have the
+   user to choose from getting input for rotation, scale, or translation.
    If anyone of those is selected, there will be a prompt displayed in the console asking for input. There is also a format description and an
-   example input next to the prompt to give an indea to the user about what is the appropriate format of the input.
-   (Note, it currently doesn't support backspace. The program is expecting valid input)
-   Once the valid input is typed out, press ENTER to proceed.
-   
-   For example, 
-   Please enter the scale factors ( format <float><space><float> ; e.g. 1.2 1.2 ):      <- prompt
-   0.8 0.7                                                                              <- what user typed 
-   Data Recorded!                                                                       <- 1st message displayed aftering pressing ENTER 
-   Back to Command Mode.                                                                <- 2nd message displayed aftering pressing ENTER
+   example input next to the prompt to give an idea what is the appropriate format of the input.
+   User can enter the input from the console. 
+    
+   For example,
+  
+   Please enter the translation factor x: 1
+   Please enter the translation factor y: 2
+   Please enter the translation factor z: 3
+   Translation factors (1.00, 2.00, 3.00) recorded!
 
-6. In Command Mode, to select a polygon, user can type the key 0, 1, 2, 3, ... , 9.
+   Another example of entering inputs when doing a right-click -> Grab Input -> Rotation Axis & Angle
+   There will be a prompt at the console.
+
+   Please enter the two points defining the rotation axis
+   Point 1's x: -3
+   Point 1's y: -2
+   Point 1's z: 1
+   Point 2's x: 4
+   Point 2's y: 10
+   Point 2's z: -4
+   Please enter the rotation angle ( format <float> ; e.g. 6.5):
+   -3.3
+   Rotation Axis (-3.00, -2.00, 1.00) (4.00, 10.00, -4.00) Angle: -3.30 saved
+
+
+5. With the cursor on the opengl's *main window*, user can select a polyhedron by typing the key 0, 1, 2, 3, ... , 9  
    The id is defined in the order that they were specified in the datafile
-   The first polygon has id 0; the second polygon has id 1 and so on. (Currently, it only supports up to 9 polygons);
-   So any operation done will only affect the selected polygon
+   The first object has id 0; the second object has id 1 and so on. (Currently, it only supports up to 9 objects);
+   So any transformation done will only affect the currently selected object
 
-7. In Command Mode, to rotate, user can press the key 'r'    (r for rotate)
+6. With the cursor on the opengl's *main window*,
+   To rotate, user can press the key 'r'    (r for rotate)
    To translate, user can press the key 't' (t for translate)
    To scale,  user can press the key 'z'    (z for zoom)
-   To clip, user can press the key 'c'      (c for clip)
    All of the above commands(operations) are executed using the parameter shown in status 
    
    To save the polygons currently being displayed to a output file,  user can press the key 's' (s for save)
    The output file will be named "output"
 
-   Please note that lines will not be saved to the output file
-
-8. To simply draw a line. User can do a right-click -> draw -> choose either DDA or Bresenham. Next, the user will then be prompted
-   to enter 2 points in the following format <x0> <y0> <x1> <y1> (there is a space between each integer ). This prompt will again be displayed
-   at the console
-
-   To clip the line, user can do right-click -> clip -> choose to clip the line that was either drew by DDA or Bresenham
-   Please note that if you draw a 3rd line using either of the method, it will work, but the old line that was drew
-   using the same method will not be erased from the buffer.
-   And the reference to the old line that was drew using that same method is lost;
-   Furthermore, please note that line clipping uses the same clip region parameters as the polygons. Again, it can been view
-   form right-click -> status . The status will be shown to the console
-    
-   One more caveat for line clipping. When clipping, it will redraw the original line with background color, and then draw the new line.
-   This is important in one scenario. Let say if we have a polygon in red. And then I am drawing a line on top of this red polygon. If user clip 
-   line right now, the program will redraw the original line with background color. Thus, the clipped away part(the part that's no longer here) of
-   the line will erase part of the pixelBuffer where the red polygons live.
-
+   Please note that the rotational axis will not be saved to the output file

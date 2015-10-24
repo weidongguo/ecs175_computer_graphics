@@ -57,9 +57,18 @@ bool isGrabbingData(int state){
 
 void readFile(std::ifstream &ifs){
   char cinBuffer[256];
-  std::cout<<"Please enter name of the input file: "; std::cout.flush();
-  std::cin.getline(cinBuffer, 256);
-  ifs.open (cinBuffer, std::ifstream::in);
+  while(1){ 
+    std::cout<<"Please enter name of the input file: "; std::cout.flush();
+    std::cin.getline(cinBuffer, 256);
+    ifs.open (cinBuffer, std::ifstream::in); 
+    if( ifs.good() ){ //opened the file succesfully
+      std::cout <<"Successfully loaded file\n";
+      break;
+    }
+    else
+      std::cout <<"Error: file not found, please try again\n";
+  }
+
 }
 
 /*=====================================================================*/
@@ -160,7 +169,7 @@ void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, i
       charPtr = strtok(0, "\0");
       z = atof(charPtr);
       listOfPoints[i] = {x,y,z};
-      printf("(%.2f, %.2f, %.2f)\n", x, y, z);
+      DPRINT("(%.2f, %.2f, %.2f)\n", x, y, z);
     }
     
     //read edges
@@ -174,7 +183,7 @@ void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, i
       charPtr = strtok(0, "\0");
       p2Index = atoi(charPtr);
       listOfEdges[i] = { p1Index + offset, p2Index + offset};  // make point 1 to have index (1 - 1) = 0
-      printf("Edge %d %d\n", p1Index, p2Index);
+      DPRINT("Edge %d %d\n", p1Index, p2Index);
     } 
     
     polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges);

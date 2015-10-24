@@ -135,6 +135,10 @@ void callback_menu(int state){
       scanf("%f", &window.tf.rotation_angle);
       Polyhedron::updateRotationAxis(globalPolyhedra, window.numberOfPolyhedra, window.tf.pairOfPointsForRotAxis);
       updateScreen(globalPolyhedra);
+      
+      p1 = window.tf.pairOfPointsForRotAxis[0];
+      p2 = window.tf.pairOfPointsForRotAxis[1];
+      printf("Rotation Axis (%.2f, %.2f, %.2f) (%.2f, %.2f, %.2f) Angle: %.2f saved\n", p1.x, p1.y, p1.z, p2.x, p2.y, p2.z, window.tf.rotation_angle);
       break;
     case MENU_GRAB_SCALE_FACTORS:
       //window.state = STATE_GRAB_DATA_SCALE_FACTORS;
@@ -159,6 +163,7 @@ void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
   if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
     window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
+    printf("Object with ID %d is selected\n", window.selectedObject); 
     return;
   }
   char cinBuffer[256];
