@@ -1,6 +1,7 @@
 #include "polyhedron.h"
 
-Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges){ 
+Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *_listOfSurfaces, int _numberOfSurfaces){ 
+  listOfSurfaces = new Surface[_numberOfSurfaces];
   listOfEdges = new Edge[_numberOfEdges];
   listOfPoints = new Point_3D[_numberOfPoints]; 
   listOfPointsNDC = new Point_3D[_numberOfPoints];
@@ -9,9 +10,13 @@ Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPo
   
   for(int i = 0 ; i < _numberOfPoints; i++)
     listOfPoints[i] = _listOfPoints[i]; // make a local copy of points
- 
-  numberOfEdges = _numberOfEdges;
-  numberOfPoints = _numberOfPoints;
+  
+  for(int i = 0 ; i < _numberOfSurfaces; i++) // make a local copy of surfaces
+    listOfSurfaces[i] = _listOfSurfaces[i]; 
+
+  numberOfSurfaces  = _numberOfSurfaces;
+  numberOfEdges     = _numberOfEdges;
+  numberOfPoints    = _numberOfPoints;
   graphs = _graphs;
 
   setCentroid();

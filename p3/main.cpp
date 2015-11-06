@@ -83,15 +83,15 @@ int main(int argc, char *argv[]){
   subGraph3.fillScreen(0.5,0.5,0.5);
   globalGraphs[3] = &subGraph3;
 
-  Polyhedron *polyhedra[window.numberOfPolyhedra+1];
+  Polyhedron *polyhedra[window.numberOfPolyhedra];
   globalPolyhedra = polyhedra;
   DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
   
   //in addition of the polyhedra read from the datafile:
   //add a  an rotional axis
-  Edge edge = {0 , 1};
-  polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.tf.pairOfPointsForRotAxis ,2, &edge, 1);
+  //Edge edge = {0 , 1};
+  //polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.tf.pairOfPointsForRotAxis ,2, &edge, 1);
 
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
     
@@ -254,7 +254,7 @@ void drawPolyhedra(Polyhedron **polyhedra){
   float delta, xMin, yMin, zMin;
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
   
-  for(int i = 0; i < window.numberOfPolyhedra -1; i++){ // all the polyhedra EXCEPT for the last one
+  for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     polyhedra[i]->draw();
   }
@@ -262,6 +262,6 @@ void drawPolyhedra(Polyhedron **polyhedra){
   //draw the rotional axis - it's always the last polyhedron of the list of polyhedra ( not really a polyhedron, but rather a line living in 3d world)
   int indexOfRotAxis = window.numberOfPolyhedra-1;
   polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
-  polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
+  //polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
 }
 

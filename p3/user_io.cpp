@@ -81,7 +81,8 @@ void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, i
       p1Index = atoi(charPtr);
       charPtr = strtok(0, "\0");
       p2Index = atoi(charPtr);
-      listOfEdges[i] = { p1Index + offset, p2Index + offset};  // make point 1 to have index (1 - 1) = 0
+      listOfEdges[i].p1Index = p1Index + offset;  // make point 1 to have index (1 - 1) = 0
+      listOfEdges[i].p2Index = p2Index + offset;
       DPRINT("Edge %d %d\n", p1Index, p2Index);
     }
 
@@ -115,7 +116,7 @@ void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, i
       DPRINT("Normal Vector %d : %.2f %.2f %.2f\n",i, x,y,z); 
     }
 
-    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges);
+    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges, listOfSurfaces, numberOfSurfaces);
     delete [] listOfPoints;
     delete [] listOfEdges;
     delete [] listOfSurfaces; 

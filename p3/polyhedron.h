@@ -12,12 +12,15 @@ class Polyhedron {
 
   Edge *listOfEdges; 
   int numberOfEdges;
+  
+  Surface *listOfSurfaces;
+  int numberOfSurfaces;
 
   Point_3D centroid;
 
   Graph **graphs;
   public:
-  Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges);
+  Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *s, int numberOfSurface);
   void setCentroid();
   void printAttributes();
   void draw();
