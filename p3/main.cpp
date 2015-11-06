@@ -87,12 +87,10 @@ int main(int argc, char *argv[]){
   globalPolyhedra = polyhedra;
   DPRINT("Read polyhedra, number of polyhdra:%d\n", window.numberOfPolyhedra); 
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
-  
-  //in addition of the polyhedra read from the datafile:
-  //add a  an rotional axis
-  //Edge edge = {0 , 1};
-  //polyhedra[window.numberOfPolyhedra++] = new Polyhedron(globalGraphs, window.tf.pairOfPointsForRotAxis ,2, &edge, 1);
+  //             phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
 
+  Polyhedron::phong( {1,1,1}, {0.3, 0.3, 0.3}, {0.3,0.3,0.3}, {0.3, 0.3, 0.3}, 0.3, 0.3,  {2,-3,2}, {-1, 7, 3}, 2, {3,4,1} );
+  
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
     
   //callback registration:

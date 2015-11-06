@@ -276,7 +276,7 @@ void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
 }
 
 void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
-  Point_3D dl = minus(p1, p2);  
+  Point_3D dl = minus(p2, p1);  
   dl = unitVector(dl);
 
   float Tx = p1.x,
@@ -327,13 +327,29 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
         setCentroid();
 }
 
-Point_3D Polyhedron:: minus(Point_3D p1, Point_3D p2){
+Point_3D Polyhedron:: minus(Point_3D p2, Point_3D p1){
   return { p2.x - p1.x, p2.y-p1.y, p2.z - p1.z };
 }
 
 Point_3D Polyhedron:: unitVector(Point_3D p){
   float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
   return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
+}
+
+float Polyhedron::dotProduct(Vector v1, Vector v2){
+  return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+}
+
+Vector Polyhedron::multByScalar(Vector v, float scalar){
+  return { v.x * scalar, v.y * scalar, v.z * scalar};    
+}
+
+Vector Polyhedron::add(Vector v1, Vector v2){
+  return { v1.x + v2.x, v1.y + v2.y, v1.z + v2.z};
+}
+
+float Polyhedron::magnitude(Vector v){
+  return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
 bool Polyhedron::isNDC(Point_3D p){
@@ -344,4 +360,31 @@ void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedr
   polyhedra[numberOfPolyhedra-1]->listOfPoints[0] = pairOfPoints[0];
   polyhedra[numberOfPolyhedra-1]->listOfPoints[1] = pairOfPoints[1];
 }
+
+void Polyhedron::printVector(const char *tag, Vector v){
+  DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, v.x, v.y, v.z);
+}
+
+Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){
+  Vector ll = unitVector( minus(xx,p) ); printVector("ll", ll);
+  Vector vv = unitVector( minus(ff,p) ); printVector("vv", vv);
+  Vector rr = minus( multByScalar(nn, 2*dotProduct(nn,ll)), ll ); printVector("rr", rr);
+  double C =  magnitude( minus(xx, p) );
+  return phong(p, ka, kd, ks, Ia, Il, nn, ff, n, C, ll, vv, rr);
+}
+
+Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){
+  Vector Iamb = multByScalar(ka, Ia);
+  float scalarForDiffSpec = Il / ( magnitude( minus(ff, p) ) + C ); 
+  
+  Vector diff = multByScalar( kd, dotProduct(ll,nn) );
+  Vector spec = multByScalar( ks, pow( dotProduct(rr,vv), n ) );
+  
+  Vector Idiff_spec = multByScalar( add(diff, spec), scalarForDiffSpec);
+  
+  printVector( "Ip Phong", add(Iamb, Idiff_spec) );
+  return add(Iamb, Idiff_spec);
+
+}
+
 
