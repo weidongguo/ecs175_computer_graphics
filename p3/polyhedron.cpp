@@ -397,7 +397,34 @@ Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, 
   
   printVector( "Ip Phong", add(Iamb, Idiff_spec) );
   return add(Iamb, Idiff_spec);
+}
 
+
+// not only find the max intensity, it also sets phong intensity(not yet normalized) for each point along the way
+float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){
+  
+  float maxIntensity , intensity;
+  int numberOfPoints;
+  Point_3D p;
+  for(int i = 0 ; i < numberOfPolyhedra; i++){
+    numberOfPoints = polyhedra[i].numberOfpoints; 
+    for(int j = 0; j < numberOfPoints; j ++){
+      p  = polyhedra[i]->listOfPoints[j]
+      //set intensity for each end point of the polyhedron 
+      polyhedra[i]->listOfPoints[j].intensity =  phong(p, ka,kd,ks,Ia,Il,nn,ff,n,xx);// needs to look for nn for the specific point
+      if( intensity > maxIntensity)
+        maxIntensity = intensity;//find the max intensity
+    } 
+  }
+  return maxIntensity;
+}
+
+
+void Polyhedron::setNormalizedIntensities(Polyhedron **polyhedra, int numberOfPolyhedra, float maxIntensity){
+  for(int i = 0 ; i < numberOfPolyhedra; i++){
+    float tmp = polyhedra[i].normalizedIntensity = polyhedra[i]->intensity / maxIntensity;
+    DPRINT("normalized intensity: %.2f\n", tmp);
+  }
 }
 
 /* Gourauld Shading */
@@ -575,6 +602,7 @@ void Polyhedron::setupContourPoints(){
       printf("<>=======<> From Polyhedron::draw() : NDC is not valid\n");
       return;
     }
+    DPRINT("** FROM edge %d to edge %d:\n", p1Index, p2Index);
     //xy-plane 
     _storeLinePoints( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,   0);
     //xz-plane
@@ -619,9 +647,9 @@ void Polyhedron::rasterize(float r, float g, float b){
           if(it == listOfContourPoints[planeIndex][i].end())
             break;
           Point p2 = *it;
-          DPRINT(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+          //DPRINT(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
           if( abs(p2.x - p1.x) >= 1 ){
-            DPRINT("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+            //DPRINT("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
             graphs[planeIndex]->drawLine(p1,p2, r, g, b); 
           }
         }

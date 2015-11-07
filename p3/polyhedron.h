@@ -62,16 +62,18 @@ class Polyhedron {
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv);
 
+  static float findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
+  static void  setNormalizedIntensities(Polyhedron **polyhedra, int numberOfPolyhedra, float maxIntensity);
 
-void clearContourPoints(int planeIndex);
-void clearContourPointsForEachPlane(int numberOfPlanes);
-void storeOriginalPointsToContourPointsForEachPlane();
-void setupContourPoints();
-int  _bresenham(Point pt1, Point pt2, int planeIndex); //for storing points, not drawing pixel
-int  _storeLinePoints(Point p1, Point p2, int planeIndex);
-void _storeContourPoint(Point p, int planeIndex);
-void printContourPoints();
-void rasterize(float r, float g, float b);
+  void clearContourPoints(int planeIndex);
+  void clearContourPointsForEachPlane(int numberOfPlanes);
+  void storeOriginalPointsToContourPointsForEachPlane();
+  void setupContourPoints();
+  int  _bresenham(Point pt1, Point pt2, int planeIndex); //for storing points, not drawing pixel
+  int  _storeLinePoints(Point p1, Point p2, int planeIndex);
+  void _storeContourPoint(Point p, int planeIndex);
+  void printContourPoints();
+  void rasterize(float r, float g, float b);
 
 
 };
