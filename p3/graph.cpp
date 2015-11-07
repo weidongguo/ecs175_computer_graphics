@@ -4,7 +4,9 @@ Graph::Graph(int width, int height, float *PixelBufferPtr){
   window_width = width;
   window_height = height;
 }
-
+int Graph::drawPixel(int x, int y, Color c){
+  return drawPixel(x,y, c.r, c.g, c.b);
+}
 int Graph::drawPixel(int x, int y, float r, float g, float b){
   /*if( abs(x) > window_width/2 || abs(y) > window_height/2){
     DPRINT("ERROR: INVALID POINTS (%d, %d)\n", x,y); 
@@ -220,5 +222,5 @@ int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float 
 }
 
 bool Graph::outOfBound(int x, int y){
-  return ( abs(x) > window_width/2 || abs(y) > window_height/2);
+  return ( (x) > window_width || (y) > window_height );
 }

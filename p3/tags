@@ -4,20 +4,21 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 #-DDEBUG_PRINT $/;"	m
+ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
 BRESENHAM	graph.h	34;"	d
 C	Makefile	/^C = g++$/;"	m
 COMMON_TYPE_H	common_type.h	2;"	d
-ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon5
-Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon4
+ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
+Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 DDA	graph.h	35;"	d
+DEBUG_PRINT	common_type.h	7;"	d
 DPRINT	common_type.h	10;"	d
-DPRINT	common_type.h	8;"	d
-Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon3
+DPRINT	common_type.h	12;"	d
+Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon5
 GRAPH_H	graph.h	2;"	d
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
-MAX	common_type.h	14;"	d
+MAX	common_type.h	16;"	d
 MENU_CLIP_BRESENHAM	user_io.h	27;"	d
 MENU_CLIP_DDA	user_io.h	26;"	d
 MENU_DRAW_BRESENHAM	user_io.h	29;"	d
@@ -27,14 +28,14 @@ MENU_GRAB_ROTATION_ANGLE	user_io.h	31;"	d
 MENU_GRAB_SCALE_FACTORS	user_io.h	33;"	d
 MENU_GRAB_TRANSLATION_FACTORS	user_io.h	32;"	d
 MENU_STATUS	user_io.h	30;"	d
-MIN	common_type.h	13;"	d
-PI	common_type.h	16;"	d
+MIN	common_type.h	15;"	d
+PI	common_type.h	18;"	d
 POLYHEDRON_H	polyhedron.h	2;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
-Point	common_type.h	/^} Point; $/;"	t	typeref:struct:__anon1
-Point_3D	common_type.h	/^} Point_3D;$/;"	t	typeref:struct:__anon2
-Polyhedron	polyhedron.cpp	/^Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges){ $/;"	f	class:Polyhedron
+Point	common_type.h	/^} Point;$/;"	t	typeref:struct:__anon2
+Point_3D	common_type.h	/^}Point_3D;$/;"	t	typeref:struct:__anon4
+Polyhedron	polyhedron.cpp	/^Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *_listOfSurfaces, int _numberOfSurfaces){ $/;"	f	class:Polyhedron
 Polyhedron	polyhedron.h	/^class Polyhedron {$/;"	c
 STATE_GRAB_COMMANDS	user_io.h	17;"	d
 STATE_GRAB_DATA_CLIP_REGION	user_io.h	21;"	d
@@ -43,14 +44,20 @@ STATE_GRAB_DATA_DRAW_DDA	user_io.h	22;"	d
 STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	18;"	d
 STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	20;"	d
 STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	19;"	d
+Scene	common_type.h	/^} Scene;$/;"	t	typeref:struct:__anon9
 SubWindowPixelBuffer1	main.cpp	/^float *SubWindowPixelBuffer1;$/;"	v
 SubWindowPixelBuffer2	main.cpp	/^float *SubWindowPixelBuffer2;$/;"	v
 SubWindowPixelBuffer3	main.cpp	/^float *SubWindowPixelBuffer3;$/;"	v
-Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon6
+Surface	common_type.h	/^typedef TriSurface Surface;$/;"	t
+Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon8
+TriSurface	common_type.h	/^} TriSurface;$/;"	t	typeref:struct:__anon6
 USER_IO_H	user_io.h	2;"	d
-Vertex	common_type.h	/^typedef Point Vertex;\/\/Point and Vertex means the same thing$/;"	t
-Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon7
-b	common_type.h	/^  float b;$/;"	m	struct:__anon4
+Vector	common_type.h	/^} Vector;$/;"	t	typeref:struct:__anon3
+Vector	vector.h	/^ class Vector{ $/;"	c
+Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon10
+add	polyhedron.cpp	/^Vector Polyhedron::add(Vector v1, Vector v2){$/;"	f	class:Polyhedron
+ambientLightIntensity	common_type.h	/^  Color ambientLightIntensity;$/;"	m	struct:__anon9
+b	common_type.h	/^  float b;$/;"	m	struct:__anon1
 background_color	graph.h	/^  public:Color background_color;$/;"	m	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
 callback_display	main.cpp	/^void callback_display(){$/;"	f
@@ -60,81 +67,112 @@ callback_subdisplay1	main.cpp	/^void callback_subdisplay1(){$/;"	f
 callback_subdisplay2	main.cpp	/^void callback_subdisplay2(){$/;"	f
 callback_subdisplay3	main.cpp	/^void callback_subdisplay3(){$/;"	f
 centroid	polyhedron.h	/^  Point_3D centroid;$/;"	m	class:Polyhedron
-cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon7
+cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon10
 createMenu	main.cpp	/^void createMenu(void){     $/;"	f
 dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
+dotProduct	polyhedron.cpp	/^float Polyhedron::dotProduct(Vector v1, Vector v2){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(Color c){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	class:Polyhedron
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
-drawLine	polyhedron.cpp	/^void Polyhedron::drawLine(Point_3D p1, Point_3D p2, float r, float g, float b){$/;"	f	class:Polyhedron
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
 drawPolyhedra	main.cpp	/^void drawPolyhedra(Polyhedron **polyhedra){$/;"	f
 erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
+ff	common_type.h	/^  Point_3D ff[3]; \/\/coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane$/;"	m	struct:__anon9
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
 findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *_xMin, float *_yMin, float *_zMin){$/;"	f	class:Polyhedron
-g	common_type.h	/^  float g;$/;"	m	struct:__anon4
+g	common_type.h	/^  float g;$/;"	m	struct:__anon1
 globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
 globalPolyhedra	main.cpp	/^Polyhedron **globalPolyhedra;$/;"	v
-graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon7
+graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon10
 graphs	polyhedron.h	/^  Graph **graphs;$/;"	m	class:Polyhedron
-height	common_type.h	/^  int height;$/;"	m	struct:__anon7
-inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon7
+height	common_type.h	/^  int height;$/;"	m	struct:__anon10
+inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon10
 input_buffer	main.cpp	/^std::string input_buffer;$/;"	v
 int8	common_type.h	/^typedef char          int8; $/;"	t
+intensity	common_type.h	/^  Color intensity; \/\/ directly from phont model$/;"	m	struct:__anon4
 isNDC	polyhedron.cpp	/^bool Polyhedron::isNDC(Point_3D p){$/;"	f	class:Polyhedron
+ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon4
+ka	common_type.h	/^  Color ka;$/;"	m	struct:__anon9
+kd	common_type.h	/^  Color kd; \/\/diffusive  coefficient(the color of a point in the original object) ;$/;"	m	struct:__anon4
+ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon4
+lightSrcIntensity	common_type.h	/^  Color lightSrcIntensity ; $/;"	m	struct:__anon9
 listOfEdges	polyhedron.h	/^  Edge *listOfEdges; $/;"	m	class:Polyhedron
 listOfPoints	polyhedron.h	/^  Point_3D* listOfPoints;$/;"	m	class:Polyhedron
 listOfPointsNDC	polyhedron.h	/^  Point_3D* listOfPointsNDC;$/;"	m	class:Polyhedron
+listOfSurfaces	polyhedron.h	/^  Surface *listOfSurfaces;$/;"	m	class:Polyhedron
+magnitude	polyhedron.cpp	/^float Polyhedron::magnitude(Vector v){$/;"	f	class:Polyhedron
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
-minus	polyhedron.cpp	/^Point_3D Polyhedron:: minus(Point_3D p1, Point_3D p2){$/;"	f	class:Polyhedron
+minus	polyhedron.cpp	/^Vector   Polyhedron:: minus(Point_3D p2, Point_3D p1){$/;"	f	class:Polyhedron
+minus	polyhedron.cpp	/^Vector   Polyhedron:: minus(Vector v1, Vector v2) {$/;"	f	class:Polyhedron
+multByScalar	polyhedron.cpp	/^Vector Polyhedron::multByScalar(Vector v, float scalar){$/;"	f	class:Polyhedron
+nn	common_type.h	/^  Vector nn;\/\/normal vector;$/;"	m	struct:__anon4
+normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon6
+normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon4
 numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
 numberOfPoints	polyhedron.h	/^  int numberOfPoints;$/;"	m	class:Polyhedron
-numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon7
-numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon7
+numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon10
+numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon10
+numberOfSurfaces	polyhedron.h	/^  int numberOfSurfaces;$/;"	m	class:Polyhedron
+obliqueProj	polyhedron.cpp	/^Point_3D Polyhedron::obliqueProj(Point_3D dirVector, Point_3D p){ \/\/oblique projection on  xy-plane$/;"	f	class:Polyhedron
 outOfBound	graph.cpp	/^bool Graph::outOfBound(int x, int y){$/;"	f	class:Graph
-p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon3
-p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon3
-pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon6
+p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon5
+p1Index	common_type.h	/^  int p1Index;$/;"	m	struct:__anon6
+p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon5
+p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon6
+p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon6
+pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon8
+phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){$/;"	f	class:Polyhedron
+phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
 printAttributes	polyhedron.cpp	/^void Polyhedron::printAttributes(){$/;"	f	class:Polyhedron
-r	common_type.h	/^  float r;$/;"	m	struct:__anon4
+printVector	polyhedron.cpp	/^void Polyhedron::printVector(const char *tag, Vector v){$/;"	f	class:Polyhedron
+r	common_type.h	/^  float r;$/;"	m	struct:__anon1
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
-readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfObjects){$/;"	f
+readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
 readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f
 rotate	polyhedron.cpp	/^void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){$/;"	f	class:Polyhedron
-rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon6
+rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon8
 savePolyhedraToFile	polyhedron.cpp	/^void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename){$/;"	f	class:Polyhedron
 scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha){$/;"	f	class:Polyhedron
 scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha, float beta, float gamma){$/;"	f	class:Polyhedron
-scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon6
-selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon7
+scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon8
+scene	common_type.h	/^  Scene scene;$/;"	m	struct:__anon10
+selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon10
 setCentroid	polyhedron.cpp	/^void Polyhedron::setCentroid(){$/;"	f	class:Polyhedron
 setNDC	polyhedron.cpp	/^void Polyhedron::setNDC(float delta, float xMin, float yMin, float zMin){$/;"	f	class:Polyhedron
-state	common_type.h	/^  int state;$/;"	m	struct:__anon7
+state	common_type.h	/^  int state;$/;"	m	struct:__anon10
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
-tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon7
+tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon10
 translate	polyhedron.cpp	/^void Polyhedron::translate(float x_offset, float y_offset, float z_offset){$/;"	f	class:Polyhedron
 uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
-unitVector	polyhedron.cpp	/^Point_3D Polyhedron:: unitVector(Point_3D p){$/;"	f	class:Polyhedron
+unitVector	polyhedron.cpp	/^Vector   Polyhedron:: unitVector(Point_3D p){$/;"	f	class:Polyhedron
+unitVector	polyhedron.cpp	/^Vector   Polyhedron:: unitVector(Vector p){$/;"	f	class:Polyhedron
 updateRotationAxis	polyhedron.cpp	/^void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints){$/;"	f	class:Polyhedron
 updateScreen	main.cpp	/^void updateScreen(Polyhedron **polyhedra){$/;"	f
-width	common_type.h	/^  int width;$/;"	m	struct:__anon7
+width	common_type.h	/^  int width;$/;"	m	struct:__anon10
 window	main.cpp	/^Window window;$/;"	v
 windowInit	main.cpp	/^void windowInit(Window *window){$/;"	f
 window_height	graph.h	/^  int window_height;$/;"	m	class:Graph
 window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
-x	common_type.h	/^  float x;$/;"	m	struct:__anon2
-x	common_type.h	/^  int x;$/;"	m	struct:__anon1
-xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon5
-xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon5
-x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon6
-y	common_type.h	/^  float y;$/;"	m	struct:__anon2
-y	common_type.h	/^  int y;$/;"	m	struct:__anon1
-yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon5
-yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon5
-y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon6
-z	common_type.h	/^  float z;$/;"	m	struct:__anon2
-z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon6
+x	common_type.h	/^  float x;$/;"	m	struct:__anon3
+x	common_type.h	/^  float x;$/;"	m	struct:__anon4
+x	common_type.h	/^  int x;$/;"	m	struct:__anon2
+x	vector.h	/^    float x;$/;"	m	class:Vector
+xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon7
+xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon7
+x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon8
+xx	common_type.h	/^  Point_3D xx; \/\/ coord. of light src$/;"	m	struct:__anon9
+y	common_type.h	/^  float y;$/;"	m	struct:__anon3
+y	common_type.h	/^  float y;$/;"	m	struct:__anon4
+y	common_type.h	/^  int y;$/;"	m	struct:__anon2
+y	vector.h	/^    float y;$/;"	m	class:Vector
+yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon7
+yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon7
+y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon8
+z	common_type.h	/^  float z;$/;"	m	struct:__anon3
+z	common_type.h	/^  float z;$/;"	m	struct:__anon4
+z	vector.h	/^    float z;$/;"	m	class:Vector
+z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon8

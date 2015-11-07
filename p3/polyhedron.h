@@ -4,6 +4,7 @@
 #include "common_type.h"
 #include "graph.h"
 #include <fstream>
+#include <list>
 
 class Polyhedron {
   Point_3D* listOfPoints;
@@ -17,8 +18,11 @@ class Polyhedron {
   int numberOfSurfaces;
 
   Point_3D centroid;
-
   Graph **graphs;
+  
+  std::list<Point> *listOfContourPoints[3]; //index 0 for xy, 1 for xz, 2 for yz
+  //the original points + the points along the lines between the original points
+
   public:
   Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *s, int numberOfSurface);
   void setCentroid();
@@ -56,6 +60,17 @@ class Polyhedron {
 
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv);
+
+
+void clearContourPoints(int planeIndex);
+void clearContourPointsForEachPlane(int numberOfPlanes);
+void storeOriginalPointsToContourPointsForEachPlane();
+void setupContourPoints();
+int  _bresenham(Point pt1, Point pt2, int planeIndex); //for storing points, not drawing pixel
+int  _storeLinePoints(Point p1, Point p2, int planeIndex);
+void _storeContourPoint(Point p, int planeIndex);
+void printContourPoints();
+
 
 };
 

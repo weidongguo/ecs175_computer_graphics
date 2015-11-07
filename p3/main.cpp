@@ -90,7 +90,8 @@ int main(int argc, char *argv[]){
   //             phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
 
   Polyhedron::phong( {1,1,1}, {0.3, 0.3, 0.3}, {0.3,0.3,0.3}, {0.3, 0.3, 0.3}, 0.3, 0.3,  {2,-3,2}, {-1, 7, 3}, 2, {3,4,1} );
-  
+   
+
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
     
   //callback registration:
@@ -226,7 +227,7 @@ void createMenu(void){
 }
 
 void windowInit(Window *window){
-  window->width = 800;
+  window->width = 900;
   window->height = 600;
   window->numberOfPolygons = 0;
   window->numberOfPolyhedra = 0;
@@ -237,6 +238,13 @@ void windowInit(Window *window){
   window->graphs = (void**)globalGraphs;
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
+  
+  window->scene.xx = {0,0,0};
+  window->scene.ff[0] = {100, 0, 0}; //looking from on top of xy plane
+  window->scene.ff[1] = {0, 100, 0}; //looking from on top of xz plane
+  window->scene.ff[2] = {0, 0, 100}; //looking from on top of yz plane
+  window->scene.Il = 0.5;
+  window->scene.Ia = 0.2;
 }
 
 void updateScreen(Polyhedron **polyhedra){
@@ -255,11 +263,13 @@ void drawPolyhedra(Polyhedron **polyhedra){
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     polyhedra[i]->draw();
+    polyhedra[i]->setupContourPoints();
+    polyhedra[i]->printContourPoints();
   }
    //last one
   //draw the rotional axis - it's always the last polyhedron of the list of polyhedra ( not really a polyhedron, but rather a line living in 3d world)
-  int indexOfRotAxis = window.numberOfPolyhedra-1;
-  polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
+  //int indexOfRotAxis = window.numberOfPolyhedra-1;
+  //polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
   //polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
 }
 

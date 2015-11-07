@@ -19,6 +19,7 @@ class Graph {
     Graph(int width, int height, float* PixelBufferPtr);
     float *PixelBuffer;
     int drawPixel(int x, int y, float r, float g, float b); 
+    int drawPixel(int x, int y, Color c);
     int drawLine(Point p1, Point p2, float r, float g, float b);
     int drawLine(Point p1, Point p2, float r, float g, float b, int method);
     int dda(Point p1, Point p2, float r, float g, float b);

@@ -82,8 +82,8 @@ typedef struct{
 
 typedef struct{
   Color ka;
-  Color lightSrcIntensity ; 
-  Color ambientLightIntensity;
+  float Il; 
+  float Ia;
   Point_3D ff[3]; //coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane
   Point_3D xx; // coord. of light src
    
