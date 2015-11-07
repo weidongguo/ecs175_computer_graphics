@@ -18,8 +18,9 @@ Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPo
   numberOfEdges     = _numberOfEdges;
   numberOfPoints    = _numberOfPoints;
   graphs = _graphs;
-  
-  for(int i = 0 ; i< 3; i++) // 3 planes, xy, xz, yz
+
+  numberOfPlanes = 3;  
+  for(int i = 0 ; i< numberOfPlanes; i++) // 3 planes, xy, xz, yz
     listOfContourPoints[i] = new std::list<Point>[graphs[i]->window_height]; // indexing from 0 to window_height, watch out for overflow
 
   setCentroid();
@@ -78,11 +79,11 @@ void Polyhedron::draw(float r, float g, float b){
       return;
     }
     //xy-plane 
-    graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,r,g,b);
+    graphs[0]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,r,g,b);
     //xz-plane
-    graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, r, g,b);
+    graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, r, g,b);
     //yz-plane
-    graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, r, g, b);
+    graphs[2]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, r, g, b);
   }
 }
 
@@ -500,8 +501,10 @@ int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
     x++; // do not store the first point
     x_end--; // do  not store the last point
 
-    for(; x <= x_end; x++)
+    for(; x <= x_end; x++){
       _storeContourPoint( {x, p1.y}, planeIndex);
+      printf("horizontal: (%d, %d)\n", x, p1.y); 
+    }
     return 0;
   }
 
@@ -572,8 +575,6 @@ void Polyhedron::setupContourPoints(){
       printf("<>=======<> From Polyhedron::draw() : NDC is not valid\n");
       return;
     }
-    /* */
-
     //xy-plane 
     _storeLinePoints( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,   0);
     //xz-plane
@@ -596,7 +597,7 @@ void Polyhedron::setupContourPoints(){
 
 void Polyhedron::printContourPoints(){
  for(int planeIndex = 0 ; planeIndex < 3; planeIndex++){
-  DPRINT("\n=================START OF CONTOUR POINTS for %d plane=======================\n", planeIndex);
+  DPRINT("\n=================START OF CONTOUR POINTS for plane %d =======================\n", planeIndex);
   for(int i = 0; i< graphs[planeIndex]->window_height; i++){
     for(std::list<Point>::iterator it = listOfContourPoints[planeIndex][i].begin(); it != listOfContourPoints[planeIndex][i].end(); it++)
       DPRINT("(%d, %d)  ", (*it).x, (*it).y);
@@ -606,24 +607,26 @@ void Polyhedron::printContourPoints(){
   DPRINT("=================END OF CONTOUR POINTS=========================\n\n");
  }
 }
-/*
+
 void Polyhedron::rasterize(float r, float g, float b){
-  storeContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
-  for(int i = 0; i < graph->window_height; i++){ //for each scanline
-    if(listOfContourPoints[i].size() > 1){ // if more than 1 point on a scanline
-      for(std::list<Point>::iterator it = listOfContourPoints[i].begin(); it != listOfContourPoints[i].end();){
-        Point p1 = *it;
-        std::advance(it, 1);
-        if(it == listOfContourPoints[i].end())
-          break;
-        Point p2 = *it;
-        //DPRINT("(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
-        if( abs(p2.x - p1.x) >= 1 ){
-          graph->drawLine(p1,p2, r, g, b); 
-         
+  //setupContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
+  for(int planeIndex = 0 ; planeIndex < numberOfPlanes; planeIndex++){ 
+    for(int i = 0; i < graphs[planeIndex]->window_height; i++){ //for each scanline
+      if(listOfContourPoints[planeIndex][i].size() > 1){ // if more than 1 point on a scanline
+        for(std::list<Point>::iterator it = listOfContourPoints[planeIndex][i].begin(); it != listOfContourPoints[planeIndex][i].end();){
+          Point p1 = *it;
+          std::advance(it, 1);
+          if(it == listOfContourPoints[planeIndex][i].end())
+            break;
+          Point p2 = *it;
+          DPRINT(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+          if( abs(p2.x - p1.x) >= 1 ){
+            DPRINT("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
+            graphs[planeIndex]->drawLine(p1,p2, r, g, b); 
+          }
         }
       }
     }
   }
 }
-*/
+

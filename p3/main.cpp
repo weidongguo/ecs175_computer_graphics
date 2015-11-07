@@ -68,20 +68,20 @@ int main(int argc, char *argv[]){
 
 
   Graph graph(window.width,window.height, PixelBuffer); 
-  globalGraphs[0] = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
+  globalGraphs[3] = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
   graph.fillScreen(1,1,1); // white background
   
   Graph subGraph1(window.width/2, window.height/2, SubWindowPixelBuffer1);
   subGraph1.fillScreen(0.9,0.9,0.9);
-  globalGraphs[1] = &subGraph1; 
+  globalGraphs[0] = &subGraph1; 
 
   Graph subGraph2(window.width/2, window.height/2, SubWindowPixelBuffer2);
   subGraph2.fillScreen(0.7, 0.7, 0.7);
-  globalGraphs[2] = &subGraph2; 
+  globalGraphs[1] = &subGraph2; 
 
   Graph subGraph3(window.width/2, window.height/2, SubWindowPixelBuffer3);
   subGraph3.fillScreen(0.5,0.5,0.5);
-  globalGraphs[3] = &subGraph3;
+  globalGraphs[2] = &subGraph3;
 
   Polyhedron *polyhedra[window.numberOfPolyhedra];
   globalPolyhedra = polyhedra;
@@ -264,6 +264,7 @@ void drawPolyhedra(Polyhedron **polyhedra){
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     polyhedra[i]->draw();
     polyhedra[i]->setupContourPoints();
+    polyhedra[i]->rasterize(1,0,0);
     polyhedra[i]->printContourPoints();
   }
    //last one

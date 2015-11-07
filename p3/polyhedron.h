@@ -22,6 +22,7 @@ class Polyhedron {
   
   std::list<Point> *listOfContourPoints[3]; //index 0 for xy, 1 for xz, 2 for yz
   //the original points + the points along the lines between the original points
+  int numberOfPlanes;
 
   public:
   Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *s, int numberOfSurface);
@@ -70,6 +71,7 @@ int  _bresenham(Point pt1, Point pt2, int planeIndex); //for storing points, not
 int  _storeLinePoints(Point p1, Point p2, int planeIndex);
 void _storeContourPoint(Point p, int planeIndex);
 void printContourPoints();
+void rasterize(float r, float g, float b);
 
 
 };
