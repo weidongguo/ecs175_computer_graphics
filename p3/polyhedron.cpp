@@ -276,7 +276,7 @@ void Polyhedron::translate(float x_offset, float y_offset, float z_offset){
 }
 
 void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
-  Point_3D dl = minus(p2, p1);  
+  Vector dl = minus(p2, p1);  
   dl = unitVector(dl);
 
   float Tx = p1.x,
@@ -327,11 +327,19 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
         setCentroid();
 }
 
-Point_3D Polyhedron:: minus(Point_3D p2, Point_3D p1){
+Vector   Polyhedron:: minus(Point_3D p2, Point_3D p1){
   return { p2.x - p1.x, p2.y-p1.y, p2.z - p1.z };
 }
+Vector   Polyhedron:: minus(Vector v1, Vector v2) {
+  return { v1.x - v2.x, v1.y-v2.y, v1.z - v2.z };
+}
 
-Point_3D Polyhedron:: unitVector(Point_3D p){
+Vector   Polyhedron:: unitVector(Point_3D p){
+  float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
+  return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
+}
+
+Vector   Polyhedron:: unitVector(Vector p){
   float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
   return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
 }

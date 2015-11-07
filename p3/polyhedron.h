@@ -35,20 +35,25 @@ class Polyhedron {
   void scale(float alpha);
   void translate(float x_offset, float y_offset, float z_offset);
   void rotate(Point_3D p1, Point_3D p2, float angle);
-  static Point_3D minus(Point_3D p1, Point_3D p2); 
-  static Point_3D unitVector(Point_3D p);
+ 
+  //vector operations
+  static Vector   minus(Point_3D p1, Point_3D p2); 
+  static Vector   minus(Vector v1, Vector v2); 
+  static Vector   unitVector(Point_3D p);
+  static Vector   unitVector(Vector v);
+
   static float dotProduct(Vector v1, Vector v2);
   static Vector multByScalar(Vector v, float scalar);
   static Vector add(Vector v1, Vector v2);
   static float magnitude(Vector v);
-
   static void printVector(const char *tag, Vector v);
-
+  //end of vector operations
 
   static void updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints);//rot axis is the last element of polyhedra
   static void savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename);
   
   Point_3D obliqueProj(Point_3D dirVector, Point_3D p);
+
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
   static Vector phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv);
 

@@ -21,19 +21,34 @@ typedef unsigned char uint8;
 typedef char          int8; 
 
 typedef struct {
+  float r;
+  float g;
+  float b;
+}Color;
+
+typedef struct{
   int x;
   int y;
-} Point; 
+} Point;
+
+typedef struct{
+  float x;
+  float y;
+  float z;
+} Vector;
 
 typedef struct {
   float x;
   float y;
   float z;
-} Point_3D;
+  Color kd; //diffusive  coefficient(the color of a point in the original object) ;
+  Color ks; // specular coefficient(the highlightness of the material)
+  Color ka; //ambient light coeff
+  Vector nn;//normal vector;
+  Color intensity; // directly from phont model
+  Color normalizedIntensity; // relative to all points in the scene
+}Point_3D;
 
-typedef Point_3D Vector; // 3-components vector
-
-typedef Point Vertex;//Point and Vertex means the same thing
 
 typedef struct {
   int p1Index;  
@@ -48,12 +63,6 @@ typedef struct {
 } TriSurface;
 
 typedef TriSurface Surface;
-
-typedef struct {
-  float r;
-  float g;
-  float b;
-}Color;
 
 typedef struct{
   int xMin;
@@ -72,6 +81,15 @@ typedef struct{
 }Transformation;
 
 typedef struct{
+  Color ka;
+  Color lightSrcIntensity ; 
+  Color ambientLightIntensity;
+  Point_3D ff[3]; //coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane
+  Point_3D xx; // coord. of light src
+   
+} Scene;
+
+typedef struct{
   int width;
   int height;
   int numberOfPolygons;
@@ -82,6 +100,7 @@ typedef struct{
   int state;
   std::string *inputBuffer;
   void **graphs;
+  Scene scene;
 } Window;
 
 #endif
