@@ -16,6 +16,7 @@ Vector multByScalar(Vector v, float scalar);
 Color  multByScalar(Color c, float scalar); 
 Vector add(Vector v1, Vector v2);
 float magnitude(Vector v);
+bool equal(Color c1, Color c2);
 
 void printColor(const char *tag, Color c);
 void printVector(const char *tag, Vector v);

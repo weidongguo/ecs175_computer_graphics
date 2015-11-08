@@ -45,6 +45,9 @@ float magnitude(Vector v){
   return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
+bool equal(Color c1, Color c2){
+  return ( c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
+}
 Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend){
   float denom = fabs(end - begin);
 //  DPRINT("denom %.2f\n", denom); 

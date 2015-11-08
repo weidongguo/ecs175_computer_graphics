@@ -517,7 +517,7 @@ void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhe
      numberOfPoints = polyhedra[i]->numberOfPoints; 
      for(int j = 0 ; j < numberOfPoints; j++){
         intensity = polyhedra[i]->listOfPoints[j].intensity;
-        polyhedra[i]->listOfPoints[j].normalizedIntensity = multByScalar(intensity, 1/maxIntensity); 
+        polyhedra[i]->listOfPoints[j].normalizedIntensity = multByScalar(intensity, 1.0/maxIntensity); 
      }
   }
 }
@@ -595,13 +595,6 @@ int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ //for storing 
   return 0;
 }
 
-/*Color Polyhedron::linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend){
-  float denom = fabs(end - begin);
-  Color addend1 = multByScalar(Iend,   fabs(mid - begin) /denom );
-  Color addend2 = multByScalar(Ibegin, fabs(end - mid) /denom   );
-  return vtoc( add( ctov(addend1), ctov(addend2) ) );
-}*/
-
 //NOTE: End points are NOT stored, meaning the original two points
 int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
   Point p;
@@ -637,12 +630,14 @@ int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
 
     x++; // do not store the first point
     x_end--; // do  not store the last point
-
+   
+//commenting out this because the scanline rasteriation later will take care of this
+/*
     for(; x <= x_end; x++){
       p =  {x, p1.y, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity) };
       _storeContourPoint(p, planeIndex);
       //printf("horizontal: (%d, %d)\n", x, p1.y); 
-    }
+    }*/
     return 0;
   }
 
@@ -738,7 +733,7 @@ void Polyhedron::setupContourPoints(){
   }
   
   //for each plane
-  for(int planeIndex = 0; planeIndex < 3; planeIndex++){ 
+  for(int planeIndex = 0; planeIndex < numberOfPlanes; planeIndex++){ 
     ///sort each scanline points by it's x-value 
     for(int i = 0 ; i < graphs[planeIndex]->window_height; i++){
       if(!listOfContourPoints[planeIndex][i].empty())

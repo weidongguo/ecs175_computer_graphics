@@ -93,7 +93,9 @@ int main(int argc, char *argv[]){
    
 
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
-    
+  globalGraphs[0]->halfTone( {0,0,1});
+  globalGraphs[1]->halfTone( {0,0,1});
+  globalGraphs[2]->halfTone( {0,0,1});
   //callback registration:
   glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 
@@ -263,7 +265,7 @@ void drawPolyhedra(Polyhedron **polyhedra){
   
   //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
   Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0.5,0.5,0.5}, {1,1,1}, {1,0,0} );
-  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[2], window.scene.xx,  window.scene.n);
+  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
   Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
   //please note that for calculating the intensities for the original vertices, NON-NDC coord is used.
   //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
@@ -276,5 +278,6 @@ void drawPolyhedra(Polyhedron **polyhedra){
     polyhedra[i]->printContourPoints();
     polyhedra[i]->printAttributes();
   }
+  
 }
 

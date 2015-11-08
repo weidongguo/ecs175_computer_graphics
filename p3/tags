@@ -5,12 +5,12 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
-BRESENHAM	graph.h	39;"	d
+BRESENHAM	graph.h	43;"	d
 C	Makefile	/^C = g++$/;"	m
 COMMON_TYPE_H	common_type.h	2;"	d
 ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
-DDA	graph.h	40;"	d
+DDA	graph.h	44;"	d
 DEBUG_PRINT	common_type.h	7;"	d
 DPRINT	common_type.h	10;"	d
 DPRINT	common_type.h	12;"	d
@@ -88,6 +88,7 @@ draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	cl
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
+drawMegaPixel	graph.cpp	/^void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
@@ -103,6 +104,7 @@ globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
 globalPolyhedra	main.cpp	/^Polyhedron **globalPolyhedra;$/;"	v
 graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon10
 graphs	polyhedron.h	/^  Graph **graphs;$/;"	m	class:Polyhedron
+halfTone	graph.cpp	/^void Graph::halfTone(Color color){$/;"	f	class:Graph
 height	common_type.h	/^  int height;$/;"	m	struct:__anon10
 inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon10
 input_buffer	main.cpp	/^std::string input_buffer;$/;"	v
@@ -155,6 +157,7 @@ r	common_type.h	/^  float r;$/;"	m	struct:__anon1
 rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(){$/;"	f	class:Polyhedron
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
 readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
+readPixel	graph.cpp	/^Color Graph::readPixel(int x, int y){$/;"	f	class:Graph
 readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f
 rotate	polyhedron.cpp	/^void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){$/;"	f	class:Polyhedron
 rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon8

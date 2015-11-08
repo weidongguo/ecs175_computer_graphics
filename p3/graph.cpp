@@ -314,3 +314,111 @@ int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float 
 bool Graph::outOfBound(int x, int y){
   return ( (x) > window_width || (y) > window_height );
 }
+
+Color Graph::readPixel(int x, int y){
+  float r, g, b;
+  r = PixelBuffer[ y * window_width * 3 + x * 3 ];  
+  g = PixelBuffer[ y * window_width * 3 + x * 3 + 1 ]; 
+  b = PixelBuffer[ y * window_width * 3 + x * 3 + 2 ];
+  return {r,g,b}; 
+}
+
+void Graph::halfTone(Color color){
+ int megaPixel = 3;
+ Vector v;
+ Color tmp;
+ int numberOfPixels; 
+ for(int r = 0 ; r < window_height; r+=megaPixel){  //row
+   for(int c = 0 ; c < window_width;  c+=megaPixel){//col
+     v = {0,0,0}; 
+     for(int i = r; i < r+megaPixel ; i++){ // 3 by 3 
+       for(int j = c; j < c+megaPixel; j++ ){ 
+         //DPRINT("r %d, c %d, i %d, j %d\n", r, c, i,j);
+         tmp = readPixel(j,i);
+         if( equal(tmp, background_color) )
+          v = add( v, {1, 1, 1} ); 
+         else 
+          v = add( v,  ctov( tmp ) );
+       }
+     }
+     //write each mega pixel
+     numberOfPixels = round( 9- (v.x + v.y + v.z) / 3 );
+     drawMegaPixel(numberOfPixels, megaPixel * 3, r, c, color);
+   }
+ }
+}
+
+void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){
+  for(int i = r; i < r+maxNumberOfPixels/3 ; i++){ // 3 by 3 , clear it first
+    for(int j = c; j < c + maxNumberOfPixels/3; j++ ){ 
+      drawPixel(j,i, background_color); 
+    }
+  }
+  
+  switch(numberOfPixels){
+    case 0: break;
+    case 1: drawPixel(c+1, r+1, k); 
+            break;
+    case 2: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            break;
+    case 3: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c+1, r+1, k);
+            break;
+    case 4: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c, r, k);
+            drawPixel(c+2, r+2,k);
+            break;
+    case 5: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c, r, k);
+            drawPixel(c+2, r+2, k);
+            drawPixel(c+1, r+1, k); 
+            break;
+    case 6: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c, r, k);
+            drawPixel(c+2, r+2, k);
+            drawPixel(c, r+1, k);
+            drawPixel(c+2,r+1, k);
+            break;
+    case 7: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c, r, k);
+            drawPixel(c+2, r+2, k);
+            drawPixel(c, r+1, k);
+            drawPixel(c+2, r+1, k);
+            drawPixel(c+1, r+1, k);
+    case 8: drawPixel(c, r+2, k);
+            drawPixel(c+2, r, k);
+            drawPixel(c, r, k);
+            drawPixel(c+2, r+2, k);
+            drawPixel(c, r+1, k);
+            drawPixel(c+2, r+1, k);
+            drawPixel(c+1, r+1, k);
+            drawPixel(c+1, r, k);
+            break;
+    case 9: drawPixel(c, r+2, k);
+            drawPixel(c+2, r,k);
+            drawPixel(c, r,k);
+            drawPixel(c+2, r+2,k);
+            drawPixel(c, r+1,k);
+            drawPixel(c+2, r+1,k);
+            drawPixel(c+1, r+1,k);
+            drawPixel(c+1, r,k);
+            drawPixel(c+1, r+2,k);
+            break;
+    default:
+            DPRINT("!!!!!!!WARNING: megapixel size <=0 or >9,  it's %d\n", numberOfPixels);
+            break;
+    
+  }
+
+}
+
+void Graph::backupPixelBuffer(){
+  PixelBufferBackup =  new float[window_width*window_height*3];   
+  memcpy(PixelBufferBackup, PixelBuffer, window_width * window_height * 3);
+}

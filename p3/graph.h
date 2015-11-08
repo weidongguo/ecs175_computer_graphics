@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include "vector.h"
 #include "common_type.h"
 
@@ -18,6 +19,7 @@ class Graph {
   public:
     Graph(int width, int height, float* PixelBufferPtr);
     float *PixelBuffer;
+    float *PixelBufferBackup;
     int drawPixel(Point p);
     int drawPixel(int x, int y, float r, float g, float b); 
     int drawPixel(int x, int y, Color c);
@@ -30,6 +32,11 @@ class Graph {
     int fillScreen(float r, float g, float b);
     int drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b);
     bool outOfBound(int x, int y);
+    void drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k);
+    void halfTone(Color color);
+    Color readPixel(int x, int y);
+    void  backupPixelBuffer();
+
 };
 
 
