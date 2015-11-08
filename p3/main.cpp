@@ -239,12 +239,12 @@ void windowInit(Window *window){
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
   
-  window->scene.xx = {0,0,0};
-  window->scene.ff[0] = {0, 0, 100}; //looking from on top of xy plane
-  window->scene.ff[1] = {0, 100, 0}; //looking from on top of xz plane
-  window->scene.ff[2] = {100, 0, 0}; //looking from on top of yz plane
-  window->scene.Il = 0.5;
-  window->scene.Ia = 0.2;
+  window->scene.xx = {10,10,10};
+  window->scene.ff[0] = {0, 0, 10}; //looking from on top of xy plane
+  window->scene.ff[1] = {0, 10, 0}; //looking from on top of xz plane
+  window->scene.ff[2] = {10, 0, 0}; //looking from on top of yz plane
+  window->scene.Il = 0.7;
+  window->scene.Ia = 0.1;
   window->scene.n = 2;
 }
 
@@ -262,14 +262,18 @@ void drawPolyhedra(Polyhedron **polyhedra){
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
   
   //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
-  Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0,0,0}, {0,1,0}, {0,1,0} );
-  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
+  Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0.5,0.5,0.5}, {1,1,1}, {1,0,0} );
+  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[2], window.scene.xx,  window.scene.n);
   Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
+  //please note that for calculating the intensities for the original vertices, NON-NDC coord is used.
+  //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
+  //this is not a problem because linear-interpolation takes ratio. e.g. (j - j2) / (j1 - j2) * I1 + ...
+  //
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     //polyhedra[i]->draw();
-    polyhedra[i]->rasterize(1,0,1);
-    //polyhedra[i]->printContourPoints();
+    polyhedra[i]->rasterize();
+    polyhedra[i]->printContourPoints();
     polyhedra[i]->printAttributes();
   }
 }

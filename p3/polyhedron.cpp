@@ -523,8 +523,6 @@ void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhe
 }
 
 
-/* Gourauld Shading */
-
 
 bool compareXValue(Point p1, Point p2){
   return p1.x <= p2.x;
@@ -677,6 +675,7 @@ void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){
     point3d = listOfPointsNDC[i] ;
     point2d.x  =  (int)round( point3d.x * scale); 
     point2d.y  =  (int)round( point3d.y * scale);
+    point2d.normalizedIntensity = point3d.normalizedIntensity;
     _storeContourPoint(point2d, 0); 
   }
   //for xz-plane
@@ -684,6 +683,7 @@ void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){
     point3d = listOfPointsNDC[i] ;
     point2d.x  =  (int)round( point3d.x * scale); 
     point2d.y  =  (int)round( point3d.z * scale);
+    point2d.normalizedIntensity = point3d.normalizedIntensity;
     _storeContourPoint(point2d, 1); 
   }
   //for yz-plane
@@ -691,6 +691,7 @@ void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){
     point3d = listOfPointsNDC[i] ;
     point2d.x  =  (int)round( point3d.y * scale); 
     point2d.y  =  (int)round( point3d.z * scale);
+    point2d.normalizedIntensity = point3d.normalizedIntensity;
     _storeContourPoint(point2d, 2); 
   }
 
@@ -721,8 +722,8 @@ void Polyhedron::setupContourPoints(){
     p1_2d = { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY), p1.normalizedIntensity };
     p2_2d = { (int)round(p2.x * scaleX), (int)round(p2.y * scaleY), p2.normalizedIntensity };  
     _storeLinePoints(p1_2d, p2_2d, 0);
-    printColor("vertex>>>>> ", p1.normalizedIntensity); 
-    printColor("vertex>>>>> ", p2.normalizedIntensity); 
+//    printColor("vertex>>>>> ", p1.normalizedIntensity); 
+//    printColor("vertex>>>>> ", p2.normalizedIntensity); 
 
     //xz-plane
     p1_2d = { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY), p1.normalizedIntensity }; 
@@ -752,8 +753,10 @@ void Polyhedron::printContourPoints(){
  for(int planeIndex = 0 ; planeIndex < 3; planeIndex++){
   DPRINT("\n=================START OF CONTOUR POINTS for plane %d =======================\n", planeIndex);
   for(int i = 0; i< graphs[planeIndex]->window_height; i++){
-    for(std::list<Point>::iterator it = listOfContourPoints[planeIndex][i].begin(); it != listOfContourPoints[planeIndex][i].end(); it++)
-      DPRINT("(%d, %d)  ", (*it).x, (*it).y);
+    for(std::list<Point>::iterator it = listOfContourPoints[planeIndex][i].begin(); it != listOfContourPoints[planeIndex][i].end(); it++){
+      DPRINT("(%d, %d) ", (*it).x, (*it).y);
+      printColor("Color", (*it).normalizedIntensity);
+    }
     if(!listOfContourPoints[planeIndex][i].empty()) 
       DPRINT("\n"); 
   }
@@ -761,7 +764,7 @@ void Polyhedron::printContourPoints(){
  }
 }
 
-void Polyhedron::rasterize(float r, float g, float b){
+void Polyhedron::rasterize(){
   setupContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
   for(int planeIndex = 0 ; planeIndex < numberOfPlanes; planeIndex++){ 
     for(int i = 0; i < graphs[planeIndex]->window_height; i++){ //for each scanline
@@ -775,7 +778,7 @@ void Polyhedron::rasterize(float r, float g, float b){
           //DPRINT(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
           if( abs(p2.x - p1.x) >= 1 ){
             //DPRINT("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
-            graphs[planeIndex]->drawLine(p1,p2);//, r, g, b); 
+            graphs[planeIndex]->drawLine(p1,p2); //gourauld shading
           }
         }
       }

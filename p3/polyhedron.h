@@ -86,7 +86,7 @@ class Polyhedron {
   void _storeContourPoint(Point p, int planeIndex);
   void printContourPoints();
 
-  void rasterize(float r, float g, float b);
+  void rasterize();
 
 };
 

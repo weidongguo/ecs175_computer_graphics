@@ -148,10 +148,11 @@ pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"
 phong	polyhedron.cpp	/^Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
 phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
 printAttributes	polyhedron.cpp	/^void Polyhedron::printAttributes(){$/;"	f	class:Polyhedron
+printColor	vector.cpp	/^void printColor(const char *tag, Color c){$/;"	f
 printContourPoints	polyhedron.cpp	/^void Polyhedron::printContourPoints(){$/;"	f	class:Polyhedron
 printVector	vector.cpp	/^void printVector(const char *tag, Vector v){$/;"	f
 r	common_type.h	/^  float r;$/;"	m	struct:__anon1
-rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(float r, float g, float b){$/;"	f	class:Polyhedron
+rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(){$/;"	f	class:Polyhedron
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
 readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
 readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f

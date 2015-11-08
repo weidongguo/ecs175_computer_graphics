@@ -58,9 +58,8 @@ int Graph::drawLine( Point p1, Point p2){
       drawPixel(x, p1.y, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity) );
     return 0;
   }
-
+  DPRINT("################################################SLANTED LINE\n");
   bresenham(p1, p2);
-  
   return 0;
 }
 
