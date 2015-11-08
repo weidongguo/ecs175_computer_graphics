@@ -96,6 +96,10 @@ int main(int argc, char *argv[]){
   globalGraphs[0]->halfTone( {0,0,1});
   globalGraphs[1]->halfTone( {0,0,1});
   globalGraphs[2]->halfTone( {0,0,1});
+  globalGraphs[0]->restorePixelBuffer();
+  //globalGraphs[1]->restorePixelBuffer(); 
+  globalGraphs[2]->restorePixelBuffer();
+
   //callback registration:
   glutSetWindow(mainWindowID);
   glutKeyboardFunc(callback_keyboard); 

@@ -328,6 +328,8 @@ void Graph::halfTone(Color color){
  Vector v;
  Color tmp;
  int numberOfPixels; 
+ //backup before doing half-toning
+ backupPixelBuffer();
  for(int r = 0 ; r < window_height; r+=megaPixel){  //row
    for(int c = 0 ; c < window_width;  c+=megaPixel){//col
      v = {0,0,0}; 
@@ -420,5 +422,10 @@ void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int 
 
 void Graph::backupPixelBuffer(){
   PixelBufferBackup =  new float[window_width*window_height*3];   
-  memcpy(PixelBufferBackup, PixelBuffer, window_width * window_height * 3);
+  memcpy(PixelBufferBackup, PixelBuffer, window_width * window_height * 3 *sizeof(float) );
+}
+
+void Graph::restorePixelBuffer(){
+  memcpy(PixelBuffer, PixelBufferBackup, window_width * window_height * 3 *sizeof(float) );
+  delete [] PixelBufferBackup;
 }

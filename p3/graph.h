@@ -36,6 +36,7 @@ class Graph {
     void halfTone(Color color);
     Color readPixel(int x, int y);
     void  backupPixelBuffer();
+    void  restorePixelBuffer();
 
 };
 
