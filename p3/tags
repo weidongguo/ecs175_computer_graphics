@@ -5,12 +5,12 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
-BRESENHAM	graph.h	35;"	d
+BRESENHAM	graph.h	39;"	d
 C	Makefile	/^C = g++$/;"	m
 COMMON_TYPE_H	common_type.h	2;"	d
 ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
-DDA	graph.h	36;"	d
+DDA	graph.h	40;"	d
 DEBUG_PRINT	common_type.h	7;"	d
 DPRINT	common_type.h	10;"	d
 DPRINT	common_type.h	12;"	d
@@ -54,15 +54,17 @@ Surface	common_type.h	/^typedef TriSurface Surface;$/;"	t
 Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon8
 TriSurface	common_type.h	/^} TriSurface;$/;"	t	typeref:struct:__anon6
 USER_IO_H	user_io.h	2;"	d
+VECTOR_H	vector.h	2;"	d
 Vector	common_type.h	/^} Vector;$/;"	t	typeref:struct:__anon3
-Vector	vector.h	/^ class Vector{ $/;"	c
 Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon10
 _bresenham	polyhedron.cpp	/^int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ \/\/for storing points, not drawing pixel$/;"	f	class:Polyhedron
 _storeContourPoint	polyhedron.cpp	/^void Polyhedron:: _storeContourPoint(Point p, int planeIndex){$/;"	f	class:Polyhedron
 _storeLinePoints	polyhedron.cpp	/^int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){$/;"	f	class:Polyhedron
-add	polyhedron.cpp	/^Vector Polyhedron::add(Vector v1, Vector v2){$/;"	f	class:Polyhedron
+add	vector.cpp	/^Vector add(Vector v1, Vector v2){$/;"	f
+applyPhong	polyhedron.cpp	/^void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
 b	common_type.h	/^  float b;$/;"	m	struct:__anon1
 background_color	graph.h	/^  public:Color background_color;$/;"	m	class:Graph
+bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2 ){ \/\/overloaded bresenham, each points has its own color$/;"	f	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
 callback_display	main.cpp	/^void callback_display(){$/;"	f
 callback_keyboard	main.cpp	/^void callback_keyboard(unsigned char key, int x, int y){$/;"	f
@@ -76,14 +78,17 @@ clearContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::clearContourPoi
 compareXValue	polyhedron.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
 cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon10
 createMenu	main.cpp	/^void createMenu(void){     $/;"	f
+ctov	vector.cpp	/^Vector ctov(Color c){$/;"	f
 dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
-dotProduct	polyhedron.cpp	/^float Polyhedron::dotProduct(Vector v1, Vector v2){$/;"	f	class:Polyhedron
+dotProduct	vector.cpp	/^float dotProduct(Vector v1, Vector v2){$/;"	f
 draw	polyhedron.cpp	/^void Polyhedron::draw(){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(Color c){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	class:Polyhedron
+drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
+drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
@@ -91,6 +96,7 @@ drawPolyhedra	main.cpp	/^void drawPolyhedra(Polyhedron **polyhedra){$/;"	f
 erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
 ff	common_type.h	/^  Point_3D ff[3]; \/\/coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane$/;"	m	struct:__anon9
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
+findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
 findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *_xMin, float *_yMin, float *_zMin){$/;"	f	class:Polyhedron
 g	common_type.h	/^  float g;$/;"	m	struct:__anon1
 globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
@@ -107,18 +113,23 @@ ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon4
 ka	common_type.h	/^  Color ka;$/;"	m	struct:__anon9
 kd	common_type.h	/^  Color kd; \/\/diffusive  coefficient(the color of a point in the original object) ;$/;"	m	struct:__anon4
 ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon4
+linearInterpolation	vector.cpp	/^Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend){$/;"	f
 listOfContourPoints	polyhedron.h	/^  std::list<Point> *listOfContourPoints[3]; \/\/index 0 for xy, 1 for xz, 2 for yz$/;"	m	class:Polyhedron
 listOfEdges	polyhedron.h	/^  Edge *listOfEdges; $/;"	m	class:Polyhedron
 listOfPoints	polyhedron.h	/^  Point_3D* listOfPoints;$/;"	m	class:Polyhedron
 listOfPointsNDC	polyhedron.h	/^  Point_3D* listOfPointsNDC;$/;"	m	class:Polyhedron
 listOfSurfaces	polyhedron.h	/^  Surface *listOfSurfaces;$/;"	m	class:Polyhedron
-magnitude	polyhedron.cpp	/^float Polyhedron::magnitude(Vector v){$/;"	f	class:Polyhedron
+magnitude	vector.cpp	/^float magnitude(Vector v){$/;"	f
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
-minus	polyhedron.cpp	/^Vector   Polyhedron:: minus(Point_3D p2, Point_3D p1){$/;"	f	class:Polyhedron
-minus	polyhedron.cpp	/^Vector   Polyhedron:: minus(Vector v1, Vector v2) {$/;"	f	class:Polyhedron
-multByScalar	polyhedron.cpp	/^Vector Polyhedron::multByScalar(Vector v, float scalar){$/;"	f	class:Polyhedron
+minus	vector.cpp	/^Vector minus(Point_3D p2, Point_3D p1){$/;"	f
+minus	vector.cpp	/^Vector minus(Vector v1, Vector v2) {$/;"	f
+multByScalar	vector.cpp	/^Color multByScalar(Color c, float scalar){$/;"	f
+multByScalar	vector.cpp	/^Vector multByScalar(Vector v, float scalar){$/;"	f
+n	common_type.h	/^  int n; \/\/ controls reflection intensity $/;"	m	struct:__anon9
 nn	common_type.h	/^  Vector nn;\/\/normal vector;$/;"	m	struct:__anon4
 normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon6
+normalizeIntensities	polyhedron.cpp	/^void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
+normalizedIntensity	common_type.h	/^  Color normalizedIntensity; $/;"	m	struct:__anon2
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon4
 numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
 numberOfPlanes	polyhedron.h	/^  int numberOfPlanes;$/;"	m	class:Polyhedron
@@ -134,11 +145,11 @@ p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon5
 p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon6
 p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon6
 pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon8
-phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){$/;"	f	class:Polyhedron
-phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
+phong	polyhedron.cpp	/^Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
+phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
 printAttributes	polyhedron.cpp	/^void Polyhedron::printAttributes(){$/;"	f	class:Polyhedron
 printContourPoints	polyhedron.cpp	/^void Polyhedron::printContourPoints(){$/;"	f	class:Polyhedron
-printVector	polyhedron.cpp	/^void Polyhedron::printVector(const char *tag, Vector v){$/;"	f	class:Polyhedron
+printVector	vector.cpp	/^void printVector(const char *tag, Vector v){$/;"	f
 r	common_type.h	/^  float r;$/;"	m	struct:__anon1
 rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(float r, float g, float b){$/;"	f	class:Polyhedron
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
@@ -154,6 +165,11 @@ scene	common_type.h	/^  Scene scene;$/;"	m	struct:__anon10
 selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon10
 setCentroid	polyhedron.cpp	/^void Polyhedron::setCentroid(){$/;"	f	class:Polyhedron
 setNDC	polyhedron.cpp	/^void Polyhedron::setNDC(float delta, float xMin, float yMin, float zMin){$/;"	f	class:Polyhedron
+setNormalVector	polyhedron.cpp	/^void Polyhedron::setNormalVector(){ $/;"	f	class:Polyhedron
+setNormalVectors	polyhedron.cpp	/^void Polyhedron::setNormalVectors(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
+setPhongKCoeff	polyhedron.cpp	/^void Polyhedron::setPhongKCoeff(Color ka, Color kd, Color ks){ $/;"	f	class:Polyhedron
+setPhongKCoeffForEachPolyhedron	polyhedron.cpp	/^void Polyhedron::setPhongKCoeffForEachPolyhedron(Polyhedron **polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
+setPhongParams	polyhedron.cpp	/^void Polyhedron::setPhongParams(Polyhedron**polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
 setupContourPoints	polyhedron.cpp	/^void Polyhedron::setupContourPoints(){$/;"	f	class:Polyhedron
 state	common_type.h	/^  int state;$/;"	m	struct:__anon10
 storeOriginalPointsToContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){$/;"	f	class:Polyhedron
@@ -161,10 +177,11 @@ swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
 tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon10
 translate	polyhedron.cpp	/^void Polyhedron::translate(float x_offset, float y_offset, float z_offset){$/;"	f	class:Polyhedron
 uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
-unitVector	polyhedron.cpp	/^Vector   Polyhedron:: unitVector(Point_3D p){$/;"	f	class:Polyhedron
-unitVector	polyhedron.cpp	/^Vector   Polyhedron:: unitVector(Vector p){$/;"	f	class:Polyhedron
+unitVector	vector.cpp	/^Vector unitVector(Point_3D p){$/;"	f
+unitVector	vector.cpp	/^Vector unitVector(Vector p){$/;"	f
 updateRotationAxis	polyhedron.cpp	/^void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints){$/;"	f	class:Polyhedron
 updateScreen	main.cpp	/^void updateScreen(Polyhedron **polyhedra){$/;"	f
+vtoc	vector.cpp	/^Color vtoc(Vector v){$/;"	f
 width	common_type.h	/^  int width;$/;"	m	struct:__anon10
 window	main.cpp	/^Window window;$/;"	v
 windowInit	main.cpp	/^void windowInit(Window *window){$/;"	f
@@ -173,7 +190,6 @@ window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
 x	common_type.h	/^  float x;$/;"	m	struct:__anon3
 x	common_type.h	/^  float x;$/;"	m	struct:__anon4
 x	common_type.h	/^  int x;$/;"	m	struct:__anon2
-x	vector.h	/^    float x;$/;"	m	class:Vector
 xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon7
 xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon7
 x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon8
@@ -181,11 +197,9 @@ xx	common_type.h	/^  Point_3D xx; \/\/ coord. of light src$/;"	m	struct:__anon9
 y	common_type.h	/^  float y;$/;"	m	struct:__anon3
 y	common_type.h	/^  float y;$/;"	m	struct:__anon4
 y	common_type.h	/^  int y;$/;"	m	struct:__anon2
-y	vector.h	/^    float y;$/;"	m	class:Vector
 yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon7
 yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon7
 y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon8
 z	common_type.h	/^  float z;$/;"	m	struct:__anon3
 z	common_type.h	/^  float z;$/;"	m	struct:__anon4
-z	vector.h	/^    float z;$/;"	m	class:Vector
 z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon8

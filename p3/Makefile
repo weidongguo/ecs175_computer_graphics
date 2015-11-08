@@ -2,8 +2,8 @@ ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT
 
 C = g++
 
-a.out: main.o graph.o user_io.o polyhedron.o
-	$(C) $(ARG) main.o graph.o  user_io.o polyhedron.o
+a.out: main.o graph.o user_io.o polyhedron.o vector.o
+	$(C) $(ARG) main.o graph.o  user_io.o polyhedron.o vector.o
 
 main.o: main.cpp graph.h	
 	$(C) $(ARG) -c main.cpp 
@@ -16,6 +16,9 @@ user_io: user_io.h
 
 polyhedron.o: polyhedron.h graph.h
 	$(C) $(ARG) -c polyhedron.cpp	
+
+vector.o:	vector.h
+	$(C) $(ARG) -c vector.cpp
 
 clean:
 	rm -f *.out *.o

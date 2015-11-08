@@ -4,6 +4,10 @@ Graph::Graph(int width, int height, float *PixelBufferPtr){
   window_width = width;
   window_height = height;
 }
+
+int Graph::drawPixel(Point p){
+  return drawPixel(p.x, p.y, p.normalizedIntensity);
+}
 int Graph::drawPixel(int x, int y, Color c){
   return drawPixel(x,y, c.r, c.g, c.b);
 }
@@ -25,6 +29,42 @@ int Graph::drawPixel(int x, int y, float r, float g, float b){
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){
   return drawLine(p1,p2,r,g,b,BRESENHAM);
 }
+
+int Graph::drawLine( Point p1, Point p2){
+  if(p1.x == p2.x){ //vertical line
+    int y,y_end; 
+    if(p1.y <= p2.y){
+      y = p1.y;
+      y_end = p2.y;
+    }else{
+      y = p2.y;
+      y_end = p1.y;
+    }
+    for(; y<=y_end; y++)
+      drawPixel(p1.x, y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity) );
+    return 0;
+  }
+  else if(p1.y == p2.y){ // horizontal line
+    int x, x_end;
+    if(p1.x <= p2.x){
+      x = p1.x;
+      x_end =  p2.x;
+    }
+    else{
+      x = p2.x;
+      x_end = p1.x; 
+    }
+    for(; x <= x_end; x++)
+      drawPixel(x, p1.y, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity) );
+    return 0;
+  }
+
+  bresenham(p1, p2);
+  
+  return 0;
+}
+
+
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ 
   if(p1.x == p2.x){ //vertical line
     int y,y_end; 
@@ -194,6 +234,57 @@ int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){
       drawPixel(y,x,r,g,b);//x and y was swapped before
     else 
       drawPixel(x,y,r,g,b);
+  }
+
+  return 0;
+}
+
+int Graph::bresenham(Point pt1, Point pt2 ){ //overloaded bresenham, each points has its own color
+  Point p1 = pt1;
+  Point p2 = pt2;
+  int x, y, x_end, y_end, p; 
+  int dx = (p2.x - p1.x), dy = (p2.y - p1.y); //for determining sign of slope
+  bool steep = false;
+  float m = (float)dy/(float)dx ; //find the slope first
+  DPRINT("The slope is %.2f\n", m);
+  bool positive_slope;
+  if( m >= 0 )  // positive slope
+    positive_slope = true;
+  else
+    positive_slope = false;
+  
+  if( fabs(m) <= 1 ){ //shallow
+    steep = false; 
+  }
+  else{ //steep
+   steep = true;
+   swapXY(&p1);
+   swapXY(&p2);
+  }
+  determineStartAndEndPoints(p1, p2, &x, &y, &x_end, &y_end);
+  //DPRINT("x: %d,\ty: %d,\tx_end: %d,\ty_end:%d\n", x, y, x_end, y_end);
+  dx = abs(x_end - x);
+  dy = abs(y_end - y);
+  //draw first point  
+  if(steep)
+    drawPixel(y,x, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity ) );//x and y was swapped before
+  else 
+    drawPixel(x,y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity ) );
+
+  p = 2 * dy - dx;
+  for( ; x < x_end; ){
+    x++;
+    if( p >= 0){ // if d1 - d2  >= 0, means d2 is shorter, so advance y one level up
+        positive_slope? y++:y--; 
+        p = p + 2*dy - 2*dx;
+    }
+    else // if d1 - d2 < 0; means d1 is shorter, so no change of y;
+      p = p + 2*dy;
+    
+    if(steep)
+      drawPixel(y,x, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity ) );//x and y was swapped before
+    else 
+      drawPixel(x,y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity ) );
   }
 
   return 0;

@@ -41,16 +41,24 @@ void Polyhedron::setCentroid(){
 
 void Polyhedron::printAttributes(){
   Point_3D p; Edge e;
+  Color intensity;
   printf("------------Polyhedron Attributes----------------------\n");
   for(int i = 0 ; i < numberOfPoints; i++){
     p = listOfPoints[i]; 
     printf("Vertex %d:  (%.2f, %.2f, %.2f)\n", i+1, p.x, p.y, p.z);
+    intensity = p.intensity; 
+    printf("Intensity for this vertex is (%.2f, %.2f, %.2f)\n", intensity.r, intensity.g, intensity.b);
+    intensity = p.normalizedIntensity;
+    printf("Normalized Intensity for this vertex is (%.2f, %.2f, %.2f)\n", intensity.r, intensity.g, intensity.b);
   }
   for(int i = 0 ; i < numberOfEdges; i++){
     e = listOfEdges[i];
     printf("Edge: %d %d\n", e.p1Index+1, e.p2Index+1);
   }
   printf("Centroid (%.2f, %.2f, %.2f)\n", centroid.x, centroid.y, centroid.z);
+ 
+ 
+ 
   
   printf("----------End of Polyhedron Attributes-----------------\n\n");
 
@@ -174,9 +182,10 @@ void Polyhedron::setNDC(float delta, float xMin, float yMin, float zMin){
   if(listOfPointsNDC != 0 && listOfPoints!=0){
     //set normalized device coordinates
     for(int i = 0 ; i < numberOfPoints; i++){
-      listOfPointsNDC[i].x = (listOfPoints[i].x - xMin)/delta;
-      listOfPointsNDC[i].y = (listOfPoints[i].y - yMin)/delta;
-      listOfPointsNDC[i].z = (listOfPoints[i].z - zMin)/delta;
+      listOfPointsNDC[i] = listOfPoints[i]; // copy everything over first
+      listOfPointsNDC[i].x = (listOfPoints[i].x - xMin)/delta; //update x
+      listOfPointsNDC[i].y = (listOfPoints[i].y - yMin)/delta; //update y
+      listOfPointsNDC[i].z = (listOfPoints[i].z - zMin)/delta; //update z
       DPRINT("NDC: (%.2f, %.2f, %.2f)\n", listOfPointsNDC[i].x, listOfPointsNDC[i].y, listOfPointsNDC[i].z);
     }
 
@@ -331,6 +340,14 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
 
         setCentroid();
 }
+/*
+Vector   Polyhedron:: ctov(Color c){
+  return {c.r, c.g, c.b}; 
+}
+
+Color    Polyhedron:: vtoc(Vector v){
+  return {v.x, v.y, v.z};
+}
 
 Vector   Polyhedron:: minus(Point_3D p2, Point_3D p1){
   return { p2.x - p1.x, p2.y-p1.y, p2.z - p1.z };
@@ -357,6 +374,10 @@ Vector Polyhedron::multByScalar(Vector v, float scalar){
   return { v.x * scalar, v.y * scalar, v.z * scalar};    
 }
 
+Color Polyhedron::multByScalar(Color c, float scalar){
+  return { c.r * scalar, c.g * scalar, c.b * scalar};    
+}
+
 Vector Polyhedron::add(Vector v1, Vector v2){
   return { v1.x + v2.x, v1.y + v2.y, v1.z + v2.z};
 }
@@ -364,7 +385,7 @@ Vector Polyhedron::add(Vector v1, Vector v2){
 float Polyhedron::magnitude(Vector v){
   return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 }
-
+*/
 bool Polyhedron::isNDC(Point_3D p){
   return !( p.x < 0 || p.x > 1 || p.y <0 || p.y > 1 || p.z < 0 || p.y >1);
 }
@@ -374,19 +395,71 @@ void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedr
   polyhedra[numberOfPolyhedra-1]->listOfPoints[1] = pairOfPoints[1];
 }
 
-void Polyhedron::printVector(const char *tag, Vector v){
-  DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, v.x, v.y, v.z);
+void Polyhedron::setPhongParams(Polyhedron**polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){
+  setPhongKCoeffForEachPolyhedron(polyhedra, numberOfPolyhedra, ka, kd, ks);
+  setNormalVectors(polyhedra, numberOfPolyhedra);
 }
 
-Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){
+/*void Polyhedron::printVector(const char *tag, Vector v){
+  DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, v.x, v.y, v.z);
+}*/
+
+void Polyhedron::setPhongKCoeff(Color ka, Color kd, Color ks){ 
+  // ka - ambient light coefficient, kd - diffusive, ks - specular
+ 
+ if( ka.r > 1 || ka.r < 0 || kd.r > 1 || kd.r < 0 || ks.r > 1 || ks.r < 0)
+    printf("Invalid: coefficients, it must be between [0,1]\n");
+  else{
+    for(int i = 0 ; i < numberOfPoints; i++){ // for each point in the polyhedron
+      listOfPoints[i].ka = ka; // they are defined based on the material of the object
+      listOfPoints[i].kd = kd; // some object have higher ks because it's metallic 
+      listOfPoints[i].ks = ks; // each point has the potential to have different ka, kd, ks 
+                               // because in reality, material slightly changes across its body 
+    }
+  }
+}
+
+void Polyhedron::setPhongKCoeffForEachPolyhedron(Polyhedron **polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){
+  for(int i = 0 ; i < numberOfPolyhedra; i++)
+    polyhedra[i]->setPhongKCoeff(ka, kd, ks);
+}
+
+void Polyhedron::setNormalVectors(Polyhedron **polyhedra, int numberOfPolyhedra){
+  for(int i = 0 ; i <  numberOfPolyhedra; i++){
+    polyhedra[i]->setNormalVector(); 
+  }
+}
+void Polyhedron::setNormalVector(){ 
+  Vector *v = new Vector[numberOfPoints];
+  for(int i = 0 ; i < numberOfPoints; i++){
+    v[i].x = v[i].y = v[i].z = 0; // initialize each vector to be (0 , 0 , 0)
+  }
+  Surface s;
+  for(int i = 0; i < numberOfSurfaces; i++){ //Sum normal vectors of adjacent surfaces for each point
+    s = listOfSurfaces[i];
+    v[ s.p1Index ] = add( v[ s.p1Index ], s.normalVector );
+    v[ s.p2Index ] = add( v[ s.p2Index ], s.normalVector );
+    v[ s.p3Index ] = add( v[ s.p3Index ], s.normalVector );
+  }
+  for(int i =0 ; i < numberOfPoints; i++){ //set normal vector for each point
+    v[i] = multByScalar( v[i], 1.0/numberOfPoints ); //take the of the normal vectors adjacent 
+    listOfPoints[i].nn =  v[i]; //set normal vector  for the point 
+  } 
+
+  delete[] v;
+}
+
+
+Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D xx, int n ){
   Vector ll = unitVector( minus(xx,p) ); printVector("ll", ll);
   Vector vv = unitVector( minus(ff,p) ); printVector("vv", vv);
-  Vector rr = minus( multByScalar(nn, 2*dotProduct(nn,ll)), ll ); printVector("rr", rr);
+  Vector rr = minus( multByScalar(p.nn, 2*dotProduct(p.nn,ll)), ll ); printVector("rr", rr);
   double C =  magnitude( minus(xx, p) );
-  return phong(p, ka, kd, ks, Ia, Il, nn, ff, n, C, ll, vv, rr);
+  Vector I = phong(p, ctov(p.ka), ctov(p.kd), ctov(p.ks), p.nn, Ia, Il, ff, n, C, ll, vv, rr);
+  return {I.x, I.y, I.z};
 }
 
-Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){
+Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){
   Vector Iamb = multByScalar(ka, Ia);
   float scalarForDiffSpec = Il / ( magnitude( minus(ff, p) ) + C ); 
   
@@ -399,19 +472,36 @@ Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, 
   return add(Iamb, Idiff_spec);
 }
 
+void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float Ia, float Il, Point_3D ff, Point_3D xx, int n ){
+  Color intensity;
+  int numberOfPoints;
+  for(int i = 0 ; i < numberOfPolyhedra; i++){ // for each polyhedron
+    numberOfPoints = polyhedra[i]->numberOfPoints; 
+    for(int j = 0 ; j < numberOfPoints; j++){ // for each point in a polyhderon
+      intensity = phong(polyhedra[i]->listOfPoints[j], Ia, Il, ff, xx, n ); 
+      polyhedra[i]->listOfPoints[j].intensity = intensity;
+    }
+  }
+}
 
-// not only find the max intensity, it also sets phong intensity(not yet normalized) for each point along the way
-float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx ){
-  
+//find the max intensity
+float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra){
   float maxIntensity , intensity;
   int numberOfPoints;
   Point_3D p;
-  for(int i = 0 ; i < numberOfPolyhedra; i++){
-    numberOfPoints = polyhedra[i].numberOfpoints; 
+  
+  //init maxIntensity  
+  numberOfPoints = polyhedra[0]->numberOfPoints;
+  for(int i = 0 ; i < numberOfPoints; i++){
+    p = polyhedra[0]->listOfPoints[i];
+    maxIntensity = MAX( p.intensity.r, MAX( p.intensity.g, p.intensity.b) );
+  }
+
+  for(int i = 1 ; i < numberOfPolyhedra; i++){
+    numberOfPoints = polyhedra[i]->numberOfPoints; 
     for(int j = 0; j < numberOfPoints; j ++){
-      p  = polyhedra[i]->listOfPoints[j]
-      //set intensity for each end point of the polyhedron 
-      polyhedra[i]->listOfPoints[j].intensity =  phong(p, ka,kd,ks,Ia,Il,nn,ff,n,xx);// needs to look for nn for the specific point
+      p  = polyhedra[i]->listOfPoints[j];
+      intensity = MAX( p.intensity.r, MAX( p.intensity.g, p.intensity.b ) ); 
       if( intensity > maxIntensity)
         maxIntensity = intensity;//find the max intensity
     } 
@@ -419,13 +509,19 @@ float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra
   return maxIntensity;
 }
 
-
-void Polyhedron::setNormalizedIntensities(Polyhedron **polyhedra, int numberOfPolyhedra, float maxIntensity){
+void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra){
+  float maxIntensity = findMaxIntensity(polyhedra, numberOfPolyhedra);
+  int numberOfPoints;
+  Color intensity;
   for(int i = 0 ; i < numberOfPolyhedra; i++){
-    float tmp = polyhedra[i].normalizedIntensity = polyhedra[i]->intensity / maxIntensity;
-    DPRINT("normalized intensity: %.2f\n", tmp);
+     numberOfPoints = polyhedra[i]->numberOfPoints; 
+     for(int j = 0 ; j < numberOfPoints; j++){
+        intensity = polyhedra[i]->listOfPoints[j].intensity;
+        polyhedra[i]->listOfPoints[j].normalizedIntensity = multByScalar(intensity, 1/maxIntensity); 
+     }
   }
 }
+
 
 /* Gourauld Shading */
 
@@ -450,6 +546,7 @@ int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ //for storing 
   bool steep = false;
   float m = (float)dy/(float)dx ; //find the slope first
   bool positive_slope;
+  Point tmpPoint;
   if( m >= 0 )  // positive slope
     positive_slope = true;
   else
@@ -486,17 +583,30 @@ int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ //for storing 
     else // if d1 - d2 < 0; means d1 is shorter, so no change of y;
       p = p + 2*dy;
     
-    if(steep)
-      _storeContourPoint( {y,x}, planeIndex);
-    else 
-      _storeContourPoint( {x,y}, planeIndex);
+    if(steep){
+      tmpPoint = {y,x, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity)};
+      _storeContourPoint( tmpPoint, planeIndex);
+    }
+    else {
+      tmpPoint = {x,y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity)};
+      _storeContourPoint( tmpPoint, planeIndex);
+
+    }
   }
   
   return 0;
 }
 
+/*Color Polyhedron::linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend){
+  float denom = fabs(end - begin);
+  Color addend1 = multByScalar(Iend,   fabs(mid - begin) /denom );
+  Color addend2 = multByScalar(Ibegin, fabs(end - mid) /denom   );
+  return vtoc( add( ctov(addend1), ctov(addend2) ) );
+}*/
+
 //NOTE: End points are NOT stored, meaning the original two points
 int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
+  Point p;
   if(p1.x == p2.x){ //vertical line
     int y,y_end; 
     if(p1.y <= p2.y){
@@ -510,8 +620,10 @@ int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
     y++; // do not store the first point
     y_end--; // do  not store the last point
 
-    for(; y<=y_end; y++)
-      _storeContourPoint( {p1.x, y}, planeIndex);
+    for(; y<=y_end; y++){
+      p = {p1.x, y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity) };
+      _storeContourPoint( p, planeIndex);
+    }
     return 0;
   }
   else if(p1.y == p2.y){ // horizontal line
@@ -529,8 +641,9 @@ int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){
     x_end--; // do  not store the last point
 
     for(; x <= x_end; x++){
-      _storeContourPoint( {x, p1.y}, planeIndex);
-      printf("horizontal: (%d, %d)\n", x, p1.y); 
+      p =  {x, p1.y, linearInterpolation(x, p1.x, p2.x, p1.normalizedIntensity, p2.normalizedIntensity) };
+      _storeContourPoint(p, planeIndex);
+      //printf("horizontal: (%d, %d)\n", x, p1.y); 
     }
     return 0;
   }
@@ -585,9 +698,10 @@ void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){
 
 void Polyhedron::setupContourPoints(){
   int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
+  Point p1_2d, p2_2d;
   scaleX = scaleY = MIN(scaleX,scaleY);
   scaleX--;  scaleY--;
-  
+   
   clearContourPointsForEachPlane(3);//reset all listOfCountourPoints
    
   storeOriginalPointsToContourPointsForEachPlane();//do not want duplicates of the original points, so store it once here and ignore all other instances when encountering the same points
@@ -604,11 +718,22 @@ void Polyhedron::setupContourPoints(){
     }
     DPRINT("** FROM edge %d to edge %d:\n", p1Index, p2Index);
     //xy-plane 
-    _storeLinePoints( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,   0);
+    p1_2d = { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY), p1.normalizedIntensity };
+    p2_2d = { (int)round(p2.x * scaleX), (int)round(p2.y * scaleY), p2.normalizedIntensity };  
+    _storeLinePoints(p1_2d, p2_2d, 0);
+    printColor("vertex>>>>> ", p1.normalizedIntensity); 
+    printColor("vertex>>>>> ", p2.normalizedIntensity); 
+
     //xz-plane
-    _storeLinePoints( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) },    1);
+    p1_2d = { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY), p1.normalizedIntensity }; 
+    p2_2d = { (int)round(p2.x * scaleX), (int)round(p2.z * scaleY), p2.normalizedIntensity };
+    _storeLinePoints(p1_2d, p2_2d, 1);
+
     //yz-plane
-    _storeLinePoints( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) },    2);
+    p1_2d = { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY), p1.normalizedIntensity }; 
+    p2_2d = { (int)round(p2.y * scaleX), (int)round(p2.z * scaleY), p2.normalizedIntensity };
+    _storeLinePoints(p1_2d, p2_2d, 2);
+
   }
   
   //for each plane
@@ -637,7 +762,7 @@ void Polyhedron::printContourPoints(){
 }
 
 void Polyhedron::rasterize(float r, float g, float b){
-  //setupContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
+  setupContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
   for(int planeIndex = 0 ; planeIndex < numberOfPlanes; planeIndex++){ 
     for(int i = 0; i < graphs[planeIndex]->window_height; i++){ //for each scanline
       if(listOfContourPoints[planeIndex][i].size() > 1){ // if more than 1 point on a scanline
@@ -650,7 +775,7 @@ void Polyhedron::rasterize(float r, float g, float b){
           //DPRINT(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
           if( abs(p2.x - p1.x) >= 1 ){
             //DPRINT("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$(%d, %d) ; (%d, %d) \n", p1.x, p1.y, p2.x, p2.y);
-            graphs[planeIndex]->drawLine(p1,p2, r, g, b); 
+            graphs[planeIndex]->drawLine(p1,p2);//, r, g, b); 
           }
         }
       }

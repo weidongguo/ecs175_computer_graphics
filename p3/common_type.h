@@ -29,6 +29,7 @@ typedef struct {
 typedef struct{
   int x;
   int y;
+  Color normalizedIntensity; 
 } Point;
 
 typedef struct{
@@ -86,7 +87,7 @@ typedef struct{
   float Ia;
   Point_3D ff[3]; //coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane
   Point_3D xx; // coord. of light src
-   
+  int n; // controls reflection intensity 
 } Scene;
 
 typedef struct{

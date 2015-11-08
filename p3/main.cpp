@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
   readPolyhedra(&ifs, globalGraphs, polyhedra, window.numberOfPolyhedra); 
   //             phong(Point_3D p, Vector ka, Vector kd, Vector ks, float Ia, float Il, Vector nn, Point_3D ff, int n, Point_3D xx );
 
-  Polyhedron::phong( {1,1,1}, {0.3, 0.3, 0.3}, {0.3,0.3,0.3}, {0.3, 0.3, 0.3}, 0.3, 0.3,  {2,-3,2}, {-1, 7, 3}, 2, {3,4,1} );
+  //Polyhedron::phong( {1,1,1}, {0.3, 0.3, 0.3}, {0.3,0.3,0.3}, {0.3, 0.3, 0.3}, 0.3, 0.3,  {2,-3,2}, {-1, 7, 3}, 2, {3,4,1} );
    
 
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
@@ -240,11 +240,12 @@ void windowInit(Window *window){
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
   
   window->scene.xx = {0,0,0};
-  window->scene.ff[0] = {100, 0, 0}; //looking from on top of xy plane
+  window->scene.ff[0] = {0, 0, 100}; //looking from on top of xy plane
   window->scene.ff[1] = {0, 100, 0}; //looking from on top of xz plane
-  window->scene.ff[2] = {0, 0, 100}; //looking from on top of yz plane
+  window->scene.ff[2] = {100, 0, 0}; //looking from on top of yz plane
   window->scene.Il = 0.5;
   window->scene.Ia = 0.2;
+  window->scene.n = 2;
 }
 
 void updateScreen(Polyhedron **polyhedra){
@@ -260,17 +261,16 @@ void drawPolyhedra(Polyhedron **polyhedra){
   float delta, xMin, yMin, zMin;
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
   
+  //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
+  Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0,0,0}, {0,1,0}, {0,1,0} );
+  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
+  Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
-    polyhedra[i]->draw();
-    polyhedra[i]->setupContourPoints();
-    polyhedra[i]->rasterize(1,0,0);
-    polyhedra[i]->printContourPoints();
+    //polyhedra[i]->draw();
+    polyhedra[i]->rasterize(1,0,1);
+    //polyhedra[i]->printContourPoints();
+    polyhedra[i]->printAttributes();
   }
-   //last one
-  //draw the rotional axis - it's always the last polyhedron of the list of polyhedra ( not really a polyhedron, but rather a line living in 3d world)
-  //int indexOfRotAxis = window.numberOfPolyhedra-1;
-  //polyhedra[indexOfRotAxis]->setNDC(delta, xMin, yMin, zMin);
-  //polyhedra[indexOfRotAxis]->draw(1,0,0); // give it green color
 }
 
