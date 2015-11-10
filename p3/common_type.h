@@ -5,8 +5,6 @@
 #include <string>
 #include "color.h"
 
-#define DEBUG_PRINT 1
-
 #ifdef DEBUG_PRINT
   #define DPRINT printf
 #else
@@ -85,7 +83,7 @@ typedef struct{
 typedef struct{
   float Il; 
   float Ia;
-  Point_3D ff[3]; //coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane
+  Point_3D ff; //coord of FROM POINTS, 
   Point_3D xx; // coord. of light src
   int n; // controls reflection intensity 
   Color ka, kd, ks;

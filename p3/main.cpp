@@ -47,7 +47,7 @@ int main(int argc, char *argv[]){
   SubWindowPixelBuffer3 = new float[ (window.width* window.height/4) * 3];
   
   // create sub-windows and their callback functions
-  int mainWindowID = glutCreateWindow("Project 2");
+  int mainWindowID = glutCreateWindow("Project 3: Phong, Gouraud, Half-toning, Painter's Algorithm");
   glutDisplayFunc(callback_display);
 
   int subWindowID1 = glutCreateSubWindow(mainWindowID, 0, 0, window.width/2, window.height/2);
@@ -100,12 +100,20 @@ int main(int argc, char *argv[]){
 }
 
 void callback_menu(int state){
-  Point_3D p1, p2;
   switch(state){
     case MENU_STATUS:
       printf("======================Status====================\n");
       printf("Window Size is %d x %d\n", window.width, window.height);
       printf("Half Tone Color R: %.2f, G: %.2f B: %.2f\n", window.halfTone.r, window.halfTone.g, window.halfTone.b); 
+      printf("** Phong Model Parameter ** \n");
+      printf("Light Source Intensity Il: %.2f\n", window.scene.Il);
+      printf("Ambient Light Intensity Ia: %.2f\n", window.scene.Ia);
+      printf("From Point ff: (%.2f, %.2f, %.2f)\n", window.scene.ff.x, window.scene.ff.y, window.scene.ff.z);
+      printf("Light Source xx: (%.2f, %.2f, %.2f)\n", window.scene.xx.x, window.scene.xx.y, window.scene.xx.z); 
+      printf("Phong Constant n: %d\n", window.scene.n); 
+      printf("Ambient Coeff ka, R: %.2f, G: %.2f B: %.2f\n", window.scene.ka.r, window.scene.ka.g, window.scene.ka.b);
+      printf("Diffuse Coeff kd, R: %.2f, G: %.2f B: %.2f\n", window.scene.kd.r, window.scene.kd.g, window.scene.kd.b);
+      printf("Specular Coeff ks, R: %.2f, G: %.2f B: %.2f\n", window.scene.ks.r, window.scene.ks.g, window.scene.ks.b);
       printf("=================End of Status==================\n");
       break;
     case MENU_HALF_TONE_TOGGLE:
@@ -121,7 +129,7 @@ void callback_menu(int state){
       }
       break;
     case MENU_SET_HALF_TONE_COLOR: 
-      printf("Please enter the color for half toning (value between 0.0 and 1.0) \n");  
+      printf("Please enter the color for half toning (value between 0.0 and 1.0). \n");  
       printf("R: "); 
       scanf("%f", &window.halfTone.r);
       printf("G: ");
@@ -129,6 +137,64 @@ void callback_menu(int state){
       printf("B: ");
       scanf("%f", &window.halfTone.b);
       printf("half tone color recorded\n");
+      break;
+    case MENU_SET_PHONG_PARAMETERS:
+      printf("Please enter the phong model parameters. \n");
+      printf("Light Source Intensity Il: ");
+      scanf("%f", &window.scene.Il);
+      
+      printf("Ambient Light Intensity Ia: ");
+      scanf("%f", &window.scene.Ia);
+      
+      printf("From Point ff\n");
+      printf("X: ");
+      scanf("%f", &window.scene.ff.x);
+      printf("Y: ");
+      scanf("%f", &window.scene.ff.y);
+      printf("Z: ");
+      scanf("%f", &window.scene.ff.z);
+
+      printf("Light Source xx\n"); 
+      printf("X: ");
+      scanf("%f", &window.scene.xx.x);
+      printf("Y: ");
+      scanf("%f", &window.scene.xx.y);
+      printf("Z: ");
+      scanf("%f", &window.scene.xx.z);
+
+
+      printf("Phong Constant n: "); 
+      scanf("%d", &window.scene.n);
+      
+      printf("Ambient Coeff ka\n");
+      printf("R: "); 
+      scanf("%f", &window.scene.ka.r);
+      printf("G: ");
+      scanf("%f", &window.scene.ka.g);
+      printf("B: ");
+      scanf("%f", &window.scene.ka.b);
+      
+      printf("Diffuse Coeff kd\n");
+      printf("R: "); 
+      scanf("%f", &window.scene.kd.r);
+      printf("G: ");
+      scanf("%f", &window.scene.kd.g);
+      printf("B: ");
+      scanf("%f", &window.scene.kd.b);
+
+      
+      printf("Specular Coeff ks\n");
+      printf("R: "); 
+      scanf("%f", &window.scene.ks.r);
+      printf("G: ");
+      scanf("%f", &window.scene.ks.g);
+      printf("B: ");
+      scanf("%f", &window.scene.ks.b);
+      
+      printf("Phong model parameters recorded.\n"); 
+      
+      updateScreen(globalPolyhedra);
+      glutPostRedisplay();
       break;
   }
 }
@@ -189,6 +255,7 @@ void callback_subdisplay3(){
 void createMenu(void){     
   int subMenuId_grabInput = glutCreateMenu(callback_menu);
   glutAddMenuEntry("Set Half Tone Color", MENU_SET_HALF_TONE_COLOR);
+  glutAddMenuEntry("Set Phong Parameters", MENU_SET_PHONG_PARAMETERS);
  
   int subMenuId_halfTone = glutCreateMenu(callback_menu);
   glutAddMenuEntry("Toggle", MENU_HALF_TONE_TOGGLE );
@@ -215,15 +282,13 @@ void windowInit(Window *window){
   window->state = STATE_HALF_TONE_OFF;
   
   window->scene.xx = {10,10,10};
-  window->scene.ff[0] = {0, 0, 10}; //looking from on top of xy plane
-  window->scene.ff[1] = {0, 10, 0}; //looking from on top of xz plane
-  window->scene.ff[2] = {10, 0, 0}; //looking from on top of yz plane
+  window->scene.ff = {0, 0, 10}; //looking from on top of xy plane
   window->scene.Il = 0.7;
   window->scene.Ia = 0.1;
   window->scene.n = 9;
   window->scene.ka = {0.3, 0.3, 0.3};
   window->scene.kd = {1,0,0};
-  window->scene.ks = {1,0,0}; 
+  window->scene.ks = {0.8,1,1}; 
   window->halfTone = COLOR_CRIMSON;
 }
 
@@ -241,7 +306,7 @@ void drawPolyhedra(Polyhedron **polyhedra){
   //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
   Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, window.scene.ka, window.scene.kd, window.scene.ks ); 
   
-  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
+  Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff, window.scene.xx,  window.scene.n);
   //Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
   //please note that for calculating the intensities for the original vertices, NON-NDC coord is used.
   //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
@@ -266,7 +331,7 @@ void drawPolyhedra(Polyhedron **polyhedra){
   Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, 2);//yz-plane, sort base on x-depth 
   for(int i = 0 ; i < window.numberOfPolyhedra; i++){  
    polyhedra[i]->rasterize(2);
-   polyhedra[i]->printAttributes();
+  // polyhedra[i]->printAttributes();
   //polyhedra[i]->printContourPoints();
   }
   
