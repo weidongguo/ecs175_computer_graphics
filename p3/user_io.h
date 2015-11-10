@@ -21,6 +21,8 @@ void readFile(std::ifstream &ifs);
 #define STATE_GRAB_DATA_CLIP_REGION         4
 #define STATE_GRAB_DATA_DRAW_DDA            5
 #define STATE_GRAB_DATA_DRAW_BRESENHAM      6
+#define STATE_HALF_TONE_ON                  7
+#define STATE_HALF_TONE_OFF                 8
 
 //for menu
 #define MENU_CLIP_DDA                      0
@@ -32,5 +34,5 @@ void readFile(std::ifstream &ifs);
 #define MENU_GRAB_TRANSLATION_FACTORS 6
 #define MENU_GRAB_SCALE_FACTORS       7
 #define MENU_GRAB_CLIP_REGION         8
-
+#define MENU_HALF_TONE_TOGGLE         9
 #endif

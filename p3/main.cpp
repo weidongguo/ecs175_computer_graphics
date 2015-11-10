@@ -93,12 +93,6 @@ int main(int argc, char *argv[]){
    
 
   drawPolyhedra(polyhedra); // draw polyhedra(objects) the first time 
-  globalGraphs[0]->halfTone( {0,0,1});
-  globalGraphs[1]->halfTone( {0,0,1});
-  globalGraphs[2]->halfTone( {0,0,1});
-  globalGraphs[0]->restorePixelBuffer();
-  //globalGraphs[1]->restorePixelBuffer(); 
-  globalGraphs[2]->restorePixelBuffer();
 
   //callback registration:
   glutSetWindow(mainWindowID);
@@ -164,6 +158,18 @@ void callback_menu(int state){
       scanf("%f", &window.tf.z_offset);
       printf("Translation factors (%.2f, %.2f, %.2f) recorded!\n", window.tf.x_offset, window.tf.y_offset, window.tf.z_offset);
       break;
+    case MENU_HALF_TONE_TOGGLE:
+      if( window.state == STATE_HALF_TONE_OFF){
+        window.state = STATE_HALF_TONE_ON;
+        for(int i = 0 ; i < 3; i ++) 
+          globalGraphs[i]->halfTone( {0,0,1} ); //turn half tone mode on
+      }
+      else {
+        window.state = STATE_HALF_TONE_OFF;
+        for(int i = 0 ; i < 3; i ++) 
+          globalGraphs[i]->restorePixelBuffer(); // turn half tone mode off
+      }
+      break;
   }
 }
 
@@ -225,10 +231,14 @@ void createMenu(void){
   glutAddMenuEntry("Rotation Axis & Angle", MENU_GRAB_ROTATION_ANGLE);
   glutAddMenuEntry("Scaling Factors", MENU_GRAB_SCALE_FACTORS);
   glutAddMenuEntry("Translation Factors", MENU_GRAB_TRANSLATION_FACTORS);
+ 
+  int subMenuId_halfTone = glutCreateMenu(callback_menu);
+  glutAddMenuEntry("Toggle", MENU_HALF_TONE_TOGGLE );
 
   int menuId = glutCreateMenu(callback_menu);
   glutAddMenuEntry("Status", MENU_STATUS);
   glutAddSubMenu("Grab Input", subMenuId_grabInput); 
+  glutAddSubMenu("Half Tone", subMenuId_halfTone);
   glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
@@ -244,6 +254,7 @@ void windowInit(Window *window){
   window->graphs = (void**)globalGraphs;
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
+  window->state = STATE_HALF_TONE_OFF;
   
   window->scene.xx = {10,10,10};
   window->scene.ff[0] = {0, 0, 10}; //looking from on top of xy plane
@@ -270,16 +281,20 @@ void drawPolyhedra(Polyhedron **polyhedra){
   //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
   Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0.5,0.5,0.5}, {1,1,1}, {1,0,0} );
   Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
-  Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
+  //Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
   //please note that for calculating the intensities for the original vertices, NON-NDC coord is used.
   //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
   //this is not a problem because linear-interpolation takes ratio. e.g. (j - j2) / (j1 - j2) * I1 + ...
   //
+  //Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, window.scene.ff[0]);//get ready for painter's algo
+
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
+    polyhedra[i]->normalizeIntensities();
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     //polyhedra[i]->draw();
     polyhedra[i]->rasterize();
-    polyhedra[i]->printContourPoints();
+    //polyhedra[i]->printContourPoints();
+    printf("Polyhedron #%d\n", i); 
     polyhedra[i]->printAttributes();
   }
   

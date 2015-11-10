@@ -1,6 +1,7 @@
 #include "graph.h"
 Graph::Graph(int width, int height, float *PixelBufferPtr){
   PixelBuffer = PixelBufferPtr;
+  PixelBufferBackup = 0; //assign null pointer
   window_width = width;
   window_height = height;
 }
@@ -421,11 +422,15 @@ void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int 
 }
 
 void Graph::backupPixelBuffer(){
-  PixelBufferBackup =  new float[window_width*window_height*3];   
+  if(PixelBufferBackup == 0 ) 
+    PixelBufferBackup =  new float[window_width*window_height*3];   
   memcpy(PixelBufferBackup, PixelBuffer, window_width * window_height * 3 *sizeof(float) );
 }
 
 void Graph::restorePixelBuffer(){
-  memcpy(PixelBuffer, PixelBufferBackup, window_width * window_height * 3 *sizeof(float) );
-  delete [] PixelBufferBackup;
+  if(PixelBufferBackup != 0){
+    memcpy(PixelBuffer, PixelBufferBackup, window_width * window_height * 3 *sizeof(float) );
+    delete [] PixelBufferBackup;
+    PixelBufferBackup = 0;
+  }
 }

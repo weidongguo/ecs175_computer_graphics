@@ -18,7 +18,7 @@ Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPo
   numberOfEdges     = _numberOfEdges;
   numberOfPoints    = _numberOfPoints;
   graphs = _graphs;
-
+  
   numberOfPlanes = 3;  
   for(int i = 0 ; i< numberOfPlanes; i++) // 3 planes, xy, xz, yz
     listOfContourPoints[i] = new std::list<Point>[graphs[i]->window_height]; // indexing from 0 to window_height, watch out for overflow
@@ -56,10 +56,8 @@ void Polyhedron::printAttributes(){
     printf("Edge: %d %d\n", e.p1Index+1, e.p2Index+1);
   }
   printf("Centroid (%.2f, %.2f, %.2f)\n", centroid.x, centroid.y, centroid.z);
+  printf("Depth:  %.2f \n", depth); 
  
- 
- 
-  
   printf("----------End of Polyhedron Attributes-----------------\n\n");
 
 }
@@ -461,6 +459,11 @@ Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D x
 
 Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){
   Vector Iamb = multByScalar(ka, Ia);
+
+  //if eye and ligh are on different sides
+  if( ( dotProduct(nn,ll) > 0 && dotProduct(nn, vv) < 0 ) || (dotProduct(nn, ll) < 0 && dotProduct(nn,vv) > 0) )
+    return Iamb;
+  
   float scalarForDiffSpec = Il / ( magnitude( minus(ff, p) ) + C ); 
   
   Vector diff = multByScalar( kd, dotProduct(ll,nn) );
@@ -473,15 +476,42 @@ Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn,
 }
 
 void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float Ia, float Il, Point_3D ff, Point_3D xx, int n ){
-  Color intensity;
+  Color intensity; 
   int numberOfPoints;
   for(int i = 0 ; i < numberOfPolyhedra; i++){ // for each polyhedron
     numberOfPoints = polyhedra[i]->numberOfPoints; 
     for(int j = 0 ; j < numberOfPoints; j++){ // for each point in a polyhderon
-      intensity = phong(polyhedra[i]->listOfPoints[j], Ia, Il, ff, xx, n ); 
+      intensity = phong(polyhedra[i]->listOfPoints[j], Ia, Il, ff, xx, n );  //find out the color of the vertex using phong model
       polyhedra[i]->listOfPoints[j].intensity = intensity;
     }
   }
+}
+
+void Polyhedron::setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
+  float minDepth, depth; 
+  int numberOfPoints;
+  for(int i = 0 ; i < numberOfPolyhedra; i++){ // for each polyhedron
+    minDepth = magnitude( minus(ff, polyhedra[i]->listOfPoints[0]) ); // init the minDepth;
+    numberOfPoints = polyhedra[i]->numberOfPoints; 
+    for(int j = 1 ; j < numberOfPoints; j++){ // for each point(other than the 0th point) in a polyhderon
+      depth = magnitude( minus(ff, polyhedra[i]->listOfPoints[j]) ); //find the distance from ff to the point   
+      if( depth < minDepth)
+        minDepth = depth;
+    }
+    polyhedra[i]->depth = minDepth; //set the depth(distance between ff and the polygon) of the polyhedron 
+  }
+}
+
+int Polyhedron::depthComparator(const void *poly1, const void *poly2){
+  if(  ((Polyhedron*)poly1)->depth > ((Polyhedron*)poly2)->depth ) // decending
+    return -1;
+  else
+    return 1; 
+}
+
+void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
+  setDepth(polyhedra, numberOfPolyhedra, ff);
+  qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthComparator); 
 }
 
 //find the max intensity
@@ -507,6 +537,26 @@ float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra
     } 
   }
   return maxIntensity;
+}
+
+float Polyhedron::findMaxIntensity(){
+  float maxIntensity, intensity; Point_3D  p;
+  p = listOfPoints[0];
+  maxIntensity = MAX( p.intensity.r, MAX(p.intensity.g, p.intensity.b) ) ; 
+
+  for(int i = 1 ; i < numberOfPoints; i++){
+    p = listOfPoints[i];
+    intensity = MAX( p.intensity.r, MAX(p.intensity.g, p.intensity.b) ) ; 
+    if( intensity > maxIntensity )
+      maxIntensity = intensity;
+  }
+  return maxIntensity;
+}
+
+void Polyhedron::normalizeIntensities(){
+  float maxIntensity = findMaxIntensity();  
+  for(int i = 0; i < numberOfPoints; i++)
+    listOfPoints[i].normalizedIntensity = multByScalar( listOfPoints[i].intensity, 1.0/maxIntensity);
 }
 
 void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra){

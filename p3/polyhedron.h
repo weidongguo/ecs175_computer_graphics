@@ -6,6 +6,7 @@
 #include "vector.h"
 #include <fstream>
 #include <list>
+#include <cstdlib>
 
 class Polyhedron {
   Point_3D* listOfPoints;
@@ -24,6 +25,7 @@ class Polyhedron {
   std::list<Point> *listOfContourPoints[3]; //index 0 for xy, 1 for xz, 2 for yz
   //the original points + the points along the lines between the original points
   int numberOfPlanes;
+  float depth;// with respect to a FROM POINT ff, i.e. depth = min{ magnitude(listOfPoints[i] - ff) }
 
   public:
   Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *s, int numberOfSurface);
@@ -41,26 +43,6 @@ class Polyhedron {
   void scale(float alpha);
   void translate(float x_offset, float y_offset, float z_offset);
   void rotate(Point_3D p1, Point_3D p2, float angle);
- /* 
-  //vector operations
-  static Color    vtoc(Vector v);
-  static Vector   ctov(Color c);
-  static Vector   minus(Point_3D p1, Point_3D p2); 
-  static Vector   minus(Vector v1, Vector v2); 
-  static Vector   unitVector(Point_3D p);
-  static Vector   unitVector(Vector v);
-
-  static float dotProduct(Vector v1, Vector v2);
-  static Vector multByScalar(Vector v, float scalar);
-  static Color  multByScalar(Color c, float scalar); 
-  static Vector add(Vector v1, Vector v2);
-  static float magnitude(Vector v);
-  
-  static void printVector(const char *tag, Vector v);
-  Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend);
-
-  //end of vector operations
-*/
   static void updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints);//rot axis is the last element of polyhedra
   static void savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename);
   
@@ -76,6 +58,8 @@ class Polyhedron {
   
   static float findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra);
   static void normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra);
+  float findMaxIntensity();
+  void  normalizeIntensities();
 
   void clearContourPoints(int planeIndex);
   void clearContourPointsForEachPlane(int numberOfPlanes);
@@ -87,6 +71,10 @@ class Polyhedron {
   void printContourPoints();
 
   void rasterize();
+  
+  static void setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff);
+  static void paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff);
+  static int depthComparator(const void *poly1, const void *poly2);
 
 };
 
