@@ -73,11 +73,16 @@ class Polyhedron {
   void _storeContourPoint(Point p, int planeIndex);
   void printContourPoints();
 
-  void rasterize();
+  void rasterize(int planeIndex);
   
   void setDepth(); // set fake depth, xDepth with respect to (inf, 0, 0), yDepth with respect to (0, inf, 0) and so on 
   static void setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff); //set true depth with respect to ff
   static void paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff);
+  static void paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int planeIndex);//work with projects on to xy, xz, or zy planes 
+  
+  static int depthZComparator(const void *poly1, const void *poly2);
+  static int depthYComparator(const void *poly1, const void *poly2);
+  static int depthXComparator(const void *poly1, const void *poly2);
   static int depthComparator(const void *poly1, const void *poly2);
 
 };

@@ -262,7 +262,10 @@ void windowInit(Window *window){
   window->scene.ff[2] = {10, 0, 0}; //looking from on top of yz plane
   window->scene.Il = 0.7;
   window->scene.Ia = 0.1;
-  window->scene.n = 2;
+  window->scene.n = 9;
+  window->scene.ka = {0.3, 0.3, 0.3};
+  window->scene.kd = {1,0,0};
+  window->scene.ks = {1,0,0}; 
 }
 
 void updateScreen(Polyhedron **polyhedra){
@@ -279,23 +282,37 @@ void drawPolyhedra(Polyhedron **polyhedra){
   Polyhedron::findNDCParams(polyhedra, window.numberOfPolyhedra, &delta, &xMin, &yMin, &zMin); 
   
   //setPhoneParams sets normal vectors for each point and the ka, kd, and ks 
-  Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, {0.5,0.5,0.5}, {1,1,1}, {1,0,0} );
+  Polyhedron::setPhongParams(polyhedra, window.numberOfPolyhedra, window.scene.ka, window.scene.kd, window.scene.ks ); 
+  
   Polyhedron::applyPhong(polyhedra, window.numberOfPolyhedra, window.scene.Ia, window.scene.Il, window.scene.ff[0], window.scene.xx,  window.scene.n);
   //Polyhedron::normalizeIntensities(polyhedra, window.numberOfPolyhedra);
   //please note that for calculating the intensities for the original vertices, NON-NDC coord is used.
   //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
   //this is not a problem because linear-interpolation takes ratio. e.g. (j - j2) / (j1 - j2) * I1 + ...
   //
-  Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, window.scene.ff[0]);//get ready for painter's algo
+  //Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, window.scene.ff[0]);//get ready for painter's algo
 
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
     polyhedra[i]->normalizeIntensities(); //needs to normalize intensities before copying setNDC
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
-    //polyhedra[i]->draw();
-    polyhedra[i]->rasterize();
-    //polyhedra[i]->printContourPoints();
-    printf("Polyhedron #%d\n", i); 
-    polyhedra[i]->printAttributes();
+  }
+  
+
+  Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, 0);//xy-plane, sort base on z-depth 
+  for(int i = 0 ; i < window.numberOfPolyhedra; i++){  
+   polyhedra[i]->rasterize(0);
+  }
+  
+  Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, 1);//xz-plane, sort base on y-depth 
+  for(int i = 0 ; i < window.numberOfPolyhedra; i++){  
+   polyhedra[i]->rasterize(1);
+  }
+  Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, 2);//yz-plane, sort base on x-depth 
+  for(int i = 0 ; i < window.numberOfPolyhedra; i++){  
+   polyhedra[i]->rasterize(2);
+   polyhedra[i]->printAttributes();
+  //polyhedra[i]->printContourPoints();
+
   }
   
 }

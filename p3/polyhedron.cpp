@@ -56,7 +56,7 @@ void Polyhedron::printAttributes(){
     printf("Edge: %d %d\n", e.p1Index+1, e.p2Index+1);
   }
   printf("Centroid (%.2f, %.2f, %.2f)\n", centroid.x, centroid.y, centroid.z);
-  printf("Depth:  %.2f \n", depth); 
+  printf("Depth: %.2f  DepthX: %.2f DepthY: %.2f  DepthZ: %.2f\n", depth, xDepth, yDepth, zDepth); 
  
   printf("----------End of Polyhedron Attributes-----------------\n\n");
 
@@ -338,52 +338,7 @@ void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){
 
         setCentroid();
 }
-/*
-Vector   Polyhedron:: ctov(Color c){
-  return {c.r, c.g, c.b}; 
-}
 
-Color    Polyhedron:: vtoc(Vector v){
-  return {v.x, v.y, v.z};
-}
-
-Vector   Polyhedron:: minus(Point_3D p2, Point_3D p1){
-  return { p2.x - p1.x, p2.y-p1.y, p2.z - p1.z };
-}
-Vector   Polyhedron:: minus(Vector v1, Vector v2) {
-  return { v1.x - v2.x, v1.y-v2.y, v1.z - v2.z };
-}
-
-Vector   Polyhedron:: unitVector(Point_3D p){
-  float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
-  return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
-}
-
-Vector   Polyhedron:: unitVector(Vector p){
-  float magnitude = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
-  return { p.x / magnitude, p.y / magnitude, p.z / magnitude }; 
-}
-
-float Polyhedron::dotProduct(Vector v1, Vector v2){
-  return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-}
-
-Vector Polyhedron::multByScalar(Vector v, float scalar){
-  return { v.x * scalar, v.y * scalar, v.z * scalar};    
-}
-
-Color Polyhedron::multByScalar(Color c, float scalar){
-  return { c.r * scalar, c.g * scalar, c.b * scalar};    
-}
-
-Vector Polyhedron::add(Vector v1, Vector v2){
-  return { v1.x + v2.x, v1.y + v2.y, v1.z + v2.z};
-}
-
-float Polyhedron::magnitude(Vector v){
-  return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-}
-*/
 bool Polyhedron::isNDC(Point_3D p){
   return !( p.x < 0 || p.x > 1 || p.y <0 || p.y > 1 || p.z < 0 || p.y >1);
 }
@@ -398,9 +353,6 @@ void Polyhedron::setPhongParams(Polyhedron**polyhedra, int numberOfPolyhedra, Co
   setNormalVectors(polyhedra, numberOfPolyhedra);
 }
 
-/*void Polyhedron::printVector(const char *tag, Vector v){
-  DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, v.x, v.y, v.z);
-}*/
 
 void Polyhedron::setPhongKCoeff(Color ka, Color kd, Color ks){ 
   // ka - ambient light coefficient, kd - diffusive, ks - specular
@@ -458,7 +410,9 @@ Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D x
 }
 
 Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){
-  Vector Iamb = multByScalar(ka, Ia);
+  Vector spec, Iamb, diff;
+
+  Iamb = multByScalar(ka, Ia);
 
   //if eye and ligh are on different sides
   if( ( dotProduct(nn,ll) > 0 && dotProduct(nn, vv) < 0 ) || (dotProduct(nn, ll) < 0 && dotProduct(nn,vv) > 0) )
@@ -466,8 +420,12 @@ Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn,
   
   float scalarForDiffSpec = Il / ( magnitude( minus(ff, p) ) + C ); 
   
-  Vector diff = multByScalar( kd, dotProduct(ll,nn) );
-  Vector spec = multByScalar( ks, pow( dotProduct(rr,vv), n ) );
+  diff = multByScalar( kd, dotProduct(ll,nn) );
+  
+  if ( dotProduct(rr,vv) <= 0) 
+    spec = {0,0,0}; 
+  else
+    spec = multByScalar( ks, pow( dotProduct(rr,vv), n ) );
   
   Vector Idiff_spec = multByScalar( add(diff, spec), scalarForDiffSpec);
   
@@ -534,9 +492,54 @@ int Polyhedron::depthComparator(const void *poly1, const void *poly2){
     return 1; 
 }
 
+int Polyhedron::depthZComparator(const void *poly1, const void *poly2){
+  if(  (*((Polyhedron**)poly1))->zDepth > (*((Polyhedron**)poly2))->zDepth ) // decending order
+    return -1;
+  else
+    return 1; 
+}
+
+int Polyhedron::depthYComparator(const void *poly1, const void *poly2){
+  if(  (*((Polyhedron**)poly1))->yDepth > (*((Polyhedron**)poly2))->yDepth ) // decending order
+    return -1;
+  else
+    return 1; 
+}
+
+int Polyhedron::depthXComparator(const void *poly1, const void *poly2){
+  if(  (*((Polyhedron**)poly1))->xDepth > (*((Polyhedron**)poly2))->xDepth ) // decending order
+    return -1;
+  else
+    return 1; 
+}
+//work with real depth
 void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
   setDepth(polyhedra, numberOfPolyhedra, ff);
   qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthComparator); 
+}
+
+//work with fake depth, with respect to (inf, 0, 0), (0,inf,0), or (0,0,inf)
+void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int planeIndex){ 
+  static bool isFirstCall = true; 
+  if(isFirstCall){ // only need to set depth once
+    for(int i = 0 ; i < numberOfPolyhedra; i++)
+      polyhedra[i]->setDepth(); //fake depth
+    isFirstCall = false; 
+  }
+  switch(planeIndex){// for xy-plane 
+    case 0 : // for xy plane;
+      qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthZComparator);
+      break;
+    case 1 : // for xz plane
+      qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthYComparator);
+      break;
+    case 2 : // for yz plane
+      qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthXComparator);
+      break;
+    default:
+      printf("WARNING: WRONG planeIndex!\n");
+      break;
+  }
 }
 
 //find the max intensity
@@ -834,10 +837,9 @@ void Polyhedron::printContourPoints(){
  }
 }
 
-void Polyhedron::rasterize(){
+void Polyhedron::rasterize(int planeIndex){
   setupContourPoints();// set up all the points for the contour first, so they can be used for rasterizing
-  for(int planeIndex = 0 ; planeIndex < numberOfPlanes; planeIndex++){ 
-    for(int i = 0; i < graphs[planeIndex]->window_height; i++){ //for each scanline
+  for(int i = 0; i < graphs[planeIndex]->window_height; i++){ //for each scanline
       if(listOfContourPoints[planeIndex][i].size() > 1){ // if more than 1 point on a scanline
         for(std::list<Point>::iterator it = listOfContourPoints[planeIndex][i].begin(); it != listOfContourPoints[planeIndex][i].end();){
           Point p1 = *it;
@@ -852,7 +854,6 @@ void Polyhedron::rasterize(){
           }
         }
       }
-    }
   }
 }
 

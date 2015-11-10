@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <string>
+#include "color.h"
 
 #define DEBUG_PRINT 1
 
@@ -82,12 +83,12 @@ typedef struct{
 }Transformation;
 
 typedef struct{
-  Color ka;
   float Il; 
   float Ia;
   Point_3D ff[3]; //coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane
   Point_3D xx; // coord. of light src
   int n; // controls reflection intensity 
+  Color ka, kd, ks;
 } Scene;
 
 typedef struct{
