@@ -31,7 +31,8 @@ int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){
   return drawLine(p1,p2,r,g,b,BRESENHAM);
 }
 
-int Graph::drawLine( Point p1, Point p2){
+//Gouraud shading, uses linear interpolation to determine the color
+int Graph::drawLine( Point p1, Point p2){ // should have named it scanLine, as I only use this function for horizontal line drawing
   if(p1.x == p2.x){ //vertical line
     int y,y_end; 
     if(p1.y <= p2.y){
@@ -42,7 +43,7 @@ int Graph::drawLine( Point p1, Point p2){
       y_end = p1.y;
     }
     for(; y<=y_end; y++)
-      drawPixel(p1.x, y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity) );
+      drawPixel(p1.x, y, linearInterpolation(y, p1.y, p2.y, p1.normalizedIntensity, p2.normalizedIntensity) ); 
     return 0;
   }
   else if(p1.y == p2.y){ // horizontal line

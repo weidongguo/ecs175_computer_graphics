@@ -281,14 +281,14 @@ void windowInit(Window *window){
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
   window->state = STATE_HALF_TONE_OFF;
   
-  window->scene.xx = {10,10,10};
+  window->scene.xx = {15,15,15};
   window->scene.ff = {0, 0, 10}; //looking from on top of xy plane
   window->scene.Il = 0.7;
   window->scene.Ia = 0.1;
   window->scene.n = 9;
   window->scene.ka = {0.3, 0.3, 0.3};
-  window->scene.kd = {1,0,0};
-  window->scene.ks = {0.8,1,1}; 
+  window->scene.kd = COLOR_GOLD;
+  window->scene.ks = {1,1,1}; 
   window->halfTone = COLOR_CRIMSON;
 }
 

@@ -145,35 +145,19 @@ void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, con
 }
 
 void Polyhedron::erase(){
-  int p1Index, p2Index; Point_3D p1, p2; int scaleX = graphs[1]->window_width, scaleY = graphs[1]->window_height;
-  scaleX = scaleY = MIN(scaleX,scaleY);
-  scaleX--;
-  scaleY--;
-  Color c; 
-  for(int i = 0 ; i < numberOfEdges; i++){
-    p1Index = listOfEdges[i].p1Index;
-    p2Index = listOfEdges[i].p2Index;
-    p1 = listOfPointsNDC[p1Index];
-    p2 = listOfPointsNDC[p2Index];
-   
-    if( !(isNDC(p1) && isNDC(p2)) ){
-      printf("<>=======<> From Polyhedron::erase() : NDC is not valid\n");
-      return;
-    }
+    Color c; 
     //xy-plane 
-    c = graphs[1]->background_color; 
-    //graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,c.r,c.g,c.b);
-    graphs[1]->fillScreen(c); 
+    c = graphs[0]->background_color; 
+    graphs[0]->fillScreen(c); 
 
     //xz-plane
-    c = graphs[2]->background_color;
-    //graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
-    graphs[2]->fillScreen(c); 
+    c = graphs[1]->background_color;
+    graphs[1]->fillScreen(c); 
+
     //yz-plane
-    c = graphs[3]->background_color;
-    //graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
-    graphs[3]->fillScreen(c);
-  }
+    c = graphs[2]->background_color;
+    graphs[2]->fillScreen(c);
+  
 }
 
 
@@ -513,11 +497,6 @@ int Polyhedron::depthXComparator(const void *poly1, const void *poly2){
   else
     return 1; 
 }
-//work with real depth
-void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
-  setDepth(polyhedra, numberOfPolyhedra, ff);
-  qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthComparator); 
-}
 
 //work with fake depth, with respect to (inf, 0, 0), (0,inf,0), or (0,0,inf)
 void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int planeIndex){ 
@@ -541,6 +520,11 @@ void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int
       printf("WARNING: WRONG planeIndex!\n");
       break;
   }
+}
+//work with real depth, not used
+void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
+  setDepth(polyhedra, numberOfPolyhedra, ff);
+  qsort(polyhedra, numberOfPolyhedra, sizeof(polyhedra[0]), depthComparator); 
 }
 
 //find the max intensity

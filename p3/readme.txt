@@ -3,11 +3,11 @@ Project 3
    Username:  weidongg
    Email:     wdguo@ucdavis.edu
 
-                                             polyhedron.cpp line 247 - 259
-                          polyhedron.cpp line 261 - 311
-                                         polyhedron.cpp line 225 - 246
-     polyhedron.cpp line 56  - 77
-                         polyhedron.cpp line 151 - 220
+     Phong Lighting Model     polyhedron.cpp line 352 - 447
+     Gouraud Shading          polyhedron.cpp line 618 - 727 (edge points)
+                              graph.cpp      line 35 - 66 (scanline)
+     Half-Toning              graph.cpp      line 330 - 426
+     Painter's Algorithm      polyhedron.cpp line 468 - 539
 
 2. To compile the source code, please run the command "make" since I have a makefile ready
 3. To execute the program, please type a.out
@@ -49,5 +49,10 @@ Project 3
 
 
 5. For changing half-toning color, user can right click within opengl's window, then select Input -> Set Half Tone Color
+   After entering the parameter, my program will not update the screen. In order to see the effect,
+   user can select Half Tone -> Toggle.  Toggle the first time is to change to half-tone mode. Toggle the 2nd time is to 
+   go back to the normal mode (**simply restore the previous pixel buffer from the PixelBufferBackup**) 
+
    For modifying the phong lighting model parameters, one can select Input -> Set Phong Model Parameters
+   After entering the parameters, the view will be updated automatically.
 

@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
+ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 #-DDEBUG_PRINT $/;"	m
 BRESENHAM	graph.h	48;"	d
 C	Makefile	/^C = g++$/;"	m
 COLOR_CRIMSON	color.h	1;"	d
@@ -15,16 +15,15 @@ COMMON_TYPE_H	common_type.h	2;"	d
 ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 DDA	graph.h	49;"	d
-DEBUG_PRINT	common_type.h	8;"	d
 DPRINT	common_type.h	11;"	d
-DPRINT	common_type.h	13;"	d
+DPRINT	common_type.h	9;"	d
 Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon5
 GRAPH_H	graph.h	2;"	d
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
 Ia	common_type.h	/^  float Ia;$/;"	m	struct:__anon9
 Il	common_type.h	/^  float Il; $/;"	m	struct:__anon9
-MAX	common_type.h	17;"	d
+MAX	common_type.h	15;"	d
 MENU_CLIP_BRESENHAM	user_io.h	29;"	d
 MENU_CLIP_DDA	user_io.h	28;"	d
 MENU_DRAW_BRESENHAM	user_io.h	31;"	d
@@ -35,9 +34,10 @@ MENU_GRAB_SCALE_FACTORS	user_io.h	35;"	d
 MENU_GRAB_TRANSLATION_FACTORS	user_io.h	34;"	d
 MENU_HALF_TONE_TOGGLE	user_io.h	37;"	d
 MENU_SET_HALF_TONE_COLOR	user_io.h	38;"	d
+MENU_SET_PHONG_PARAMETERS	user_io.h	39;"	d
 MENU_STATUS	user_io.h	32;"	d
-MIN	common_type.h	16;"	d
-PI	common_type.h	19;"	d
+MIN	common_type.h	14;"	d
+PI	common_type.h	17;"	d
 POLYHEDRON_H	polyhedron.h	2;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
@@ -111,7 +111,7 @@ drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberO
 drawPolyhedra	main.cpp	/^void drawPolyhedra(Polyhedron **polyhedra){$/;"	f
 equal	vector.cpp	/^bool equal(Color c1, Color c2){$/;"	f
 erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
-ff	common_type.h	/^  Point_3D ff[3]; \/\/coord of FROM POINTS, view from xy-plane, xz-plane, yz-plane$/;"	m	struct:__anon9
+ff	common_type.h	/^  Point_3D ff; \/\/coord of FROM POINTS, $/;"	m	struct:__anon9
 fillScreen	graph.cpp	/^int Graph::fillScreen(Color c){$/;"	f	class:Graph
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
 findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(){$/;"	f	class:Polyhedron
@@ -122,6 +122,7 @@ globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
 globalPolyhedra	main.cpp	/^Polyhedron **globalPolyhedra;$/;"	v
 graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon10
 graphs	polyhedron.h	/^  Graph **graphs;$/;"	m	class:Polyhedron
+halfTone	common_type.h	/^  Color halfTone; $/;"	m	struct:__anon10
 halfTone	graph.cpp	/^void Graph::halfTone(Color color){$/;"	f	class:Graph
 height	common_type.h	/^  int height;$/;"	m	struct:__anon10
 inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon10
