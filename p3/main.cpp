@@ -286,10 +286,10 @@ void drawPolyhedra(Polyhedron **polyhedra){
   //for later calculating the intensities for the edges and scanlines, NDC coord is used for the linear-interpolation.
   //this is not a problem because linear-interpolation takes ratio. e.g. (j - j2) / (j1 - j2) * I1 + ...
   //
-  //Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, window.scene.ff[0]);//get ready for painter's algo
+  Polyhedron::paintersAlgo(polyhedra, window.numberOfPolyhedra, window.scene.ff[0]);//get ready for painter's algo
 
   for(int i = 0; i < window.numberOfPolyhedra ; i++){ // all the polyhedra EXCEPT for the last one
-    polyhedra[i]->normalizeIntensities();
+    polyhedra[i]->normalizeIntensities(); //needs to normalize intensities before copying setNDC
     polyhedra[i]->setNDC(delta, xMin, yMin, zMin);  //update new ndc
     //polyhedra[i]->draw();
     polyhedra[i]->rasterize();

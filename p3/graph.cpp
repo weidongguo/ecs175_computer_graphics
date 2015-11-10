@@ -394,6 +394,7 @@ void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int 
             drawPixel(c, r+1, k);
             drawPixel(c+2, r+1, k);
             drawPixel(c+1, r+1, k);
+            break;
     case 8: drawPixel(c, r+2, k);
             drawPixel(c+2, r, k);
             drawPixel(c, r, k);
@@ -414,7 +415,7 @@ void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int 
             drawPixel(c+1, r+2,k);
             break;
     default:
-            DPRINT("!!!!!!!WARNING: megapixel size <=0 or >9,  it's %d\n", numberOfPixels);
+            printf("WARNING: megapixel size <=0 or >9,  it's %d\n", numberOfPixels);
             break;
     
   }

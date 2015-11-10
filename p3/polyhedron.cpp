@@ -486,7 +486,10 @@ void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float
     }
   }
 }
-
+/* =============================================================================== */
+/* @fn    :    void setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
+ * @brief :    set true depth base on the distance between the ( FROM POINT ff ) and the ( min{p_i} for i = numberOfPoints )
+*/
 void Polyhedron::setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){
   float minDepth, depth; 
   int numberOfPoints;
@@ -502,8 +505,30 @@ void Polyhedron::setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3
   }
 }
 
+// fake depth, not relevant to FROM POINT ff
+void Polyhedron::setDepth(){
+  float minXDepth, minYDepth, minZDepth, depth;
+  minXDepth = listOfPoints[0].x; 
+  minYDepth = listOfPoints[0].y;
+  minZDepth = listOfPoints[0].z;
+  for(int i = 1 ; i < numberOfPoints; i ++){
+    depth = listOfPoints[i].x;
+    if( depth < minXDepth )
+      minXDepth = depth; 
+    depth = listOfPoints[i].y;
+    if( depth < minYDepth )
+      minYDepth = depth;
+    depth = listOfPoints[i].z; 
+    if( depth < minZDepth )
+      minZDepth =  depth;
+  }
+  xDepth = minXDepth;
+  yDepth = minYDepth;
+  zDepth = minZDepth;
+} // the higher the xDepth, the closer it 's to (inf, 0,0) and so on
+
 int Polyhedron::depthComparator(const void *poly1, const void *poly2){
-  if(  ((Polyhedron*)poly1)->depth > ((Polyhedron*)poly2)->depth ) // decending
+  if(  (*((Polyhedron**)poly1))->depth > (*((Polyhedron**)poly2))->depth ) // decending order
     return -1;
   else
     return 1; 

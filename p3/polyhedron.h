@@ -26,6 +26,9 @@ class Polyhedron {
   //the original points + the points along the lines between the original points
   int numberOfPlanes;
   float depth;// with respect to a FROM POINT ff, i.e. depth = min{ magnitude(listOfPoints[i] - ff) }
+  float xDepth; // with respect to (inf, 0 0)
+  float yDepth; //with respect to (0, inf, 0)
+  float zDepth; // with respect to (0, 0, inf);
 
   public:
   Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *s, int numberOfSurface);
@@ -72,7 +75,8 @@ class Polyhedron {
 
   void rasterize();
   
-  static void setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff);
+  void setDepth(); // set fake depth, xDepth with respect to (inf, 0, 0), yDepth with respect to (0, inf, 0) and so on 
+  static void setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff); //set true depth with respect to ff
   static void paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff);
   static int depthComparator(const void *poly1, const void *poly2);
 
