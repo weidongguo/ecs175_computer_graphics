@@ -289,6 +289,9 @@ int Graph::bresenham(Point pt1, Point pt2 ){ //overloaded bresenham, each points
 
   return 0;
 }
+int Graph::fillScreen(Color c){
+  return fillScreen(c.r, c.g, c.b);
+}
 
 int Graph::fillScreen(float r, float g, float b){
   int bufferSize = window_width * window_height * 3;

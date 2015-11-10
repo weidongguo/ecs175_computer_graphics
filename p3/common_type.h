@@ -103,6 +103,7 @@ typedef struct{
   std::string *inputBuffer;
   void **graphs;
   Scene scene;
+  Color halfTone; 
 } Window;
 
 #endif

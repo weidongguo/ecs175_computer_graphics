@@ -30,6 +30,7 @@ class Graph {
     int bresenham(Point p1, Point p2, float r, float, float);
     int bresenham(Point p1, Point p2);
     int fillScreen(float r, float g, float b);
+    int fillScreen(Color c);
     int drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b);
     bool outOfBound(int x, int y);
     void drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k);

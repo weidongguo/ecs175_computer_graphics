@@ -35,4 +35,5 @@ void readFile(std::ifstream &ifs);
 #define MENU_GRAB_SCALE_FACTORS       7
 #define MENU_GRAB_CLIP_REGION         8
 #define MENU_HALF_TONE_TOGGLE         9
+#define MENU_SET_HALF_TONE_COLOR     10
 #endif

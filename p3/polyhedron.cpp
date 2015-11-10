@@ -162,16 +162,17 @@ void Polyhedron::erase(){
     }
     //xy-plane 
     c = graphs[1]->background_color; 
-    graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,c.r,c.g,c.b);
-    
+    //graphs[1]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.y * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.y*scaleY) } ,c.r,c.g,c.b);
+    graphs[1]->fillScreen(c); 
+
     //xz-plane
     c = graphs[2]->background_color;
-    graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
-    
+    //graphs[2]->drawLine( { (int)round(p1.x * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.x*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
+    graphs[2]->fillScreen(c); 
     //yz-plane
     c = graphs[3]->background_color;
-    graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
-
+    //graphs[3]->drawLine( { (int)round(p1.y * scaleX), (int)round(p1.z * scaleY) }, { (int)round(p2.y*scaleX), (int)round(p2.z*scaleY) }, c.r,c.g,c.b);
+    graphs[3]->fillScreen(c);
   }
 }
 
@@ -524,7 +525,7 @@ void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int
   if(isFirstCall){ // only need to set depth once
     for(int i = 0 ; i < numberOfPolyhedra; i++)
       polyhedra[i]->setDepth(); //fake depth
-    isFirstCall = false; 
+    //isFirstCall = false; 
   }
   switch(planeIndex){// for xy-plane 
     case 0 : // for xy plane;
