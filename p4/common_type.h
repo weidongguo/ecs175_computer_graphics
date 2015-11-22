@@ -27,9 +27,9 @@ typedef struct {
 }Color;
 
 typedef struct{
-  int x;
-  int y;
-  Color normalizedIntensity; 
+  float x;
+  float y;
+  Color normalizedIntensity;
 } Point;
 
 typedef struct{

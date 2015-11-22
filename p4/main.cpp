@@ -17,7 +17,7 @@ void callback_display();
 void callback_menu(int state);
 void createMenu();
 void windowInit(Window *window);
-void updateScreen(Polyhedron **polyhedra);
+void updateScreen();
 
 int main(int argc, char *argv[]){
   glutInit(&argc, argv); //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
@@ -43,14 +43,17 @@ int main(int argc, char *argv[]){
   glutKeyboardFunc(callback_keyboard); 
   createMenu();
   glutSetCursor(GLUT_CURSOR_CROSSHAIR);
+  
   Graph graph(window.width,window.height, PixelBuffer); 
 
   globalGraph = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
   graph.fillScreen(1,1,1); // white background
- 
-//  Curve **curves = new Curve*[window.numberOfCurves];  
- // readCurves(&ifs, graph, curves, window.numberOfCurves);
-
+  
+  std::list<Curve*> curves; 
+  readCurves(&ifs, &graph, &curves, window.numberOfCurves);
+  for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
+    (*it)->printAttributes();
+  }
 
   glutMainLoop();
   return 0;

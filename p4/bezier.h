@@ -4,7 +4,7 @@
 class Bezier:public Curve {
   public:
     Bezier(Graph*graph, Point *ctrlPoints, int numberOfCtrlPoints);        
-        
+    void printAttributes();
 };
 
 #endif

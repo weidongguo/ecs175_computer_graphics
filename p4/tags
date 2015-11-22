@@ -12,8 +12,14 @@ Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball() $/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(const vec2 &_center, float _radius)$/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.h	/^class Arcball $/;"	c
+BEZIER_H	bezier.h	2;"	d
 BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
 BRESENHAM	graph.h	48;"	d
+BSPLINE_H	bspline.h	2;"	d
+Bezier	bezier.cpp	/^Bezier::Bezier(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints)$/;"	f	class:Bezier
+Bezier	bezier.h	/^class Bezier:public Curve {$/;"	c
+Bspline	bspline.cpp	/^Bspline::Bspline(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints, int _k, float *_knotValues)$/;"	f	class:Bspline
+Bspline	bspline.h	/^class Bspline:public Curve{$/;"	c
 Byte	glui-2.35/src/include/GL/glui.h	76;"	d
 C	Makefile	/^C = g++$/;"	m
 CHAR_WIDTH_HASH_SIZE	glui-2.35/src/include/GL/glui.h	221;"	d
@@ -35,7 +41,6 @@ CXX	glui-2.35/src/makefile	/^CXX       = g++$/;"	m
 ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 Curve	curve.cpp	/^Curve::Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints){$/;"	f	class:Curve
-Curve	curve.cpp	/^Curve::Curve(const Curve &curve){ \/\/copy constructor$/;"	f	class:Curve
 Curve	curve.h	/^class Curve {$/;"	c
 DDA	graph.h	49;"	d
 DEG2RAD	glui-2.35/src/glui_internal.h	61;"	d
@@ -343,18 +348,18 @@ LINE_HEIGHT	glui-2.35/src/glui_textbox.cpp	/^static const int LINE_HEIGHT = 15;$
 LoadPPM	glui-2.35/src/tools/ppm.cpp	/^void LoadPPM(const char *FileName, unsigned char* &Color, int &Width, int &Height)$/;"	f
 MAX	common_type.h	16;"	d
 MAX	glui-2.35/src/glui_internal.h	14;"	d
-MENU_CLIP_BRESENHAM	user_io.h	28;"	d
-MENU_CLIP_DDA	user_io.h	27;"	d
-MENU_DRAW_BRESENHAM	user_io.h	30;"	d
-MENU_DRAW_DDA	user_io.h	29;"	d
-MENU_GRAB_CLIP_REGION	user_io.h	35;"	d
-MENU_GRAB_ROTATION_ANGLE	user_io.h	32;"	d
-MENU_GRAB_SCALE_FACTORS	user_io.h	34;"	d
-MENU_GRAB_TRANSLATION_FACTORS	user_io.h	33;"	d
-MENU_HALF_TONE_TOGGLE	user_io.h	36;"	d
-MENU_SET_HALF_TONE_COLOR	user_io.h	37;"	d
-MENU_SET_PHONG_PARAMETERS	user_io.h	38;"	d
-MENU_STATUS	user_io.h	31;"	d
+MENU_CLIP_BRESENHAM	user_io.h	29;"	d
+MENU_CLIP_DDA	user_io.h	28;"	d
+MENU_DRAW_BRESENHAM	user_io.h	31;"	d
+MENU_DRAW_DDA	user_io.h	30;"	d
+MENU_GRAB_CLIP_REGION	user_io.h	36;"	d
+MENU_GRAB_ROTATION_ANGLE	user_io.h	33;"	d
+MENU_GRAB_SCALE_FACTORS	user_io.h	35;"	d
+MENU_GRAB_TRANSLATION_FACTORS	user_io.h	34;"	d
+MENU_HALF_TONE_TOGGLE	user_io.h	37;"	d
+MENU_SET_HALF_TONE_COLOR	user_io.h	38;"	d
+MENU_SET_PHONG_PARAMETERS	user_io.h	39;"	d
+MENU_STATUS	user_io.h	32;"	d
 MIN	common_type.h	15;"	d
 MIN	glui-2.35/src/glui_internal.h	15;"	d
 M_PI	glui-2.35/src/algebra3.h	95;"	d
@@ -396,15 +401,15 @@ SET_COL_IN	glui-2.35/src/glui_translation.cpp	368;"	d	file:
 SET_COL_OUT	glui-2.35/src/glui_translation.cpp	367;"	d	file:
 SHOW_ID	glui-2.35/src/example/example5.cpp	56;"	d	file:
 SIGN	glui-2.35/src/glui_internal.h	56;"	d
-STATE_GRAB_COMMANDS	user_io.h	16;"	d
-STATE_GRAB_DATA_CLIP_REGION	user_io.h	20;"	d
-STATE_GRAB_DATA_DRAW_BRESENHAM	user_io.h	22;"	d
-STATE_GRAB_DATA_DRAW_DDA	user_io.h	21;"	d
-STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	17;"	d
-STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	19;"	d
-STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	18;"	d
-STATE_HALF_TONE_OFF	user_io.h	24;"	d
-STATE_HALF_TONE_ON	user_io.h	23;"	d
+STATE_GRAB_COMMANDS	user_io.h	17;"	d
+STATE_GRAB_DATA_CLIP_REGION	user_io.h	21;"	d
+STATE_GRAB_DATA_DRAW_BRESENHAM	user_io.h	23;"	d
+STATE_GRAB_DATA_DRAW_DDA	user_io.h	22;"	d
+STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	18;"	d
+STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	20;"	d
+STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	19;"	d
+STATE_HALF_TONE_OFF	user_io.h	25;"	d
+STATE_HALF_TONE_ON	user_io.h	24;"	d
 SWAP2	glui-2.35/src/glui_internal.h	96;"	d
 Scene	common_type.h	/^} Scene;$/;"	t	typeref:struct:__anon9
 Super	glui-2.35/src/include/GL/glui.h	/^    typedef GLUI_EditText Super;$/;"	t	class:GLUI_CommandLine
@@ -1041,6 +1046,7 @@ is_open	glui-2.35/src/include/GL/glui.h	/^    bool            collapsible, is_op
 is_spinning	glui-2.35/src/arcball.h	/^    int   is_spinning;$/;"	m	class:Arcball
 items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_List_Item      items_list;$/;"	m	class:GLUI_List
 items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_Listbox_Item items_list;$/;"	m	class:GLUI_Listbox
+k	bspline.h	/^  int k; \/\/ k value is the order of the curve, which specifies the number of point defining one segment $/;"	m	class:Bspline
 ka	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
 ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon4
 kd	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
@@ -1057,6 +1063,7 @@ key_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::key_handler( u
 key_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int key_handler( unsigned char key, int modifiers )                { return false; }$/;"	f	class:GLUI_Control
 keyboard	glui-2.35/src/glui.cpp	/^void    GLUI_Main::keyboard(unsigned char key, int x, int y)$/;"	f	class:GLUI_Main
 keygoal_x	glui-2.35/src/include/GL/glui.h	/^    int                 keygoal_x;       \/* where up down keys would like to put insertion pt*\/$/;"	m	class:GLUI_TextBox
+knotValues	bspline.h	/^  float *knotValues;$/;"	m	class:Bspline
 ks	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
 ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon4
 last_child	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *last_child()    { return child_tail; }$/;"	f	class:GLUI_Node
@@ -1515,7 +1522,7 @@ radio	glui-2.35/src/example/example5.cpp	/^GLUI_RadioGroup *radio;$/;"	v
 radius	glui-2.35/src/arcball.h	/^    float radius, damp_factor;$/;"	m	class:Arcball
 randf	glui-2.35/src/glui_internal.h	52;"	d
 rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(int planeIndex){$/;"	f	class:Polyhedron
-readCurves	user_io.cpp	/^void readCurves(std::ifstream *ifs, Graph *graph, Curves **curves, int numberOfPolyhedra){ $/;"	f
+readCurves	user_io.cpp	/^void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> curves, int numberOfCurves){ $/;"	f
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
 readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
 readPixel	graph.cpp	/^Color Graph::readPixel(int x, int y){$/;"	f	class:Graph
@@ -1911,7 +1918,6 @@ z	common_type.h	/^  float z;$/;"	m	struct:__anon4
 zDepth	polyhedron.h	/^  float zDepth; \/\/ with respect to (0, 0, inf);$/;"	m	class:Polyhedron
 z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon8
 zero_increment	glui-2.35/src/arcball.h	/^    int   zero_increment;$/;"	m	class:Arcball
-~Curve	curve.cpp	/^Curve::~Curve(){$/;"	f	class:Curve
 ~GLUI_Bitmap	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_Bitmap::~GLUI_Bitmap()$/;"	f	class:GLUI_Bitmap
 ~GLUI_Control	glui-2.35/src/glui_control.cpp	/^GLUI_Control::~GLUI_Control()$/;"	f	class:GLUI_Control
 ~GLUI_DrawingSentinal	glui-2.35/src/glui.cpp	/^GLUI_DrawingSentinal::~GLUI_DrawingSentinal() {$/;"	f	class:GLUI_DrawingSentinal

@@ -41,38 +41,80 @@ void readHeaders(std::ifstream *ifs, int*numberOfObjects){
  * @param[out]:   Polyhedron **polyhedra   - the output: polyhdera created by the info specified in the file
  * @return    :   none
  */
-void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve>*curves, int numberOfCurves){ 
+void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int numberOfCurves){ 
 
-  int sizeOfBuffer = 256, numberOfCtrlPoints, numberOfCurvesAlreadyProcessed = 0;
-  float x, y , z;
+  int sizeOfBuffer = 256, numberOfCtrlPoints, numberOfCurvesAlreadyProcessed = 0, k ;
+  float x,y, *knotValues;
   char buffer[sizeOfBuffer], *charPtr; 
   Point *ctrlPoints; 
+  Curve *curve;
+    
+  bool isKnotsSpecified = false;
+  printf("reading Curves...\n"); 
   while(ifs->getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polyhedron
-//    ifs->getline(buffer, sizeOfBuffer);
-     
-     
-    ifs->getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polyhedron 
-    numberOfCtrlPoints =  atoi(buffer); 
-/*     
-    listOfPoints = new Point_3D[numberOfPoints];
-    for(int i = 0 ; i < numberOfPoints; i++){ // form a listOfPoints;
-      ifs->getline(buffer, sizeOfBuffer); //get a 3D point
-      charPtr = strtok(buffer, " ");
-      x = atof(charPtr); //x value;
-      charPtr = strtok(0, " ");
-      y = atof(charPtr);//y value
-      charPtr = strtok(0, "\0");
-      z = atof(charPtr); //z_value
-      listOfPoints[i].x = x;
-      listOfPoints[i].y = y; 
-      listOfPoints[i].z = z;
-      DPRINT("(%.2f, %.2f, %.2f)\n", x, y, z);
+    ifs->getline(buffer, sizeOfBuffer);
+    if(strstr(buffer, "bz")){
+      ifs->getline(buffer, sizeOfBuffer);
+      numberOfCtrlPoints = atoi(buffer);          
+      ctrlPoints = new Point[numberOfCtrlPoints];
+      for(int i = 0 ; i < numberOfCtrlPoints; i++){
+        ifs->getline(buffer, sizeOfBuffer);
+        charPtr = strtok(buffer, ", ");
+        x = atoi(charPtr); 
+        charPtr = strtok(0, "\0");
+        y = atoi(charPtr);
+        ctrlPoints[i].x = x;
+        ctrlPoints[i].y = y;
+      }
+      curve = (Curve*)( new Bezier(graph, ctrlPoints, numberOfCtrlPoints) ); 
+      //curve->printAttributes();
+      delete [] ctrlPoints;
     }
- */   
-    //    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges, listOfSurfaces, numberOfSurfaces);
+    else{ // bs - bspline curves
+      ifs->getline(buffer, sizeOfBuffer); // # of control points
+      numberOfCtrlPoints = atoi(buffer);
+      ifs->getline(buffer, sizeOfBuffer); // k value
+      k = atoi(buffer);
+      ifs->getline(buffer, sizeOfBuffer); // are knots specified?
+      if(strchr(buffer, 'T')) 
+        isKnotsSpecified = true; 
+      else
+        isKnotsSpecified = false;
+      
+      ctrlPoints = new Point[numberOfCtrlPoints];
+      for(int i = 0 ; i < numberOfCtrlPoints; i++){
+        ifs->getline(buffer, sizeOfBuffer);
+        charPtr = strtok(buffer, ", ");
+        x = atoi(charPtr); 
+        charPtr = strtok(0, "\0");
+        y = atoi(charPtr);
+        ctrlPoints[i].x = x;
+        ctrlPoints[i].y = y;
+      }
+      
+      knotValues = new float[numberOfCtrlPoints+k];
+      if(isKnotsSpecified){
+        ifs->getline(buffer, sizeOfBuffer);
+        for(int i = 0 ; i < numberOfCtrlPoints+k; i++){
+          knotValues[i] = buffer[i] - '0';
+        }
+      }
+      else{ // if not specified, then generate a sequence;
+        for(int i = 0 ; i < numberOfCtrlPoints+k; i++){
+          knotValues[i] = i; 
+        }
+      } 
 
-    DPRINT("\n"); fflush(stdout);
-    if( ++numberOfCurvesAlreadyProcessed == numberOfCurves) // already processed the desired number of polyhedra done!!
+      curve = (Curve*)( new Bspline(graph, ctrlPoints, numberOfCtrlPoints, k, knotValues) );
+      //curve->printAttributes();
+      delete[] knotValues;
+      delete[] ctrlPoints;
+    }
+    
+    curves->push_back(curve); 
+
+     
+    if( ++numberOfCurvesAlreadyProcessed == numberOfCurves) 
       break;
     if(ifs->eof()) //end of file - done!!
       break;

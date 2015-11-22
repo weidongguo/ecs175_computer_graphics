@@ -5,13 +5,13 @@
 #include <cstdlib>
 #include <fstream>
 #include "common_type.h"
-#include "polyhedron.h"
-#include "curve.h"
 #include <iostream>
+#include "bezier.h"
+#include "bspline.h"
 
 
 void readHeaders(std::ifstream *ifs,  int *numberOfCurves);
-void readCurves(std::ifstream *ifs, Graph *graph, Curve **curves, int numberOfCurves); 
+void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int numberOfCurves); 
 void readFile(std::ifstream &ifs);
 // for window
 #define STATE_GRAB_COMMANDS                 0

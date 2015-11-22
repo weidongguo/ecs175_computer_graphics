@@ -1,33 +1,33 @@
-4 - total # of curves
+4
 
-bz - Bezier curve
-3 - # of control points
-(0,6) - control point 1
-(4,1)
-(8,6)
+bz
+3
+0,6
+4,1
+8,6
 
 bz
 4
-(3,12)
-(5,13)
-(9,6)
-(10,8)
+3,12
+5,13
+9,6
+10,8
 
-bs - B-Spline curve
-4 - # control points
-3 - k value
-T - are knots specified?
-(1,7) - control point 1
-(2,10)
-(5,10)
-(6,7)
-01234567 - knot values
+bs
+4
+3
+T
+1,7
+2,10
+5,10
+6,7
+01234567
 
 bs 
 4
 3
 F
-(-1,7)
-(-2,5)
-(-5,10)
-(-6,3)
+-1,7
+-2,5
+-5,10
+-6,3
