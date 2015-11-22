@@ -11,7 +11,7 @@ int Graph::drawPixel(Point p){
 }
 
 int Graph::drawPixel(Point p, Color c){
-  drawPixel( (int)round(p.x), (int)round(p.y), c.r, c.g, c.b );
+  return drawPixel( (int)round(p.x), (int)round(p.y), c.r, c.g, c.b );
 }
 
 int Graph::drawPixel(int x, int y, Color c){
@@ -51,7 +51,7 @@ int Graph::drawPixel(int x, int y, float r, float g, float b){
   return 0;
 }
 int Graph::drawLine(Point_2D p1, Point_2D p2, Color c){
-  drawLine( { (int)round(p1.x), (int)round(p1.y)}, {(int)round(p2.x), (int)round(p2.y)}, c.r, c.g, c.b, BRESENHAM);
+  return drawLine( { (int)round(p1.x), (int)round(p1.y)}, {(int)round(p2.x), (int)round(p2.y)}, c.r, c.g, c.b, BRESENHAM);
 }
 
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){

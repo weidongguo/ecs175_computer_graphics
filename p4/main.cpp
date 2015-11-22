@@ -14,6 +14,7 @@ Window window;
 
 void callback_keyboard(unsigned char key, int x, int y);
 void callback_display();
+void callback_mouse(int button, int state, int x, int y);
 void callback_menu(int state);
 void createMenu();
 void windowInit(Window *window);
@@ -41,6 +42,7 @@ int main(int argc, char *argv[]){
   //callback registration:
   glutDisplayFunc(callback_display);
   glutKeyboardFunc(callback_keyboard); 
+  glutMouseFunc(callback_mouse);
   createMenu();
   glutSetCursor(GLUT_CURSOR_CROSSHAIR);
  
@@ -57,11 +59,22 @@ int main(int argc, char *argv[]){
   for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
     (*it)->printAttributes();
     (*it)->drawControlPolygon();
-    (*it)->drawCurve(1000);
+    (*it)->drawCurve(40);
   }
 
   glutMainLoop();
   return 0;
+}
+
+void callback_mouse(int button, int state, int x, int y){
+  switch(button){
+    case GLUT_MIDDLE_BUTTON: 
+    case GLUT_LEFT_BUTTON:
+      if(state == GLUT_UP){
+        printf("%d, %d\n", x, window.height-y);
+      }
+      break;
+  }
 }
 
 void callback_menu(int state){
