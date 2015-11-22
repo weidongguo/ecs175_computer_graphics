@@ -3,6 +3,10 @@
 
 #include "common_type.h"
 #include <cmath>
+
+Point multByScalar(Point p1, float scalar);
+Point add(Point p1, Point p2);
+
 //vector operations
 Color    vtoc(Vector v);
 Vector   ctov(Color c);

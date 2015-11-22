@@ -14,7 +14,7 @@ Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arc
 Arcball	glui-2.35/src/arcball.h	/^class Arcball $/;"	c
 BEZIER_H	bezier.h	2;"	d
 BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
-BRESENHAM	graph.h	48;"	d
+BRESENHAM	graph.h	49;"	d
 BSPLINE_H	bspline.h	2;"	d
 Bezier	bezier.cpp	/^Bezier::Bezier(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints)$/;"	f	class:Bezier
 Bezier	bezier.h	/^class Bezier:public Curve {$/;"	c
@@ -42,7 +42,7 @@ ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 Curve	curve.cpp	/^Curve::Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints){$/;"	f	class:Curve
 Curve	curve.h	/^class Curve {$/;"	c
-DDA	graph.h	49;"	d
+DDA	graph.h	50;"	d
 DEG2RAD	glui-2.35/src/glui_internal.h	61;"	d
 DISABLE_ID	glui-2.35/src/example/example5.cpp	55;"	d	file:
 DIST	glui-2.35/src/makefile	/^DIST = glui-2.3.0$/;"	m
@@ -374,7 +374,6 @@ PB	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e
 PC	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
 PD	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
 PI	common_type.h	18;"	d
-POLYHEDRON_H	polyhedron.h	2;"	d
 PPM_VERBOSE	glui-2.35/src/tools/ppm.cpp	13;"	d	file:
 PT_IN_BOX	glui-2.35/src/glui_internal.h	77;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
@@ -382,8 +381,6 @@ PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
 PixelBufferBackup	graph.h	/^    float *PixelBufferBackup;$/;"	m	class:Graph
 Point	common_type.h	/^} Point;$/;"	t	typeref:struct:__anon2
 Point_3D	common_type.h	/^}Point_3D;$/;"	t	typeref:struct:__anon4
-Polyhedron	polyhedron.cpp	/^Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *_listOfSurfaces, int _numberOfSurfaces){ $/;"	f	class:Polyhedron
-Polyhedron	polyhedron.h	/^class Polyhedron {$/;"	c
 ProcessFiles	glui-2.35/src/glui_filebrowser.cpp	/^void ProcessFiles(const char *path_name)$/;"	f
 RAD2DEG	glui-2.35/src/glui_internal.h	62;"	d
 RED	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
@@ -440,12 +437,9 @@ Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon10
 WritePPM	glui-2.35/src/tools/ppm.cpp	/^void WritePPM(const char *FileName, unsigned char* Color, int Width, int Height)$/;"	f
 _RGBC_	glui-2.35/src/include/GL/glui.h	89;"	d
 __GLUI_INTERNAL_CONTROL_H	glui-2.35/src/glui_internal_control.h	8;"	d
-_bresenham	polyhedron.cpp	/^int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ \/\/for storing points, not drawing pixel$/;"	f	class:Polyhedron
 _glui_draw_border_only	glui-2.35/src/glui_control.cpp	/^int _glui_draw_border_only = 0;$/;"	v
 _glutBitmapString	glui-2.35/src/glui.cpp	/^void _glutBitmapString( void *font, const char *s )$/;"	f
 _glutBitmapWidthString	glui-2.35/src/glui.cpp	/^int _glutBitmapWidthString( void *font, const char *s )$/;"	f
-_storeContourPoint	polyhedron.cpp	/^void Polyhedron:: _storeContourPoint(Point p, int planeIndex){$/;"	f	class:Polyhedron
-_storeLinePoints	polyhedron.cpp	/^int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){$/;"	f	class:Polyhedron
 ab	glui-2.35/src/glui_treepanel.cpp	/^GLUI_Tree *GLUI_TreePanel::ab(const char *name, GLUI_Tree *root) $/;"	f	class:GLUI_TreePanel
 activate	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::activate( int how )$/;"	f	class:GLUI_EditText
 activate	glui-2.35/src/glui_list.cpp	/^void    GLUI_List::activate( int how )$/;"	f	class:GLUI_List
@@ -505,7 +499,6 @@ apply	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::apply(V_FCT_PTR fct)$/;"	f	class:
 apply	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::apply(V_FCT_PTR fct)$/;"	f	class:vec2
 apply	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::apply(V_FCT_PTR fct)$/;"	f	class:vec3
 apply	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::apply(V_FCT_PTR fct)$/;"	f	class:vec4
-applyPhong	polyhedron.cpp	/^void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
 associated_object	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control        *associated_object;$/;"	m	class:GLUI_List
 associated_object	glui-2.35/src/include/GL/glui.h	/^    void *        associated_object; \/* Lets the Spinner manage it's own callbacks *\/$/;"	m	class:GLUI_Scrollbar
 auto_set_viewport	glui-2.35/src/glui.cpp	/^void           GLUI_Master_Object::auto_set_viewport( void )$/;"	f	class:GLUI_Master_Object
@@ -545,7 +538,6 @@ can_draw	glui-2.35/src/include/GL/glui.h	/^    int          can_draw( void ) { r
 can_spin	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
 cb_click_type	glui-2.35/src/include/GL/glui.h	/^    int                 cb_click_type;$/;"	m	class:GLUI_List
 center	glui-2.35/src/arcball.h	/^    vec2  center;$/;"	m	class:Arcball
-centroid	polyhedron.h	/^  Point_3D centroid;$/;"	m	class:Polyhedron
 char_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::char_width(char c)$/;"	f	class:GLUI_Control
 char_widths	glui-2.35/src/include/GL/glui.h	/^    int             char_widths[CHAR_WIDTH_HASH_SIZE][2]; \/* Character width hash table *\/$/;"	m	class:GLUI_Control
 check_subwindow_position	glui-2.35/src/glui.cpp	/^void   GLUI_Main::check_subwindow_position( void )$/;"	f	class:GLUI_Main
@@ -555,8 +547,6 @@ checkbox	glui-2.35/src/example/example4.cpp	/^GLUI_Checkbox   *checkbox;$/;"	v
 child_head	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *child_head;$/;"	m	class:GLUI_Node
 child_number	glui-2.35/src/include/GL/glui.h	/^    int child_number;$/;"	m	class:GLUI_Tree
 child_tail	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *child_tail;$/;"	m	class:GLUI_Node
-clearContourPoints	polyhedron.cpp	/^void Polyhedron::clearContourPoints(int planeIndex){$/;"	f	class:Polyhedron
-clearContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::clearContourPointsForEachPlane(int numberOfPlanes){$/;"	f	class:Polyhedron
 clear_substring	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::clear_substring( int start, int end )$/;"	f	class:GLUI_EditText
 clear_substring	glui-2.35/src/glui_textbox.cpp	/^void   GLUI_TextBox::clear_substring( int start, int end )$/;"	f	class:GLUI_TextBox
 close	glui-2.35/src/glui.cpp	/^void   GLUI::close( void ) $/;"	f	class:GLUI
@@ -599,7 +589,6 @@ common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class
 common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class:GLUI_Tree
 common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init(void) {$/;"	f	class:GLUI_Button
 common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init(void) {$/;"	f	class:GLUI_Checkbox
-compareXValue	polyhedron.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
 constrain_vector	glui-2.35/src/arcball.cpp	/^vec3 Arcball::constrain_vector(const vec3 &vector, const vec3 &axis)$/;"	f	class:Arcball
 constraint_x	glui-2.35/src/arcball.h	/^    bool  constraint_x, constraint_y;$/;"	m	class:Arcball
 constraint_y	glui-2.35/src/arcball.h	/^    bool  constraint_x, constraint_y;$/;"	m	class:Arcball
@@ -664,11 +653,6 @@ delete_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_item( int id )$
 delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item( const char *text )$/;"	f	class:GLUI_Listbox
 delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item(int id)$/;"	f	class:GLUI_Listbox
 depressed	glui-2.35/src/include/GL/glui.h	/^    int               depressed;$/;"	m	class:GLUI_Listbox
-depth	polyhedron.h	/^  float depth;\/\/ with respect to a FROM POINT ff, i.e. depth = min{ magnitude(listOfPoints[i] - ff) }$/;"	m	class:Polyhedron
-depthComparator	polyhedron.cpp	/^int Polyhedron::depthComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
-depthXComparator	polyhedron.cpp	/^int Polyhedron::depthXComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
-depthYComparator	polyhedron.cpp	/^int Polyhedron::depthYComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
-depthZComparator	polyhedron.cpp	/^int Polyhedron::depthZComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
 descendBranch	glui-2.35/src/glui_treepanel.cpp	/^void            GLUI_TreePanel::descendBranch(GLUI_Panel *root) {$/;"	f	class:GLUI_TreePanel
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
 dir_list_callback	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::dir_list_callback(GLUI_Control *glui_object) {$/;"	f	class:GLUI_FileBrowser
@@ -707,12 +691,14 @@ draw	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::draw( int x, int y )
 draw	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::draw( int x, int y )$/;"	f	class:GLUI_StaticText
 draw	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw( int x, int y )$/;"	f	class:GLUI_TextBox
 draw	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw( int x, int y )$/;"	f	class:GLUI_Tree
-draw	polyhedron.cpp	/^void Polyhedron::draw(){$/;"	f	class:Polyhedron
-draw	polyhedron.cpp	/^void Polyhedron::draw(Color c){$/;"	f	class:Polyhedron
-draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	class:Polyhedron
+drawControlPolygon	bezier.cpp	/^void Bezier::drawControlPolygon(){$/;"	f	class:Bezier
+drawControlPolygon	bspline.cpp	/^void Bspline::drawControlPolygon(){$/;"	f	class:Bspline
+drawCurve	bezier.cpp	/^void Bezier::drawCurve(){$/;"	f	class:Bezier
+drawCurve	bspline.cpp	/^void Bspline::drawCurve(){$/;"	f	class:Bspline
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){ \/\/ should have named it scanLine, as I only use this function for horizontal line drawing$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
+drawLine	graph.cpp	/^int Graph::drawLine(Point p1, Point p2, Color c){ $/;"	f	class:Graph
 drawMegaPixel	graph.cpp	/^void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, Color c){$/;"	f	class:Graph
@@ -779,7 +765,6 @@ enable_textbox	glui-2.35/src/example/example6.cpp	/^int enable_textbox = 0;$/;"	
 enabled	glui-2.35/src/include/GL/glui.h	/^    bool            enabled;    \/**< Is this control grayed out? *\/$/;"	m	class:GLUI_Control
 entry	glui-2.35/src/glui.cpp	/^void    GLUI_Main::entry(int state)$/;"	f	class:GLUI_Main
 equal	vector.cpp	/^bool equal(Color c1, Color c2){$/;"	f
-erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
 erase_text	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::erase_text( void )$/;"	f	class:GLUI_StaticText
 error_return	glui-2.35/src/glui_internal.h	47;"	d
 execute_callback	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::execute_callback()$/;"	f	class:GLUI_Control
@@ -796,9 +781,7 @@ file	glui-2.35/src/include/GL/glui.h	/^    GLUI_String file;$/;"	m	class:GLUI_Fi
 filebrowser	glui-2.35/src/example/example6.cpp	/^const char filebrowser[] = $/;"	v
 fillScreen	graph.cpp	/^int Graph::fillScreen(Color c){$/;"	f	class:Graph
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
-findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(){$/;"	f	class:Polyhedron
-findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
-findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *_xMin, float *_yMin, float *_zMin){$/;"	f	class:Polyhedron
+findNDCParam	curve.cpp	/^void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){$/;"	f	class:Curve
 find_arrow	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Scrollbar
 find_arrow	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Spinner
 find_control	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_control( int x, int y )$/;"	f	class:GLUI_Main
@@ -959,7 +942,6 @@ glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int    glut_window_id;$/;"	
 glut_windows	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node     glut_windows;$/;"	m	class:GLUI_Master_Object
 graph	curve.h	/^  Graph *graph;$/;"	m	class:Curve
 graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon10
-graphs	polyhedron.h	/^  Graph **graphs;$/;"	m	class:Polyhedron
 green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_Tree
 green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_TreePanel
 group	glui-2.35/src/include/GL/glui.h	/^    GLUI_RadioGroup *group;$/;"	m	class:GLUI_RadioButton
@@ -1038,7 +1020,6 @@ int_val	glui-2.35/src/include/GL/glui.h	/^    int             int_val;          
 intensity	common_type.h	/^  Color intensity; \/\/ directly from phont model$/;"	m	struct:__anon4
 inverse	glui-2.35/src/algebra3.cpp	/^mat3 mat3::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat3
 inverse	glui-2.35/src/algebra3.cpp	/^mat4 mat4::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat4
-isNDC	polyhedron.cpp	/^bool Polyhedron::isNDC(Point_3D p){$/;"	f	class:Polyhedron
 is_container	glui-2.35/src/include/GL/glui.h	/^    bool            is_container;  \/**< Is this a container class (e.g., panel) *\/$/;"	m	class:GLUI_Control
 is_current	glui-2.35/src/include/GL/glui.h	/^    int is_current;          \/\/ Whether this tree is the$/;"	m	class:GLUI_Tree
 is_mouse_down	glui-2.35/src/arcball.h	/^    int   is_mouse_down;  \/* true for down, false for up *\/$/;"	m	class:Arcball
@@ -1150,11 +1131,6 @@ link_this_to_sibling_next	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_t
 link_this_to_sibling_prev	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_this_to_sibling_prev( GLUI_Node *sibling )$/;"	f	class:GLUI_Node
 list	glui-2.35/src/example/example6.cpp	/^const char list[] =$/;"	v
 list	glui-2.35/src/include/GL/glui.h	/^    GLUI_List *list;$/;"	m	class:GLUI_FileBrowser
-listOfContourPoints	polyhedron.h	/^  std::list<Point> *listOfContourPoints[3]; \/\/index 0 for xy, 1 for xz, 2 for yz$/;"	m	class:Polyhedron
-listOfEdges	polyhedron.h	/^  Edge *listOfEdges; $/;"	m	class:Polyhedron
-listOfPoints	polyhedron.h	/^  Point_3D* listOfPoints;$/;"	m	class:Polyhedron
-listOfPointsNDC	polyhedron.h	/^  Point_3D* listOfPointsNDC;$/;"	m	class:Polyhedron
-listOfSurfaces	polyhedron.h	/^  Surface *listOfSurfaces;$/;"	m	class:Polyhedron
 listbox_callback	glui-2.35/src/glui_listbox.cpp	/^static void listbox_callback( int i )$/;"	f	file:
 live_inited	glui-2.35/src/include/GL/glui.h	/^    bool            live_inited;$/;"	m	class:GLUI_Control
 live_type	glui-2.35/src/include/GL/glui.h	/^    int             live_type;$/;"	m	class:GLUI_Control
@@ -1313,10 +1289,9 @@ normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon6
 normalize	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec2
 normalize	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
 normalize	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec4
-normalizeIntensities	polyhedron.cpp	/^void Polyhedron::normalizeIntensities(){$/;"	f	class:Polyhedron
-normalizeIntensities	polyhedron.cpp	/^void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
-normalizedIntensity	common_type.h	/^  Color normalizedIntensity; $/;"	m	struct:__anon2
+normalizeCtrlPoints	curve.cpp	/^void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){$/;"	f	class:Curve
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon4
+normalizedIntensity	common_type.h	/^  Color normalizedIntensity;$/;"	m	struct:__anon2
 num_buttons	glui-2.35/src/include/GL/glui.h	/^    int  num_buttons;$/;"	m	class:GLUI_RadioGroup
 num_display	glui-2.35/src/example/example6.cpp	/^int num_display  = 0;$/;"	v
 num_format	glui-2.35/src/example/example6.cpp	/^int num_format  = 0;$/;"	v
@@ -1325,12 +1300,8 @@ num_lines	glui-2.35/src/include/GL/glui.h	/^    int                 num_lines;$/
 num_periods	glui-2.35/src/include/GL/glui.h	/^    int                 num_periods;$/;"	m	class:GLUI_EditText
 numberOfCtrlPoints	curve.h	/^  int numberOfCtrlPoints;$/;"	m	class:Curve
 numberOfCurves	common_type.h	/^  int numberOfCurves;$/;"	m	struct:__anon10
-numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
-numberOfPlanes	polyhedron.h	/^  int numberOfPlanes;$/;"	m	class:Polyhedron
-numberOfPoints	polyhedron.h	/^  int numberOfPoints;$/;"	m	class:Polyhedron
 numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon10
 numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon10
-numberOfSurfaces	polyhedron.h	/^  int numberOfSurfaces;$/;"	m	class:Polyhedron
 obj	glui-2.35/src/example/example2.cpp	/^int   obj = 0;$/;"	v
 objCB	glui-2.35/src/include/GL/glui.h	/^  GLUI_Control_CB objCB;$/;"	m	class:GLUI_CB
 obj_cb	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB             obj_cb;$/;"	m	class:GLUI_List
@@ -1342,7 +1313,6 @@ obj_type	glui-2.35/src/example/example3.cpp	/^int   obj_type = 1;$/;"	v
 obj_type	glui-2.35/src/example/example4.cpp	/^int   obj_type = 1;$/;"	v
 obj_type	glui-2.35/src/example/example5.cpp	/^int   obj_type = 1;$/;"	v
 object_cb	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB       object_cb; \/* function pointer to object call_back *\/$/;"	m	class:GLUI_Scrollbar
-obliqueProj	polyhedron.cpp	/^Point_3D Polyhedron::obliqueProj(Point_3D dirVector, Point_3D p){ \/\/oblique projection on  xy-plane$/;"	f	class:Polyhedron
 oldest_hist	glui-2.35/src/include/GL/glui.h	/^    int  oldest_hist;$/;"	m	class:GLUI_CommandLine
 open	glui-2.35/src/glui_rollout.cpp	/^void    GLUI_Rollout::open( void )$/;"	f	class:GLUI_Rollout
 open	glui-2.35/src/glui_tree.cpp	/^void GLUI_Tree::open( void )$/;"	f	class:GLUI_Tree
@@ -1468,8 +1438,6 @@ p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon6
 pack	glui-2.35/src/glui_control.cpp	/^void    GLUI_Control::pack( int x, int y )$/;"	f	class:GLUI_Control
 pack_controls	glui-2.35/src/glui.cpp	/^void      GLUI_Main::pack_controls( void )$/;"	f	class:GLUI_Main
 pack_old	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::pack_old(int x, int y)$/;"	f	class:GLUI_Control
-paintersAlgo	polyhedron.cpp	/^void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){$/;"	f	class:Polyhedron
-paintersAlgo	polyhedron.cpp	/^void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int planeIndex){ $/;"	f	class:Polyhedron
 pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon8
 panel	glui-2.35/src/include/GL/glui.h	/^    GLUI_TreePanel *panel; $/;"	m	class:GLUI_Tree
 parent	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent()        { return parent_node; }$/;"	f	class:GLUI_Node
@@ -1477,21 +1445,20 @@ parent_node	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent_node;$/;"	m	
 parent_window	glui-2.35/src/include/GL/glui.h	/^    int           parent_window;$/;"	m	class:GLUI_Main
 passive_motion	glui-2.35/src/glui.cpp	/^void    GLUI_Main::passive_motion(int x, int y)$/;"	f	class:GLUI_Main
 perspective3D	glui-2.35/src/algebra3.cpp	/^mat4 perspective3D(float d)$/;"	f
-phong	polyhedron.cpp	/^Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
-phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
 pixels	glui-2.35/src/include/GL/glui.h	/^    unsigned char *pixels;$/;"	m	class:GLUI_Bitmap
 pointer_cb	glui-2.35/src/example/example3.cpp	/^void pointer_cb( GLUI_Control* control )$/;"	f
 post_update_main_gfx	glui-2.35/src/glui.cpp	/^void   GLUI_Main::post_update_main_gfx( void )$/;"	f	class:GLUI_Main
 prev	glui-2.35/src/glui_node.cpp	/^GLUI_Node    *GLUI_Node::prev( void )$/;"	f	class:GLUI_Node
 prev_sibling	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *prev_sibling;$/;"	m	class:GLUI_Node
+print	curve.cpp	/^void Curve::print(){$/;"	f	class:Curve
 print	glui-2.35/src/algebra3.cpp	/^void mat3::print(FILE *file, const char *name) const $/;"	f	class:mat3
 print	glui-2.35/src/algebra3.cpp	/^void mat4::print(FILE *file, const char *name) const $/;"	f	class:mat4
 print	glui-2.35/src/algebra3.cpp	/^void vec3::print(FILE *file, const char *name) const  \/\/ print vector to a file$/;"	f	class:vec3
 print	glui-2.35/src/algebra3.cpp	/^void vec4::print(FILE *file, const char *name) const \/\/ print vector to a file$/;"	f	class:vec4
 print	glui-2.35/src/quaternion.cpp	/^void quat::print(FILE *dest, const char *name) const$/;"	f	class:quat
-printAttributes	polyhedron.cpp	/^void Polyhedron::printAttributes(){$/;"	f	class:Polyhedron
+printAttributes	bezier.cpp	/^void Bezier::printAttributes(){$/;"	f	class:Bezier
+printAttributes	bspline.cpp	/^void Bspline::printAttributes(){$/;"	f	class:Bspline
 printColor	vector.cpp	/^void printColor(const char *tag, Color c){$/;"	f
-printContourPoints	polyhedron.cpp	/^void Polyhedron::printContourPoints(){$/;"	f	class:Polyhedron
 printVector	vector.cpp	/^void printVector(const char *tag, Vector v){$/;"	f
 prod	glui-2.35/src/algebra3.cpp	/^vec2 prod(const vec2 &a, const vec2 &b)$/;"	f
 prod	glui-2.35/src/algebra3.cpp	/^vec3 prod(const vec3 &a, const vec3 &b)$/;"	f
@@ -1521,8 +1488,7 @@ radio	glui-2.35/src/example/example4.cpp	/^GLUI_RadioGroup *radio;$/;"	v
 radio	glui-2.35/src/example/example5.cpp	/^GLUI_RadioGroup *radio;$/;"	v
 radius	glui-2.35/src/arcball.h	/^    float radius, damp_factor;$/;"	m	class:Arcball
 randf	glui-2.35/src/glui_internal.h	52;"	d
-rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(int planeIndex){$/;"	f	class:Polyhedron
-readCurves	user_io.cpp	/^void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> curves, int numberOfCurves){ $/;"	f
+readCurves	user_io.cpp	/^void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int numberOfCurves){ $/;"	f
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
 readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
 readPixel	graph.cpp	/^Color Graph::readPixel(int x, int y){$/;"	f	class:Graph
@@ -1555,7 +1521,6 @@ rot_about_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::rot_about_eye(const mat4 
 rot_about_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::rot_about_lookat(const mat4 &rot) $/;"	f	class:ViewModel
 rot_increment	glui-2.35/src/arcball.h	/^    mat4  rot, rot_increment;$/;"	m	class:Arcball
 rot_ptr	glui-2.35/src/arcball.h	/^    mat4  *rot_ptr;$/;"	m	class:Arcball
-rotate	polyhedron.cpp	/^void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){$/;"	f	class:Polyhedron
 rotation2D	glui-2.35/src/algebra3.cpp	/^mat3 rotation2D(const vec2 &Center, float angleDeg) $/;"	f
 rotation3D	glui-2.35/src/algebra3.cpp	/^mat4 rotation3D(const vec3 &Axis, float angleDeg) $/;"	f
 rotation3Drad	glui-2.35/src/algebra3.cpp	/^mat4 rotation3Drad(const vec3 &Axis, float angleRad) $/;"	f
@@ -1569,12 +1534,9 @@ rotationY	glui-2.35/src/example/example4.cpp	/^float rotationX = 0.0, rotationY 
 rotationY	glui-2.35/src/example/example5.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
 rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon8
 s	glui-2.35/src/quaternion.h	/^  float s;  \/* scalar component *\/$/;"	m	class:quat
-savePolyhedraToFile	polyhedron.cpp	/^void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename){$/;"	f	class:Polyhedron
 scale	glui-2.35/src/example/example3.cpp	/^float scale = 1.0;$/;"	v
 scale	glui-2.35/src/example/example4.cpp	/^float scale = 1.0;$/;"	v
 scale	glui-2.35/src/example/example5.cpp	/^float scale = 1.0;$/;"	v
-scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha){$/;"	f	class:Polyhedron
-scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha, float beta, float gamma){$/;"	f	class:Polyhedron
 scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon8
 scale_angle	glui-2.35/src/quaternion.cpp	/^void quat::scale_angle(float f)$/;"	f	class:quat
 scale_factor	glui-2.35/src/include/GL/glui.h	/^    float scale_factor;$/;"	m	class:GLUI_Translation
@@ -1607,15 +1569,6 @@ set	glui-2.35/src/algebra3.cpp	/^void vec3::set(float x, float y, float z)   \/\
 set	glui-2.35/src/algebra3.cpp	/^void vec4::set(float x, float y, float z, float a)$/;"	f	class:vec4
 set	glui-2.35/src/include/GL/glui.h	/^  void set(Byte r,Byte g,Byte b) {this->r=r;this->g=g;this->b=b;}$/;"	f	class:RGBc
 set	glui-2.35/src/quaternion.cpp	/^void quat::set(const vec3 &_v, const float _s)$/;"	f	class:quat
-setCentroid	polyhedron.cpp	/^void Polyhedron::setCentroid(){$/;"	f	class:Polyhedron
-setDepth	polyhedron.cpp	/^void Polyhedron::setDepth(){$/;"	f	class:Polyhedron
-setDepth	polyhedron.cpp	/^void Polyhedron::setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){$/;"	f	class:Polyhedron
-setNDC	polyhedron.cpp	/^void Polyhedron::setNDC(float delta, float xMin, float yMin, float zMin){$/;"	f	class:Polyhedron
-setNormalVector	polyhedron.cpp	/^void Polyhedron::setNormalVector(){ $/;"	f	class:Polyhedron
-setNormalVectors	polyhedron.cpp	/^void Polyhedron::setNormalVectors(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
-setPhongKCoeff	polyhedron.cpp	/^void Polyhedron::setPhongKCoeff(Color ka, Color kd, Color ks){ $/;"	f	class:Polyhedron
-setPhongKCoeffForEachPolyhedron	polyhedron.cpp	/^void Polyhedron::setPhongKCoeffForEachPolyhedron(Polyhedron **polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
-setPhongParams	polyhedron.cpp	/^void Polyhedron::setPhongParams(Polyhedron**polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
 set_alignment	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_alignment(int new_align)$/;"	f	class:GLUI_Control
 set_allow_change_dir	glui-2.35/src/include/GL/glui.h	/^    void set_allow_change_dir(int c) { allow_change_dir = c; }$/;"	f	class:GLUI_FileBrowser
 set_angle	glui-2.35/src/quaternion.cpp	/^void quat::set_angle(float f)$/;"	f	class:quat
@@ -1714,7 +1667,6 @@ set_w	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::set_w(int w) $
 set_x	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_x( float val )$/;"	f	class:GLUI_Translation
 set_y	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_y( float val )$/;"	f	class:GLUI_Translation
 set_z	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_z( float val )$/;"	f	class:GLUI_Translation
-setupContourPoints	polyhedron.cpp	/^void Polyhedron::setupContourPoints(){$/;"	f	class:Polyhedron
 setup_default_glut_callbacks	glui-2.35/src/glui.cpp	/^void GLUI_Main::setup_default_glut_callbacks( void )$/;"	f	class:GLUI_Main
 setup_lights	glui-2.35/src/glui_rotation.cpp	/^void    GLUI_Rotation::setup_lights( void )$/;"	f	class:GLUI_Rotation
 setup_texture	glui-2.35/src/glui_rotation.cpp	/^void GLUI_Rotation::setup_texture( void )$/;"	f	class:GLUI_Rotation
@@ -1752,7 +1704,6 @@ state	common_type.h	/^  int state;$/;"	m	struct:__anon10
 state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Scrollbar
 state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Spinner
 std_bitmaps	glui-2.35/src/include/GL/glui.h	/^    GLUI_StdBitmaps  std_bitmaps;$/;"	m	class:GLUI_Main
-storeOriginalPointsToContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){$/;"	f	class:Polyhedron
 string_list	glui-2.35/src/example/example5.cpp	/^char *string_list[] = { "Hello World!", "Foo", "Testing...", "Bounding box: on" };$/;"	v
 string_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::string_width(const char *text)$/;"	f	class:GLUI_Control
 string_width	glui-2.35/src/include/GL/glui.h	/^    int          string_width( const GLUI_String &str ) $/;"	f	class:GLUI_Control
@@ -1796,7 +1747,6 @@ tp	glui-2.35/src/example/example6.cpp	/^GLUI_TreePanel   *tp;$/;"	v
 track_length	glui-2.35/src/include/GL/glui.h	/^    int track_length;$/;"	m	class:GLUI_Scrollbar
 trans_mouse_code	glui-2.35/src/include/GL/glui.h	/^    int   trans_mouse_code;$/;"	m	class:GLUI_Translation
 trans_type	glui-2.35/src/include/GL/glui.h	/^    int trans_type;  \/* Is this an XY or a Z controller? *\/$/;"	m	class:GLUI_Translation
-translate	polyhedron.cpp	/^void Polyhedron::translate(float x_offset, float y_offset, float z_offset){$/;"	f	class:Polyhedron
 translate_and_draw_front	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::translate_and_draw_front()$/;"	f	class:GLUI_Control
 translate_to_origin	glui-2.35/src/include/GL/glui.h	/^    void         translate_to_origin( void ) $/;"	f	class:GLUI_Control
 translation2D	glui-2.35/src/algebra3.cpp	/^mat3 translation2D(const vec2 &v)$/;"	f
@@ -1813,7 +1763,6 @@ unitVector	vector.cpp	/^Vector unitVector(Vector p){$/;"	f
 unlink	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::unlink( void )$/;"	f	class:GLUI_Node
 up	glui-2.35/src/viewmodel.h	/^  vec3    up, side, forward;$/;"	m	class:ViewModel
 update	glui-2.35/src/viewmodel.cpp	/^ViewModel::update() $/;"	f	class:ViewModel
-updateRotationAxis	polyhedron.cpp	/^void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints){$/;"	f	class:Polyhedron
 updateScreen	main.cpp	/^void updateScreen(){$/;"	f
 update_all	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::update_all() $/;"	f	class:GLUI_TreePanel
 update_and_draw_text	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::update_and_draw_text( void )$/;"	f	class:GLUI_EditText
@@ -1889,10 +1838,9 @@ wireframe	glui-2.35/src/example/example2.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example3.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example4.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example5.cpp	/^int   wireframe = 0;$/;"	v
+x	common_type.h	/^  float x;$/;"	m	struct:__anon2
 x	common_type.h	/^  float x;$/;"	m	struct:__anon3
 x	common_type.h	/^  float x;$/;"	m	struct:__anon4
-x	common_type.h	/^  int x;$/;"	m	struct:__anon2
-xDepth	polyhedron.h	/^  float xDepth; \/\/ with respect to (inf, 0 0)$/;"	m	class:Polyhedron
 xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon7
 xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon7
 x_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
@@ -1903,10 +1851,9 @@ xy_aspect	glui-2.35/src/example/example2.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example3.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example4.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example5.cpp	/^float xy_aspect;$/;"	v
+y	common_type.h	/^  float y;$/;"	m	struct:__anon2
 y	common_type.h	/^  float y;$/;"	m	struct:__anon3
 y	common_type.h	/^  float y;$/;"	m	struct:__anon4
-y	common_type.h	/^  int y;$/;"	m	struct:__anon2
-yDepth	polyhedron.h	/^  float yDepth; \/\/with respect to (0, inf, 0)$/;"	m	class:Polyhedron
 yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon7
 yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon7
 y_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
@@ -1915,7 +1862,6 @@ y_off_top	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top
 y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon8
 z	common_type.h	/^  float z;$/;"	m	struct:__anon3
 z	common_type.h	/^  float z;$/;"	m	struct:__anon4
-zDepth	polyhedron.h	/^  float zDepth; \/\/ with respect to (0, 0, inf);$/;"	m	class:Polyhedron
 z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon8
 zero_increment	glui-2.35/src/arcball.h	/^    int   zero_increment;$/;"	m	class:Arcball
 ~GLUI_Bitmap	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_Bitmap::~GLUI_Bitmap()$/;"	f	class:GLUI_Bitmap

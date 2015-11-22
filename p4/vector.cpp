@@ -66,3 +66,11 @@ void printVector(const char *tag, Vector v){
 void printColor(const char *tag, Color c){
   DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, c.r, c.g, c.b);
 }
+
+Point multByScalar(Point p1, float scalar){
+  return { p1.x * scalar, p1.y * scalar };
+}
+
+Point add(Point p1, Point p2){
+  return { p1.x + p2.x, p1.y + p2.y };
+}

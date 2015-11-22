@@ -9,7 +9,8 @@ class Bspline:public Curve{
   public:
   Bspline(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints, int _k, float *knotValues);
   void printAttributes();// implement a virtual method of its parent, dyn.binding
-
+  void drawControlPolygon();
+  void drawCurve(float res);
 };
 
 #endif

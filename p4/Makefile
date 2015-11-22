@@ -1,4 +1,4 @@
-ARG = -lGL -lglut -lm -g -Wall -std=c++11 #-DDEBUG_PRINT 
+ARG = -lGL -lglut -lm -g -Wall -std=c++11 -DDEBUG_PRINT 
 
 C = g++
 

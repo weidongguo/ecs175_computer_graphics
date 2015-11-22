@@ -25,3 +25,25 @@ void Bspline::printAttributes(){
   printf("\n");
 }
 
+void Bspline::drawCurve(float res){
+
+}
+
+void Bspline::drawControlPolygon(){
+  Point p1, p2;
+  for(std::list<Point>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+    p1 = (*it);
+    it++;
+    if(it == ctrlPointsNDC.end())
+            break;
+    p2 = (*it);          
+    
+    p1.x = p1.x * (graph->window_width - 1);
+    p1.y = p1.y * (graph->window_height -1);
+    p2.x = p2.x * (graph->window_width - 1);
+    p2.y = p2.y * (graph->window_height -1);
+
+    graph->drawLine(p1,p2,COLOR_CRIMSON);
+  }
+
+}

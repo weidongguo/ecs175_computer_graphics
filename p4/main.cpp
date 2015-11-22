@@ -43,16 +43,21 @@ int main(int argc, char *argv[]){
   glutKeyboardFunc(callback_keyboard); 
   createMenu();
   glutSetCursor(GLUT_CURSOR_CROSSHAIR);
-  
+ 
+  //for updating pixels buffer
   Graph graph(window.width,window.height, PixelBuffer); 
-
   globalGraph = &graph;//any function that wants to draw can use this pointer(globalGraph) to graph
   graph.fillScreen(1,1,1); // white background
-  
+ 
+  //curves to be manipulated;  
   std::list<Curve*> curves; 
   readCurves(&ifs, &graph, &curves, window.numberOfCurves);
+  
+  Curve::normalizeCtrlPoints(&curves);
   for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
     (*it)->printAttributes();
+    (*it)->drawControlPolygon();
+    (*it)->drawCurve(5);
   }
 
   glutMainLoop();

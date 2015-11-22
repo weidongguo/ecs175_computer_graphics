@@ -9,6 +9,11 @@ Graph::Graph(int width, int height, float *PixelBufferPtr){
 int Graph::drawPixel(Point p){
   return drawPixel(p.x, p.y, p.normalizedIntensity);
 }
+
+int Graph::drawPixel(Point p, Color c){
+  drawPixel( (int)round(p.x), (int)round(p.y), c.r, c.g, c.b );
+}
+
 int Graph::drawPixel(int x, int y, Color c){
   return drawPixel(x,y, c.r, c.g, c.b);
 }
@@ -30,7 +35,9 @@ int Graph::drawPixel(int x, int y, float r, float g, float b){
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){
   return drawLine(p1,p2,r,g,b,BRESENHAM);
 }
-
+int Graph::drawLine(Point p1, Point p2, Color c){ 
+  return drawLine(p1, p2, c.r, c.g, c.b, BRESENHAM);
+}
 //Gouraud shading, uses linear interpolation to determine the color
 int Graph::drawLine( Point p1, Point p2){ // should have named it scanLine, as I only use this function for horizontal line drawing
   if(p1.x == p2.x){ //vertical line
