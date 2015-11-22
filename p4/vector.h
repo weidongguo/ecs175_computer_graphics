@@ -4,8 +4,8 @@
 #include "common_type.h"
 #include <cmath>
 
-Point multByScalar(Point p1, float scalar);
-Point add(Point p1, Point p2);
+Point_2D multByScalar(Point_2D p1, float scalar);
+Point_2D add(Point_2D p1, Point_2D p2);
 
 //vector operations
 Color    vtoc(Vector v);
@@ -26,6 +26,5 @@ void printColor(const char *tag, Color c);
 void printVector(const char *tag, Vector v);
 Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend);
 
-PixelPoint pointToPixel(Point p);
 
 #endif

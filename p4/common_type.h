@@ -27,15 +27,15 @@ typedef struct {
 }Color;
 
 typedef struct{
-  float x;
-  float y;
+  int x;
+  int y;
   Color normalizedIntensity;
 } Point;
 
 typedef struct{
-  int x;
-  int y; 
-} PixelPoint;
+  float x;
+  float y; 
+} Point_2D;
 
 typedef struct{
   float x;

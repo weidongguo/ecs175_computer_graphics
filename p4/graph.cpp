@@ -17,6 +17,25 @@ int Graph::drawPixel(Point p, Color c){
 int Graph::drawPixel(int x, int y, Color c){
   return drawPixel(x,y, c.r, c.g, c.b);
 }
+int Graph::drawPixel(int x, float y, Color c){
+  return drawPixel(x, (int)round(y), c.r, c.g, c.b);
+}
+int Graph::drawPixel(float x, int y, Color c){
+  return drawPixel((int)round(x),y, c.r, c.g, c.b);
+}
+int Graph::drawPixel(float x, float y, Color c){
+  return drawPixel((int)round(x), (int)round(y), c.r, c.g, c.b);
+}
+int Graph::drawPixel(int x, float y, float r, float g, float b){
+  return drawPixel( (int)round(x), (int)round(y), r,g,b);
+}
+int Graph::drawPixel(float x, int y, float r, float g, float b){
+  return drawPixel( (int)round(x), (int)round(y), r,g,b);
+}
+int Graph::drawPixel(float x, float y, float r, float g, float b){
+  return drawPixel( (int)round(x), (int)round(y), r,g,b);
+}
+
 int Graph::drawPixel(int x, int y, float r, float g, float b){
   /*if( abs(x) > window_width/2 || abs(y) > window_height/2){
     DPRINT("ERROR: INVALID POINTS (%d, %d)\n", x,y); 
@@ -30,6 +49,9 @@ int Graph::drawPixel(int x, int y, float r, float g, float b){
   PixelBuffer[ y * window_width * 3 + x * 3 + 2 ] = b;
 
   return 0;
+}
+int Graph::drawLine(Point_2D p1, Point_2D p2, Color c){
+  drawLine( { (int)round(p1.x), (int)round(p1.y)}, {(int)round(p2.x), (int)round(p2.y)}, c.r, c.g, c.b, BRESENHAM);
 }
 
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){

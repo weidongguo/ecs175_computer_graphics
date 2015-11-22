@@ -8,12 +8,12 @@
 class Curve {
   protected: 
   Graph *graph;
-  std::list<Point> ctrlPoints;
-  std::list<Point> ctrlPointsNDC;
+  std::list<Point_2D> ctrlPoints;
+  std::list<Point_2D> ctrlPointsNDC;
   int numberOfCtrlPoints;
 
   public:
-  Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints);
+  Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints);
   void print();
   virtual void printAttributes() = 0;
   virtual void drawControlPolygon() = 0; 

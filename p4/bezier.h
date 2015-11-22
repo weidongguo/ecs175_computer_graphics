@@ -3,9 +3,9 @@
 #include "curve.h"
 class Bezier:public Curve {
   public:
-    Bezier(Graph*graph, Point *ctrlPoints, int numberOfCtrlPoints);        
+    Bezier(Graph*graph, Point_2D *ctrlPoints, int numberOfCtrlPoints);        
     void printAttributes();
-    Point cc(float t);
+    Point_2D cc(float t);
     void drawCurve(float res);
     void drawControlPolygon();
 };

@@ -57,7 +57,7 @@ int main(int argc, char *argv[]){
   for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
     (*it)->printAttributes();
     (*it)->drawControlPolygon();
-    (*it)->drawCurve(50);
+    (*it)->drawCurve(1000);
   }
 
   glutMainLoop();

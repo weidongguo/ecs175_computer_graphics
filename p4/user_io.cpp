@@ -46,7 +46,7 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
   int sizeOfBuffer = 256, numberOfCtrlPoints, numberOfCurvesAlreadyProcessed = 0, k ;
   float x,y, *knotValues;
   char buffer[sizeOfBuffer], *charPtr; 
-  Point *ctrlPoints; 
+  Point_2D *ctrlPoints; 
   Curve *curve;
     
   bool isKnotsSpecified = false;
@@ -56,7 +56,7 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
     if(strstr(buffer, "bz")){
       ifs->getline(buffer, sizeOfBuffer);
       numberOfCtrlPoints = atoi(buffer);          
-      ctrlPoints = new Point[numberOfCtrlPoints];
+      ctrlPoints = new Point_2D[numberOfCtrlPoints];
       for(int i = 0 ; i < numberOfCtrlPoints; i++){
         ifs->getline(buffer, sizeOfBuffer);
         charPtr = strtok(buffer, ", ");
@@ -81,7 +81,7 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
       else
         isKnotsSpecified = false;
       
-      ctrlPoints = new Point[numberOfCtrlPoints];
+      ctrlPoints = new Point_2D[numberOfCtrlPoints];
       for(int i = 0 ; i < numberOfCtrlPoints; i++){
         ifs->getline(buffer, sizeOfBuffer);
         charPtr = strtok(buffer, ", ");

@@ -23,10 +23,20 @@ class Graph {
     int drawPixel(int x, int y, float r, float g, float b); 
     int drawPixel(int x, int y, Color c);
     int drawPixel(Point p, Color c);
+
+    int drawPixel(int x, float y, Color c);
+    int drawPixel(float x, int y, Color c);
+    int drawPixel(float x, float y, Color c);
+    int drawPixel(int x, float y, float r, float g, float b);
+    int drawPixel(float x, int y, float r, float g, float b);
+    int drawPixel(float x, float y, float r, float g, float b);
+
     int drawLine(Point p1, Point p2); //using the color specified in each point
     int drawLine(Point p1, Point p2, float r, float g, float b);
     int drawLine(Point p1, Point p2, float r, float g, float b, int method);
     int drawLine(Point p1, Point p2, Color c); 
+    int drawLine(Point_2D p1, Point_2D p2, Color c); 
+
     int dda(Point p1, Point p2, float r, float g, float b);
     int bresenham(Point p1, Point p2, float r, float, float);
     int bresenham(Point p1, Point p2);

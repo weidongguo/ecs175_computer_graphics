@@ -67,15 +67,12 @@ void printColor(const char *tag, Color c){
   DPRINT("%s: (%.2f, %.2f, %.2f)\n", tag, c.r, c.g, c.b);
 }
 
-Point multByScalar(Point p1, float scalar){
+Point_2D multByScalar(Point_2D p1, float scalar){
   return { p1.x * scalar, p1.y * scalar };
 }
 
-Point add(Point p1, Point p2){
+Point_2D add(Point_2D p1, Point_2D p2){
   return { p1.x + p2.x, p1.y + p2.y };
 }
 
-PixelPoint pointToPixel(Point p){
-  return (PixelPoint){  (int)(round(p.x)), (int)(round(p.y)) };
-}
 

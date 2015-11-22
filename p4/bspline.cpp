@@ -1,6 +1,6 @@
 #include "bspline.h"
 
-Bspline::Bspline(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints, int _k, float *_knotValues)
+Bspline::Bspline(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints, int _k, float *_knotValues)
 :Curve(_graph, _ctrlPoints, _numberOfCtrlPoints)
 {
   k = _k;
@@ -14,7 +14,7 @@ void Bspline::printAttributes(){
   printf("degree n: %d\n", numberOfCtrlPoints - 1);
   printf("K value : %d\n", k);
 
-  for(std::list<Point>::iterator it = ctrlPoints.begin(); it!=ctrlPoints.end(); ++it){
+  for(std::list<Point_2D>::iterator it = ctrlPoints.begin(); it!=ctrlPoints.end(); ++it){
     printf("(%.2f, %.2f)\n", (*it).x, (*it).y) ;
   }
   
@@ -30,8 +30,8 @@ void Bspline::drawCurve(float res){
 }
 
 void Bspline::drawControlPolygon(){
-  Point p1, p2;
-  for(std::list<Point>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+  Point_2D p1, p2;
+  for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
     p1 = (*it);
     it++;
     if(it == ctrlPointsNDC.end())

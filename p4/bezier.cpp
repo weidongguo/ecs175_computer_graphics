@@ -1,6 +1,6 @@
 #include "bezier.h"
 
-Bezier::Bezier(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints)
+Bezier::Bezier(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints)
 :Curve(_graph, _ctrlPoints, _numberOfCtrlPoints)
 {
 
@@ -9,7 +9,7 @@ Bezier::Bezier(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints)
 void Bezier::printAttributes(){
   printf("\n==Bezier Curve==\n");
   printf("degree n : %d\n", numberOfCtrlPoints - 1);
-  for(std::list<Point>::iterator it = ctrlPoints.begin(); it != ctrlPoints.end(); ++it){
+  for(std::list<Point_2D>::iterator it = ctrlPoints.begin(); it != ctrlPoints.end(); ++it){
     printf("(%.2f, %.2f)\n", (*it).x, (*it).y);
   }
 }
@@ -18,19 +18,19 @@ void Bezier::drawCurve(float res){
   float inc = 1.0/res;
   for(float t = 0; t+inc <= 1.0; t+=inc){
     //DPRINT("%.2f to %.2f\t", t, t+inc);
-    Point p1 = cc(t);
-    Point p2 = cc(t+inc);
+    Point_2D p1 = cc(t);
+    Point_2D p2 = cc(t+inc);
     graph->drawLine( p1, p2, {0,0,0}) ;
     //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
   }
   
 }
 
-Point Bezier::cc(float t){
-    std::list<Point>::iterator it = ctrlPointsNDC.begin();
+Point_2D Bezier::cc(float t){
+    std::list<Point_2D>::iterator it = ctrlPointsNDC.begin();
 
     //build a table 
-    Point lb[numberOfCtrlPoints][numberOfCtrlPoints], c_t;
+    Point_2D lb[numberOfCtrlPoints][numberOfCtrlPoints], c_t;
     for(int c = 0; c < numberOfCtrlPoints; c++, it++){
       lb[0][c] = (*it);        
     }
@@ -47,8 +47,8 @@ Point Bezier::cc(float t){
 }
 
 void Bezier::drawControlPolygon(){
-  Point p1, p2;
-  for(std::list<Point>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+  Point_2D p1, p2;
+  for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
     p1 = (*it);
     it++;
     if(it == ctrlPointsNDC.end())

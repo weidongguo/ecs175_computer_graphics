@@ -1,6 +1,6 @@
 #include "curve.h"
 #include <cstring>
-Curve::Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints){
+Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){
   graph = _graph; //for making pixels to screen (line drawing, etc)
   for(int i = 0 ; i < _numberOfCtrlPoints; i++){
     ctrlPoints.push_back(_ctrlPoints[i]);
@@ -16,7 +16,7 @@ void Curve::print(){
 
 void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
   float xMin, yMin, delta;
-  std::list<Point>::iterator itp;
+  std::list<Point_2D>::iterator itp;
 
   findNDCParam(curves, &xMin, &yMin, &delta);
   DPRINT("xMin: %.2f, yMin: %.2f, delta: %.2f\n", xMin, yMin, delta);
@@ -32,8 +32,8 @@ void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
 
 void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){ //static method
   static bool isInit = true; 
-  std::list<Point> ctrlPoints;
-  std::list<Point>::iterator itp;
+  std::list<Point_2D> ctrlPoints;
+  std::list<Point_2D>::iterator itp;
   float xMin, yMin, xMax, yMax; 
 
   for(std::list<Curve*>::iterator itc = curves->begin(); itc!=curves->end(); itc++){
