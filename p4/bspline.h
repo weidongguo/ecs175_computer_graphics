@@ -11,6 +11,8 @@ class Bspline:public Curve{
   void printAttributes();// implement a virtual method of its parent, dyn.binding
   void drawControlPolygon();
   void drawCurve(float res);
+  Point_2D cc(float u);
+
 };
 
 #endif

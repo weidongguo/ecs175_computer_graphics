@@ -22,7 +22,7 @@ class Graph {
     int drawPixel(Point p);
     int drawPixel(int x, int y, float r, float g, float b); 
     int drawPixel(int x, int y, Color c);
-    int drawPixel(Point p, Color c);
+    int drawPixel(Point_2D p, Color c);
 
     int drawPixel(int x, float y, Color c);
     int drawPixel(float x, int y, Color c);

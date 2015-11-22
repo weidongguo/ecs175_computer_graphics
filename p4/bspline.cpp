@@ -26,8 +26,47 @@ void Bspline::printAttributes(){
 }
 
 void Bspline::drawCurve(float res){
-
+  float inc = 1.0/100;
+  Point_2D p1, p2;
+  for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]; u=u+inc){
+    p1 = cc(u);
+    DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+    graph->drawPixel(p1, {0,0,0});
+  }
 }
+
+Point_2D Bspline::cc(float u){
+    std::list<Point_2D>::iterator it = ctrlPointsNDC.begin();
+    float leftRatio, rightRatio; 
+    int I;
+
+    //build a table 
+    Point_2D lb[numberOfCtrlPoints][numberOfCtrlPoints], c_t;
+    for(int c = 0; c < numberOfCtrlPoints; c++, it++){
+      lb[0][c] = (*it);        
+    } //init the 0th generation(j=0) control points
+
+    //determine which segment I does the u lies in
+    for(int i = 0 ; i < k+numberOfCtrlPoints; i++){
+      if( u < knotValues[i]){
+              I = i-1;
+              break;
+      }
+    }
+    DPRINT("I: %d\n",I); 
+    for(int j = 1 ; j <= k-1; j++){ //starting from the first generation
+      for(int i = (I - (k-1)) ; i <= I-j; i++){
+        rightRatio = (knotValues[i+k] - u) / (knotValues[i+k] - knotValues[i+j]) ;
+        leftRatio  = (u - knotValues[i+j]) / (knotValues[i+k] - knotValues[i+j]) ;
+        lb[j][i] = add( multByScalar( lb[j-1][i], rightRatio ) ,  multByScalar( lb[j-1][i+1], leftRatio ) );            
+      }
+    }
+    
+    c_t.x = lb[k-1][I-(k-1)].x * (graph->window_width - 1); 
+    c_t.y = lb[k-1][I-(k-1)].y * (graph->window_height -1);
+    return c_t;
+}
+
 
 void Bspline::drawControlPolygon(){
   Point_2D p1, p2;

@@ -10,7 +10,7 @@ int Graph::drawPixel(Point p){
   return drawPixel(p.x, p.y, p.normalizedIntensity);
 }
 
-int Graph::drawPixel(Point p, Color c){
+int Graph::drawPixel(Point_2D p, Color c){
   return drawPixel( (int)round(p.x), (int)round(p.y), c.r, c.g, c.b );
 }
 
@@ -226,7 +226,7 @@ int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){
   int dx = (p2.x - p1.x), dy = (p2.y - p1.y); //for determining sign of slope
   bool steep = false;
   float m = (float)dy/(float)dx ; //find the slope first
-  DPRINT("The slope is %.2f,\tline with color %.2f,%.2f,%.2f\n", m, r,g,b); 
+  //DPRINT("The slope is %.2f,\tline with color %.2f,%.2f,%.2f\n", m, r,g,b); 
   bool positive_slope;
   if( m >= 0 )  // positive slope
     positive_slope = true;

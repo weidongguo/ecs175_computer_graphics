@@ -109,6 +109,7 @@ typedef struct{
   void **graphs;
   Scene scene;
   Color halfTone; 
+  float res;
 } Window;
 
 #endif

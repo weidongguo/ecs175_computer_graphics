@@ -25,7 +25,7 @@ void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
     for(itp = (*itc)->ctrlPointsNDC.begin() ; itp != (*itc)->ctrlPointsNDC.end(); itp++){
       (*itp).x = ( (*itp).x - xMin ) / delta; //normalize the x value
       (*itp).y = ( (*itp).y - yMin ) / delta; //normalize the y value
-      DPRINT("Normalized (%.2f, %.2f)\n", (*itp).x, (*itp).y);
+      //DPRINT("Normalized (%.2f, %.2f)\n", (*itp).x, (*itp).y);
     }
   }
 }

@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
   for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
     (*it)->printAttributes();
     (*it)->drawControlPolygon();
-    (*it)->drawCurve(40);
+    (*it)->drawCurve(window.res);
   }
 
   glutMainLoop();
@@ -157,7 +157,7 @@ void windowInit(Window *window){
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
   window->state = STATE_HALF_TONE_OFF;
-  
+  window->res = 5;  
 }
 
 void updateScreen(){
