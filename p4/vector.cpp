@@ -74,3 +74,8 @@ Point multByScalar(Point p1, float scalar){
 Point add(Point p1, Point p2){
   return { p1.x + p2.x, p1.y + p2.y };
 }
+
+PixelPoint pointToPixel(Point p){
+  return (PixelPoint){  (int)(round(p.x)), (int)(round(p.y)) };
+}
+

@@ -7,7 +7,7 @@
 ABS	glui-2.35/src/glui_internal.h	19;"	d
 ALPHA	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
 AND	glui-2.35/src/glui_internal.h	8;"	d
-ARG	Makefile	/^ARG = -lGL -lglut -lm -g -Wall -std=c++11 #-DDEBUG_PRINT $/;"	m
+ARG	Makefile	/^ARG = -lGL -lglut -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball() $/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(const vec2 &_center, float _radius)$/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arcball
@@ -451,6 +451,7 @@ active_control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *active_contro
 active_control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *active_control;$/;"	m	class:GLUI_Main
 active_control_glui	glui-2.35/src/include/GL/glui.h	/^    GLUI         *active_control_glui;$/;"	m	class:GLUI_Master_Object
 active_type	glui-2.35/src/include/GL/glui.h	/^    int             active_type; \/\/\/< "GLUI_CONTROL_ACTIVE_..."$/;"	m	class:GLUI_Control
+add	vector.cpp	/^Point add(Point p1, Point p2){$/;"	f
 add	vector.cpp	/^Vector add(Vector v1, Vector v2){$/;"	f
 add_button	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI:: add_button( const char *name, $/;"	f	class:GLUI
 add_button_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI::add_button_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
@@ -537,6 +538,7 @@ can_activate	glui-2.35/src/include/GL/glui.h	/^    bool            can_activate;
 can_draw	glui-2.35/src/include/GL/glui.h	/^    int          can_draw( void ) { return (glui != NULL && hidden == false); }$/;"	f	class:GLUI_Control
 can_spin	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
 cb_click_type	glui-2.35/src/include/GL/glui.h	/^    int                 cb_click_type;$/;"	m	class:GLUI_List
+cc	bezier.cpp	/^Point Bezier::cc(float t){$/;"	f	class:Bezier
 center	glui-2.35/src/arcball.h	/^    vec2  center;$/;"	m	class:Arcball
 char_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::char_width(char c)$/;"	f	class:GLUI_Control
 char_widths	glui-2.35/src/include/GL/glui.h	/^    int             char_widths[CHAR_WIDTH_HASH_SIZE][2]; \/* Character width hash table *\/$/;"	m	class:GLUI_Control
@@ -612,6 +614,7 @@ create_standalone_window	glui-2.35/src/glui.cpp	/^void GLUI_Main::create_standal
 create_subwindow	glui-2.35/src/glui.cpp	/^void GLUI_Main::create_subwindow( int parent_window, int window_alignment )$/;"	f	class:GLUI_Main
 ctov	vector.cpp	/^Vector ctov(Color c){$/;"	f
 ctrlPoints	curve.h	/^  std::list<Point> ctrlPoints;$/;"	m	class:Curve
+ctrlPointsNDC	curve.h	/^  std::list<Point> ctrlPointsNDC;$/;"	m	class:Curve
 curr_branch	glui-2.35/src/include/GL/glui.h	/^    GLUI_Tree    *curr_branch; \/* Current Branch *\/$/;"	m	class:GLUI_TreePanel
 curr_cursor	glui-2.35/src/include/GL/glui.h	/^    int           curr_cursor;$/;"	m	class:GLUI_Main
 curr_hist	glui-2.35/src/include/GL/glui.h	/^    int  curr_hist;$/;"	m	class:GLUI_CommandLine
@@ -693,14 +696,15 @@ draw	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw( int x, int y )
 draw	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw( int x, int y )$/;"	f	class:GLUI_Tree
 drawControlPolygon	bezier.cpp	/^void Bezier::drawControlPolygon(){$/;"	f	class:Bezier
 drawControlPolygon	bspline.cpp	/^void Bspline::drawControlPolygon(){$/;"	f	class:Bspline
-drawCurve	bezier.cpp	/^void Bezier::drawCurve(){$/;"	f	class:Bezier
-drawCurve	bspline.cpp	/^void Bspline::drawCurve(){$/;"	f	class:Bspline
+drawCurve	bezier.cpp	/^void Bezier::drawCurve(float res){$/;"	f	class:Bezier
+drawCurve	bspline.cpp	/^void Bspline::drawCurve(float res){$/;"	f	class:Bspline
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){ \/\/ should have named it scanLine, as I only use this function for horizontal line drawing$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine(Point p1, Point p2, Color c){ $/;"	f	class:Graph
 drawMegaPixel	graph.cpp	/^void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
+drawPixel	graph.cpp	/^int Graph::drawPixel(Point p, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
@@ -781,7 +785,7 @@ file	glui-2.35/src/include/GL/glui.h	/^    GLUI_String file;$/;"	m	class:GLUI_Fi
 filebrowser	glui-2.35/src/example/example6.cpp	/^const char filebrowser[] = $/;"	v
 fillScreen	graph.cpp	/^int Graph::fillScreen(Color c){$/;"	f	class:Graph
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
-findNDCParam	curve.cpp	/^void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){$/;"	f	class:Curve
+findNDCParam	curve.cpp	/^void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){ \/\/static method$/;"	f	class:Curve
 find_arrow	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Scrollbar
 find_arrow	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Spinner
 find_control	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_control( int x, int y )$/;"	f	class:GLUI_Main
@@ -1239,6 +1243,7 @@ move_by_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::move_by_eye(const vec3 &new
 move_by_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::move_by_lookat(const vec3 &new_lookat) $/;"	f	class:ViewModel
 mtx	glui-2.35/src/viewmodel.h	/^  mat4    mtx;$/;"	m	class:ViewModel
 multByScalar	vector.cpp	/^Color multByScalar(Color c, float scalar){$/;"	f
+multByScalar	vector.cpp	/^Point multByScalar(Point p1, float scalar){$/;"	f
 multByScalar	vector.cpp	/^Vector multByScalar(Vector v, float scalar){$/;"	f
 myGlutDisplay	glui-2.35/src/example/example1.cpp	/^void myGlutDisplay( void )$/;"	f
 myGlutDisplay	glui-2.35/src/example/example2.cpp	/^void myGlutDisplay( void )$/;"	f
@@ -1289,7 +1294,7 @@ normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon6
 normalize	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec2
 normalize	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
 normalize	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec4
-normalizeCtrlPoints	curve.cpp	/^void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){$/;"	f	class:Curve
+normalizeCtrlPoints	curve.cpp	/^void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ \/\/static method$/;"	f	class:Curve
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon4
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity;$/;"	m	struct:__anon2
 num_buttons	glui-2.35/src/include/GL/glui.h	/^    int  num_buttons;$/;"	m	class:GLUI_RadioGroup

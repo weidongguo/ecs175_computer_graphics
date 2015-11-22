@@ -33,6 +33,11 @@ typedef struct{
 } Point;
 
 typedef struct{
+  int x;
+  int y; 
+} PixelPoint;
+
+typedef struct{
   float x;
   float y;
   float z;

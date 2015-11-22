@@ -17,8 +17,11 @@ void Bezier::printAttributes(){
 void Bezier::drawCurve(float res){
   float inc = 1.0/res;
   for(float t = 0; t+inc <= 1.0; t+=inc){
-    DPRINT("%.2f to %.2f\n", t, t+inc);
-    graph->drawLine( cc(t), cc(t+inc), {0,0,0}) ;
+    //DPRINT("%.2f to %.2f\t", t, t+inc);
+    Point p1 = cc(t);
+    Point p2 = cc(t+inc);
+    graph->drawLine( p1, p2, {0,0,0}) ;
+    //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
   }
   
 }
@@ -34,7 +37,7 @@ Point Bezier::cc(float t){
 
     for(int j = 1 ; j < numberOfCtrlPoints; j++){
       for(int i = 0 ; i < numberOfCtrlPoints-j; i++){
-        lb[j][i] = add( multByScalar( lb[j-1][i], (1-t) ) ,  multByScalar( lb[j-1][i+1], t ) );            
+        lb[j][i] = add( multByScalar( lb[j-1][i], (1.0-t) ) ,  multByScalar( lb[j-1][i+1], t ) );            
       }
     }
     

@@ -26,5 +26,6 @@ void printColor(const char *tag, Color c);
 void printVector(const char *tag, Vector v);
 Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend);
 
+PixelPoint pointToPixel(Point p);
 
 #endif
