@@ -2,15 +2,16 @@
 #define CURVE_H
 
 #include "common_type.h"
+#include "graph.h"
+#include <list>
 
 class Curve {
-  Point *ctrlPoints;
+  Graph *graph;
+  std::list<Point> ctrlPoints;
   int numberOfCtrlPoints;
 
   public:
-  Curve(Point *_ctrlPoints, int _numberOfCtrlPoints);
-  Curve(const Curve &curve); //copy constructor
-  ~Curve();
+  Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints);
 
 };
 #endif

@@ -16,20 +16,16 @@ void readFile(std::ifstream &ifs){
 }
 
 /*=====================================================================*/
-/* @fn        :     void readHeaders(std::ifstream *ifs, int*window_width, int*window_height, int*numberOfObjects)
+/* @fn        :     void readHeaders(std::ifstream *ifs, int*numberOfObjects)
  * @brief     :     prime the pump - reads the header info from  file
- *                  the header contains info about the dimension of the window and the numeber of objects ther are
+ *                   - the numeber of objects there are
  * @param[in] :     std::ifstream *ifs    - pointer to the input file stream
- * @param[out]:     int *window_width     - for storing window_width
- * @param[out]:     int *window_height    - for storing window_height
  * @param[out]:     int *numberOfObjects  - for storing the number of objects
  * @return    :     none
  */
-
 void readHeaders(std::ifstream *ifs, int*numberOfObjects){
   int sizeOfBuffer = 256;
   char buffer[sizeOfBuffer], *charPtr; 
-  
   //prime the pump
   ifs->getline(buffer, sizeOfBuffer); // contains number of polygon
   *numberOfObjects = atoi(buffer);
@@ -45,17 +41,19 @@ void readHeaders(std::ifstream *ifs, int*numberOfObjects){
  * @param[out]:   Polyhedron **polyhedra   - the output: polyhdera created by the info specified in the file
  * @return    :   none
  */
-void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ 
+void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve>*curves, int numberOfCurves){ 
 
-  int sizeOfBuffer = 256, numberOfPoints, numberOfEdges, numberOfSurfaces, numberOfPolyhedraAlreadyProcessed = 0;
+  int sizeOfBuffer = 256, numberOfCtrlPoints, numberOfCurvesAlreadyProcessed = 0;
   float x, y , z;
-  int p1Index, p2Index; 
   char buffer[sizeOfBuffer], *charPtr; 
-  Point_3D *listOfPoints; Edge *listOfEdges; Surface *listOfSurfaces;
+  Point *ctrlPoints; 
   while(ifs->getline(buffer, sizeOfBuffer)) { // skip a line for before entering the section for describing the next polyhedron
-    ifs->getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polyhedron 
-    numberOfPoints =  atoi(buffer); 
+//    ifs->getline(buffer, sizeOfBuffer);
      
+     
+    ifs->getline(buffer, sizeOfBuffer);//read the number of points for constructing the new polyhedron 
+    numberOfCtrlPoints =  atoi(buffer); 
+/*     
     listOfPoints = new Point_3D[numberOfPoints];
     for(int i = 0 ; i < numberOfPoints; i++){ // form a listOfPoints;
       ifs->getline(buffer, sizeOfBuffer); //get a 3D point
@@ -70,59 +68,11 @@ void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, i
       listOfPoints[i].z = z;
       DPRINT("(%.2f, %.2f, %.2f)\n", x, y, z);
     }
-    
-    //read edges
-    ifs->getline(buffer, sizeOfBuffer); // read the number of edges
-    numberOfEdges = atoi(buffer);
-    listOfEdges = new Edge[numberOfEdges];
-    for(int i = 0, offset = -1 ; i < numberOfEdges; i++){
-      ifs->getline(buffer, sizeOfBuffer);
-      charPtr = strtok(buffer, " ");
-      p1Index = atoi(charPtr);
-      charPtr = strtok(0, "\0");
-      p2Index = atoi(charPtr);
-      listOfEdges[i].p1Index = p1Index + offset;  // make point 1 to have index (1 - 1) = 0
-      listOfEdges[i].p2Index = p2Index + offset;
-      DPRINT("Edge %d %d\n", p1Index, p2Index);
-    }
-
-    //read surfaces;
-    ifs->getline(buffer, sizeOfBuffer); // read number of surfaces
-    numberOfSurfaces = atoi(buffer);
-    listOfSurfaces = new Surface[numberOfSurfaces];
-    for(int i = 0 , offset = -1; i < numberOfSurfaces; i++){
-      ifs->getline(buffer, sizeOfBuffer);
-      charPtr = strtok(buffer, " ");
-      listOfSurfaces[i].p1Index = atof(charPtr) + offset; // +offset to make index starting from 0
-      charPtr = strtok(0, " ");
-      listOfSurfaces[i].p2Index = atof(charPtr) + offset;
-      charPtr = strtok(0, "\0");
-      listOfSurfaces[i].p3Index = atof(charPtr) + offset; 
-      DPRINT("Surface %d : %d %d %d\n", i, listOfSurfaces[i].p1Index - offset, listOfSurfaces[i].p2Index - offset, listOfSurfaces[i].p3Index - offset);
-    }
-    
-    //read normals for each surface 
-    for(int i = 0 ; i < numberOfSurfaces; i++){
-      ifs->getline(buffer, sizeOfBuffer);
-      charPtr = strtok(buffer, " ");
-      x = atof(charPtr);
-      charPtr = strtok(0, " ");
-      y = atof(charPtr);
-      charPtr = strtok(0, "\0");
-      z = atof(charPtr);
-      listOfSurfaces[i].normalVector.x = x;
-      listOfSurfaces[i].normalVector.y = y;
-      listOfSurfaces[i].normalVector.z = z;
-      DPRINT("Normal Vector %d : %.2f %.2f %.2f\n",i, x,y,z); 
-    }
-
-    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges, listOfSurfaces, numberOfSurfaces);
-    delete [] listOfPoints;
-    delete [] listOfEdges;
-    delete [] listOfSurfaces; 
+ */   
+    //    polyhedra[numberOfPolyhedraAlreadyProcessed] = new Polyhedron(graphs, listOfPoints, numberOfPoints, listOfEdges, numberOfEdges, listOfSurfaces, numberOfSurfaces);
 
     DPRINT("\n"); fflush(stdout);
-    if( ++numberOfPolyhedraAlreadyProcessed == numberOfPolyhedra) // already processed the desired number of polyhedra done!!
+    if( ++numberOfCurvesAlreadyProcessed == numberOfCurves) // already processed the desired number of polyhedra done!!
       break;
     if(ifs->eof()) //end of file - done!!
       break;

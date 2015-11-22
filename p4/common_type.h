@@ -95,6 +95,7 @@ typedef struct{
   int height;
   int numberOfPolygons;
   int numberOfPolyhedra; 
+  int numberOfCurves;
   int selectedObject;
   ClipRegion cr;
   Transformation tf;   

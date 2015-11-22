@@ -1,21 +1,10 @@
 #include "curve.h"
 #include <cstring>
-Curve::Curve(Point *_ctrlPoints, int _numberOfCtrlPoints){
-  ctrlPoints = new Point[_numberOfCtrlPoints];
-  memcpy(ctrlPoints, _ctrlPoints, sizeof(Point) * _numberOfCtrlPoints);
+Curve::Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints){
+  graph = _graph; //for making pixels to screen (line drawing, etc)
+  for(int i = 0 ; i < _numberOfCtrlPoints; i++)
+    ctrlPoints.push_back(_ctrlPoints[i]);
+  
   numberOfCtrlPoints = _numberOfCtrlPoints;
 }
 
-Curve::Curve(const Curve &curve){ //copy constructor
-  int _numberOfCtrlPoints = curve.numberOfCtrlPoints;
-  ctrlPoints = new Point[_numberOfCtrlPoints];
-  memcpy(ctrlPoints, curve.ctrlPoints, sizeof(Point) * _numberOfCtrlPoints);
-  numberOfCtrlPoints = _numberOfCtrlPoints;
-}
-
-Curve::~Curve(){
-  if( ctrlPoints != 0 ){
-    delete [] ctrlPoints;
-    ctrlPoints = 0 ;
-  }
-}

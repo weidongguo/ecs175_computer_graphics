@@ -3,42 +3,375 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
-ARG	Makefile	/^ARG = -lglut -lGL -lm -g -Wall -std=c++11 #-DDEBUG_PRINT $/;"	m
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABS	glui-2.35/src/glui_internal.h	19;"	d
+ALPHA	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
+AND	glui-2.35/src/glui_internal.h	8;"	d
+ARG	Makefile	/^ARG = -lGL -lglut -lm -g -Wall -std=c++11 #-DDEBUG_PRINT $/;"	m
+Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball() $/;"	f	class:Arcball
+Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(const vec2 &_center, float _radius)$/;"	f	class:Arcball
+Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arcball
+Arcball	glui-2.35/src/arcball.h	/^class Arcball $/;"	c
+BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
 BRESENHAM	graph.h	48;"	d
+Byte	glui-2.35/src/include/GL/glui.h	76;"	d
 C	Makefile	/^C = g++$/;"	m
+CHAR_WIDTH_HASH_SIZE	glui-2.35/src/include/GL/glui.h	221;"	d
+CHECKBOARD_REPEAT	glui-2.35/src/glui_rotation.cpp	220;"	d	file:
+CHECKBOARD_SIZE	glui-2.35/src/glui_rotation.cpp	219;"	d	file:
+CHECK_PROPER_SIDE	glui-2.35/src/glui_internal.h	84;"	d
+CLAMP	glui-2.35/src/glui_internal.h	67;"	d
+CLEAR_BIT	glui-2.35/src/glui_internal.h	26;"	d
+CMD_CLOSE_ID	glui-2.35/src/example/example3.cpp	48;"	d	file:
+CMD_HIST_RESET_ID	glui-2.35/src/example/example3.cpp	47;"	d	file:
 COLOR_CRIMSON	color.h	1;"	d
 COLOR_DODGER_BLUE	color.h	3;"	d
 COLOR_GOLD	color.h	4;"	d
 COLOR_ROYAL_BLUE	color.h	2;"	d
 COMMON_TYPE_H	common_type.h	2;"	d
+CTRL	glui-2.35/src/glui_internal.h	102;"	d
+CURVE_H	curve.h	2;"	d
+CXX	glui-2.35/src/makefile	/^CXX       = g++$/;"	m
 ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon7
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
+Curve	curve.cpp	/^Curve::Curve(Graph *_graph, Point *_ctrlPoints, int _numberOfCtrlPoints){$/;"	f	class:Curve
+Curve	curve.cpp	/^Curve::Curve(const Curve &curve){ \/\/copy constructor$/;"	f	class:Curve
+Curve	curve.h	/^class Curve {$/;"	c
 DDA	graph.h	49;"	d
-DPRINT	common_type.h	11;"	d
-DPRINT	common_type.h	9;"	d
+DEG2RAD	glui-2.35/src/glui_internal.h	61;"	d
+DISABLE_ID	glui-2.35/src/example/example5.cpp	55;"	d	file:
+DIST	glui-2.35/src/makefile	/^DIST = glui-2.3.0$/;"	m
+DPRINT	common_type.h	10;"	d
+DPRINT	common_type.h	12;"	d
+DRAW_SEG	glui-2.35/src/glui_translation.cpp	380;"	d	file:
+DRAW_SEG	glui-2.35/src/glui_translation.cpp	477;"	d	file:
+ENABLE_ID	glui-2.35/src/example/example5.cpp	54;"	d	file:
+ES	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon14
 Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon5
+FUDGE	glui-2.35/src/glui_internal.h	90;"	d
+GLUI	glui-2.35/src/include/GL/glui.h	/^class GLUI : public GLUI_Main $/;"	c
+GLUI_ACTIVATE_MOUSE	glui-2.35/src/include/GL/glui.h	166;"	d
+GLUI_ACTIVATE_TAB	glui-2.35/src/include/GL/glui.h	167;"	d
+GLUI_ALGEBRA3_H	glui-2.35/src/algebra3.h	78;"	d
+GLUI_ALIGN_CENTER	glui-2.35/src/include/GL/glui.h	146;"	d
+GLUI_ALIGN_LEFT	glui-2.35/src/include/GL/glui.h	148;"	d
+GLUI_ALIGN_RIGHT	glui-2.35/src/include/GL/glui.h	147;"	d
+GLUI_ARCBALL_H	glui-2.35/src/arcball.h	56;"	d
+GLUI_BUTTON_SIZE	glui-2.35/src/include/GL/glui.h	114;"	d
+GLUI_Bitmap	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_Bitmap::GLUI_Bitmap() $/;"	f	class:GLUI_Bitmap
+GLUI_Bitmap	glui-2.35/src/include/GL/glui.h	/^class GLUI_Bitmap $/;"	c
+GLUI_Button	glui-2.35/src/glui_button.cpp	/^GLUI_Button::GLUI_Button( GLUI_Node *parent, const char *name,$/;"	f	class:GLUI_Button
+GLUI_Button	glui-2.35/src/include/GL/glui.h	/^    GLUI_Button( void ) { common_init(); };$/;"	f	class:GLUI_Button
+GLUI_Button	glui-2.35/src/include/GL/glui.h	/^class GLUI_Button : public GLUI_Control$/;"	c
+GLUI_CB	glui-2.35/src/include/GL/glui.h	/^  GLUI_CB() : idCB(0),objCB(0) {}$/;"	f	class:GLUI_CB
+GLUI_CB	glui-2.35/src/include/GL/glui.h	/^  GLUI_CB(GLUI_Control_CB cb) : idCB(0),objCB(cb) {}$/;"	f	class:GLUI_CB
+GLUI_CB	glui-2.35/src/include/GL/glui.h	/^  GLUI_CB(GLUI_Update_CB cb) : idCB(cb),objCB(0) {}$/;"	f	class:GLUI_CB
+GLUI_CB	glui-2.35/src/include/GL/glui.h	/^class GLUI_CB$/;"	c
+GLUI_CHECKBOX_SIZE	glui-2.35/src/include/GL/glui.h	112;"	d
+GLUI_CONTROL_ACTIVE_MOUSEDOWN	glui-2.35/src/include/GL/glui.h	142;"	d
+GLUI_CONTROL_ACTIVE_PERMANENT	glui-2.35/src/include/GL/glui.h	143;"	d
+GLUI_Checkbox	glui-2.35/src/glui_checkbox.cpp	/^GLUI_Checkbox::GLUI_Checkbox( GLUI_Node *parent,$/;"	f	class:GLUI_Checkbox
+GLUI_Checkbox	glui-2.35/src/include/GL/glui.h	/^    GLUI_Checkbox( void ) { common_init(); }$/;"	f	class:GLUI_Checkbox
+GLUI_Checkbox	glui-2.35/src/include/GL/glui.h	/^class GLUI_Checkbox : public GLUI_Control$/;"	c
+GLUI_Column	glui-2.35/src/glui_column.cpp	/^GLUI_Column::GLUI_Column( GLUI_Node *parent, int draw_bar )$/;"	f	class:GLUI_Column
+GLUI_Column	glui-2.35/src/include/GL/glui.h	/^    GLUI_Column( void ) { common_init(); }$/;"	f	class:GLUI_Column
+GLUI_Column	glui-2.35/src/include/GL/glui.h	/^class GLUI_Column : public GLUI_Control$/;"	c
+GLUI_CommandLine	glui-2.35/src/glui_commandline.cpp	/^GLUI_CommandLine::GLUI_CommandLine( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_CommandLine
+GLUI_CommandLine	glui-2.35/src/include/GL/glui.h	/^    GLUI_CommandLine( void ) { common_init(); }$/;"	f	class:GLUI_CommandLine
+GLUI_CommandLine	glui-2.35/src/include/GL/glui.h	/^class GLUI_CommandLine : public GLUI_EditText$/;"	c
+GLUI_Control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control(void) $/;"	f	class:GLUI_Control
+GLUI_Control	glui-2.35/src/include/GL/glui.h	/^class GLUI_Control : public GLUI_Node $/;"	c
+GLUI_Control_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*GLUI_Control_CB)(GLUI_Control *);$/;"	t
+GLUI_DEFAULT_CONTROL_HEIGHT	glui-2.35/src/include/GL/glui.h	118;"	d
+GLUI_DEFAULT_CONTROL_WIDTH	glui-2.35/src/include/GL/glui.h	117;"	d
+GLUI_DEF_MAX_ARRAY	glui-2.35/src/include/GL/glui.h	139;"	d
+GLUI_DOUBLE_CLICK	glui-2.35/src/include/GL/glui.h	183;"	d
+GLUI_DRAWINGSENTINAL_IDIOM	glui-2.35/src/glui_internal_control.h	39;"	d
+GLUI_DrawingSentinal	glui-2.35/src/glui.cpp	/^GLUI_DrawingSentinal::GLUI_DrawingSentinal(GLUI_Control *c_) $/;"	f	class:GLUI_DrawingSentinal
+GLUI_DrawingSentinal	glui-2.35/src/glui_internal_control.h	/^class GLUI_DrawingSentinal {$/;"	c
+GLUI_EDITTEXT_BOXINNERMARGINX	glui-2.35/src/include/GL/glui.h	119;"	d
+GLUI_EDITTEXT_FLOAT	glui-2.35/src/include/GL/glui.h	271;"	d
+GLUI_EDITTEXT_HEIGHT	glui-2.35/src/include/GL/glui.h	120;"	d
+GLUI_EDITTEXT_INT	glui-2.35/src/include/GL/glui.h	270;"	d
+GLUI_EDITTEXT_MIN_INT_WIDTH	glui-2.35/src/include/GL/glui.h	122;"	d
+GLUI_EDITTEXT_MIN_TEXT_WIDTH	glui-2.35/src/include/GL/glui.h	123;"	d
+GLUI_EDITTEXT_STRING	glui-2.35/src/include/GL/glui.h	277;"	d
+GLUI_EDITTEXT_TEXT	glui-2.35/src/include/GL/glui.h	269;"	d
+GLUI_EDITTEXT_WIDTH	glui-2.35/src/include/GL/glui.h	121;"	d
+GLUI_EXAMPLES	glui-2.35/src/makefile	/^GLUI_EXAMPLES = bin\/example1 bin\/example2 bin\/example3 bin\/example4 bin\/example5 bin\/example6$/;"	m
+GLUI_EditText	glui-2.35/src/glui_edittext.cpp	/^GLUI_EditText::GLUI_EditText( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_EditText
+GLUI_EditText	glui-2.35/src/glui_edittext.cpp	/^GLUI_EditText::GLUI_EditText( GLUI_Node *parent, const char *name,$/;"	f	class:GLUI_EditText
+GLUI_EditText	glui-2.35/src/include/GL/glui.h	/^    GLUI_EditText( void ) { common_init(); }$/;"	f	class:GLUI_EditText
+GLUI_EditText	glui-2.35/src/include/GL/glui.h	/^class GLUI_EditText : public GLUI_Control$/;"	c
+GLUI_FileBrowser	glui-2.35/src/glui_filebrowser.cpp	/^GLUI_FileBrowser::GLUI_FileBrowser( GLUI_Node *parent, $/;"	f	class:GLUI_FileBrowser
+GLUI_FileBrowser	glui-2.35/src/include/GL/glui.h	/^class GLUI_FileBrowser : public GLUI_Panel$/;"	c
+GLUI_GLUI_H	glui-2.35/src/include/GL/glui.h	33;"	d
+GLUI_GLUT_DISPLAY	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_DISPLAY,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_ENTRY	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_ENTRY,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_KEYBOARD	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_KEYBOARD,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_MOTION	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_MOTION,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_MOUSE	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_MOUSE,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_PASSIVE_MOTION	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_PASSIVE_MOTION,  $/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_RESHAPE	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_RESHAPE,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_SPECIAL	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_SPECIAL,$/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_GLUT_VISIBILITY	glui-2.35/src/include/GL/glui.h	/^    GLUI_GLUT_VISIBILITY  $/;"	e	enum:GLUI_Glut_CB_Types
+GLUI_Glut_CB_Types	glui-2.35/src/include/GL/glui.h	/^enum GLUI_Glut_CB_Types $/;"	g
+GLUI_Glut_Window	glui-2.35/src/glui_window.cpp	/^GLUI_Glut_Window::GLUI_Glut_Window()$/;"	f	class:GLUI_Glut_Window
+GLUI_Glut_Window	glui-2.35/src/include/GL/glui.h	/^class GLUI_Glut_Window : public GLUI_Node $/;"	c
+GLUI_INTERNAL_H	glui-2.35/src/glui_internal.h	2;"	d
+GLUI_ITEMSPACING	glui-2.35/src/include/GL/glui.h	111;"	d
+GLUI_LIB	glui-2.35/src/makefile	/^GLUI_LIB = lib\/libglui.a$/;"	m
+GLUI_LIMIT_CLAMP	glui-2.35/src/include/GL/glui.h	152;"	d
+GLUI_LIMIT_NONE	glui-2.35/src/include/GL/glui.h	151;"	d
+GLUI_LIMIT_WRAP	glui-2.35/src/include/GL/glui.h	153;"	d
+GLUI_LIST_BOXINNERMARGINX	glui-2.35/src/include/GL/glui.h	188;"	d
+GLUI_LIST_HEIGHT	glui-2.35/src/include/GL/glui.h	181;"	d
+GLUI_LIST_MIN_TEXT_WIDTH	glui-2.35/src/include/GL/glui.h	189;"	d
+GLUI_LIST_WIDTH	glui-2.35/src/include/GL/glui.h	182;"	d
+GLUI_LIVE_DOUBLE	glui-2.35/src/include/GL/glui.h	175;"	d
+GLUI_LIVE_FLOAT	glui-2.35/src/include/GL/glui.h	172;"	d
+GLUI_LIVE_FLOAT_ARRAY	glui-2.35/src/include/GL/glui.h	176;"	d
+GLUI_LIVE_INT	glui-2.35/src/include/GL/glui.h	171;"	d
+GLUI_LIVE_NONE	glui-2.35/src/include/GL/glui.h	170;"	d
+GLUI_LIVE_STRING	glui-2.35/src/include/GL/glui.h	174;"	d
+GLUI_LIVE_TEXT	glui-2.35/src/include/GL/glui.h	173;"	d
+GLUI_List	glui-2.35/src/glui_list.cpp	/^GLUI_List::GLUI_List( GLUI_Node *parent, bool scroll,$/;"	f	class:GLUI_List
+GLUI_List	glui-2.35/src/glui_list.cpp	/^GLUI_List::GLUI_List( GLUI_Node *parent,$/;"	f	class:GLUI_List
+GLUI_List	glui-2.35/src/include/GL/glui.h	/^class GLUI_List : public GLUI_Control$/;"	c
+GLUI_List_Item	glui-2.35/src/include/GL/glui.h	/^class GLUI_List_Item : public GLUI_Node $/;"	c
+GLUI_Listbox	glui-2.35/src/glui_listbox.cpp	/^GLUI_Listbox::GLUI_Listbox( GLUI_Node *parent,$/;"	f	class:GLUI_Listbox
+GLUI_Listbox	glui-2.35/src/include/GL/glui.h	/^    GLUI_Listbox( void ) { common_init(); }$/;"	f	class:GLUI_Listbox
+GLUI_Listbox	glui-2.35/src/include/GL/glui.h	/^class GLUI_Listbox : public GLUI_Control$/;"	c
+GLUI_Listbox_Item	glui-2.35/src/include/GL/glui.h	/^class GLUI_Listbox_Item : public GLUI_Node $/;"	c
+GLUI_MOUSE_INTERACTION_HEIGHT	glui-2.35/src/include/GL/glui.h	131;"	d
+GLUI_MOUSE_INTERACTION_WIDTH	glui-2.35/src/include/GL/glui.h	130;"	d
+GLUI_Main	glui-2.35/src/glui.cpp	/^GLUI_Main::GLUI_Main( void ) $/;"	f	class:GLUI_Main
+GLUI_Main	glui-2.35/src/include/GL/glui.h	/^class GLUI_Main : public GLUI_Node $/;"	c
+GLUI_Master	glui-2.35/src/glui.cpp	/^GLUI_Master_Object GLUI_Master;$/;"	v
+GLUI_Master_Object	glui-2.35/src/glui.cpp	/^GLUI_Master_Object::GLUI_Master_Object()$/;"	f	class:GLUI_Master_Object
+GLUI_Master_Object	glui-2.35/src/include/GL/glui.h	/^class GLUI_Master_Object $/;"	c
+GLUI_Mouse_Interaction	glui-2.35/src/include/GL/glui.h	/^    GLUI_Mouse_Interaction( void ) {$/;"	f	class:GLUI_Mouse_Interaction
+GLUI_Mouse_Interaction	glui-2.35/src/include/GL/glui.h	/^class GLUI_Mouse_Interaction : public GLUI_Control$/;"	c
+GLUI_Node	glui-2.35/src/glui_node.cpp	/^GLUI_Node::GLUI_Node()$/;"	f	class:GLUI_Node
+GLUI_Node	glui-2.35/src/include/GL/glui.h	/^class GLUI_Node $/;"	c
+GLUI_OBJS	glui-2.35/src/makefile	/^GLUI_OBJS = glui_add_controls.o glui_string.o glui.o glui_bitmap_img_data.o glui_bitmaps.o glui_button.o glui_edittext.o glui_commandline.o glui_checkbox.o glui_node.o glui_radio.o glui_statictext.o glui_panel.o glui_separator.o glui_spinner.o glui_control.o glui_column.o glui_translation.o glui_rotation.o glui_mouse_iaction.o glui_listbox.o glui_rollout.o glui_window.o arcball.o algebra3.o quaternion.o viewmodel.o glui_treepanel.o glui_tree.o glui_textbox.o glui_scrollbar.o glui_list.o glui_filebrowser.o$/;"	m
+GLUI_PANEL_EMBOSSED	glui-2.35/src/include/GL/glui.h	135;"	d
+GLUI_PANEL_EMBOSS_TOP	glui-2.35/src/include/GL/glui.h	125;"	d
+GLUI_PANEL_NAME_DROP	glui-2.35/src/include/GL/glui.h	124;"	d
+GLUI_PANEL_NONE	glui-2.35/src/include/GL/glui.h	134;"	d
+GLUI_PANEL_RAISED	glui-2.35/src/include/GL/glui.h	136;"	d
+GLUI_Panel	glui-2.35/src/glui_panel.cpp	/^GLUI_Panel::GLUI_Panel( GLUI_Node *parent, const char *name, int type )$/;"	f	class:GLUI_Panel
+GLUI_Panel	glui-2.35/src/include/GL/glui.h	/^    GLUI_Panel() { common_init(); }$/;"	f	class:GLUI_Panel
+GLUI_Panel	glui-2.35/src/include/GL/glui.h	/^class GLUI_Panel : public GLUI_Control$/;"	c
+GLUI_QUATERNION_H	glui-2.35/src/quaternion.h	30;"	d
+GLUI_RADIOBUTTON_SIZE	glui-2.35/src/include/GL/glui.h	113;"	d
+GLUI_ROTATION_HEIGHT	glui-2.35/src/include/GL/glui.h	129;"	d
+GLUI_ROTATION_WIDTH	glui-2.35/src/include/GL/glui.h	128;"	d
+GLUI_RadioButton	glui-2.35/src/glui_radio.cpp	/^GLUI_RadioButton::GLUI_RadioButton( GLUI_RadioGroup *grp, const char *name )$/;"	f	class:GLUI_RadioButton
+GLUI_RadioButton	glui-2.35/src/include/GL/glui.h	/^class GLUI_RadioButton : public GLUI_Control$/;"	c
+GLUI_RadioGroup	glui-2.35/src/glui_radio.cpp	/^GLUI_RadioGroup::GLUI_RadioGroup(GLUI_Node *parent,$/;"	f	class:GLUI_RadioGroup
+GLUI_RadioGroup	glui-2.35/src/include/GL/glui.h	/^    GLUI_RadioGroup( void ) { common_init(); }$/;"	f	class:GLUI_RadioGroup
+GLUI_RadioGroup	glui-2.35/src/include/GL/glui.h	/^class GLUI_RadioGroup : public GLUI_Control$/;"	c
+GLUI_Rollout	glui-2.35/src/glui_rollout.cpp	/^GLUI_Rollout::GLUI_Rollout( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_Rollout
+GLUI_Rollout	glui-2.35/src/include/GL/glui.h	/^    GLUI_Rollout( void ) { common_init(); }$/;"	f	class:GLUI_Rollout
+GLUI_Rollout	glui-2.35/src/include/GL/glui.h	/^class GLUI_Rollout : public GLUI_Panel$/;"	c
+GLUI_Rotation	glui-2.35/src/glui_rotation.cpp	/^GLUI_Rotation::GLUI_Rotation( GLUI_Node *parent,$/;"	f	class:GLUI_Rotation
+GLUI_Rotation	glui-2.35/src/include/GL/glui.h	/^    GLUI_Rotation(void) { common_init(); }$/;"	f	class:GLUI_Rotation
+GLUI_Rotation	glui-2.35/src/include/GL/glui.h	/^class GLUI_Rotation : public GLUI_Mouse_Interaction$/;"	c
+GLUI_SCROLL_ARROW_DOWN	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_DOWN,$/;"	e	enum:__anon15	file:
+GLUI_SCROLL_ARROW_HEIGHT	glui-2.35/src/include/GL/glui.h	204;"	d
+GLUI_SCROLL_ARROW_LEFT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_LEFT,$/;"	e	enum:__anon15	file:
+GLUI_SCROLL_ARROW_RIGHT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_RIGHT$/;"	e	enum:__anon15	file:
+GLUI_SCROLL_ARROW_UP	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_UP,$/;"	e	enum:__anon15	file:
+GLUI_SCROLL_ARROW_WIDTH	glui-2.35/src/include/GL/glui.h	203;"	d
+GLUI_SCROLL_BOX_MIN_HEIGHT	glui-2.35/src/include/GL/glui.h	205;"	d
+GLUI_SCROLL_BOX_STD_HEIGHT	glui-2.35/src/include/GL/glui.h	206;"	d
+GLUI_SCROLL_CALLBACK_INTERVAL	glui-2.35/src/glui_scrollbar.cpp	26;"	d	file:
+GLUI_SCROLL_DEFAULT_GROWTH_EXP	glui-2.35/src/include/GL/glui.h	212;"	d
+GLUI_SCROLL_FLOAT	glui-2.35/src/include/GL/glui.h	275;"	d
+GLUI_SCROLL_GROWTH_STEPS	glui-2.35/src/glui_scrollbar.cpp	24;"	d	file:
+GLUI_SCROLL_HORIZONTAL	glui-2.35/src/include/GL/glui.h	214;"	d
+GLUI_SCROLL_INT	glui-2.35/src/include/GL/glui.h	274;"	d
+GLUI_SCROLL_MIN_GROWTH_STEPS	glui-2.35/src/glui_scrollbar.cpp	25;"	d	file:
+GLUI_SCROLL_STATE_BOTH	glui-2.35/src/include/GL/glui.h	210;"	d
+GLUI_SCROLL_STATE_DOWN	glui-2.35/src/include/GL/glui.h	209;"	d
+GLUI_SCROLL_STATE_NONE	glui-2.35/src/include/GL/glui.h	207;"	d
+GLUI_SCROLL_STATE_SCROLL	glui-2.35/src/include/GL/glui.h	211;"	d
+GLUI_SCROLL_STATE_UP	glui-2.35/src/include/GL/glui.h	208;"	d
+GLUI_SCROLL_VERTICAL	glui-2.35/src/include/GL/glui.h	213;"	d
+GLUI_SEPARATOR_HEIGHT	glui-2.35/src/include/GL/glui.h	116;"	d
+GLUI_SINGLE_CLICK	glui-2.35/src/include/GL/glui.h	184;"	d
+GLUI_SPINNER_ARROW_HEIGHT	glui-2.35/src/include/GL/glui.h	1842;"	d
+GLUI_SPINNER_ARROW_WIDTH	glui-2.35/src/include/GL/glui.h	1841;"	d
+GLUI_SPINNER_ARROW_Y	glui-2.35/src/include/GL/glui.h	1843;"	d
+GLUI_SPINNER_CALLBACK_INTERVAL	glui-2.35/src/glui_spinner.cpp	52;"	d	file:
+GLUI_SPINNER_DEFAULT_GROWTH_EXP	glui-2.35/src/include/GL/glui.h	1850;"	d
+GLUI_SPINNER_FLOAT	glui-2.35/src/include/GL/glui.h	273;"	d
+GLUI_SPINNER_GROWTH_STEPS	glui-2.35/src/glui_spinner.cpp	50;"	d	file:
+GLUI_SPINNER_INT	glui-2.35/src/include/GL/glui.h	272;"	d
+GLUI_SPINNER_MIN_GROWTH_STEPS	glui-2.35/src/glui_spinner.cpp	51;"	d	file:
+GLUI_SPINNER_STATE_BOTH	glui-2.35/src/include/GL/glui.h	1848;"	d
+GLUI_SPINNER_STATE_DOWN	glui-2.35/src/include/GL/glui.h	1847;"	d
+GLUI_SPINNER_STATE_NONE	glui-2.35/src/include/GL/glui.h	1845;"	d
+GLUI_SPINNER_STATE_UP	glui-2.35/src/include/GL/glui.h	1846;"	d
+GLUI_STATICTEXT_SIZE	glui-2.35/src/include/GL/glui.h	115;"	d
+GLUI_STDBITMAP_CHECKBOX_OFF	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_CHECKBOX_OFF = 0,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_CHECKBOX_OFF_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_CHECKBOX_OFF_DIS,    \/*** Disactivated control bitmaps ***\/$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_CHECKBOX_ON	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_CHECKBOX_ON,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_CHECKBOX_ON_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_CHECKBOX_ON_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_DOWN_ARROW	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_DOWN_ARROW,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_LEFT_ARROW	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_LEFT_ARROW,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_LISTBOX_DOWN	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_LISTBOX_DOWN,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_LISTBOX_UP	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_LISTBOX_UP,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_LISTBOX_UP_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_LISTBOX_UP_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_NUM_ITEMS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_NUM_ITEMS$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_RADIOBUTTON_OFF	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_RADIOBUTTON_OFF,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_RADIOBUTTON_OFF_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_RADIOBUTTON_OFF_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_RADIOBUTTON_ON	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_RADIOBUTTON_ON,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_RADIOBUTTON_ON_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_RADIOBUTTON_ON_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_RIGHT_ARROW	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_RIGHT_ARROW,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_DOWN_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_DOWN_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_DOWN_OFF	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_DOWN_OFF,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_DOWN_ON	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_DOWN_ON,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_UP_DIS	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_UP_DIS,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_UP_OFF	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_UP_OFF,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_SPINNER_UP_ON	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_SPINNER_UP_ON,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_STDBITMAP_UP_ARROW	glui-2.35/src/include/GL/glui.h	/^    GLUI_STDBITMAP_UP_ARROW,$/;"	e	enum:GLUI_StdBitmaps_Codes
+GLUI_SUBWINDOW	glui-2.35/src/include/GL/glui.h	262;"	d
+GLUI_SUBWINDOW_BOTTOM	glui-2.35/src/include/GL/glui.h	264;"	d
+GLUI_SUBWINDOW_LEFT	glui-2.35/src/include/GL/glui.h	265;"	d
+GLUI_SUBWINDOW_RIGHT	glui-2.35/src/include/GL/glui.h	266;"	d
+GLUI_SUBWINDOW_TOP	glui-2.35/src/include/GL/glui.h	263;"	d
+GLUI_Scrollbar	glui-2.35/src/glui_scrollbar.cpp	/^GLUI_Scrollbar::GLUI_Scrollbar( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_Scrollbar
+GLUI_Scrollbar	glui-2.35/src/glui_scrollbar.cpp	/^GLUI_Scrollbar::GLUI_Scrollbar( GLUI_Node *parent, const char *name,$/;"	f	class:GLUI_Scrollbar
+GLUI_Scrollbar	glui-2.35/src/glui_scrollbar.cpp	/^GLUI_Scrollbar::GLUI_Scrollbar( GLUI_Node *parent,$/;"	f	class:GLUI_Scrollbar
+GLUI_Scrollbar	glui-2.35/src/include/GL/glui.h	/^class GLUI_Scrollbar : public GLUI_Control$/;"	c
+GLUI_Separator	glui-2.35/src/glui_separator.cpp	/^GLUI_Separator::GLUI_Separator( GLUI_Node *parent )$/;"	f	class:GLUI_Separator
+GLUI_Separator	glui-2.35/src/include/GL/glui.h	/^    GLUI_Separator( void ) { common_init(); }$/;"	f	class:GLUI_Separator
+GLUI_Separator	glui-2.35/src/include/GL/glui.h	/^class GLUI_Separator : public GLUI_Control$/;"	c
+GLUI_Spinner	glui-2.35/src/glui_spinner.cpp	/^GLUI_Spinner::GLUI_Spinner( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_Spinner
+GLUI_Spinner	glui-2.35/src/glui_spinner.cpp	/^GLUI_Spinner::GLUI_Spinner( GLUI_Node* parent, const char *name, $/;"	f	class:GLUI_Spinner
+GLUI_Spinner	glui-2.35/src/include/GL/glui.h	/^    GLUI_Spinner( void ) { common_init(); }$/;"	f	class:GLUI_Spinner
+GLUI_Spinner	glui-2.35/src/include/GL/glui.h	/^class GLUI_Spinner : public GLUI_Control$/;"	c
+GLUI_StaticText	glui-2.35/src/glui_statictext.cpp	/^GLUI_StaticText::GLUI_StaticText( GLUI_Node *parent, const char *name )$/;"	f	class:GLUI_StaticText
+GLUI_StaticText	glui-2.35/src/include/GL/glui.h	/^    GLUI_StaticText( void ) { common_init(); }$/;"	f	class:GLUI_StaticText
+GLUI_StaticText	glui-2.35/src/include/GL/glui.h	/^class GLUI_StaticText : public GLUI_Control$/;"	c
+GLUI_StdBitmaps	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_StdBitmaps::GLUI_StdBitmaps() $/;"	f	class:GLUI_StdBitmaps
+GLUI_StdBitmaps	glui-2.35/src/include/GL/glui.h	/^class GLUI_StdBitmaps$/;"	c
+GLUI_StdBitmaps_Codes	glui-2.35/src/include/GL/glui.h	/^enum GLUI_StdBitmaps_Codes $/;"	g
+GLUI_String	glui-2.35/src/include/GL/glui.h	/^typedef std::string GLUI_String;$/;"	t
+GLUI_TAB_WIDTH	glui-2.35/src/include/GL/glui.h	185;"	d
+GLUI_TEXTBOX_BOXINNERMARGINX	glui-2.35/src/include/GL/glui.h	186;"	d
+GLUI_TEXTBOX_HEIGHT	glui-2.35/src/include/GL/glui.h	179;"	d
+GLUI_TEXTBOX_MIN_TEXT_WIDTH	glui-2.35/src/include/GL/glui.h	187;"	d
+GLUI_TEXTBOX_WIDTH	glui-2.35/src/include/GL/glui.h	180;"	d
+GLUI_TOOLS	glui-2.35/src/makefile	/^GLUI_TOOLS = bin\/ppm2array$/;"	m
+GLUI_TRANSLATION_LOCK_NONE	glui-2.35/src/include/GL/glui.h	161;"	d
+GLUI_TRANSLATION_LOCK_X	glui-2.35/src/include/GL/glui.h	162;"	d
+GLUI_TRANSLATION_LOCK_Y	glui-2.35/src/include/GL/glui.h	163;"	d
+GLUI_TRANSLATION_MOUSE_DOWN	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_DOWN,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_DOWN_LEFT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_DOWN_LEFT,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_DOWN_RIGHT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_DOWN_RIGHT$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_LEFT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_LEFT,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_NONE	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_NONE = 0,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_RIGHT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_RIGHT,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_UP	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_UP,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_UP_LEFT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_UP_LEFT,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_MOUSE_UP_RIGHT	glui-2.35/src/include/GL/glui.h	/^    GLUI_TRANSLATION_MOUSE_UP_RIGHT,$/;"	e	enum:TranslationCodes
+GLUI_TRANSLATION_X	glui-2.35/src/include/GL/glui.h	158;"	d
+GLUI_TRANSLATION_XY	glui-2.35/src/include/GL/glui.h	156;"	d
+GLUI_TRANSLATION_Y	glui-2.35/src/include/GL/glui.h	159;"	d
+GLUI_TRANSLATION_Z	glui-2.35/src/include/GL/glui.h	157;"	d
+GLUI_TREEPANEL_ALTERNATE_COLOR	glui-2.35/src/include/GL/glui.h	193;"	d
+GLUI_TREEPANEL_CONNECT_CHILDREN_ONLY	glui-2.35/src/include/GL/glui.h	197;"	d
+GLUI_TREEPANEL_DEFAULTS	glui-2.35/src/include/GL/glui.h	192;"	d
+GLUI_TREEPANEL_DISABLE_BAR	glui-2.35/src/include/GL/glui.h	195;"	d
+GLUI_TREEPANEL_DISABLE_DEEPEST_BAR	glui-2.35/src/include/GL/glui.h	196;"	d
+GLUI_TREEPANEL_DISPLAY_HIERARCHY	glui-2.35/src/include/GL/glui.h	198;"	d
+GLUI_TREEPANEL_ENABLE_BAR	glui-2.35/src/include/GL/glui.h	194;"	d
+GLUI_TREEPANEL_HIERARCHY_LEVEL_ONLY	glui-2.35/src/include/GL/glui.h	200;"	d
+GLUI_TREEPANEL_HIERARCHY_NUMERICDOT	glui-2.35/src/include/GL/glui.h	199;"	d
+GLUI_TextBox	glui-2.35/src/glui_textbox.cpp	/^GLUI_TextBox::GLUI_TextBox( GLUI_Node *parent, bool scroll, int id,$/;"	f	class:GLUI_TextBox
+GLUI_TextBox	glui-2.35/src/glui_textbox.cpp	/^GLUI_TextBox::GLUI_TextBox(GLUI_Node *parent, GLUI_String &live_var,$/;"	f	class:GLUI_TextBox
+GLUI_TextBox	glui-2.35/src/include/GL/glui.h	/^class GLUI_TextBox : public GLUI_Control$/;"	c
+GLUI_Time	glui-2.35/src/glui_internal_control.h	/^inline double GLUI_Time(void) {return 0.001*glutGet(GLUT_ELAPSED_TIME);}$/;"	f
+GLUI_Translation	glui-2.35/src/glui_translation.cpp	/^GLUI_Translation::GLUI_Translation($/;"	f	class:GLUI_Translation
+GLUI_Translation	glui-2.35/src/include/GL/glui.h	/^    GLUI_Translation( void ) { common_init(); }$/;"	f	class:GLUI_Translation
+GLUI_Translation	glui-2.35/src/include/GL/glui.h	/^class GLUI_Translation : public GLUI_Mouse_Interaction$/;"	c
+GLUI_Tree	glui-2.35/src/glui_tree.cpp	/^GLUI_Tree::GLUI_Tree(GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_Tree
+GLUI_Tree	glui-2.35/src/include/GL/glui.h	/^class GLUI_Tree : public GLUI_Panel$/;"	c
+GLUI_TreePanel	glui-2.35/src/glui_treepanel.cpp	/^GLUI_TreePanel::GLUI_TreePanel(GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_TreePanel
+GLUI_TreePanel	glui-2.35/src/include/GL/glui.h	/^class GLUI_TreePanel : public GLUI_Panel $/;"	c
+GLUI_Update_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*GLUI_Update_CB) (int id);$/;"	t
+GLUI_VERSION	glui-2.35/src/include/GL/glui.h	65;"	d
+GLUI_VIEWMODEL_H	glui-2.35/src/viewmodel.h	105;"	d
+GLUI_XOFF	glui-2.35/src/include/GL/glui.h	109;"	d
+GLUI_YOFF	glui-2.35/src/include/GL/glui.h	110;"	d
 GRAPH_H	graph.h	2;"	d
+GREEN	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
+HIDE_ID	glui-2.35/src/example/example5.cpp	57;"	d	file:
+HIST_SIZE	glui-2.35/src/include/GL/glui.h	/^    enum { HIST_SIZE = 100 };$/;"	e	enum:GLUI_CommandLine::__anon16
+IN_BOUNDS	glui-2.35/src/glui_internal.h	72;"	d
 Ia	common_type.h	/^  float Ia;$/;"	m	struct:__anon9
 Il	common_type.h	/^  float Il; $/;"	m	struct:__anon9
-MAX	common_type.h	15;"	d
-MENU_CLIP_BRESENHAM	user_io.h	29;"	d
-MENU_CLIP_DDA	user_io.h	28;"	d
-MENU_DRAW_BRESENHAM	user_io.h	31;"	d
-MENU_DRAW_DDA	user_io.h	30;"	d
-MENU_GRAB_CLIP_REGION	user_io.h	36;"	d
-MENU_GRAB_ROTATION_ANGLE	user_io.h	33;"	d
-MENU_GRAB_SCALE_FACTORS	user_io.h	35;"	d
-MENU_GRAB_TRANSLATION_FACTORS	user_io.h	34;"	d
-MENU_HALF_TONE_TOGGLE	user_io.h	37;"	d
-MENU_SET_HALF_TONE_COLOR	user_io.h	38;"	d
-MENU_SET_PHONG_PARAMETERS	user_io.h	39;"	d
-MENU_STATUS	user_io.h	32;"	d
-MIN	common_type.h	14;"	d
-PI	common_type.h	17;"	d
+Int1_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int1_CB)        (int);$/;"	t
+Int2_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int2_CB)        (int, int);$/;"	t
+Int3_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int3_CB)        (int, int, int);$/;"	t
+Int4_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int4_CB)        (int, int, int, int);$/;"	t
+KA	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon14
+KD	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon14
+KS	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon14
+LIBGL	glui-2.35/src/makefile	/^LIBGL   = -lGLU -lGL$/;"	m
+LIBGLUI	glui-2.35/src/makefile	/^LIBGLUI = -L.\/lib -lglui$/;"	m
+LIBGLUT	glui-2.35/src/makefile	/^LIBGLUT   = -L\/usr\/X11R6\/lib -lglut$/;"	m
+LIBS	glui-2.35/src/makefile	/^LIBS    = -lXmu -lXext -lX11 -lXi -lm$/;"	m
+LIGHT0_ENABLED_ID	glui-2.35/src/example/example3.cpp	49;"	d	file:
+LIGHT0_ENABLED_ID	glui-2.35/src/example/example4.cpp	42;"	d	file:
+LIGHT0_ENABLED_ID	glui-2.35/src/example/example5.cpp	50;"	d	file:
+LIGHT0_INTENSITY_ID	glui-2.35/src/example/example3.cpp	51;"	d	file:
+LIGHT0_INTENSITY_ID	glui-2.35/src/example/example4.cpp	44;"	d	file:
+LIGHT0_INTENSITY_ID	glui-2.35/src/example/example5.cpp	52;"	d	file:
+LIGHT1_ENABLED_ID	glui-2.35/src/example/example3.cpp	50;"	d	file:
+LIGHT1_ENABLED_ID	glui-2.35/src/example/example4.cpp	43;"	d	file:
+LIGHT1_ENABLED_ID	glui-2.35/src/example/example5.cpp	51;"	d	file:
+LIGHT1_INTENSITY_ID	glui-2.35/src/example/example3.cpp	52;"	d	file:
+LIGHT1_INTENSITY_ID	glui-2.35/src/example/example4.cpp	45;"	d	file:
+LIGHT1_INTENSITY_ID	glui-2.35/src/example/example5.cpp	53;"	d	file:
+LINE_HEIGHT	glui-2.35/src/glui_textbox.cpp	/^static const int LINE_HEIGHT = 15;$/;"	v	file:
+LoadPPM	glui-2.35/src/tools/ppm.cpp	/^void LoadPPM(const char *FileName, unsigned char* &Color, int &Width, int &Height)$/;"	f
+MAX	common_type.h	16;"	d
+MAX	glui-2.35/src/glui_internal.h	14;"	d
+MENU_CLIP_BRESENHAM	user_io.h	28;"	d
+MENU_CLIP_DDA	user_io.h	27;"	d
+MENU_DRAW_BRESENHAM	user_io.h	30;"	d
+MENU_DRAW_DDA	user_io.h	29;"	d
+MENU_GRAB_CLIP_REGION	user_io.h	35;"	d
+MENU_GRAB_ROTATION_ANGLE	user_io.h	32;"	d
+MENU_GRAB_SCALE_FACTORS	user_io.h	34;"	d
+MENU_GRAB_TRANSLATION_FACTORS	user_io.h	33;"	d
+MENU_HALF_TONE_TOGGLE	user_io.h	36;"	d
+MENU_SET_HALF_TONE_COLOR	user_io.h	37;"	d
+MENU_SET_PHONG_PARAMETERS	user_io.h	38;"	d
+MENU_STATUS	user_io.h	31;"	d
+MIN	common_type.h	15;"	d
+MIN	glui-2.35/src/glui_internal.h	15;"	d
+M_PI	glui-2.35/src/algebra3.h	95;"	d
+M_PI	glui-2.35/src/glui_internal.h	36;"	d
+NOT	glui-2.35/src/glui_internal.h	10;"	d
+OPEN_CONSOLE_ID	glui-2.35/src/example/example3.cpp	46;"	d	file:
+OPTS	glui-2.35/src/makefile	/^OPTS=-O0$/;"	m
+OPTS	glui-2.35/src/makefile	/^OPTS=-g$/;"	m
+OR	glui-2.35/src/glui_internal.h	9;"	d
+PA	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
+PB	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
+PC	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
+PD	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon12
+PI	common_type.h	18;"	d
 POLYHEDRON_H	polyhedron.h	2;"	d
+PPM_VERBOSE	glui-2.35/src/tools/ppm.cpp	13;"	d	file:
+PT_IN_BOX	glui-2.35/src/glui_internal.h	77;"	d
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
 PixelBufferBackup	graph.h	/^    float *PixelBufferBackup;$/;"	m	class:Graph
@@ -46,61 +379,333 @@ Point	common_type.h	/^} Point;$/;"	t	typeref:struct:__anon2
 Point_3D	common_type.h	/^}Point_3D;$/;"	t	typeref:struct:__anon4
 Polyhedron	polyhedron.cpp	/^Polyhedron::Polyhedron(Graph **_graphs, Point_3D *_listOfPoints, int _numberOfPoints, Edge *_listOfEdges, int _numberOfEdges, Surface *_listOfSurfaces, int _numberOfSurfaces){ $/;"	f	class:Polyhedron
 Polyhedron	polyhedron.h	/^class Polyhedron {$/;"	c
-STATE_GRAB_COMMANDS	user_io.h	17;"	d
-STATE_GRAB_DATA_CLIP_REGION	user_io.h	21;"	d
-STATE_GRAB_DATA_DRAW_BRESENHAM	user_io.h	23;"	d
-STATE_GRAB_DATA_DRAW_DDA	user_io.h	22;"	d
-STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	18;"	d
-STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	20;"	d
-STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	19;"	d
-STATE_HALF_TONE_OFF	user_io.h	25;"	d
-STATE_HALF_TONE_ON	user_io.h	24;"	d
+ProcessFiles	glui-2.35/src/glui_filebrowser.cpp	/^void ProcessFiles(const char *path_name)$/;"	f
+RAD2DEG	glui-2.35/src/glui_internal.h	62;"	d
+RED	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon13
+RGBc	glui-2.35/src/include/GL/glui.h	/^  RGBc( Byte r, Byte g, Byte b ) { set( r, g, b ); }$/;"	f	class:RGBc
+RGBc	glui-2.35/src/include/GL/glui.h	/^  RGBc( void ) {}$/;"	f	class:RGBc
+RGBc	glui-2.35/src/include/GL/glui.h	/^class RGBc {$/;"	c
+ROWCOL	glui-2.35/src/algebra3.cpp	1110;"	d	file:
+ROWCOL	glui-2.35/src/algebra3.cpp	1118;"	d	file:
+ROWCOL	glui-2.35/src/algebra3.cpp	1416;"	d	file:
+ROWCOL	glui-2.35/src/algebra3.cpp	1429;"	d	file:
+ROWCOL	glui-2.35/src/algebra3.cpp	833;"	d	file:
+ROWCOL	glui-2.35/src/algebra3.cpp	841;"	d	file:
+SET_BIT	glui-2.35/src/glui_internal.h	25;"	d
+SET_COL_IN	glui-2.35/src/glui_translation.cpp	368;"	d	file:
+SET_COL_OUT	glui-2.35/src/glui_translation.cpp	367;"	d	file:
+SHOW_ID	glui-2.35/src/example/example5.cpp	56;"	d	file:
+SIGN	glui-2.35/src/glui_internal.h	56;"	d
+STATE_GRAB_COMMANDS	user_io.h	16;"	d
+STATE_GRAB_DATA_CLIP_REGION	user_io.h	20;"	d
+STATE_GRAB_DATA_DRAW_BRESENHAM	user_io.h	22;"	d
+STATE_GRAB_DATA_DRAW_DDA	user_io.h	21;"	d
+STATE_GRAB_DATA_ROTATION_ANGLE	user_io.h	17;"	d
+STATE_GRAB_DATA_SCALE_FACTORS	user_io.h	19;"	d
+STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	18;"	d
+STATE_HALF_TONE_OFF	user_io.h	24;"	d
+STATE_HALF_TONE_ON	user_io.h	23;"	d
+SWAP2	glui-2.35/src/glui_internal.h	96;"	d
 Scene	common_type.h	/^} Scene;$/;"	t	typeref:struct:__anon9
-SubWindowPixelBuffer1	main.cpp	/^float *SubWindowPixelBuffer1;$/;"	v
-SubWindowPixelBuffer2	main.cpp	/^float *SubWindowPixelBuffer2;$/;"	v
-SubWindowPixelBuffer3	main.cpp	/^float *SubWindowPixelBuffer3;$/;"	v
+Super	glui-2.35/src/include/GL/glui.h	/^    typedef GLUI_EditText Super;$/;"	t	class:GLUI_CommandLine
 Surface	common_type.h	/^typedef TriSurface Surface;$/;"	t
+TEST_AND	glui-2.35/src/glui_internal.h	31;"	d
+TEST_BIT	glui-2.35/src/glui_internal.h	24;"	d
+TOGGLE_BIT	glui-2.35/src/glui_internal.h	27;"	d
 Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon8
+TranslationCodes	glui-2.35/src/include/GL/glui.h	/^enum TranslationCodes  $/;"	g
 TriSurface	common_type.h	/^} TriSurface;$/;"	t	typeref:struct:__anon6
+UNAME	glui-2.35/src/makefile	/^UNAME = $(shell uname)$/;"	m
 USER_IO_H	user_io.h	2;"	d
+VEC3_TO_ARRAY	glui-2.35/src/glui_internal.h	99;"	d
 VECTOR_H	vector.h	2;"	d
+VEC_ERROR	glui-2.35/src/algebra3.cpp	81;"	d	file:
+VEC_ERROR	glui-2.35/src/algebra3.cpp	85;"	d	file:
+VFlip	glui-2.35/src/tools/ppm.cpp	/^void VFlip(unsigned char * Pix, int width, int height, int chan)$/;"	f
+VW	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon11
+VX	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon11
+VY	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon11
+VZ	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon11
+V_FCT_PTR	glui-2.35/src/algebra3.h	/^typedef float (*V_FCT_PTR)(float);$/;"	t
+V_FCT_PTR	glui-2.35/src/quaternion.h	/^typedef float (*V_FCT_PTR)(float);$/;"	t
 Vector	common_type.h	/^} Vector;$/;"	t	typeref:struct:__anon3
+ViewModel	glui-2.35/src/viewmodel.cpp	/^ViewModel::ViewModel() $/;"	f	class:ViewModel
+ViewModel	glui-2.35/src/viewmodel.h	/^class ViewModel $/;"	c
 Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon10
+WritePPM	glui-2.35/src/tools/ppm.cpp	/^void WritePPM(const char *FileName, unsigned char* Color, int Width, int Height)$/;"	f
+_RGBC_	glui-2.35/src/include/GL/glui.h	89;"	d
+__GLUI_INTERNAL_CONTROL_H	glui-2.35/src/glui_internal_control.h	8;"	d
 _bresenham	polyhedron.cpp	/^int Polyhedron::_bresenham(Point pt1, Point pt2, int planeIndex){ \/\/for storing points, not drawing pixel$/;"	f	class:Polyhedron
+_glui_draw_border_only	glui-2.35/src/glui_control.cpp	/^int _glui_draw_border_only = 0;$/;"	v
+_glutBitmapString	glui-2.35/src/glui.cpp	/^void _glutBitmapString( void *font, const char *s )$/;"	f
+_glutBitmapWidthString	glui-2.35/src/glui.cpp	/^int _glutBitmapWidthString( void *font, const char *s )$/;"	f
 _storeContourPoint	polyhedron.cpp	/^void Polyhedron:: _storeContourPoint(Point p, int planeIndex){$/;"	f	class:Polyhedron
 _storeLinePoints	polyhedron.cpp	/^int Polyhedron::_storeLinePoints(Point p1, Point p2, int planeIndex){$/;"	f	class:Polyhedron
+ab	glui-2.35/src/glui_treepanel.cpp	/^GLUI_Tree *GLUI_TreePanel::ab(const char *name, GLUI_Tree *root) $/;"	f	class:GLUI_TreePanel
+activate	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::activate( int how )$/;"	f	class:GLUI_EditText
+activate	glui-2.35/src/glui_list.cpp	/^void    GLUI_List::activate( int how )$/;"	f	class:GLUI_List
+activate	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::activate( int how )$/;"	f	class:GLUI_TextBox
+activate	glui-2.35/src/include/GL/glui.h	/^    virtual void activate( int how )     { active = true; }$/;"	f	class:GLUI_Control
+activate_control	glui-2.35/src/glui.cpp	/^void         GLUI_Main::activate_control( GLUI_Control *control, int how )$/;"	f	class:GLUI_Main
+active	glui-2.35/src/include/GL/glui.h	/^    bool            active;       \/\/\/< If true, we've got the focus$/;"	m	class:GLUI_Control
+active_control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *active_control, *curr_left_button_glut_menu;$/;"	m	class:GLUI_Master_Object
+active_control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *active_control;$/;"	m	class:GLUI_Main
+active_control_glui	glui-2.35/src/include/GL/glui.h	/^    GLUI         *active_control_glui;$/;"	m	class:GLUI_Master_Object
+active_type	glui-2.35/src/include/GL/glui.h	/^    int             active_type; \/\/\/< "GLUI_CONTROL_ACTIVE_..."$/;"	m	class:GLUI_Control
 add	vector.cpp	/^Vector add(Vector v1, Vector v2){$/;"	f
+add_button	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI:: add_button( const char *name, $/;"	f	class:GLUI
+add_button_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI::add_button_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
+add_cb_to_glut_window	glui-2.35/src/glui.cpp	/^void     GLUI_Master_Object::add_cb_to_glut_window(int window_id,$/;"	f	class:GLUI_Master_Object
+add_checkbox	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Checkbox   *GLUI:: add_checkbox( const char *name, int *value_ptr,$/;"	f	class:GLUI
+add_checkbox_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Checkbox   *GLUI::add_checkbox_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
+add_child_to_control	glui-2.35/src/glui.cpp	/^void GLUI_Node::add_child_to_control(GLUI_Node *parent,GLUI_Control *child)$/;"	f	class:GLUI_Node
+add_column	glui-2.35/src/glui_add_controls.cpp	/^void   GLUI::add_column( int draw_bar )$/;"	f	class:GLUI
+add_column_to_panel	glui-2.35/src/glui_add_controls.cpp	/^void   GLUI::add_column_to_panel( GLUI_Panel *panel, int draw_bar )$/;"	f	class:GLUI
+add_control	glui-2.35/src/glui.cpp	/^int GLUI_Main::add_control( GLUI_Node *parent, GLUI_Control *control )$/;"	f	class:GLUI_Main
+add_control	glui-2.35/src/glui.cpp	/^int GLUI_Node::add_control( GLUI_Control *child )$/;"	f	class:GLUI_Node
+add_control	glui-2.35/src/include/GL/glui.h	/^    int   add_control( GLUI_Control *control ) { return main_panel->add_control(control); }$/;"	f	class:GLUI
+add_control	glui-2.35/src/include/GL/glui.h	/^    virtual int add_control( GLUI_Node *parent, GLUI_Control *control ) {$/;"	f	class:GLUI
+add_edittext	glui-2.35/src/glui_add_controls.cpp	/^GLUI_EditText  *GLUI::add_edittext( const char *name, $/;"	f	class:GLUI
+add_edittext_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI::add_edittext_to_panel( GLUI_Panel *panel, const char *name, $/;"	f	class:GLUI
+add_edittext_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_EditText  *GLUI::add_edittext_to_panel( GLUI_Panel *panel, $/;"	f	class:GLUI
+add_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::add_item( int id, const char *new_text )$/;"	f	class:GLUI_List
+add_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::add_item( int id, const char *new_text )$/;"	f	class:GLUI_Listbox
+add_listbox	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Listbox   *GLUI:: add_listbox( const char *name, int *value_ptr,$/;"	f	class:GLUI
+add_listbox_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Listbox   *GLUI::add_listbox_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
+add_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Panel     *GLUI::add_panel( const char *name, int type )$/;"	f	class:GLUI
+add_panel_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Panel *GLUI::add_panel_to_panel( GLUI_Panel *parent_panel,$/;"	f	class:GLUI
+add_radiobutton_to_group	glui-2.35/src/glui_add_controls.cpp	/^GLUI_RadioButton *GLUI::add_radiobutton_to_group(  GLUI_RadioGroup *group,$/;"	f	class:GLUI
+add_radiogroup	glui-2.35/src/glui_add_controls.cpp	/^GLUI_RadioGroup *GLUI::add_radiogroup( int *value_ptr,$/;"	f	class:GLUI
+add_radiogroup_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_RadioGroup *GLUI::add_radiogroup_to_panel(  $/;"	f	class:GLUI
+add_rollout	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Rollout   *GLUI::add_rollout( const char *name, int open, int type)$/;"	f	class:GLUI
+add_rollout_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Rollout *GLUI::add_rollout_to_panel(GLUI_Panel *panel, const char *name,$/;"	f	class:GLUI
+add_rotation	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Rotation   *GLUI:: add_rotation( const char *name, float *value_ptr,$/;"	f	class:GLUI
+add_rotation_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Rotation *GLUI::add_rotation_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
+add_separator	glui-2.35/src/glui_add_controls.cpp	/^void  GLUI::add_separator( void )$/;"	f	class:GLUI
+add_separator_to_panel	glui-2.35/src/glui_add_controls.cpp	/^void      GLUI::add_separator_to_panel( GLUI_Panel *panel )$/;"	f	class:GLUI
+add_spinner	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Spinner  *GLUI::add_spinner( const char *name, $/;"	f	class:GLUI
+add_spinner_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Spinner  *GLUI::add_spinner_to_panel( $/;"	f	class:GLUI
+add_statictext	glui-2.35/src/glui_add_controls.cpp	/^GLUI_StaticText  *GLUI::add_statictext( const char *name )$/;"	f	class:GLUI
+add_statictext_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_StaticText *GLUI::add_statictext_to_panel( GLUI_Panel *panel, $/;"	f	class:GLUI
+add_to_history	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::add_to_history( const char *cmd )$/;"	f	class:GLUI_CommandLine
+add_translation	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Translation *GLUI:: add_translation( const char *name, int trans_type,$/;"	f	class:GLUI
+add_translation_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Translation *GLUI::add_translation_to_panel( $/;"	f	class:GLUI
+adjust_glut_xy	glui-2.35/src/include/GL/glui.h	/^    void         adjust_glut_xy( int &x, int &y ) { y = h-y; }$/;"	f	class:GLUI_Main
+align	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::align()$/;"	f	class:GLUI_Control
+align_controls	glui-2.35/src/glui.cpp	/^void    GLUI_Main::align_controls( GLUI_Control *control )$/;"	f	class:GLUI_Main
+alignment	glui-2.35/src/include/GL/glui.h	/^    int             alignment;$/;"	m	class:GLUI_Control
+allow_change_dir	glui-2.35/src/include/GL/glui.h	/^    int allow_change_dir;$/;"	m	class:GLUI_FileBrowser
+apply	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::apply(V_FCT_PTR fct) $/;"	f	class:mat3
+apply	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::apply(V_FCT_PTR fct)$/;"	f	class:mat4
+apply	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::apply(V_FCT_PTR fct)$/;"	f	class:vec2
+apply	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::apply(V_FCT_PTR fct)$/;"	f	class:vec3
+apply	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::apply(V_FCT_PTR fct)$/;"	f	class:vec4
 applyPhong	polyhedron.cpp	/^void Polyhedron::applyPhong(Polyhedron **polyhedra, int numberOfPolyhedra, float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
+associated_object	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control        *associated_object;$/;"	m	class:GLUI_List
+associated_object	glui-2.35/src/include/GL/glui.h	/^    void *        associated_object; \/* Lets the Spinner manage it's own callbacks *\/$/;"	m	class:GLUI_Scrollbar
+auto_set_viewport	glui-2.35/src/glui.cpp	/^void           GLUI_Master_Object::auto_set_viewport( void )$/;"	f	class:GLUI_Master_Object
+avoid_warning	glui-2.35/src/glui_internal_control.h	/^	inline void avoid_warning(void) {}$/;"	f	class:GLUI_DrawingSentinal
 b	common_type.h	/^  float b;$/;"	m	struct:__anon1
+b	glui-2.35/src/include/GL/glui.h	/^  Byte r, g, b;$/;"	m	class:RGBc
 background_color	graph.h	/^  public:Color background_color;$/;"	m	class:Graph
 backupPixelBuffer	graph.cpp	/^void Graph::backupPixelBuffer(){$/;"	f	class:Graph
+ball	glui-2.35/src/include/GL/glui.h	/^    Arcball        *ball;$/;"	m	class:GLUI_Rotation
+bedit	glui-2.35/src/example/example6.cpp	/^GLUI_EditText    *bedit;$/;"	v
+bitmap_arrays	glui-2.35/src/glui_bitmaps.cpp	/^unsigned char *bitmap_arrays[] = {  $/;"	v
+bitmaps	glui-2.35/src/include/GL/glui.h	/^    GLUI_Bitmap bitmaps[GLUI_STDBITMAP_NUM_ITEMS];$/;"	m	class:GLUI_StdBitmaps
+bkgd_color	glui-2.35/src/include/GL/glui.h	/^    RGBc             bkgd_color;$/;"	m	class:GLUI_Main
+bkgd_color_f	glui-2.35/src/include/GL/glui.h	/^    float            bkgd_color_f[3];$/;"	m	class:GLUI_Main
+blue	glui-2.35/src/include/GL/glui.h	/^    float blue;$/;"	m	class:GLUI_Tree
+blue	glui-2.35/src/include/GL/glui.h	/^    float blue;$/;"	m	class:GLUI_TreePanel
+box_end_position	glui-2.35/src/include/GL/glui.h	/^    int box_end_position;$/;"	m	class:GLUI_Scrollbar
+box_length	glui-2.35/src/include/GL/glui.h	/^    int box_length;$/;"	m	class:GLUI_Scrollbar
+box_start_position	glui-2.35/src/include/GL/glui.h	/^    int box_start_position;$/;"	m	class:GLUI_Scrollbar
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2 ){ \/\/overloaded bresenham, each points has its own color$/;"	f	class:Graph
 bresenham	graph.cpp	/^int Graph::bresenham(Point pt1, Point pt2, float r, float g, float b ){$/;"	f	class:Graph
+buffer_back	glui-2.35/src/include/GL/glui.h	/^      buffer_back=2   \/\/\/< Double buffering: postpone updates until next redraw.$/;"	e	enum:GLUI_Main::buffer_mode_t
+buffer_front	glui-2.35/src/include/GL/glui.h	/^      buffer_front=1, \/\/\/< Draw updated controls directly to screen.$/;"	e	enum:GLUI_Main::buffer_mode_t
+buffer_mode	glui-2.35/src/include/GL/glui.h	/^    buffer_mode_t buffer_mode; \/\/\/< Current drawing mode$/;"	m	class:GLUI_Main
+buffer_mode_t	glui-2.35/src/include/GL/glui.h	/^    enum buffer_mode_t {$/;"	g	class:GLUI_Main
+button	glui-2.35/src/include/GL/glui.h	/^    GLUI_Button  button;$/;"	m	class:GLUI_Rollout
+button	glui-2.35/src/include/GL/glui.h	/^    GLUI_Button  button;$/;"	m	class:GLUI_Tree
+c	glui-2.35/src/glui_internal_control.h	/^	GLUI_Control *c;$/;"	m	class:GLUI_DrawingSentinal
+callback	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB         callback; \/\/\/< User callback function, or NULL.$/;"	m	class:GLUI_Control
+callback_count	glui-2.35/src/include/GL/glui.h	/^    int           callback_count;$/;"	m	class:GLUI_Scrollbar
+callback_count	glui-2.35/src/include/GL/glui.h	/^    int           callback_count;$/;"	m	class:GLUI_Spinner
 callback_display	main.cpp	/^void callback_display(){$/;"	f
 callback_keyboard	main.cpp	/^void callback_keyboard(unsigned char key, int x, int y){$/;"	f
 callback_menu	main.cpp	/^void callback_menu(int state){$/;"	f
-callback_subdisplay1	main.cpp	/^void callback_subdisplay1(){$/;"	f
-callback_subdisplay2	main.cpp	/^void callback_subdisplay2(){$/;"	f
-callback_subdisplay3	main.cpp	/^void callback_subdisplay3(){$/;"	f
+can_activate	glui-2.35/src/include/GL/glui.h	/^    bool            can_activate; \/\/\/< If false, remove from tab order.$/;"	m	class:GLUI_Control
+can_draw	glui-2.35/src/include/GL/glui.h	/^    int          can_draw( void ) { return (glui != NULL && hidden == false); }$/;"	f	class:GLUI_Control
+can_spin	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
+cb_click_type	glui-2.35/src/include/GL/glui.h	/^    int                 cb_click_type;$/;"	m	class:GLUI_List
+center	glui-2.35/src/arcball.h	/^    vec2  center;$/;"	m	class:Arcball
 centroid	polyhedron.h	/^  Point_3D centroid;$/;"	m	class:Polyhedron
+char_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::char_width(char c)$/;"	f	class:GLUI_Control
+char_widths	glui-2.35/src/include/GL/glui.h	/^    int             char_widths[CHAR_WIDTH_HASH_SIZE][2]; \/* Character width hash table *\/$/;"	m	class:GLUI_Control
+check_subwindow_position	glui-2.35/src/glui.cpp	/^void   GLUI_Main::check_subwindow_position( void )$/;"	f	class:GLUI_Main
+checkbox	glui-2.35/src/example/example2.cpp	/^GLUI_Checkbox   *checkbox;$/;"	v
+checkbox	glui-2.35/src/example/example3.cpp	/^GLUI_Checkbox    *checkbox;$/;"	v
+checkbox	glui-2.35/src/example/example4.cpp	/^GLUI_Checkbox   *checkbox;$/;"	v
+child_head	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *child_head;$/;"	m	class:GLUI_Node
+child_number	glui-2.35/src/include/GL/glui.h	/^    int child_number;$/;"	m	class:GLUI_Tree
+child_tail	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *child_tail;$/;"	m	class:GLUI_Node
 clearContourPoints	polyhedron.cpp	/^void Polyhedron::clearContourPoints(int planeIndex){$/;"	f	class:Polyhedron
 clearContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::clearContourPointsForEachPlane(int numberOfPlanes){$/;"	f	class:Polyhedron
+clear_substring	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::clear_substring( int start, int end )$/;"	f	class:GLUI_EditText
+clear_substring	glui-2.35/src/glui_textbox.cpp	/^void   GLUI_TextBox::clear_substring( int start, int end )$/;"	f	class:GLUI_TextBox
+close	glui-2.35/src/glui.cpp	/^void   GLUI::close( void ) $/;"	f	class:GLUI
+close	glui-2.35/src/glui_rollout.cpp	/^void    GLUI_Rollout::close( void )$/;"	f	class:GLUI_Rollout
+close	glui-2.35/src/glui_tree.cpp	/^void    GLUI_Tree::close( void )$/;"	f	class:GLUI_Tree
+close_all	glui-2.35/src/glui.cpp	/^void   GLUI_Master_Object::close_all( void ) $/;"	f	class:GLUI_Master_Object
+close_internal	glui-2.35/src/glui.cpp	/^void   GLUI_Main::close_internal( void ) $/;"	f	class:GLUI_Main
+closing	glui-2.35/src/include/GL/glui.h	/^    bool          closing;$/;"	m	class:GLUI_Main
+cmd_line	glui-2.35/src/example/example3.cpp	/^GLUI_CommandLine *cmd_line;$/;"	v
+cmd_line_glui	glui-2.35/src/example/example3.cpp	/^GLUI *cmd_line_glui=0, *glui;$/;"	v
+collapse_all	glui-2.35/src/glui_treepanel.cpp	/^void            GLUI_TreePanel::collapse_all() $/;"	f	class:GLUI_TreePanel
+collapsed_node	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node       collapsed_node;$/;"	m	class:GLUI_Control
+collapsible	glui-2.35/src/include/GL/glui.h	/^    bool            collapsible, is_open;$/;"	m	class:GLUI_Control
+column	glui-2.35/src/include/GL/glui.h	/^    GLUI_Column *column;$/;"	m	class:GLUI_Tree
+commandline	glui-2.35/src/example/example6.cpp	/^const char commandline[] = $/;"	v
+commit_flag	glui-2.35/src/include/GL/glui.h	/^    bool commit_flag;$/;"	m	class:GLUI_CommandLine
+common_construct	glui-2.35/src/glui_edittext.cpp	/^void GLUI_EditText::common_construct( GLUI_Node *parent, const char *name, $/;"	f	class:GLUI_EditText
+common_construct	glui-2.35/src/glui_list.cpp	/^void GLUI_List::common_construct($/;"	f	class:GLUI_List
+common_construct	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::common_construct($/;"	f	class:GLUI_Scrollbar
+common_construct	glui-2.35/src/glui_spinner.cpp	/^void GLUI_Spinner::common_construct( GLUI_Node* parent, const char *name, $/;"	f	class:GLUI_Spinner
+common_construct	glui-2.35/src/glui_textbox.cpp	/^void GLUI_TextBox::common_construct($/;"	f	class:GLUI_TextBox
+common_init	glui-2.35/src/glui_rotation.cpp	/^void GLUI_Rotation::common_init( void ) $/;"	f	class:GLUI_Rotation
+common_init	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::common_init(void)$/;"	f	class:GLUI_Scrollbar
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init( void ) {$/;"	f	class:GLUI_EditText
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init( void ) {$/;"	f	class:GLUI_Panel
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init( void ) {$/;"	f	class:GLUI_RadioGroup
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() $/;"	f	class:GLUI_FileBrowser
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() $/;"	f	class:GLUI_TreePanel
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Column
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_CommandLine
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Listbox
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Rollout
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Separator
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Spinner
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_StaticText
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init() {$/;"	f	class:GLUI_Translation
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class:GLUI_List
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class:GLUI_RadioButton
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class:GLUI_TextBox
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init()$/;"	f	class:GLUI_Tree
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init(void) {$/;"	f	class:GLUI_Button
+common_init	glui-2.35/src/include/GL/glui.h	/^    void common_init(void) {$/;"	f	class:GLUI_Checkbox
 compareXValue	polyhedron.cpp	/^bool compareXValue(Point p1, Point p2){$/;"	f
+constrain_vector	glui-2.35/src/arcball.cpp	/^vec3 Arcball::constrain_vector(const vec3 &vector, const vec3 &axis)$/;"	f	class:Arcball
+constraint_x	glui-2.35/src/arcball.h	/^    bool  constraint_x, constraint_y;$/;"	m	class:Arcball
+constraint_y	glui-2.35/src/arcball.h	/^    bool  constraint_x, constraint_y;$/;"	m	class:Arcball
+contain_h	glui-2.35/src/include/GL/glui.h	/^    int             contain_w, contain_h;$/;"	m	class:GLUI_Control
+contain_w	glui-2.35/src/include/GL/glui.h	/^    int             contain_w, contain_h;$/;"	m	class:GLUI_Control
+contain_x	glui-2.35/src/include/GL/glui.h	/^    int             contain_x, contain_y; $/;"	m	class:GLUI_Control
+contain_y	glui-2.35/src/include/GL/glui.h	/^    int             contain_x, contain_y; $/;"	m	class:GLUI_Control
+control_cb	glui-2.35/src/example/example2.cpp	/^void control_cb( int control )$/;"	f
+control_cb	glui-2.35/src/example/example3.cpp	/^void control_cb( int control )$/;"	f
+control_cb	glui-2.35/src/example/example4.cpp	/^void control_cb( int control )$/;"	f
+control_cb	glui-2.35/src/example/example5.cpp	/^void control_cb( int control )$/;"	f
+control_cb	glui-2.35/src/example/example6.cpp	/^void control_cb(int control) {$/;"	f
+copy_ball_to_float_array	glui-2.35/src/glui_rotation.cpp	/^void     GLUI_Rotation::copy_ball_to_float_array( void )$/;"	f	class:GLUI_Rotation
+copy_float_array_to_ball	glui-2.35/src/glui_rotation.cpp	/^void     GLUI_Rotation::copy_float_array_to_ball( void )$/;"	f	class:GLUI_Rotation
+counter	glui-2.35/src/example/example3.cpp	/^int   counter = 0;$/;"	v
 cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon10
 createMenu	main.cpp	/^void createMenu(void){     $/;"	f
+create_glui	glui-2.35/src/glui.cpp	/^GLUI *GLUI_Master_Object::create_glui( const char *name, long flags,int x,int y )$/;"	f	class:GLUI_Master_Object
+create_glui_subwindow	glui-2.35/src/glui.cpp	/^GLUI *GLUI_Master_Object::create_glui_subwindow( int parent_window, $/;"	f	class:GLUI_Master_Object
+create_standalone_window	glui-2.35/src/glui.cpp	/^void GLUI_Main::create_standalone_window( const char *name, int x, int y )$/;"	f	class:GLUI_Main
+create_subwindow	glui-2.35/src/glui.cpp	/^void GLUI_Main::create_subwindow( int parent_window, int window_alignment )$/;"	f	class:GLUI_Main
 ctov	vector.cpp	/^Vector ctov(Color c){$/;"	f
+ctrlPoints	curve.h	/^  std::list<Point> ctrlPoints;$/;"	m	class:Curve
+curr_branch	glui-2.35/src/include/GL/glui.h	/^    GLUI_Tree    *curr_branch; \/* Current Branch *\/$/;"	m	class:GLUI_TreePanel
+curr_cursor	glui-2.35/src/include/GL/glui.h	/^    int           curr_cursor;$/;"	m	class:GLUI_Main
+curr_hist	glui-2.35/src/include/GL/glui.h	/^    int  curr_hist;$/;"	m	class:GLUI_CommandLine
+curr_left_button_glut_menu	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *active_control, *curr_left_button_glut_menu;$/;"	m	class:GLUI_Master_Object
+curr_line	glui-2.35/src/include/GL/glui.h	/^    int                 curr_line;$/;"	m	class:GLUI_List
+curr_line	glui-2.35/src/include/GL/glui.h	/^    int                 curr_line;$/;"	m	class:GLUI_TextBox
+curr_modifiers	glui-2.35/src/include/GL/glui.h	/^    int              curr_modifiers;$/;"	m	class:GLUI_Main
+curr_root	glui-2.35/src/include/GL/glui.h	/^    GLUI_Panel *curr_root;   \/* Current Root *\/$/;"	m	class:GLUI_TreePanel
+curr_string	glui-2.35/src/example/example5.cpp	/^int   curr_string = 0;$/;"	v
+curr_text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String       curr_text;$/;"	m	class:GLUI_Listbox
+current_dir	glui-2.35/src/include/GL/glui.h	/^    GLUI_String current_dir;$/;"	m	class:GLUI_FileBrowser
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool          currently_inside;$/;"	m	class:GLUI_Scrollbar
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool          currently_inside;$/;"	m	class:GLUI_Spinner
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Rollout
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Tree
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_Button
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_Checkbox
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_Listbox
+currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_RadioButton
+damp_factor	glui-2.35/src/arcball.h	/^    float radius, damp_factor;$/;"	m	class:Arcball
+damping	glui-2.35/src/include/GL/glui.h	/^    float          damping;$/;"	m	class:GLUI_Rotation
+data_type	glui-2.35/src/include/GL/glui.h	/^    int                 data_type;$/;"	m	class:GLUI_EditText
+data_type	glui-2.35/src/include/GL/glui.h	/^    int           data_type;$/;"	m	class:GLUI_Scrollbar
+data_type	glui-2.35/src/include/GL/glui.h	/^    int           data_type;$/;"	m	class:GLUI_Spinner
+db	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::db(GLUI_Tree *root) $/;"	f	class:GLUI_TreePanel
 dda	graph.cpp	/^int Graph::dda( Point p1, Point p2,  float r, float g, float b){ $/;"	f	class:Graph
+deactivate	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::deactivate( void )$/;"	f	class:GLUI_CommandLine
+deactivate	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::deactivate( void )$/;"	f	class:GLUI_EditText
+deactivate	glui-2.35/src/glui_list.cpp	/^void    GLUI_List::deactivate( void )$/;"	f	class:GLUI_List
+deactivate	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::deactivate( void )$/;"	f	class:GLUI_TextBox
+deactivate	glui-2.35/src/include/GL/glui.h	/^    virtual void deactivate( void )     { active = false; }$/;"	f	class:GLUI_Control
+deactivate_current_control	glui-2.35/src/glui.cpp	/^void         GLUI_Main::deactivate_current_control( void )$/;"	f	class:GLUI_Main
+debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_EditText
+debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_List
+debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_TextBox
+delete_all	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_all()$/;"	f	class:GLUI_List
+delete_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_item( const char *text )$/;"	f	class:GLUI_List
+delete_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_item( int id )$/;"	f	class:GLUI_List
+delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item( const char *text )$/;"	f	class:GLUI_Listbox
+delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item(int id)$/;"	f	class:GLUI_Listbox
+depressed	glui-2.35/src/include/GL/glui.h	/^    int               depressed;$/;"	m	class:GLUI_Listbox
 depth	polyhedron.h	/^  float depth;\/\/ with respect to a FROM POINT ff, i.e. depth = min{ magnitude(listOfPoints[i] - ff) }$/;"	m	class:Polyhedron
 depthComparator	polyhedron.cpp	/^int Polyhedron::depthComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
 depthXComparator	polyhedron.cpp	/^int Polyhedron::depthXComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
 depthYComparator	polyhedron.cpp	/^int Polyhedron::depthYComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
 depthZComparator	polyhedron.cpp	/^int Polyhedron::depthZComparator(const void *poly1, const void *poly2){$/;"	f	class:Polyhedron
+descendBranch	glui-2.35/src/glui_treepanel.cpp	/^void            GLUI_TreePanel::descendBranch(GLUI_Panel *root) {$/;"	f	class:GLUI_TreePanel
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
+dir_list_callback	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::dir_list_callback(GLUI_Control *glui_object) {$/;"	f	class:GLUI_FileBrowser
+disable	glui-2.35/src/glui.cpp	/^void   GLUI::disable( void )$/;"	f	class:GLUI
+disable	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::disable()$/;"	f	class:GLUI_Control
+disable	glui-2.35/src/glui_textbox.cpp	/^void GLUI_TextBox::disable( void )$/;"	f	class:GLUI_TextBox
+disable_bar	glui-2.35/src/include/GL/glui.h	/^    void disable_bar() { if (column) { column->int_val = 0;  } } $/;"	f	class:GLUI_Tree
+display	glui-2.35/src/glui.cpp	/^void    GLUI_Main::display( void )$/;"	f	class:GLUI_Main
+distance	glui-2.35/src/viewmodel.h	/^  float   distance;$/;"	m	class:ViewModel
+do_callbacks	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::do_callbacks( void )$/;"	f	class:GLUI_Scrollbar
+do_callbacks	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::do_callbacks( void )$/;"	f	class:GLUI_Spinner
+do_click	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::do_click( void )$/;"	f	class:GLUI_Scrollbar
+do_click	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::do_click( void )$/;"	f	class:GLUI_Spinner
+do_drag	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::do_drag( int x, int y )$/;"	f	class:GLUI_Scrollbar
+do_drag	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::do_drag( int x, int y )$/;"	f	class:GLUI_Spinner
+do_selection	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::do_selection( int item_num )$/;"	f	class:GLUI_Listbox
 dotProduct	vector.cpp	/^float dotProduct(Vector v1, Vector v2){$/;"	f
+down_pt	glui-2.35/src/arcball.h	/^    vec2  down_pt;$/;"	m	class:Arcball
+down_x	glui-2.35/src/include/GL/glui.h	/^    int down_x, down_y;$/;"	m	class:GLUI_Translation
+down_y	glui-2.35/src/include/GL/glui.h	/^    int down_x, down_y;$/;"	m	class:GLUI_Translation
+draw	glui-2.35/src/glui_bitmaps.cpp	/^void GLUI_StdBitmaps::draw(int i, int x, int y) const$/;"	f	class:GLUI_StdBitmaps
+draw	glui-2.35/src/glui_button.cpp	/^void    GLUI_Button::draw( int x, int y )$/;"	f	class:GLUI_Button
+draw	glui-2.35/src/glui_checkbox.cpp	/^void    GLUI_Checkbox::draw( int x, int y )$/;"	f	class:GLUI_Checkbox
+draw	glui-2.35/src/glui_column.cpp	/^void  GLUI_Column::draw( int x, int y )$/;"	f	class:GLUI_Column
+draw	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::draw( int x, int y )$/;"	f	class:GLUI_EditText
+draw	glui-2.35/src/glui_list.cpp	/^void    GLUI_List::draw( int x, int y )$/;"	f	class:GLUI_List
+draw	glui-2.35/src/glui_listbox.cpp	/^void    GLUI_Listbox::draw( int x, int y )$/;"	f	class:GLUI_Listbox
+draw	glui-2.35/src/glui_mouse_iaction.cpp	/^void    GLUI_Mouse_Interaction::draw( int x, int y )$/;"	f	class:GLUI_Mouse_Interaction
+draw	glui-2.35/src/glui_panel.cpp	/^void    GLUI_Panel::draw( int x, int y )$/;"	f	class:GLUI_Panel
+draw	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioButton::draw( int x, int y )$/;"	f	class:GLUI_RadioButton
+draw	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioGroup::draw( int x, int y )$/;"	f	class:GLUI_RadioGroup
+draw	glui-2.35/src/glui_rollout.cpp	/^void   GLUI_Rollout::draw( int x, int y )$/;"	f	class:GLUI_Rollout
+draw	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::draw( int x, int y )$/;"	f	class:GLUI_Scrollbar
+draw	glui-2.35/src/glui_separator.cpp	/^void    GLUI_Separator::draw( int x, int y )$/;"	f	class:GLUI_Separator
+draw	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::draw( int x, int y )$/;"	f	class:GLUI_Spinner
+draw	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::draw( int x, int y )$/;"	f	class:GLUI_StaticText
+draw	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw( int x, int y )$/;"	f	class:GLUI_TextBox
+draw	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw( int x, int y )$/;"	f	class:GLUI_Tree
 draw	polyhedron.cpp	/^void Polyhedron::draw(){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(Color c){$/;"	f	class:Polyhedron
 draw	polyhedron.cpp	/^void Polyhedron::draw(float r, float g, float b){$/;"	f	class:Polyhedron
-drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){$/;"	f	class:Graph
+drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){ \/\/ should have named it scanLine, as I only use this function for horizontal line drawing$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
 drawMegaPixel	graph.cpp	/^void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){$/;"	f	class:Graph
@@ -108,90 +713,893 @@ drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(int x, int y, float r, float g, float b){$/;"	f	class:Graph
 drawPolygon	graph.cpp	/^int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float g, float b){$/;"	f	class:Graph
-drawPolyhedra	main.cpp	/^void drawPolyhedra(Polyhedron **polyhedra){$/;"	f
+draw_2d_arrow	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::draw_2d_arrow( int radius, int filled, int orientation )$/;"	f	class:GLUI_Translation
+draw_2d_x_arrows	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::draw_2d_x_arrows( int radius )$/;"	f	class:GLUI_Translation
+draw_2d_xy_arrows	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::draw_2d_xy_arrows( int radius)$/;"	f	class:GLUI_Translation
+draw_2d_y_arrows	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::draw_2d_y_arrows( int radius )$/;"	f	class:GLUI_Translation
+draw_2d_z_arrows	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::draw_2d_z_arrows( int radius )$/;"	f	class:GLUI_Translation
+draw_O	glui-2.35/src/glui_radio.cpp	/^void   GLUI_RadioButton::draw_O( void )$/;"	f	class:GLUI_RadioButton
+draw_active_area	glui-2.35/src/glui_checkbox.cpp	/^void    GLUI_Checkbox::draw_active_area( void )$/;"	f	class:GLUI_Checkbox
+draw_active_area	glui-2.35/src/glui_mouse_iaction.cpp	/^void    GLUI_Mouse_Interaction::draw_active_area( void )$/;"	f	class:GLUI_Mouse_Interaction
+draw_active_area	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioButton::draw_active_area( void )$/;"	f	class:GLUI_RadioButton
+draw_active_area_only	glui-2.35/src/include/GL/glui.h	/^    int            draw_active_area_only;$/;"	m	class:GLUI_Mouse_Interaction
+draw_active_box	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_active_box( int x_min, int x_max, int y_min, int y_max )$/;"	f	class:GLUI_Control
+draw_axes	glui-2.35/src/example/example4.cpp	/^void draw_axes( float scale )$/;"	f
+draw_axes	glui-2.35/src/example/example5.cpp	/^void draw_axes( float scale )$/;"	f
+draw_ball	glui-2.35/src/glui_rotation.cpp	/^void    GLUI_Rotation::draw_ball( float radius )$/;"	f	class:GLUI_Rotation
+draw_bkgd_box	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_bkgd_box( int x_min, int x_max, int y_min, int y_max )$/;"	f	class:GLUI_Control
+draw_box	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_box( int x_min, int x_max, int y_min, int y_max, float r, float g, float b)$/;"	f	class:GLUI_Control
+draw_box_inwards_outline	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_box_inwards_outline( int x_min, int x_max, int y_min, int y_max )$/;"	f	class:GLUI_Control
+draw_char	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_char(char c)$/;"	f	class:GLUI_Control
+draw_checked	glui-2.35/src/glui_radio.cpp	/^void   GLUI_RadioButton::draw_checked( void )$/;"	f	class:GLUI_RadioButton
+draw_emboss_box	glui-2.35/src/glui_control.cpp	/^void   GLUI_Control::draw_emboss_box(int x_min,int x_max,int y_min,int y_max)$/;"	f	class:GLUI_Control
+draw_group	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioGroup::draw_group( int translate )$/;"	f	class:GLUI_RadioGroup
+draw_insertion_pt	glui-2.35/src/glui_edittext.cpp	/^void     GLUI_EditText::draw_insertion_pt( void )$/;"	f	class:GLUI_EditText
+draw_insertion_pt	glui-2.35/src/glui_textbox.cpp	/^void     GLUI_TextBox::draw_insertion_pt( void )$/;"	f	class:GLUI_TextBox
+draw_lowered_box	glui-2.35/src/glui.cpp	/^void      GLUI_Main::draw_lowered_box( int x, int y, int w, int h )$/;"	f	class:GLUI_Main
+draw_name	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_name(int x, int y)$/;"	f	class:GLUI_Control
+draw_pressed	glui-2.35/src/glui_button.cpp	/^void   GLUI_Button::draw_pressed( void )$/;"	f	class:GLUI_Button
+draw_pressed	glui-2.35/src/glui_rollout.cpp	/^void   GLUI_Rollout::draw_pressed( void )$/;"	f	class:GLUI_Rollout
+draw_pressed	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw_pressed( void )$/;"	f	class:GLUI_Tree
+draw_raised_box	glui-2.35/src/glui.cpp	/^void      GLUI_Main::draw_raised_box( int x, int y, int w, int h )$/;"	f	class:GLUI_Main
+draw_recursive	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_recursive( int x, int y )$/;"	f	class:GLUI_Control
+draw_scroll	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::draw_scroll() {$/;"	f	class:GLUI_Scrollbar
+draw_scroll_arrow	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::draw_scroll_arrow(int arrowtype, int x, int y)$/;"	f	class:GLUI_Scrollbar
+draw_scroll_box	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::draw_scroll_box(int x, int y, int w, int h)$/;"	f	class:GLUI_Scrollbar
+draw_string	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::draw_string( const char *text )$/;"	f	class:GLUI_Control
+draw_string	glui-2.35/src/include/GL/glui.h	/^    void         draw_string( const GLUI_String &s ) $/;"	f	class:GLUI_Control
+draw_text	glui-2.35/src/glui_button.cpp	/^void     GLUI_Button::draw_text( int sunken )$/;"	f	class:GLUI_Button
+draw_text	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::draw_text( int x, int y )$/;"	f	class:GLUI_EditText
+draw_text	glui-2.35/src/glui_list.cpp	/^void    GLUI_List::draw_text(const char *t, int selected, int x, int y )$/;"	f	class:GLUI_List
+draw_text	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::draw_text( void )$/;"	f	class:GLUI_StaticText
+draw_text	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw_text( int x, int y )$/;"	f	class:GLUI_TextBox
+draw_text_only	glui-2.35/src/include/GL/glui.h	/^    int                 draw_text_only;$/;"	m	class:GLUI_EditText
+draw_text_only	glui-2.35/src/include/GL/glui.h	/^    int                 draw_text_only;$/;"	m	class:GLUI_List
+draw_text_only	glui-2.35/src/include/GL/glui.h	/^    int                 draw_text_only;$/;"	m	class:GLUI_TextBox
+draw_unchecked	glui-2.35/src/glui_radio.cpp	/^void   GLUI_RadioButton::draw_unchecked( void )$/;"	f	class:GLUI_RadioButton
+dump	glui-2.35/src/glui_commandline.cpp	/^void   GLUI_CommandLine::dump( FILE *out, const char *name )$/;"	f	class:GLUI_CommandLine
+dump	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::dump( FILE *out, const char *name )$/;"	f	class:GLUI_EditText
+dump	glui-2.35/src/glui_listbox.cpp	/^void     GLUI_Listbox::dump( FILE *output )$/;"	f	class:GLUI_Listbox
+dump	glui-2.35/src/glui_node.cpp	/^void GLUI_Node::dump( FILE *out, const char *name )$/;"	f	class:GLUI_Node
+dump	glui-2.35/src/glui_textbox.cpp	/^void   GLUI_TextBox::dump( FILE *out, char *name )$/;"	f	class:GLUI_TextBox
+dump	glui-2.35/src/viewmodel.cpp	/^ViewModel::dump(FILE *output) const $/;"	f	class:ViewModel
+edittext	glui-2.35/src/example/example2.cpp	/^GLUI_EditText   *edittext;$/;"	v
+edittext	glui-2.35/src/example/example3.cpp	/^GLUI_EditText    *edittext;$/;"	v
+edittext	glui-2.35/src/include/GL/glui.h	/^    GLUI_EditText *edittext;$/;"	m	class:GLUI_Spinner
+enable	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::enable()$/;"	f	class:GLUI_Control
+enable	glui-2.35/src/glui_textbox.cpp	/^void GLUI_TextBox::enable( void )$/;"	f	class:GLUI_TextBox
+enable	glui-2.35/src/include/GL/glui.h	/^    void            enable( void ) { main_panel->enable(); }$/;"	f	class:GLUI
+enable_bar	glui-2.35/src/include/GL/glui.h	/^    void enable_bar() { if (column) { column->int_val = 1;  set_color(red, green, blue); } }$/;"	f	class:GLUI_Tree
+enable_textbox	glui-2.35/src/example/example6.cpp	/^int enable_textbox = 0;$/;"	v
+enabled	glui-2.35/src/include/GL/glui.h	/^    bool            enabled;    \/**< Is this control grayed out? *\/$/;"	m	class:GLUI_Control
+entry	glui-2.35/src/glui.cpp	/^void    GLUI_Main::entry(int state)$/;"	f	class:GLUI_Main
 equal	vector.cpp	/^bool equal(Color c1, Color c2){$/;"	f
 erase	polyhedron.cpp	/^void Polyhedron::erase(){$/;"	f	class:Polyhedron
+erase_text	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::erase_text( void )$/;"	f	class:GLUI_StaticText
+error_return	glui-2.35/src/glui_internal.h	47;"	d
+execute_callback	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::execute_callback()$/;"	f	class:GLUI_Control
+expand_all	glui-2.35/src/glui_treepanel.cpp	/^void            GLUI_TreePanel::expand_all() $/;"	f	class:GLUI_TreePanel
+eye	glui-2.35/src/viewmodel.h	/^  vec3    eye, lookat;$/;"	m	class:ViewModel
+eye_pitch	glui-2.35/src/viewmodel.cpp	/^ViewModel::eye_pitch(const float angle) $/;"	f	class:ViewModel
+eye_yaw	glui-2.35/src/viewmodel.cpp	/^ViewModel::eye_yaw(const float angle)$/;"	f	class:ViewModel
+eye_yaw_abs	glui-2.35/src/viewmodel.cpp	/^ViewModel::eye_yaw_abs(const float angle, const vec3 &axis) $/;"	f	class:ViewModel
+fb	glui-2.35/src/example/example6.cpp	/^GLUI_FileBrowser *fb;$/;"	v
+fb	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::fb(GLUI_Tree *branch) $/;"	f	class:GLUI_TreePanel
+fbreaddir	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::fbreaddir(const char *d) {$/;"	f	class:GLUI_FileBrowser
 ff	common_type.h	/^  Point_3D ff; \/\/coord of FROM POINTS, $/;"	m	struct:__anon9
+file	glui-2.35/src/include/GL/glui.h	/^    GLUI_String file;$/;"	m	class:GLUI_FileBrowser
+filebrowser	glui-2.35/src/example/example6.cpp	/^const char filebrowser[] = $/;"	v
 fillScreen	graph.cpp	/^int Graph::fillScreen(Color c){$/;"	f	class:Graph
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
 findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(){$/;"	f	class:Polyhedron
 findMaxIntensity	polyhedron.cpp	/^float Polyhedron::findMaxIntensity(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
 findNDCParams	polyhedron.cpp	/^void Polyhedron::findNDCParams(Polyhedron **polyhedra, int numberOfPolyhedra, float *delta, float *_xMin, float *_yMin, float *_zMin){$/;"	f	class:Polyhedron
+find_arrow	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Scrollbar
+find_arrow	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Spinner
+find_control	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_control( int x, int y )$/;"	f	class:GLUI_Main
+find_glui_by_window_id	glui-2.35/src/glui.cpp	/^GLUI  *GLUI_Master_Object::find_glui_by_window_id( int window_id )$/;"	f	class:GLUI_Master_Object
+find_glut_window	glui-2.35/src/glui.cpp	/^GLUI_Glut_Window  *GLUI_Master_Object::find_glut_window( int window_id )$/;"	f	class:GLUI_Master_Object
+find_insertion_pt	glui-2.35/src/glui_edittext.cpp	/^int  GLUI_EditText::find_insertion_pt( int x, int y )$/;"	f	class:GLUI_EditText
+find_insertion_pt	glui-2.35/src/glui_textbox.cpp	/^int  GLUI_TextBox::find_insertion_pt( int x, int y )$/;"	f	class:GLUI_TextBox
+find_line	glui-2.35/src/glui_list.cpp	/^int GLUI_List::find_line(int x, int y) {$/;"	f	class:GLUI_List
+find_next_control	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_next_control( GLUI_Control *control )$/;"	f	class:GLUI_Main
+find_next_control_	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_next_control_( GLUI_Control *control )$/;"	f	class:GLUI_Main
+find_next_control_rec	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_next_control_rec( GLUI_Control *control )$/;"	f	class:GLUI_Main
+find_prev_control	glui-2.35/src/glui.cpp	/^GLUI_Control  *GLUI_Main::find_prev_control( GLUI_Control *control )$/;"	f	class:GLUI_Main
+find_word_break	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::find_word_break( int start, int direction )$/;"	f	class:GLUI_EditText
+find_word_break	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::find_word_break( int start, int direction )$/;"	f	class:GLUI_TextBox
+finish_drawing	glui-2.35/src/glui.cpp	/^static void finish_drawing(void)$/;"	f	file:
+first_callback	glui-2.35/src/include/GL/glui.h	/^    int           first_callback;$/;"	m	class:GLUI_Scrollbar
+first_callback	glui-2.35/src/include/GL/glui.h	/^    int           first_callback;$/;"	m	class:GLUI_Spinner
+first_child	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *first_child()   { return child_head; }$/;"	f	class:GLUI_Node
+first_sibling	glui-2.35/src/glui_node.cpp	/^GLUI_Node   *GLUI_Node::first_sibling( void )$/;"	f	class:GLUI_Node
+flags	glui-2.35/src/include/GL/glui.h	/^    long          flags; $/;"	m	class:GLUI_Main
+float_array_size	glui-2.35/src/include/GL/glui.h	/^    int             float_array_size;$/;"	m	class:GLUI_Control
+float_array_val	glui-2.35/src/include/GL/glui.h	/^    float           float_array_val[GLUI_DEF_MAX_ARRAY];$/;"	m	class:GLUI_Control
+float_high	glui-2.35/src/include/GL/glui.h	/^    float               float_low, float_high;$/;"	m	class:GLUI_EditText
+float_low	glui-2.35/src/include/GL/glui.h	/^    float               float_low, float_high;$/;"	m	class:GLUI_EditText
+float_max	glui-2.35/src/include/GL/glui.h	/^    float         float_min, float_max;$/;"	m	class:GLUI_Scrollbar
+float_min	glui-2.35/src/include/GL/glui.h	/^    float         float_min, float_max;$/;"	m	class:GLUI_Scrollbar
+float_val	glui-2.35/src/include/GL/glui.h	/^    float           float_val;        \/**< Our float value *\/$/;"	m	class:GLUI_Control
+flusherr	glui-2.35/src/glui_internal.h	42;"	d
+flushout	glui-2.35/src/glui_internal.h	41;"	d
+font	glui-2.35/src/include/GL/glui.h	/^    void            *font;$/;"	m	class:GLUI_Main
+font	glui-2.35/src/include/GL/glui.h	/^    void           *font;       \/**< Our glutbitmap font *\/$/;"	m	class:GLUI_Control
+format	glui-2.35/src/include/GL/glui.h	/^    int format;$/;"	m	class:GLUI_Tree
+format	glui-2.35/src/include/GL/glui.h	/^    int format;$/;"	m	class:GLUI_TreePanel
+formatNode	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::formatNode(GLUI_Tree *temp) $/;"	f	class:GLUI_TreePanel
+forward	glui-2.35/src/viewmodel.h	/^  vec3    up, side, forward;$/;"	m	class:ViewModel
 g	common_type.h	/^  float g;$/;"	m	struct:__anon1
-globalGraphs	main.cpp	/^Graph *globalGraphs[4];$/;"	v
-globalPolyhedra	main.cpp	/^Polyhedron **globalPolyhedra;$/;"	v
+g	glui-2.35/src/include/GL/glui.h	/^  Byte r, g, b;$/;"	m	class:RGBc
+general	glui-2.35/src/example/example6.cpp	/^const char general[] =$/;"	v
+get_angle	glui-2.35/src/quaternion.cpp	/^float quat::get_angle() const$/;"	f	class:quat
+get_axis	glui-2.35/src/quaternion.cpp	/^vec3 quat::get_axis() const$/;"	f	class:quat
+get_box_width	glui-2.35/src/glui_list.cpp	/^int      GLUI_List::get_box_width() {$/;"	f	class:GLUI_List
+get_box_width	glui-2.35/src/glui_textbox.cpp	/^int GLUI_TextBox::get_box_width() $/;"	f	class:GLUI_TextBox
+get_child_number	glui-2.35/src/include/GL/glui.h	/^    int get_child_number() { return child_number; }$/;"	f	class:GLUI_Tree
+get_current_item	glui-2.35/src/include/GL/glui.h	/^    int get_current_item() { return curr_line; }$/;"	f	class:GLUI_List
+get_file	glui-2.35/src/include/GL/glui.h	/^    const char* get_file() { return file.c_str(); }$/;"	f	class:GLUI_FileBrowser
+get_float_array_val	glui-2.35/src/glui_control.cpp	/^void  GLUI_Control::get_float_array_val( float *array_ptr )$/;"	f	class:GLUI_Control
+get_float_val	glui-2.35/src/glui_spinner.cpp	/^float    GLUI_Spinner::get_float_val( void )$/;"	f	class:GLUI_Spinner
+get_float_val	glui-2.35/src/include/GL/glui.h	/^    virtual float  get_float_val( void )              { return float_val; }$/;"	f	class:GLUI_Control
+get_font	glui-2.35/src/glui_control.cpp	/^void *GLUI_Control::get_font( void )$/;"	f	class:GLUI_Control
+get_glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int             get_glut_window_id( void ) { return glut_window_id; }$/;"	f	class:GLUI
+get_glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int          get_glut_window_id( void ) { return glut_window_id; } \/* JVK *\/$/;"	f	class:GLUI_Main
+get_history	glui-2.35/src/include/GL/glui.h	/^    virtual const char *get_history( int command_number ) const$/;"	f	class:GLUI_CommandLine
+get_history_str	glui-2.35/src/include/GL/glui.h	/^    virtual GLUI_String& get_history_str( int command_number )$/;"	f	class:GLUI_CommandLine
+get_history_str	glui-2.35/src/include/GL/glui.h	/^    virtual const GLUI_String& get_history_str( int command_number ) const$/;"	f	class:GLUI_CommandLine
+get_id	glui-2.35/src/include/GL/glui.h	/^    int get_id() { return id; }$/;"	f	class:GLUI_Tree
+get_id	glui-2.35/src/include/GL/glui.h	/^    virtual int    get_id( void ) const { return user_id; }$/;"	f	class:GLUI_Control
+get_int_val	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::get_int_val( void )$/;"	f	class:GLUI_Spinner
+get_int_val	glui-2.35/src/include/GL/glui.h	/^    virtual int    get_int_val( void )                { return int_val; }$/;"	f	class:GLUI_Control
+get_item_ptr	glui-2.35/src/glui_list.cpp	/^GLUI_List_Item *GLUI_List::get_item_ptr( const char *text )$/;"	f	class:GLUI_List
+get_item_ptr	glui-2.35/src/glui_list.cpp	/^GLUI_List_Item *GLUI_List::get_item_ptr( int id )$/;"	f	class:GLUI_List
+get_item_ptr	glui-2.35/src/glui_listbox.cpp	/^GLUI_Listbox_Item *GLUI_Listbox::get_item_ptr( const char *text )$/;"	f	class:GLUI_Listbox
+get_item_ptr	glui-2.35/src/glui_listbox.cpp	/^GLUI_Listbox_Item *GLUI_Listbox::get_item_ptr( int id )$/;"	f	class:GLUI_Listbox
+get_level	glui-2.35/src/include/GL/glui.h	/^    int get_level() { return level; }$/;"	f	class:GLUI_Tree
+get_mouse_code	glui-2.35/src/glui_translation.cpp	/^int    GLUI_Translation::get_mouse_code( int x, int y )$/;"	f	class:GLUI_Translation
+get_text	glui-2.35/src/glui_spinner.cpp	/^const char    *GLUI_Spinner::get_text( void )$/;"	f	class:GLUI_Spinner
+get_text	glui-2.35/src/include/GL/glui.h	/^    const char *get_text( void )         { return text.c_str(); }$/;"	f	class:GLUI_TextBox
+get_text	glui-2.35/src/include/GL/glui.h	/^    const char *get_text()               { return text.c_str(); }$/;"	f	class:GLUI_EditText
+get_this_column_dims	glui-2.35/src/glui_control.cpp	/^void    GLUI_Control::get_this_column_dims( int *col_x, int *col_y, $/;"	f	class:GLUI_Control
+get_version	glui-2.35/src/include/GL/glui.h	/^    float          get_version() { return GLUI_VERSION; }$/;"	f	class:GLUI_Master_Object
+get_viewport_area	glui-2.35/src/glui.cpp	/^void     GLUI_Master_Object::get_viewport_area( int *x, int *y, $/;"	f	class:GLUI_Master_Object
+get_x	glui-2.35/src/include/GL/glui.h	/^    float get_x( void ) {       return float_array_val[0];  }$/;"	f	class:GLUI_Translation
+get_y	glui-2.35/src/include/GL/glui.h	/^    float get_y( void ) {$/;"	f	class:GLUI_Translation
+get_z	glui-2.35/src/include/GL/glui.h	/^    float get_z( void ) {       return float_array_val[0];  }$/;"	f	class:GLUI_Translation
+globalGraph	main.cpp	/^Graph *globalGraph;$/;"	v
+glui	glui-2.35/src/example/example3.cpp	/^GLUI *cmd_line_glui=0, *glui;$/;"	v
+glui	glui-2.35/src/example/example4.cpp	/^GLUI *glui;$/;"	v
+glui	glui-2.35/src/example/example5.cpp	/^GLUI *glui, *glui2;$/;"	v
+glui	glui-2.35/src/include/GL/glui.h	/^    GLUI           *glui;       \/**< Our containing event handler (NEVER NULL during event processing!) *\/$/;"	m	class:GLUI_Control
+glui2	glui-2.35/src/example/example5.cpp	/^GLUI *glui, *glui2;$/;"	v
+glui_display_func	glui-2.35/src/glui.cpp	/^void glui_display_func(void)$/;"	f
+glui_entry_func	glui-2.35/src/glui.cpp	/^void glui_entry_func(int state)$/;"	f
+glui_format_str	glui-2.35/src/glui_string.cpp	/^GLUI_String& glui_format_str(GLUI_String& str, const char* fmt, ...)$/;"	f
+glui_id	glui-2.35/src/include/GL/glui.h	/^    int           glui_id;$/;"	m	class:GLUI_Main
+glui_id_counter	glui-2.35/src/include/GL/glui.h	/^    int           glui_id_counter;$/;"	m	class:GLUI_Master_Object
+glui_idle_func	glui-2.35/src/glui.cpp	/^void glui_idle_func(void)$/;"	f
+glui_img_checkbox_0	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_checkbox_0[] = {  13, 13,  \/* width, height *\/$/;"	v
+glui_img_checkbox_0	glui-2.35/src/glui_img_checkbox_0.c	/^int glui_img_checkbox_0[] = {    13, 13,   \/* width, height *\/$/;"	v
+glui_img_checkbox_0_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_checkbox_0_dis[] = {  13, 13,  \/* width, height *\/$/;"	v
+glui_img_checkbox_0_dis	glui-2.35/src/glui_img_checkbox_0_dis.c	/^int glui_img_checkbox_0_dis[] = {    13, 13,   \/* width, height *\/$/;"	v
+glui_img_checkbox_1	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_checkbox_1[] = {  13, 13,  \/* width, height *\/$/;"	v
+glui_img_checkbox_1	glui-2.35/src/glui_img_checkbox_1.c	/^int glui_img_checkbox_1[] = {    13, 13,   \/* width, height *\/$/;"	v
+glui_img_checkbox_1_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_checkbox_1_dis[] = {  13, 13,  \/* width, height *\/$/;"	v
+glui_img_checkbox_1_dis	glui-2.35/src/glui_img_checkbox_1_dis.c	/^int glui_img_checkbox_1_dis[] = {    13, 13,   \/* width, height *\/$/;"	v
+glui_img_downarrow	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_downarrow[] = {  16, 16,  \/* width, height *\/$/;"	v
+glui_img_downarrow	glui-2.35/src/glui_img_downarrow.c	/^int glui_img_downarrow[] = {    16, 16,   \/* width, height *\/$/;"	v
+glui_img_leftarrow	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_leftarrow[] = {  16, 16,  \/* width, height *\/$/;"	v
+glui_img_leftarrow	glui-2.35/src/glui_img_leftarrow.c	/^int glui_img_leftarrow[] = {    16, 16,   \/* width, height *\/$/;"	v
+glui_img_listbox_down	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_listbox_down[] = {  11, 17,  \/* width, height *\/$/;"	v
+glui_img_listbox_down	glui-2.35/src/glui_img_listbox_down.c	/^int glui_img_listbox_down[] = {    11, 17,   \/* width, height *\/$/;"	v
+glui_img_listbox_up	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_listbox_up[] = {  11, 17,  \/* width, height *\/$/;"	v
+glui_img_listbox_up	glui-2.35/src/glui_img_listbox_up.c	/^int glui_img_listbox_up[] = {    11, 17,   \/* width, height *\/$/;"	v
+glui_img_listbox_up_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_listbox_up_dis[] = {  11, 17,  \/* width, height *\/$/;"	v
+glui_img_listbox_up_dis	glui-2.35/src/glui_img_listbox_up_dis.c	/^int glui_img_listbox_up_dis[] = {    11, 17,   \/* width, height *\/$/;"	v
+glui_img_radiobutton_0	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_radiobutton_0[] = {  14, 14,  \/* width, height *\/$/;"	v
+glui_img_radiobutton_0	glui-2.35/src/glui_img_radiobutton_0.c	/^int glui_img_radiobutton_0[] = {    14, 14,   \/* width, height *\/$/;"	v
+glui_img_radiobutton_0_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_radiobutton_0_dis[] = {  14, 14,  \/* width, height *\/$/;"	v
+glui_img_radiobutton_0_dis	glui-2.35/src/glui_img_radiobutton_0_dis.c	/^int glui_img_radiobutton_0_dis[] = {    14, 14,   \/* width, height *\/$/;"	v
+glui_img_radiobutton_1	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_radiobutton_1[] = {  14, 14,  \/* width, height *\/$/;"	v
+glui_img_radiobutton_1	glui-2.35/src/glui_img_radiobutton_1.c	/^int glui_img_radiobutton_1[] = {    14, 14,   \/* width, height *\/$/;"	v
+glui_img_radiobutton_1_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_radiobutton_1_dis[] = {  14, 14,  \/* width, height *\/$/;"	v
+glui_img_radiobutton_1_dis	glui-2.35/src/glui_img_radiobutton_1_dis.c	/^int glui_img_radiobutton_1_dis[] = {    14, 14,   \/* width, height *\/$/;"	v
+glui_img_rightarrow	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_rightarrow[] = {  16, 16,  \/* width, height *\/$/;"	v
+glui_img_rightarrow	glui-2.35/src/glui_img_rightarrow.c	/^int glui_img_rightarrow[] = {    16, 16,   \/* width, height *\/$/;"	v
+glui_img_spindown_0	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_spindown_0[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spindown_0	glui-2.35/src/glui_img_spindown_0.c	/^int glui_img_spindown_0[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_spindown_1	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char   glui_img_spindown_1[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spindown_1	glui-2.35/src/glui_img_spindown_1.c	/^int   glui_img_spindown_1[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_spindown_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_spindown_dis[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spindown_dis	glui-2.35/src/glui_img_spindown_dis.c	/^int glui_img_spindown_dis[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_spinup_0	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_spinup_0[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spinup_0	glui-2.35/src/glui_img_spinup_0.c	/^int glui_img_spinup_0[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_spinup_1	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_spinup_1[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spinup_1	glui-2.35/src/glui_img_spinup_1.c	/^int glui_img_spinup_1[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_spinup_dis	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_spinup_dis[] = {  12, 8,  \/* width, height *\/$/;"	v
+glui_img_spinup_dis	glui-2.35/src/glui_img_spinup_dis.c	/^int glui_img_spinup_dis[] = {    12, 8,   \/* width, height *\/$/;"	v
+glui_img_uparrow	glui-2.35/src/glui_bitmap_img_data.cpp	/^unsigned char glui_img_uparrow[] = {  16, 16,  \/* width, height *\/$/;"	v
+glui_img_uparrow	glui-2.35/src/glui_img_uparrow.c	/^int glui_img_uparrow[] = {    16, 16,   \/* width, height *\/$/;"	v
+glui_keyboard_func	glui-2.35/src/glui.cpp	/^void glui_keyboard_func(unsigned char key, int x, int y)$/;"	f
+glui_motion_func	glui-2.35/src/glui.cpp	/^void glui_motion_func(int x, int y)$/;"	f
+glui_mouse_func	glui-2.35/src/glui.cpp	/^void glui_mouse_func(int button, int state, int x, int y)$/;"	f
+glui_parent_window_keyboard_func	glui-2.35/src/glui.cpp	/^void glui_parent_window_keyboard_func(unsigned char key, int x, int y)$/;"	f
+glui_parent_window_mouse_func	glui-2.35/src/glui.cpp	/^void glui_parent_window_mouse_func(int button, int state, int x, int y)$/;"	f
+glui_parent_window_reshape_func	glui-2.35/src/glui.cpp	/^void glui_parent_window_reshape_func( int w, int h )$/;"	f
+glui_parent_window_special_func	glui-2.35/src/glui.cpp	/^void glui_parent_window_special_func(int key, int x, int y)$/;"	f
+glui_passive_motion_func	glui-2.35/src/glui.cpp	/^void glui_passive_motion_func(int x, int y)$/;"	f
+glui_reshape_func	glui-2.35/src/glui.cpp	/^void glui_reshape_func(int w,int h )$/;"	f
+glui_setIdleFuncIfNecessary	glui-2.35/src/glui.cpp	/^void GLUI_Master_Object::glui_setIdleFuncIfNecessary( void )$/;"	f	class:GLUI_Master_Object
+glui_special_func	glui-2.35/src/glui.cpp	/^void glui_special_func(int key, int x, int y)$/;"	f
+glui_visibility_func	glui-2.35/src/glui.cpp	/^void glui_visibility_func(int state)$/;"	f
+gluis	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node     gluis;$/;"	m	class:GLUI_Master_Object
+glut_display_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_display_CB)(void);$/;"	m	class:GLUI_Glut_Window
+glut_entry_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_entry_CB)(int);$/;"	m	class:GLUI_Glut_Window
+glut_idle_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_idle_CB)(void);$/;"	m	class:GLUI_Master_Object
+glut_keyboard_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_keyboard_CB)(unsigned char, int, int);$/;"	m	class:GLUI_Glut_Window
+glut_keyboard_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_keyboard_CB)(unsigned char, int, int);$/;"	m	class:GLUI_Main
+glut_menu_id	glui-2.35/src/include/GL/glui.h	/^    int  glut_menu_id;$/;"	m	class:GLUI_Listbox
+glut_motion_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_motion_CB)(int,int);$/;"	m	class:GLUI_Glut_Window
+glut_mouse_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_mouse_CB)(int, int, int, int);$/;"	m	class:GLUI_Main
+glut_mouse_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_mouse_CB)(int,int,int,int);$/;"	m	class:GLUI_Glut_Window
+glut_passive_motion_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_passive_motion_CB)(int,int);$/;"	m	class:GLUI_Glut_Window
+glut_reshape_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_reshape_CB)(int, int);$/;"	m	class:GLUI_Glut_Window
+glut_reshape_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_reshape_CB)(int, int);$/;"	m	class:GLUI_Main
+glut_special_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_special_CB)(int, int, int);$/;"	m	class:GLUI_Glut_Window
+glut_special_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_special_CB)(int, int, int);$/;"	m	class:GLUI_Main
+glut_visibility_CB	glui-2.35/src/include/GL/glui.h	/^    void (*glut_visibility_CB)(int);$/;"	m	class:GLUI_Glut_Window
+glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int           glut_window_id;$/;"	m	class:GLUI_Main
+glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int    glut_window_id;$/;"	m	class:GLUI_Glut_Window
+glut_windows	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node     glut_windows;$/;"	m	class:GLUI_Master_Object
+graph	curve.h	/^  Graph *graph;$/;"	m	class:Curve
 graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon10
 graphs	polyhedron.h	/^  Graph **graphs;$/;"	m	class:Polyhedron
+green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_Tree
+green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_TreePanel
+group	glui-2.35/src/include/GL/glui.h	/^    GLUI_RadioGroup *group;$/;"	m	class:GLUI_RadioButton
+growth	glui-2.35/src/include/GL/glui.h	/^    float         growth, growth_exp;$/;"	m	class:GLUI_Scrollbar
+growth	glui-2.35/src/include/GL/glui.h	/^    float         growth, growth_exp;$/;"	m	class:GLUI_Spinner
+growth_exp	glui-2.35/src/include/GL/glui.h	/^    float         growth, growth_exp;$/;"	m	class:GLUI_Scrollbar
+growth_exp	glui-2.35/src/include/GL/glui.h	/^    float         growth, growth_exp;$/;"	m	class:GLUI_Spinner
+gstring	glui-2.35/src/example/example6.cpp	/^const char gstring[] = $/;"	v
+h	glui-2.35/src/include/GL/glui.h	/^    int             w, h;                        \/* dimensions of control *\/$/;"	m	class:GLUI_Control
+h	glui-2.35/src/include/GL/glui.h	/^    int            w, h;$/;"	m	class:GLUI_Bitmap
+h	glui-2.35/src/include/GL/glui.h	/^    int           w, h;$/;"	m	class:GLUI_Main
+hah	glui-2.35/src/example/example6.cpp	/^GLUI_List        *hah;$/;"	v
 halfTone	common_type.h	/^  Color halfTone; $/;"	m	struct:__anon10
 halfTone	graph.cpp	/^void Graph::halfTone(Color color){$/;"	f	class:Graph
+has_limits	glui-2.35/src/include/GL/glui.h	/^    int                 has_limits;$/;"	m	class:GLUI_EditText
 height	common_type.h	/^  int height;$/;"	m	struct:__anon10
+height	glui-2.35/src/glui_bitmaps.cpp	/^int GLUI_StdBitmaps::height(int i) const$/;"	f	class:GLUI_StdBitmaps
+hidden	glui-2.35/src/include/GL/glui.h	/^    bool            hidden; \/* Collapsed controls (and children) are hidden *\/$/;"	m	class:GLUI_Control
+hide	glui-2.35/src/glui.cpp	/^void            GLUI::hide( void )$/;"	f	class:GLUI
+hide_internal	glui-2.35/src/glui_control.cpp	/^void         GLUI_Control::hide_internal( int recurse )$/;"	f	class:GLUI_Control
+hist_list	glui-2.35/src/include/GL/glui.h	/^    std::vector<GLUI_String> hist_list;$/;"	m	class:GLUI_CommandLine
+homogenize	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::homogenize(void) \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
+homogenize	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::homogenize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec4
+horizontal	glui-2.35/src/include/GL/glui.h	/^    int           horizontal;$/;"	m	class:GLUI_Scrollbar
+iaction_draw_active_area_ortho	glui-2.35/src/glui_rotation.cpp	/^void    GLUI_Rotation::iaction_draw_active_area_ortho( void )$/;"	f	class:GLUI_Rotation
+iaction_draw_active_area_ortho	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::iaction_draw_active_area_ortho( void )$/;"	f	class:GLUI_Translation
+iaction_draw_active_area_persp	glui-2.35/src/glui_rotation.cpp	/^void    GLUI_Rotation::iaction_draw_active_area_persp( void )$/;"	f	class:GLUI_Rotation
+iaction_draw_active_area_persp	glui-2.35/src/glui_translation.cpp	/^void    GLUI_Translation::iaction_draw_active_area_persp( void )$/;"	f	class:GLUI_Translation
+iaction_dump	glui-2.35/src/glui_rotation.cpp	/^void     GLUI_Rotation::iaction_dump( FILE *output )$/;"	f	class:GLUI_Rotation
+iaction_dump	glui-2.35/src/glui_translation.cpp	/^void     GLUI_Translation::iaction_dump( FILE *output )$/;"	f	class:GLUI_Translation
+iaction_init	glui-2.35/src/include/GL/glui.h	/^    void iaction_init( void ) { init_ball(); }$/;"	f	class:GLUI_Rotation
+iaction_init	glui-2.35/src/include/GL/glui.h	/^    void iaction_init( void ) { }$/;"	f	class:GLUI_Translation
+iaction_mouse_down_handler	glui-2.35/src/glui_rotation.cpp	/^int    GLUI_Rotation::iaction_mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Rotation
+iaction_mouse_down_handler	glui-2.35/src/glui_translation.cpp	/^int    GLUI_Translation::iaction_mouse_down_handler( int local_x, $/;"	f	class:GLUI_Translation
+iaction_mouse_held_down_handler	glui-2.35/src/glui_rotation.cpp	/^int    GLUI_Rotation::iaction_mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Rotation
+iaction_mouse_held_down_handler	glui-2.35/src/glui_translation.cpp	/^int    GLUI_Translation::iaction_mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Translation
+iaction_mouse_up_handler	glui-2.35/src/glui_rotation.cpp	/^int    GLUI_Rotation::iaction_mouse_up_handler( int local_x, int local_y, $/;"	f	class:GLUI_Rotation
+iaction_mouse_up_handler	glui-2.35/src/glui_translation.cpp	/^int    GLUI_Translation::iaction_mouse_up_handler( int local_x, int local_y, $/;"	f	class:GLUI_Translation
+iaction_special_handler	glui-2.35/src/glui_rotation.cpp	/^int    GLUI_Rotation::iaction_special_handler( int key,int modifiers )$/;"	f	class:GLUI_Rotation
+iaction_special_handler	glui-2.35/src/glui_translation.cpp	/^int    GLUI_Translation::iaction_special_handler( int key,int modifiers )$/;"	f	class:GLUI_Translation
+id	glui-2.35/src/include/GL/glui.h	/^    int         id;$/;"	m	class:GLUI_List_Item
+id	glui-2.35/src/include/GL/glui.h	/^    int         id;$/;"	m	class:GLUI_Listbox_Item
+id	glui-2.35/src/include/GL/glui.h	/^    int id;$/;"	m	class:GLUI_Tree
+idCB	glui-2.35/src/include/GL/glui.h	/^  GLUI_Update_CB idCB;$/;"	m	class:GLUI_CB
+identity2D	glui-2.35/src/algebra3.cpp	/^mat3 identity2D()$/;"	f
+identity3D	glui-2.35/src/algebra3.cpp	/^mat4 identity3D()$/;"	f
+idle	glui-2.35/src/arcball.cpp	/^void Arcball::idle()$/;"	f	class:Arcball
+idle	glui-2.35/src/glui.cpp	/^void    GLUI_Main::idle(void)$/;"	f	class:GLUI_Main
+idle	glui-2.35/src/glui_rotation.cpp	/^void        GLUI_Rotation::idle( void )$/;"	f	class:GLUI_Rotation
+idle	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::idle( void )$/;"	f	class:GLUI_Scrollbar
+idle	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::idle( void )$/;"	f	class:GLUI_Spinner
+idle	glui-2.35/src/include/GL/glui.h	/^    virtual void idle( void )            { }$/;"	f	class:GLUI_Control
+increase_growth	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::increase_growth( void )$/;"	f	class:GLUI_Scrollbar
+increase_growth	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::increase_growth( void )$/;"	f	class:GLUI_Spinner
+init	glui-2.35/src/arcball.cpp	/^void Arcball::init()$/;"	f	class:Arcball
+init	glui-2.35/src/glui.cpp	/^int GLUI::init( const char *text, long flags, int x, int y, int parent_window ) $/;"	f	class:GLUI
+init	glui-2.35/src/glui_bitmaps.cpp	/^void GLUI_Bitmap::init(int *array)$/;"	f	class:GLUI_Bitmap
+initNode	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::initNode(GLUI_Tree *temp) $/;"	f	class:GLUI_TreePanel
+init_ball	glui-2.35/src/glui_rotation.cpp	/^void  GLUI_Rotation::init_ball( void )$/;"	f	class:GLUI_Rotation
+init_grey	glui-2.35/src/glui_bitmaps.cpp	/^void GLUI_Bitmap::init_grey(unsigned char *array)$/;"	f	class:GLUI_Bitmap
+init_live	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::init_live()$/;"	f	class:GLUI_Control
+initially_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Rollout
+initially_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Tree
 inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon10
 input_buffer	main.cpp	/^std::string input_buffer;$/;"	v
+insert_x	glui-2.35/src/include/GL/glui.h	/^    int                 insert_x;        \/* Similar to "insertion_pt", these variables keep *\/$/;"	m	class:GLUI_TextBox
+insert_y	glui-2.35/src/include/GL/glui.h	/^    int                 insert_y;        \/* track of where the ptr is, but in pixels *\/$/;"	m	class:GLUI_TextBox
+insertion_pt	glui-2.35/src/include/GL/glui.h	/^    int                 insertion_pt;$/;"	m	class:GLUI_EditText
+insertion_pt	glui-2.35/src/include/GL/glui.h	/^    int                 insertion_pt;$/;"	m	class:GLUI_TextBox
 int8	common_type.h	/^typedef char          int8; $/;"	t
+int_high	glui-2.35/src/include/GL/glui.h	/^    int                 int_low, int_high;$/;"	m	class:GLUI_EditText
+int_low	glui-2.35/src/include/GL/glui.h	/^    int                 int_low, int_high;$/;"	m	class:GLUI_EditText
+int_max	glui-2.35/src/include/GL/glui.h	/^    int           int_min, int_max;$/;"	m	class:GLUI_Scrollbar
+int_min	glui-2.35/src/include/GL/glui.h	/^    int           int_min, int_max;$/;"	m	class:GLUI_Scrollbar
+int_val	glui-2.35/src/include/GL/glui.h	/^    int             int_val;          \/**< Our integer value *\/$/;"	m	class:GLUI_Control
 intensity	common_type.h	/^  Color intensity; \/\/ directly from phont model$/;"	m	struct:__anon4
+inverse	glui-2.35/src/algebra3.cpp	/^mat3 mat3::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat3
+inverse	glui-2.35/src/algebra3.cpp	/^mat4 mat4::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat4
 isNDC	polyhedron.cpp	/^bool Polyhedron::isNDC(Point_3D p){$/;"	f	class:Polyhedron
+is_container	glui-2.35/src/include/GL/glui.h	/^    bool            is_container;  \/**< Is this a container class (e.g., panel) *\/$/;"	m	class:GLUI_Control
+is_current	glui-2.35/src/include/GL/glui.h	/^    int is_current;          \/\/ Whether this tree is the$/;"	m	class:GLUI_Tree
+is_mouse_down	glui-2.35/src/arcball.h	/^    int   is_mouse_down;  \/* true for down, false for up *\/$/;"	m	class:Arcball
+is_open	glui-2.35/src/include/GL/glui.h	/^    bool            collapsible, is_open;$/;"	m	class:GLUI_Control
+is_spinning	glui-2.35/src/arcball.h	/^    int   is_spinning;$/;"	m	class:Arcball
+items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_List_Item      items_list;$/;"	m	class:GLUI_List
+items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_Listbox_Item items_list;$/;"	m	class:GLUI_Listbox
 ka	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
 ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon4
 kd	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
 kd	common_type.h	/^  Color kd; \/\/diffusive  coefficient(the color of a point in the original object) ;$/;"	m	struct:__anon4
+key_handler	glui-2.35/src/glui_button.cpp	/^int    GLUI_Button::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Button
+key_handler	glui-2.35/src/glui_checkbox.cpp	/^int    GLUI_Checkbox::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Checkbox
+key_handler	glui-2.35/src/glui_commandline.cpp	/^int    GLUI_CommandLine::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_CommandLine
+key_handler	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_EditText
+key_handler	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_List
+key_handler	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Listbox
+key_handler	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Scrollbar
+key_handler	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Spinner
+key_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_TextBox
+key_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int key_handler( unsigned char key, int modifiers )                { return false; }$/;"	f	class:GLUI_Control
+keyboard	glui-2.35/src/glui.cpp	/^void    GLUI_Main::keyboard(unsigned char key, int x, int y)$/;"	f	class:GLUI_Main
+keygoal_x	glui-2.35/src/include/GL/glui.h	/^    int                 keygoal_x;       \/* where up down keys would like to put insertion pt*\/$/;"	m	class:GLUI_TextBox
 ks	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon9
 ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon4
+last_child	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *last_child()    { return child_tail; }$/;"	f	class:GLUI_Node
+last_click_time	glui-2.35/src/include/GL/glui.h	/^    int                 last_click_time;$/;"	m	class:GLUI_List
+last_float_val	glui-2.35/src/include/GL/glui.h	/^    float         last_float_val;$/;"	m	class:GLUI_Scrollbar
+last_float_val	glui-2.35/src/include/GL/glui.h	/^    float         last_float_val;$/;"	m	class:GLUI_Spinner
+last_insertion_pt	glui-2.35/src/include/GL/glui.h	/^    int                 last_insertion_pt;$/;"	m	class:GLUI_EditText
+last_insertion_pt	glui-2.35/src/include/GL/glui.h	/^    int                 last_insertion_pt;$/;"	m	class:GLUI_TextBox
+last_int_val	glui-2.35/src/include/GL/glui.h	/^    int           last_int_val;  \/\/\/< Used to prevent repeated callbacks.$/;"	m	class:GLUI_Scrollbar
+last_int_val	glui-2.35/src/include/GL/glui.h	/^    int           last_int_val;$/;"	m	class:GLUI_Spinner
+last_item	glui-2.35/src/include/GL/glui.h	/^    int last_item;$/;"	m	class:GLUI_FileBrowser
+last_line	glui-2.35/src/include/GL/glui.h	/^    int                 last_line;$/;"	m	class:GLUI_List
+last_live_float	glui-2.35/src/include/GL/glui.h	/^    float           last_live_float;$/;"	m	class:GLUI_Control
+last_live_float_array	glui-2.35/src/include/GL/glui.h	/^    float           last_live_float_array[GLUI_DEF_MAX_ARRAY];$/;"	m	class:GLUI_Control
+last_live_int	glui-2.35/src/include/GL/glui.h	/^    int             last_live_int;  $/;"	m	class:GLUI_Control
+last_live_text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String     last_live_text;$/;"	m	class:GLUI_Control
+last_sibling	glui-2.35/src/glui_node.cpp	/^GLUI_Node   *GLUI_Node::last_sibling( void )$/;"	f	class:GLUI_Node
+last_update_time	glui-2.35/src/include/GL/glui.h	/^    double     last_update_time; \/\/\/< GLUI_Time() we last advanced scrollbar.$/;"	m	class:GLUI_Scrollbar
+last_x	glui-2.35/src/example/example2.cpp	/^int   last_x, last_y;$/;"	v
+last_x	glui-2.35/src/example/example3.cpp	/^int   last_x, last_y;$/;"	v
+last_x	glui-2.35/src/example/example4.cpp	/^int   last_x, last_y;$/;"	v
+last_x	glui-2.35/src/example/example5.cpp	/^int   last_x, last_y;$/;"	v
+last_x	glui-2.35/src/include/GL/glui.h	/^    int           last_x, last_y;$/;"	m	class:GLUI_Scrollbar
+last_x	glui-2.35/src/include/GL/glui.h	/^    int           last_x, last_y;$/;"	m	class:GLUI_Spinner
+last_y	glui-2.35/src/example/example2.cpp	/^int   last_x, last_y;$/;"	v
+last_y	glui-2.35/src/example/example3.cpp	/^int   last_x, last_y;$/;"	v
+last_y	glui-2.35/src/example/example4.cpp	/^int   last_x, last_y;$/;"	v
+last_y	glui-2.35/src/example/example5.cpp	/^int   last_x, last_y;$/;"	v
+last_y	glui-2.35/src/include/GL/glui.h	/^    int           last_x, last_y;$/;"	m	class:GLUI_Scrollbar
+last_y	glui-2.35/src/include/GL/glui.h	/^    int           last_x, last_y;$/;"	m	class:GLUI_Spinner
+lblue	glui-2.35/src/include/GL/glui.h	/^    float lblue;$/;"	m	class:GLUI_Tree
+lblue	glui-2.35/src/include/GL/glui.h	/^    float lblue;$/;"	m	class:GLUI_TreePanel
+length	glui-2.35/src/algebra3.cpp	/^float vec2::length() const $/;"	f	class:vec2
+length	glui-2.35/src/algebra3.cpp	/^float vec3::length() const$/;"	f	class:vec3
+length	glui-2.35/src/algebra3.cpp	/^float vec4::length() const$/;"	f	class:vec4
+length2	glui-2.35/src/algebra3.cpp	/^float vec2::length2() const $/;"	f	class:vec2
+length2	glui-2.35/src/algebra3.cpp	/^float vec3::length2() const$/;"	f	class:vec3
+length2	glui-2.35/src/algebra3.cpp	/^float vec4::length2() const$/;"	f	class:vec4
+level	glui-2.35/src/include/GL/glui.h	/^    int level;   \/\/ how deep is this node$/;"	m	class:GLUI_Tree
+level_name	glui-2.35/src/include/GL/glui.h	/^    GLUI_String  level_name; \/\/ level name, eg: 1.1.2, III, or 3$/;"	m	class:GLUI_Tree
+lgreen	glui-2.35/src/include/GL/glui.h	/^    float lgreen;$/;"	m	class:GLUI_Tree
+lgreen	glui-2.35/src/include/GL/glui.h	/^    float lgreen;$/;"	m	class:GLUI_TreePanel
+light0_ambient	glui-2.35/src/example/example3.cpp	/^GLfloat light0_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light0_ambient	glui-2.35/src/example/example4.cpp	/^GLfloat light0_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light0_ambient	glui-2.35/src/example/example5.cpp	/^GLfloat light0_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light0_diffuse	glui-2.35/src/example/example3.cpp	/^GLfloat light0_diffuse[] =  {.6f, .6f, 1.0f, 1.0f};$/;"	v
+light0_diffuse	glui-2.35/src/example/example4.cpp	/^GLfloat light0_diffuse[] =  {.6f, .6f, 1.0f, 1.0f};$/;"	v
+light0_diffuse	glui-2.35/src/example/example5.cpp	/^GLfloat light0_diffuse[] =  {.6f, .6f, 1.0f, 1.0f};$/;"	v
+light0_enabled	glui-2.35/src/example/example3.cpp	/^int   light0_enabled = 1;$/;"	v
+light0_enabled	glui-2.35/src/example/example4.cpp	/^int   light0_enabled = 1;$/;"	v
+light0_enabled	glui-2.35/src/example/example5.cpp	/^int   light0_enabled = 1;$/;"	v
+light0_intensity	glui-2.35/src/example/example3.cpp	/^float light0_intensity = 1.0;$/;"	v
+light0_intensity	glui-2.35/src/example/example4.cpp	/^float light0_intensity = 1.0;$/;"	v
+light0_intensity	glui-2.35/src/example/example5.cpp	/^float light0_intensity = 1.0;$/;"	v
+light0_position	glui-2.35/src/example/example3.cpp	/^GLfloat light0_position[] = {.5f, .5f, 1.0f, 0.0f};$/;"	v
+light0_position	glui-2.35/src/example/example4.cpp	/^GLfloat light0_position[] = {.5f, .5f, 1.0f, 0.0f};$/;"	v
+light0_position	glui-2.35/src/example/example5.cpp	/^GLfloat light0_position[] = {.5f, .5f, 1.0f, 0.0f};$/;"	v
+light0_spinner	glui-2.35/src/example/example3.cpp	/^GLUI_Spinner     *spinner, *light0_spinner, *light1_spinner, *scale_spinner;$/;"	v
+light0_spinner	glui-2.35/src/example/example4.cpp	/^GLUI_Spinner    *spinner, *light0_spinner, *light1_spinner;$/;"	v
+light0_spinner	glui-2.35/src/example/example5.cpp	/^GLUI_Spinner    *light0_spinner, *light1_spinner;$/;"	v
+light1_ambient	glui-2.35/src/example/example3.cpp	/^GLfloat light1_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light1_ambient	glui-2.35/src/example/example4.cpp	/^GLfloat light1_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light1_ambient	glui-2.35/src/example/example5.cpp	/^GLfloat light1_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};$/;"	v
+light1_diffuse	glui-2.35/src/example/example3.cpp	/^GLfloat light1_diffuse[] =  {.9f, .6f, 0.0f, 1.0f};$/;"	v
+light1_diffuse	glui-2.35/src/example/example4.cpp	/^GLfloat light1_diffuse[] =  {.9f, .6f, 0.0f, 1.0f};$/;"	v
+light1_diffuse	glui-2.35/src/example/example5.cpp	/^GLfloat light1_diffuse[] =  {.9f, .6f, 0.0f, 1.0f};$/;"	v
+light1_enabled	glui-2.35/src/example/example3.cpp	/^int   light1_enabled = 0;$/;"	v
+light1_enabled	glui-2.35/src/example/example4.cpp	/^int   light1_enabled = 0;$/;"	v
+light1_enabled	glui-2.35/src/example/example5.cpp	/^int   light1_enabled = 1;$/;"	v
+light1_intensity	glui-2.35/src/example/example3.cpp	/^float light1_intensity = 1.0;$/;"	v
+light1_intensity	glui-2.35/src/example/example4.cpp	/^float light1_intensity = 1.0;$/;"	v
+light1_intensity	glui-2.35/src/example/example5.cpp	/^float light1_intensity = .4;$/;"	v
+light1_position	glui-2.35/src/example/example3.cpp	/^GLfloat light1_position[] = {-1.0f, -1.0f, 1.0f, 0.0f};$/;"	v
+light1_position	glui-2.35/src/example/example4.cpp	/^GLfloat light1_position[] = {-1.0f, -1.0f, 1.0f, 0.0f};$/;"	v
+light1_position	glui-2.35/src/example/example5.cpp	/^GLfloat light1_position[] = {-1.0f, -1.0f, 1.0f, 0.0f};$/;"	v
+light1_spinner	glui-2.35/src/example/example3.cpp	/^GLUI_Spinner     *spinner, *light0_spinner, *light1_spinner, *scale_spinner;$/;"	v
+light1_spinner	glui-2.35/src/example/example4.cpp	/^GLUI_Spinner    *spinner, *light0_spinner, *light1_spinner;$/;"	v
+light1_spinner	glui-2.35/src/example/example5.cpp	/^GLUI_Spinner    *light0_spinner, *light1_spinner;$/;"	v
+lights_rotation	glui-2.35/src/example/example5.cpp	/^GLfloat lights_rotation[16] = {1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };$/;"	v
 linearInterpolation	vector.cpp	/^Color linearInterpolation(float mid, float begin, float end, Color Ibegin, Color Iend){$/;"	f
+link_this_to_parent_first	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_this_to_parent_first( GLUI_Node *new_parent )$/;"	f	class:GLUI_Node
+link_this_to_parent_last	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_this_to_parent_last( GLUI_Node *new_parent )$/;"	f	class:GLUI_Node
+link_this_to_sibling_next	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_this_to_sibling_next( GLUI_Node *sibling )$/;"	f	class:GLUI_Node
+link_this_to_sibling_prev	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::link_this_to_sibling_prev( GLUI_Node *sibling )$/;"	f	class:GLUI_Node
+list	glui-2.35/src/example/example6.cpp	/^const char list[] =$/;"	v
+list	glui-2.35/src/include/GL/glui.h	/^    GLUI_List *list;$/;"	m	class:GLUI_FileBrowser
 listOfContourPoints	polyhedron.h	/^  std::list<Point> *listOfContourPoints[3]; \/\/index 0 for xy, 1 for xz, 2 for yz$/;"	m	class:Polyhedron
 listOfEdges	polyhedron.h	/^  Edge *listOfEdges; $/;"	m	class:Polyhedron
 listOfPoints	polyhedron.h	/^  Point_3D* listOfPoints;$/;"	m	class:Polyhedron
 listOfPointsNDC	polyhedron.h	/^  Point_3D* listOfPointsNDC;$/;"	m	class:Polyhedron
 listOfSurfaces	polyhedron.h	/^  Surface *listOfSurfaces;$/;"	m	class:Polyhedron
+listbox_callback	glui-2.35/src/glui_listbox.cpp	/^static void listbox_callback( int i )$/;"	f	file:
+live_inited	glui-2.35/src/include/GL/glui.h	/^    bool            live_inited;$/;"	m	class:GLUI_Control
+live_type	glui-2.35/src/include/GL/glui.h	/^    int             live_type;$/;"	m	class:GLUI_Control
+load_to_openGL	glui-2.35/src/viewmodel.cpp	/^ViewModel::load_to_openGL() $/;"	f	class:ViewModel
+load_to_openGL_noident	glui-2.35/src/viewmodel.cpp	/^ViewModel::load_to_openGL_noident() $/;"	f	class:ViewModel
+locked	glui-2.35/src/include/GL/glui.h	/^    int   locked;$/;"	m	class:GLUI_Translation
+lookat	glui-2.35/src/viewmodel.h	/^  vec3    eye, lookat;$/;"	m	class:ViewModel
+lookat_pitch	glui-2.35/src/viewmodel.cpp	/^ViewModel::lookat_pitch(const float angle) $/;"	f	class:ViewModel
+lookat_yaw	glui-2.35/src/viewmodel.cpp	/^ViewModel::lookat_yaw(const float angle) $/;"	f	class:ViewModel
+lred	glui-2.35/src/include/GL/glui.h	/^    float lred;   \/\/Color coding of level name$/;"	m	class:GLUI_Tree
+lred	glui-2.35/src/include/GL/glui.h	/^    float lred;$/;"	m	class:GLUI_TreePanel
 magnitude	vector.cpp	/^float magnitude(Vector v){$/;"	f
+main	glui-2.35/src/example/example1.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/example/example2.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/example/example3.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/example/example4.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/example/example5.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/example/example6.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	glui-2.35/src/tools/ppm2array.cpp	/^int main( int argc, char *argv[] )$/;"	f
 main	main.cpp	/^int main(int argc, char *argv[]){$/;"	f
+main_gfx_window_id	glui-2.35/src/include/GL/glui.h	/^    int           main_gfx_window_id;$/;"	m	class:GLUI_Main
+main_panel	glui-2.35/src/include/GL/glui.h	/^    GLUI_Panel   *main_panel;$/;"	m	class:GLUI_Main
+main_window	glui-2.35/src/example/example1.cpp	/^int   main_window;$/;"	v
+main_window	glui-2.35/src/example/example2.cpp	/^int   main_window;$/;"	v
+main_window	glui-2.35/src/example/example3.cpp	/^int   main_window;$/;"	v
+main_window	glui-2.35/src/example/example4.cpp	/^int   main_window;$/;"	v
+main_window	glui-2.35/src/example/example5.cpp	/^int   main_window;$/;"	v
+main_window	glui-2.35/src/example/example6.cpp	/^int main_window;$/;"	v
+make_mtx	glui-2.35/src/viewmodel.cpp	/^ViewModel::make_mtx() $/;"	f	class:ViewModel
+mat3	glui-2.35/src/algebra3.cpp	/^mat3::mat3() $/;"	f	class:mat3
+mat3	glui-2.35/src/algebra3.cpp	/^mat3::mat3(const mat3 &m)$/;"	f	class:mat3
+mat3	glui-2.35/src/algebra3.cpp	/^mat3::mat3(const vec3 &v0, const vec3 &v1, const vec3 &v2)$/;"	f	class:mat3
+mat3	glui-2.35/src/algebra3.h	/^class mat3$/;"	c
+mat4	glui-2.35/src/algebra3.cpp	/^mat4::mat4($/;"	f	class:mat4
+mat4	glui-2.35/src/algebra3.cpp	/^mat4::mat4() $/;"	f	class:mat4
+mat4	glui-2.35/src/algebra3.cpp	/^mat4::mat4(const mat4 &m)$/;"	f	class:mat4
+mat4	glui-2.35/src/algebra3.cpp	/^mat4::mat4(const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3)$/;"	f	class:mat4
+mat4	glui-2.35/src/algebra3.h	/^class mat4$/;"	c
+max_levels	glui-2.35/src/include/GL/glui.h	/^    int max_levels;$/;"	m	class:GLUI_TreePanel
+max_vec	glui-2.35/src/algebra3.cpp	/^vec2 max_vec(const vec2 &a, const vec2 &b)$/;"	f
+max_vec	glui-2.35/src/algebra3.cpp	/^vec3 max_vec(const vec3 &a, const vec3 &b)$/;"	f
+max_vec	glui-2.35/src/algebra3.cpp	/^vec4 max_vec(const vec4 &a, const vec4 &b)$/;"	f
+min_vec	glui-2.35/src/algebra3.cpp	/^vec2 min_vec(const vec2 &a, const vec2 &b)$/;"	f
+min_vec	glui-2.35/src/algebra3.cpp	/^vec3 min_vec(const vec3 &a, const vec3 &b)$/;"	f
+min_vec	glui-2.35/src/algebra3.cpp	/^vec4 min_vec(const vec4 &a, const vec4 &b)$/;"	f
 minus	vector.cpp	/^Vector minus(Point_3D p2, Point_3D p1){$/;"	f
 minus	vector.cpp	/^Vector minus(Vector v1, Vector v2) {$/;"	f
+moo	glui-2.35/src/example/example6.cpp	/^GLUI_TextBox     *moo;$/;"	v
+motion	glui-2.35/src/glui.cpp	/^void    GLUI_Main::motion(int x, int y)$/;"	f	class:GLUI_Main
+mouse	glui-2.35/src/glui.cpp	/^void    GLUI_Main::mouse(int button, int state, int x, int y)$/;"	f	class:GLUI_Main
+mouse_button_down	glui-2.35/src/include/GL/glui.h	/^    int           mouse_button_down;$/;"	m	class:GLUI_Main
+mouse_down	glui-2.35/src/arcball.cpp	/^void Arcball::mouse_down(int x, int y)$/;"	f	class:Arcball
+mouse_down_handler	glui-2.35/src/glui_button.cpp	/^int    GLUI_Button::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Button
+mouse_down_handler	glui-2.35/src/glui_checkbox.cpp	/^int    GLUI_Checkbox::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Checkbox
+mouse_down_handler	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_EditText
+mouse_down_handler	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_List
+mouse_down_handler	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Listbox
+mouse_down_handler	glui-2.35/src/glui_mouse_iaction.cpp	/^int    GLUI_Mouse_Interaction::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Mouse_Interaction
+mouse_down_handler	glui-2.35/src/glui_radio.cpp	/^int    GLUI_RadioButton::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_RadioButton
+mouse_down_handler	glui-2.35/src/glui_rollout.cpp	/^int   GLUI_Rollout::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Rollout
+mouse_down_handler	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Scrollbar
+mouse_down_handler	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Spinner
+mouse_down_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_TextBox
+mouse_down_handler	glui-2.35/src/glui_tree.cpp	/^int   GLUI_Tree::mouse_down_handler( int local_x, int local_y )$/;"	f	class:GLUI_Tree
+mouse_down_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int mouse_down_handler( int local_x, int local_y )                 { return false; }$/;"	f	class:GLUI_Control
+mouse_held_down_handler	glui-2.35/src/glui_button.cpp	/^int    GLUI_Button::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Button
+mouse_held_down_handler	glui-2.35/src/glui_checkbox.cpp	/^int    GLUI_Checkbox::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Checkbox
+mouse_held_down_handler	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_EditText
+mouse_held_down_handler	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_List
+mouse_held_down_handler	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Listbox
+mouse_held_down_handler	glui-2.35/src/glui_mouse_iaction.cpp	/^int    GLUI_Mouse_Interaction::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Mouse_Interaction
+mouse_held_down_handler	glui-2.35/src/glui_radio.cpp	/^int    GLUI_RadioButton::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_RadioButton
+mouse_held_down_handler	glui-2.35/src/glui_rollout.cpp	/^int  GLUI_Rollout::mouse_held_down_handler( $/;"	f	class:GLUI_Rollout
+mouse_held_down_handler	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Scrollbar
+mouse_held_down_handler	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_Spinner
+mouse_held_down_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::mouse_held_down_handler( int local_x, int local_y,$/;"	f	class:GLUI_TextBox
+mouse_held_down_handler	glui-2.35/src/glui_tree.cpp	/^int  GLUI_Tree::mouse_held_down_handler( $/;"	f	class:GLUI_Tree
+mouse_held_down_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int mouse_held_down_handler( int local_x, int local_y, bool inside) { return false; }$/;"	f	class:GLUI_Control
+mouse_motion	glui-2.35/src/arcball.cpp	/^void Arcball::mouse_motion(int x, int y)$/;"	f	class:Arcball
+mouse_motion	glui-2.35/src/arcball.cpp	/^void Arcball::mouse_motion(int x, int y, int shift, int ctrl, int alt)$/;"	f	class:Arcball
+mouse_over	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::mouse_over( int state, int x, int y )$/;"	f	class:GLUI_EditText
+mouse_over	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::mouse_over( int state, int x, int y )$/;"	f	class:GLUI_List
+mouse_over	glui-2.35/src/glui_listbox.cpp	/^int     GLUI_Listbox::mouse_over( int state, int x, int y )$/;"	f	class:GLUI_Listbox
+mouse_over	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::mouse_over( int state, int x, int y )$/;"	f	class:GLUI_TextBox
+mouse_over	glui-2.35/src/include/GL/glui.h	/^    virtual int  mouse_over( int state, int x, int y ) { return false; }$/;"	f	class:GLUI_Control
+mouse_over_control	glui-2.35/src/include/GL/glui.h	/^    GLUI_Control *mouse_over_control;$/;"	m	class:GLUI_Main
+mouse_to_sphere	glui-2.35/src/arcball.cpp	/^vec3 Arcball::mouse_to_sphere(const vec2 &p)$/;"	f	class:Arcball
+mouse_up	glui-2.35/src/arcball.cpp	/^void Arcball::mouse_up()$/;"	f	class:Arcball
+mouse_up_handler	glui-2.35/src/glui_button.cpp	/^int    GLUI_Button::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Button
+mouse_up_handler	glui-2.35/src/glui_checkbox.cpp	/^int    GLUI_Checkbox::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Checkbox
+mouse_up_handler	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_EditText
+mouse_up_handler	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_List
+mouse_up_handler	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Listbox
+mouse_up_handler	glui-2.35/src/glui_mouse_iaction.cpp	/^int    GLUI_Mouse_Interaction::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Mouse_Interaction
+mouse_up_handler	glui-2.35/src/glui_radio.cpp	/^int    GLUI_RadioButton::mouse_up_handler( int local_x, int local_y, $/;"	f	class:GLUI_RadioButton
+mouse_up_handler	glui-2.35/src/glui_rollout.cpp	/^int   GLUI_Rollout::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Rollout
+mouse_up_handler	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Scrollbar
+mouse_up_handler	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Spinner
+mouse_up_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_TextBox
+mouse_up_handler	glui-2.35/src/glui_tree.cpp	/^int   GLUI_Tree::mouse_up_handler( int local_x, int local_y, bool inside )$/;"	f	class:GLUI_Tree
+mouse_up_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int mouse_up_handler( int local_x, int local_y, bool inside )       { return false; }$/;"	f	class:GLUI_Control
+move	glui-2.35/src/viewmodel.cpp	/^ViewModel::move(const float side_move, const float up_move, const float forw_move) $/;"	f	class:ViewModel
+move	glui-2.35/src/viewmodel.cpp	/^ViewModel::move(const vec3 &v) \/* A vector version of the above command *\/$/;"	f	class:ViewModel
+move_abs	glui-2.35/src/viewmodel.cpp	/^ViewModel::move_abs(const vec3 &v) $/;"	f	class:ViewModel
+move_by_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::move_by_eye(const vec3 &new_eye) $/;"	f	class:ViewModel
+move_by_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::move_by_lookat(const vec3 &new_lookat) $/;"	f	class:ViewModel
+mtx	glui-2.35/src/viewmodel.h	/^  mat4    mtx;$/;"	m	class:ViewModel
 multByScalar	vector.cpp	/^Color multByScalar(Color c, float scalar){$/;"	f
 multByScalar	vector.cpp	/^Vector multByScalar(Vector v, float scalar){$/;"	f
+myGlutDisplay	glui-2.35/src/example/example1.cpp	/^void myGlutDisplay( void )$/;"	f
+myGlutDisplay	glui-2.35/src/example/example2.cpp	/^void myGlutDisplay( void )$/;"	f
+myGlutDisplay	glui-2.35/src/example/example3.cpp	/^void myGlutDisplay( void )$/;"	f
+myGlutDisplay	glui-2.35/src/example/example4.cpp	/^void myGlutDisplay( void )$/;"	f
+myGlutDisplay	glui-2.35/src/example/example5.cpp	/^void myGlutDisplay( void )$/;"	f
+myGlutIdle	glui-2.35/src/example/example1.cpp	/^void myGlutIdle( void )$/;"	f
+myGlutIdle	glui-2.35/src/example/example3.cpp	/^void myGlutIdle( void )$/;"	f
+myGlutIdle	glui-2.35/src/example/example5.cpp	/^void myGlutIdle( void )$/;"	f
+myGlutKeyboard	glui-2.35/src/example/example2.cpp	/^void myGlutKeyboard(unsigned char Key, int x, int y)$/;"	f
+myGlutKeyboard	glui-2.35/src/example/example3.cpp	/^void myGlutKeyboard(unsigned char Key, int x, int y)$/;"	f
+myGlutKeyboard	glui-2.35/src/example/example4.cpp	/^void myGlutKeyboard(unsigned char Key, int x, int y)$/;"	f
+myGlutKeyboard	glui-2.35/src/example/example5.cpp	/^void myGlutKeyboard(unsigned char Key, int x, int y)$/;"	f
+myGlutMenu	glui-2.35/src/example/example2.cpp	/^void myGlutMenu( int value )$/;"	f
+myGlutMenu	glui-2.35/src/example/example3.cpp	/^void myGlutMenu( int value )$/;"	f
+myGlutMenu	glui-2.35/src/example/example4.cpp	/^void myGlutMenu( int value )$/;"	f
+myGlutMenu	glui-2.35/src/example/example5.cpp	/^void myGlutMenu( int value )$/;"	f
+myGlutMotion	glui-2.35/src/example/example2.cpp	/^void myGlutMotion(int x, int y )$/;"	f
+myGlutMotion	glui-2.35/src/example/example3.cpp	/^void myGlutMotion(int x, int y )$/;"	f
+myGlutMotion	glui-2.35/src/example/example4.cpp	/^void myGlutMotion(int x, int y )$/;"	f
+myGlutMotion	glui-2.35/src/example/example5.cpp	/^void myGlutMotion(int x, int y )$/;"	f
+myGlutMouse	glui-2.35/src/example/example2.cpp	/^void myGlutMouse(int button, int button_state, int x, int y )$/;"	f
+myGlutMouse	glui-2.35/src/example/example3.cpp	/^void myGlutMouse(int button, int button_state, int x, int y )$/;"	f
+myGlutMouse	glui-2.35/src/example/example4.cpp	/^void myGlutMouse(int button, int button_state, int x, int y )$/;"	f
+myGlutMouse	glui-2.35/src/example/example5.cpp	/^void myGlutMouse(int button, int button_state, int x, int y )$/;"	f
+myGlutReshape	glui-2.35/src/example/example1.cpp	/^void myGlutReshape( int x, int y )$/;"	f
+myGlutReshape	glui-2.35/src/example/example2.cpp	/^void myGlutReshape( int x, int y )$/;"	f
+myGlutReshape	glui-2.35/src/example/example3.cpp	/^void myGlutReshape( int x, int y )$/;"	f
+myGlutReshape	glui-2.35/src/example/example4.cpp	/^void myGlutReshape( int x, int y )$/;"	f
+myGlutReshape	glui-2.35/src/example/example5.cpp	/^void myGlutReshape( int x, int y )$/;"	f
 n	common_type.h	/^  int n; \/\/ controls reflection intensity $/;"	m	struct:__anon9
+n	glui-2.35/src/algebra3.h	/^  float n[2];$/;"	m	class:vec2
+n	glui-2.35/src/algebra3.h	/^  float n[3];$/;"	m	class:vec3
+n	glui-2.35/src/algebra3.h	/^  float n[4];$/;"	m	class:vec4
+name	glui-2.35/src/include/GL/glui.h	/^    GLUI_String     name;       \/**< The name of this control *\/$/;"	m	class:GLUI_Control
+needs_idle	glui-2.35/src/glui.cpp	/^int  GLUI_Main::needs_idle( void )$/;"	f	class:GLUI_Main
+needs_idle	glui-2.35/src/glui_control.cpp	/^bool GLUI_Control::needs_idle() const$/;"	f	class:GLUI_Control
+needs_idle	glui-2.35/src/glui_rotation.cpp	/^bool GLUI_Rotation::needs_idle( void ) const$/;"	f	class:GLUI_Rotation
+needs_idle	glui-2.35/src/glui_scrollbar.cpp	/^bool GLUI_Scrollbar::needs_idle( void ) const$/;"	f	class:GLUI_Scrollbar
+needs_idle	glui-2.35/src/glui_spinner.cpp	/^bool GLUI_Spinner::needs_idle( void ) const$/;"	f	class:GLUI_Spinner
+newest_hist	glui-2.35/src/include/GL/glui.h	/^    int  newest_hist;$/;"	m	class:GLUI_CommandLine
+next	glui-2.35/src/glui_node.cpp	/^GLUI_Node    *GLUI_Node::next( void )$/;"	f	class:GLUI_Node
+next	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::next() $/;"	f	class:GLUI_TreePanel
+next_id	glui-2.35/src/include/GL/glui.h	/^    int next_id;$/;"	m	class:GLUI_TreePanel
+next_sibling	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *next_sibling;$/;"	m	class:GLUI_Node
 nn	common_type.h	/^  Vector nn;\/\/normal vector;$/;"	m	struct:__anon4
 normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon6
+normalize	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec2
+normalize	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
+normalize	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec4
 normalizeIntensities	polyhedron.cpp	/^void Polyhedron::normalizeIntensities(){$/;"	f	class:Polyhedron
 normalizeIntensities	polyhedron.cpp	/^void Polyhedron::normalizeIntensities(Polyhedron **polyhedra, int numberOfPolyhedra){$/;"	f	class:Polyhedron
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity; $/;"	m	struct:__anon2
 normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon4
+num_buttons	glui-2.35/src/include/GL/glui.h	/^    int  num_buttons;$/;"	m	class:GLUI_RadioGroup
+num_display	glui-2.35/src/example/example6.cpp	/^int num_display  = 0;$/;"	v
+num_format	glui-2.35/src/example/example6.cpp	/^int num_format  = 0;$/;"	v
+num_lines	glui-2.35/src/include/GL/glui.h	/^    int                 num_lines;$/;"	m	class:GLUI_List
+num_lines	glui-2.35/src/include/GL/glui.h	/^    int                 num_lines;$/;"	m	class:GLUI_TextBox
+num_periods	glui-2.35/src/include/GL/glui.h	/^    int                 num_periods;$/;"	m	class:GLUI_EditText
+numberOfCtrlPoints	curve.h	/^  int numberOfCtrlPoints;$/;"	m	class:Curve
+numberOfCurves	common_type.h	/^  int numberOfCurves;$/;"	m	struct:__anon10
 numberOfEdges	polyhedron.h	/^  int numberOfEdges;$/;"	m	class:Polyhedron
 numberOfPlanes	polyhedron.h	/^  int numberOfPlanes;$/;"	m	class:Polyhedron
 numberOfPoints	polyhedron.h	/^  int numberOfPoints;$/;"	m	class:Polyhedron
 numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon10
 numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon10
 numberOfSurfaces	polyhedron.h	/^  int numberOfSurfaces;$/;"	m	class:Polyhedron
+obj	glui-2.35/src/example/example2.cpp	/^int   obj = 0;$/;"	v
+objCB	glui-2.35/src/include/GL/glui.h	/^  GLUI_Control_CB objCB;$/;"	m	class:GLUI_CB
+obj_cb	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB             obj_cb;$/;"	m	class:GLUI_List
+obj_panel	glui-2.35/src/example/example3.cpp	/^GLUI_Panel       *obj_panel;$/;"	v
+obj_panel	glui-2.35/src/example/example4.cpp	/^GLUI_Panel      *obj_panel;$/;"	v
+obj_panel	glui-2.35/src/example/example5.cpp	/^GLUI_Panel      *obj_panel;$/;"	v
+obj_pos	glui-2.35/src/example/example5.cpp	/^float obj_pos[] = { 0.0, 0.0, 0.0 };$/;"	v
+obj_type	glui-2.35/src/example/example3.cpp	/^int   obj_type = 1;$/;"	v
+obj_type	glui-2.35/src/example/example4.cpp	/^int   obj_type = 1;$/;"	v
+obj_type	glui-2.35/src/example/example5.cpp	/^int   obj_type = 1;$/;"	v
+object_cb	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB       object_cb; \/* function pointer to object call_back *\/$/;"	m	class:GLUI_Scrollbar
 obliqueProj	polyhedron.cpp	/^Point_3D Polyhedron::obliqueProj(Point_3D dirVector, Point_3D p){ \/\/oblique projection on  xy-plane$/;"	f	class:Polyhedron
+oldest_hist	glui-2.35/src/include/GL/glui.h	/^    int  oldest_hist;$/;"	m	class:GLUI_CommandLine
+open	glui-2.35/src/glui_rollout.cpp	/^void    GLUI_Rollout::open( void )$/;"	f	class:GLUI_Rollout
+open	glui-2.35/src/glui_tree.cpp	/^void GLUI_Tree::open( void )$/;"	f	class:GLUI_Tree
+open_console_btn	glui-2.35/src/example/example3.cpp	/^GLUI_Button      *open_console_btn;$/;"	v
+operator !	glui-2.35/src/include/GL/glui.h	/^  bool operator!() const { return !idCB && !objCB; }$/;"	f	class:GLUI_CB
+operator !=	glui-2.35/src/algebra3.cpp	/^int operator!=(const mat3 &a, const mat3 &b)$/;"	f
+operator !=	glui-2.35/src/algebra3.cpp	/^int operator!=(const mat4 &a, const mat4 &b)$/;"	f
+operator !=	glui-2.35/src/algebra3.cpp	/^int operator!=(const vec2 &a, const vec2 &b)$/;"	f
+operator !=	glui-2.35/src/algebra3.cpp	/^int operator!=(const vec3 &a, const vec3 &b)$/;"	f
+operator !=	glui-2.35/src/algebra3.cpp	/^int operator!=(const vec4 &a, const vec4 &b)$/;"	f
+operator ()	glui-2.35/src/glui.cpp	/^void GLUI_CB::operator()(GLUI_Control*ctrl) const$/;"	f	class:GLUI_CB
+operator *	glui-2.35/src/algebra3.cpp	/^float operator*(const vec2 &a, const vec2 &b)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^float operator*(const vec3 &a, const vec3 &b)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^float operator*(const vec4 &a, const vec4 &b)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat3 operator*(const mat3 &a, const mat3 &b) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat3 operator*(const mat3 &a, float d)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat3 operator*(float d, const mat3 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat4 operator*(const mat4 &a, const mat4 &b) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat4 operator*(const mat4 &a, float d)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^mat4 operator*(float d, const mat4 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec2 operator*(const mat3 &a, const vec2 &v) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec2 operator*(const vec2 &a, float d)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec2 operator*(const vec2 &v, const mat3 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec2 operator*(float d, const vec2 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(const mat3 &a, const vec3 &v) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(const mat4 &a, const vec3 &v)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(const vec3 &a, float d)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(const vec3 &v, const mat3 &a) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(const vec3 &v, mat4 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec3 operator*(float d, const vec3 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec4 operator*(const mat4 &a, const vec4 &v) $/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec4 operator*(const vec4 &a, float d)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec4 operator*(const vec4 &v, const mat4 &a)$/;"	f
+operator *	glui-2.35/src/algebra3.cpp	/^vec4 operator*(float d, const vec4 &a)$/;"	f
+operator *	glui-2.35/src/quaternion.cpp	/^quat operator * ( const float t, const quat &a )$/;"	f
+operator *	glui-2.35/src/quaternion.cpp	/^quat operator * ( const quat &a, const float t)$/;"	f
+operator *	glui-2.35/src/quaternion.cpp	/^quat operator * ( const quat &a, const quat &b)$/;"	f
+operator *=	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::operator*=(float d)$/;"	f	class:mat3
+operator *=	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::operator*=(float d)$/;"	f	class:mat4
+operator *=	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::operator*=(float d)$/;"	f	class:vec2
+operator *=	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::operator*=(float d)$/;"	f	class:vec3
+operator *=	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::operator*=(float d)$/;"	f	class:vec4
+operator +	glui-2.35/src/algebra3.cpp	/^mat3 operator+(const mat3 &a, const mat3 &b)$/;"	f
+operator +	glui-2.35/src/algebra3.cpp	/^mat4 operator+(const mat4 &a, const mat4 &b)$/;"	f
+operator +	glui-2.35/src/algebra3.cpp	/^vec2 operator+(const vec2 &a, const vec2& b)$/;"	f
+operator +	glui-2.35/src/algebra3.cpp	/^vec3 operator+(const vec3 &a, const vec3 &b)$/;"	f
+operator +	glui-2.35/src/algebra3.cpp	/^vec4 operator+(const vec4 &a, const vec4 &b)$/;"	f
+operator +	glui-2.35/src/quaternion.cpp	/^quat operator + (const quat &a, const quat &b)$/;"	f
+operator +=	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::operator+=(const mat3& m)$/;"	f	class:mat3
+operator +=	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::operator+=(const mat4 &m)$/;"	f	class:mat4
+operator +=	glui-2.35/src/algebra3.cpp	/^vec2 & vec2::operator+=(const vec2 &v)$/;"	f	class:vec2
+operator +=	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::operator+=(const vec3 &v)$/;"	f	class:vec3
+operator +=	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::operator+=(const vec4 &v)$/;"	f	class:vec4
+operator -	glui-2.35/src/algebra3.cpp	/^mat3 operator-(const mat3 &a)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^mat3 operator-(const mat3 &a, const mat3 &b)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^mat4 operator-(const mat4 &a)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^mat4 operator-(const mat4 &a, const mat4 &b)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec2 operator-(const vec2 &a)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec2 operator-(const vec2 &a, const vec2& b)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec3 operator-(const vec3 &a)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec3 operator-(const vec3 &a, const vec3 &b)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec4 operator-(const vec4 &a)$/;"	f
+operator -	glui-2.35/src/algebra3.cpp	/^vec4 operator-(const vec4 &a, const vec4 &b)$/;"	f
+operator -	glui-2.35/src/quaternion.cpp	/^quat operator - (const quat &a )$/;"	f
+operator -	glui-2.35/src/quaternion.cpp	/^quat operator - (const quat &a, const quat &b)$/;"	f
+operator -=	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::operator-=(const mat3& m)$/;"	f	class:mat3
+operator -=	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::operator-=(const mat4 &m)$/;"	f	class:mat4
+operator -=	glui-2.35/src/algebra3.cpp	/^vec2 & vec2::operator-=(const vec2 &v)$/;"	f	class:vec2
+operator -=	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::operator-=(const vec3& v)$/;"	f	class:vec3
+operator -=	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::operator-=(const vec4 &v)$/;"	f	class:vec4
+operator /	glui-2.35/src/algebra3.cpp	/^mat3 operator\/(const mat3 &a, float d)$/;"	f
+operator /	glui-2.35/src/algebra3.cpp	/^mat4 operator\/(const mat4 &a, float d)$/;"	f
+operator /	glui-2.35/src/algebra3.cpp	/^vec2 operator\/(const vec2 &a, float d)$/;"	f
+operator /	glui-2.35/src/algebra3.cpp	/^vec3 operator\/(const vec3 &a, float d)$/;"	f
+operator /	glui-2.35/src/algebra3.cpp	/^vec4 operator\/(const vec4 &a, float d)$/;"	f
+operator /=	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::operator\/=(float d)$/;"	f	class:mat3
+operator /=	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::operator\/=(float d)$/;"	f	class:mat4
+operator /=	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::operator\/=(float d)$/;"	f	class:vec2
+operator /=	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::operator\/=(float d)$/;"	f	class:vec3
+operator /=	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::operator\/=(float d)$/;"	f	class:vec4
+operator =	glui-2.35/src/algebra3.cpp	/^mat3 &mat3::operator=(const mat3 &m)$/;"	f	class:mat3
+operator =	glui-2.35/src/algebra3.cpp	/^mat4 &mat4::operator=(const mat4 &m)$/;"	f	class:mat4
+operator =	glui-2.35/src/algebra3.cpp	/^vec2 & vec2::operator=(const vec2 &v)$/;"	f	class:vec2
+operator =	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::operator=(const vec3 &v)$/;"	f	class:vec3
+operator =	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::operator=(const vec4 &v)$/;"	f	class:vec4
+operator =	glui-2.35/src/quaternion.cpp	/^quat &quat::operator=(const quat &q)$/;"	f	class:quat
+operator ==	glui-2.35/src/algebra3.cpp	/^int operator==(const mat3 &a, const mat3 &b)$/;"	f
+operator ==	glui-2.35/src/algebra3.cpp	/^int operator==(const mat4 &a, const mat4 &b)$/;"	f
+operator ==	glui-2.35/src/algebra3.cpp	/^int operator==(const vec2 &a, const vec2 &b)$/;"	f
+operator ==	glui-2.35/src/algebra3.cpp	/^int operator==(const vec3 &a, const vec3 &b)$/;"	f
+operator ==	glui-2.35/src/algebra3.cpp	/^int operator==(const vec4 &a, const vec4 &b)$/;"	f
+operator []	glui-2.35/src/algebra3.cpp	/^const float &vec2::operator[](int i) const$/;"	f	class:vec2
+operator []	glui-2.35/src/algebra3.cpp	/^const float &vec3::operator[](int i) const$/;"	f	class:vec3
+operator []	glui-2.35/src/algebra3.cpp	/^const float &vec4::operator[](int i) const$/;"	f	class:vec4
+operator []	glui-2.35/src/algebra3.cpp	/^const vec3 &mat3::operator[](int i) const$/;"	f	class:mat3
+operator []	glui-2.35/src/algebra3.cpp	/^const vec4 &mat4::operator[](int i) const$/;"	f	class:mat4
+operator []	glui-2.35/src/algebra3.cpp	/^float &vec2::operator[](int i) $/;"	f	class:vec2
+operator []	glui-2.35/src/algebra3.cpp	/^float &vec3::operator[](int i) $/;"	f	class:vec3
+operator []	glui-2.35/src/algebra3.cpp	/^float &vec4::operator[](int i) $/;"	f	class:vec4
+operator []	glui-2.35/src/algebra3.cpp	/^vec3 &mat3::operator[](int i) $/;"	f	class:mat3
+operator []	glui-2.35/src/algebra3.cpp	/^vec4 &mat4::operator[](int i) $/;"	f	class:mat4
+operator ^	glui-2.35/src/algebra3.cpp	/^vec3 operator^(const vec2 &a, const vec2 &b)$/;"	f
+operator ^	glui-2.35/src/algebra3.cpp	/^vec3 operator^(const vec3 &a, const vec3 &b) $/;"	f
+operator bool	glui-2.35/src/include/GL/glui.h	/^  operator bool() const { return !(!(*this)); }$/;"	f	class:GLUI_CB
+orig_buf	glui-2.35/src/glui_internal_control.h	/^	int orig_buf, orig_win;$/;"	m	class:GLUI_DrawingSentinal
+orig_text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String         orig_text;$/;"	m	class:GLUI_EditText
+orig_text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String         orig_text;$/;"	m	class:GLUI_List
+orig_text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String         orig_text;$/;"	m	class:GLUI_TextBox
+orig_value	glui-2.35/src/include/GL/glui.h	/^    int  orig_value;$/;"	m	class:GLUI_Checkbox
+orig_value	glui-2.35/src/include/GL/glui.h	/^    int  orig_value;$/;"	m	class:GLUI_Listbox
+orig_value	glui-2.35/src/include/GL/glui.h	/^    int orig_value;$/;"	m	class:GLUI_RadioButton
+orig_win	glui-2.35/src/glui_internal_control.h	/^	int orig_buf, orig_win;$/;"	m	class:GLUI_DrawingSentinal
+orig_x	glui-2.35/src/include/GL/glui.h	/^    float orig_x, orig_y, orig_z;$/;"	m	class:GLUI_Translation
+orig_y	glui-2.35/src/include/GL/glui.h	/^    float orig_x, orig_y, orig_z;$/;"	m	class:GLUI_Translation
+orig_z	glui-2.35/src/include/GL/glui.h	/^    float orig_x, orig_y, orig_z;$/;"	m	class:GLUI_Translation
 outOfBound	graph.cpp	/^bool Graph::outOfBound(int x, int y){$/;"	f	class:Graph
+output_live	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::output_live(int update_main_gfx)$/;"	f	class:GLUI_Control
 p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon5
 p1Index	common_type.h	/^  int p1Index;$/;"	m	struct:__anon6
 p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon5
 p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon6
 p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon6
+pack	glui-2.35/src/glui_control.cpp	/^void    GLUI_Control::pack( int x, int y )$/;"	f	class:GLUI_Control
+pack_controls	glui-2.35/src/glui.cpp	/^void      GLUI_Main::pack_controls( void )$/;"	f	class:GLUI_Main
+pack_old	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::pack_old(int x, int y)$/;"	f	class:GLUI_Control
 paintersAlgo	polyhedron.cpp	/^void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){$/;"	f	class:Polyhedron
 paintersAlgo	polyhedron.cpp	/^void Polyhedron::paintersAlgo(Polyhedron **polyhedra, int numberOfPolyhedra, int planeIndex){ $/;"	f	class:Polyhedron
 pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon8
+panel	glui-2.35/src/include/GL/glui.h	/^    GLUI_TreePanel *panel; $/;"	m	class:GLUI_Tree
+parent	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent()        { return parent_node; }$/;"	f	class:GLUI_Node
+parent_node	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent_node;$/;"	m	class:GLUI_Node
+parent_window	glui-2.35/src/include/GL/glui.h	/^    int           parent_window;$/;"	m	class:GLUI_Main
+passive_motion	glui-2.35/src/glui.cpp	/^void    GLUI_Main::passive_motion(int x, int y)$/;"	f	class:GLUI_Main
+perspective3D	glui-2.35/src/algebra3.cpp	/^mat4 perspective3D(float d)$/;"	f
 phong	polyhedron.cpp	/^Color Polyhedron::phong(Point_3D p,  float Ia, float Il, Point_3D ff, Point_3D xx, int n ){$/;"	f	class:Polyhedron
 phong	polyhedron.cpp	/^Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn, float Ia, float Il, Point_3D ff, int n, double C, Vector ll, Vector rr, Vector vv){$/;"	f	class:Polyhedron
+pixels	glui-2.35/src/include/GL/glui.h	/^    unsigned char *pixels;$/;"	m	class:GLUI_Bitmap
+pointer_cb	glui-2.35/src/example/example3.cpp	/^void pointer_cb( GLUI_Control* control )$/;"	f
+post_update_main_gfx	glui-2.35/src/glui.cpp	/^void   GLUI_Main::post_update_main_gfx( void )$/;"	f	class:GLUI_Main
+prev	glui-2.35/src/glui_node.cpp	/^GLUI_Node    *GLUI_Node::prev( void )$/;"	f	class:GLUI_Node
+prev_sibling	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *prev_sibling;$/;"	m	class:GLUI_Node
+print	glui-2.35/src/algebra3.cpp	/^void mat3::print(FILE *file, const char *name) const $/;"	f	class:mat3
+print	glui-2.35/src/algebra3.cpp	/^void mat4::print(FILE *file, const char *name) const $/;"	f	class:mat4
+print	glui-2.35/src/algebra3.cpp	/^void vec3::print(FILE *file, const char *name) const  \/\/ print vector to a file$/;"	f	class:vec3
+print	glui-2.35/src/algebra3.cpp	/^void vec4::print(FILE *file, const char *name) const \/\/ print vector to a file$/;"	f	class:vec4
+print	glui-2.35/src/quaternion.cpp	/^void quat::print(FILE *dest, const char *name) const$/;"	f	class:quat
 printAttributes	polyhedron.cpp	/^void Polyhedron::printAttributes(){$/;"	f	class:Polyhedron
 printColor	vector.cpp	/^void printColor(const char *tag, Color c){$/;"	f
 printContourPoints	polyhedron.cpp	/^void Polyhedron::printContourPoints(){$/;"	f	class:Polyhedron
 printVector	vector.cpp	/^void printVector(const char *tag, Vector v){$/;"	f
+prod	glui-2.35/src/algebra3.cpp	/^vec2 prod(const vec2 &a, const vec2 &b)$/;"	f
+prod	glui-2.35/src/algebra3.cpp	/^vec3 prod(const vec3 &a, const vec3 &b)$/;"	f
+prod	glui-2.35/src/algebra3.cpp	/^vec4 prod(const vec4 &a, const vec4 &b)$/;"	f
+ptr_val	glui-2.35/src/include/GL/glui.h	/^    void           *ptr_val;          \/**< A pointer to the user's live variable value *\/$/;"	m	class:GLUI_Control
+q_down	glui-2.35/src/arcball.h	/^    quat  q_now, q_down, q_drag, q_increment;$/;"	m	class:Arcball
+q_drag	glui-2.35/src/arcball.h	/^    quat  q_now, q_down, q_drag, q_increment;$/;"	m	class:Arcball
+q_increment	glui-2.35/src/arcball.h	/^    quat  q_now, q_down, q_drag, q_increment;$/;"	m	class:Arcball
+q_now	glui-2.35/src/arcball.h	/^    quat  q_now, q_down, q_drag, q_increment;$/;"	m	class:Arcball
+quadObj	glui-2.35/src/include/GL/glui.h	/^    GLUquadricObj *quadObj;$/;"	m	class:GLUI_Rotation
+quadObj	glui-2.35/src/include/GL/glui.h	/^    GLUquadricObj *quadObj;$/;"	m	class:GLUI_Translation
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat()$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const double *d)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const float *d)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const float _s, const vec3 &_v)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const float x, const float y, const float z, const float w)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const quat &q)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.cpp	/^quat::quat(const vec3 &_v, const float _s)$/;"	f	class:quat
+quat	glui-2.35/src/quaternion.h	/^class quat$/;"	c
+quat_identity	glui-2.35/src/quaternion.cpp	/^quat quat_identity() $/;"	f
+quat_slerp	glui-2.35/src/quaternion.cpp	/^quat quat_slerp(const quat &from, const quat &to, float t)$/;"	f
 r	common_type.h	/^  float r;$/;"	m	struct:__anon1
+r	glui-2.35/src/include/GL/glui.h	/^  Byte r, g, b;$/;"	m	class:RGBc
+radio	glui-2.35/src/example/example2.cpp	/^GLUI_RadioGroup *radio;$/;"	v
+radio	glui-2.35/src/example/example3.cpp	/^GLUI_RadioGroup  *radio;$/;"	v
+radio	glui-2.35/src/example/example4.cpp	/^GLUI_RadioGroup *radio;$/;"	v
+radio	glui-2.35/src/example/example5.cpp	/^GLUI_RadioGroup *radio;$/;"	v
+radius	glui-2.35/src/arcball.h	/^    float radius, damp_factor;$/;"	m	class:Arcball
+randf	glui-2.35/src/glui_internal.h	52;"	d
 rasterize	polyhedron.cpp	/^void Polyhedron::rasterize(int planeIndex){$/;"	f	class:Polyhedron
+readCurves	user_io.cpp	/^void readCurves(std::ifstream *ifs, Graph *graph, Curves **curves, int numberOfPolyhedra){ $/;"	f
 readFile	user_io.cpp	/^void readFile(std::ifstream &ifs){$/;"	f
 readHeaders	user_io.cpp	/^void readHeaders(std::ifstream *ifs, int*numberOfObjects){$/;"	f
 readPixel	graph.cpp	/^Color Graph::readPixel(int x, int y){$/;"	f	class:Graph
-readPolyhedra	user_io.cpp	/^void readPolyhedra(std::ifstream *ifs, Graph **graphs, Polyhedron **polyhedra, int numberOfPolyhedra){ $/;"	f
+recalculate_item_width	glui-2.35/src/glui_listbox.cpp	/^bool    GLUI_Listbox::recalculate_item_width( void )$/;"	f	class:GLUI_Listbox
+recall_history	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::recall_history( int hist_num )$/;"	f	class:GLUI_CommandLine
+red	glui-2.35/src/include/GL/glui.h	/^    float red;   \/\/Color coding of column line$/;"	m	class:GLUI_Tree
+red	glui-2.35/src/include/GL/glui.h	/^    float red;$/;"	m	class:GLUI_TreePanel
+redraw	glui-2.35/src/glui_control.cpp	/^void	      GLUI_Control::redraw(void) {$/;"	f	class:GLUI_Control
+redraw_window	glui-2.35/src/glui_control.cpp	/^void	     GLUI_Control::redraw_window(void) {$/;"	f	class:GLUI_Control
+refresh	glui-2.35/src/glui.cpp	/^void    GLUI_Main::refresh( void )$/;"	f	class:GLUI_Main
+refresh	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::refresh() $/;"	f	class:GLUI_TreePanel
+reset	glui-2.35/src/glui_rotation.cpp	/^void  GLUI_Rotation::reset( void )$/;"	f	class:GLUI_Rotation
+reset	glui-2.35/src/viewmodel.cpp	/^ViewModel::reset() $/;"	f	class:ViewModel
+resetToRoot	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::resetToRoot(GLUI_Panel *new_root) $/;"	f	class:GLUI_TreePanel
+reset_growth	glui-2.35/src/glui_scrollbar.cpp	/^void    GLUI_Scrollbar::reset_growth( void )$/;"	f	class:GLUI_Scrollbar
+reset_growth	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::reset_growth( void )$/;"	f	class:GLUI_Spinner
+reset_history	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::reset_history( void )$/;"	f	class:GLUI_CommandLine
+reset_up	glui-2.35/src/viewmodel.cpp	/^ViewModel::reset_up() $/;"	f	class:ViewModel
+reset_up	glui-2.35/src/viewmodel.cpp	/^ViewModel::reset_up(const int axis_num) $/;"	f	class:ViewModel
+reshape	glui-2.35/src/glui.cpp	/^void    GLUI_Main::reshape( int reshape_w, int reshape_h )$/;"	f	class:GLUI_Main
+reshape	glui-2.35/src/glui.cpp	/^void  GLUI_Master_Object::reshape( void )$/;"	f	class:GLUI_Master_Object
 restorePixelBuffer	graph.cpp	/^void Graph::restorePixelBuffer(){$/;"	f	class:Graph
+restore_draw_buffer	glui-2.35/src/glui.cpp	/^void         GLUI_Main::restore_draw_buffer( int buffer_state )$/;"	f	class:GLUI_Main
+restore_window	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::restore_window(int orig)$/;"	f	class:GLUI_Control
+roll	glui-2.35/src/viewmodel.cpp	/^ViewModel::roll(const float angle) $/;"	f	class:ViewModel
+rollout_height_pixels	glui-2.35/src/glui_rollout.cpp	/^enum {rollout_height_pixels=GLUI_DEFAULT_CONTROL_HEIGHT + 7};$/;"	e	enum:__anon17	file:
+root_children	glui-2.35/src/include/GL/glui.h	/^    int root_children;$/;"	m	class:GLUI_TreePanel
+rot	glui-2.35/src/arcball.h	/^    mat4  rot, rot_increment;$/;"	m	class:Arcball
+rot_about_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::rot_about_eye(const mat4 &rot) $/;"	f	class:ViewModel
+rot_about_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::rot_about_lookat(const mat4 &rot) $/;"	f	class:ViewModel
+rot_increment	glui-2.35/src/arcball.h	/^    mat4  rot, rot_increment;$/;"	m	class:Arcball
+rot_ptr	glui-2.35/src/arcball.h	/^    mat4  *rot_ptr;$/;"	m	class:Arcball
 rotate	polyhedron.cpp	/^void Polyhedron::rotate(Point_3D p1, Point_3D p2, float angle){$/;"	f	class:Polyhedron
+rotation2D	glui-2.35/src/algebra3.cpp	/^mat3 rotation2D(const vec2 &Center, float angleDeg) $/;"	f
+rotation3D	glui-2.35/src/algebra3.cpp	/^mat4 rotation3D(const vec3 &Axis, float angleDeg) $/;"	f
+rotation3Drad	glui-2.35/src/algebra3.cpp	/^mat4 rotation3Drad(const vec3 &Axis, float angleRad) $/;"	f
+rotationX	glui-2.35/src/example/example2.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationX	glui-2.35/src/example/example3.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationX	glui-2.35/src/example/example4.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationX	glui-2.35/src/example/example5.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationY	glui-2.35/src/example/example2.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationY	glui-2.35/src/example/example3.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationY	glui-2.35/src/example/example4.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
+rotationY	glui-2.35/src/example/example5.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
 rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon8
+s	glui-2.35/src/quaternion.h	/^  float s;  \/* scalar component *\/$/;"	m	class:quat
 savePolyhedraToFile	polyhedron.cpp	/^void Polyhedron::savePolyhedraToFile(Polyhedron **polyhedra, Window *window, const char *filename){$/;"	f	class:Polyhedron
+scale	glui-2.35/src/example/example3.cpp	/^float scale = 1.0;$/;"	v
+scale	glui-2.35/src/example/example4.cpp	/^float scale = 1.0;$/;"	v
+scale	glui-2.35/src/example/example5.cpp	/^float scale = 1.0;$/;"	v
 scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha){$/;"	f	class:Polyhedron
 scale	polyhedron.cpp	/^void Polyhedron::scale(float alpha, float beta, float gamma){$/;"	f	class:Polyhedron
 scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon8
+scale_angle	glui-2.35/src/quaternion.cpp	/^void quat::scale_angle(float f)$/;"	f	class:quat
+scale_factor	glui-2.35/src/include/GL/glui.h	/^    float scale_factor;$/;"	m	class:GLUI_Translation
+scale_spinner	glui-2.35/src/example/example3.cpp	/^GLUI_Spinner     *spinner, *light0_spinner, *light1_spinner, *scale_spinner;$/;"	v
+scaling2D	glui-2.35/src/algebra3.cpp	/^mat3 scaling2D(const vec2 &scaleVector)$/;"	f
+scaling3D	glui-2.35/src/algebra3.cpp	/^mat4 scaling3D(const vec3 &scaleVector)$/;"	f
 scene	common_type.h	/^  Scene scene;$/;"	m	struct:__anon10
+scroll	glui-2.35/src/example/example6.cpp	/^const char scroll[] = $/;"	v
+scroll_history	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::scroll_history( int direction )$/;"	f	class:GLUI_CommandLine
+scrollbar	glui-2.35/src/include/GL/glui.h	/^    GLUI_Scrollbar      *scrollbar;$/;"	m	class:GLUI_List
+scrollbar	glui-2.35/src/include/GL/glui.h	/^    GLUI_Scrollbar     *scrollbar;$/;"	m	class:GLUI_TextBox
+scrollbar_callback	glui-2.35/src/glui_list.cpp	/^void GLUI_List::scrollbar_callback(GLUI_Control *my_scrollbar) {$/;"	f	class:GLUI_List
+scrollbar_callback	glui-2.35/src/glui_textbox.cpp	/^void GLUI_TextBox::scrollbar_callback(GLUI_Control *my_scrollbar) {$/;"	f	class:GLUI_TextBox
+segments	glui-2.35/src/example/example1.cpp	/^int   segments = 8;$/;"	v
+segments	glui-2.35/src/example/example2.cpp	/^int   segments = 8;$/;"	v
+segments	glui-2.35/src/example/example3.cpp	/^int   segments = 8;$/;"	v
+segments	glui-2.35/src/example/example4.cpp	/^int   segments = 8;$/;"	v
+segments	glui-2.35/src/example/example5.cpp	/^int   segments = 8;$/;"	v
+segments2	glui-2.35/src/example/example3.cpp	/^int   segments2 = 8;$/;"	v
+segments2	glui-2.35/src/example/example4.cpp	/^int   segments2 = 8;$/;"	v
+segments2	glui-2.35/src/example/example5.cpp	/^int   segments2 = 8;$/;"	v
+sel_end	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_EditText
+sel_end	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_TextBox
+sel_start	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_EditText
+sel_start	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_TextBox
 selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon10
+set	glui-2.35/src/algebra3.cpp	/^void mat3::set(const vec3 &v0, const vec3 &v1, const vec3 &v2) $/;"	f	class:mat3
+set	glui-2.35/src/algebra3.cpp	/^void vec2::set( float x, float y )$/;"	f	class:vec2
+set	glui-2.35/src/algebra3.cpp	/^void vec3::set(float x, float y, float z)   \/\/ set vector$/;"	f	class:vec3
+set	glui-2.35/src/algebra3.cpp	/^void vec4::set(float x, float y, float z, float a)$/;"	f	class:vec4
+set	glui-2.35/src/include/GL/glui.h	/^  void set(Byte r,Byte g,Byte b) {this->r=r;this->g=g;this->b=b;}$/;"	f	class:RGBc
+set	glui-2.35/src/quaternion.cpp	/^void quat::set(const vec3 &_v, const float _s)$/;"	f	class:quat
 setCentroid	polyhedron.cpp	/^void Polyhedron::setCentroid(){$/;"	f	class:Polyhedron
 setDepth	polyhedron.cpp	/^void Polyhedron::setDepth(){$/;"	f	class:Polyhedron
 setDepth	polyhedron.cpp	/^void Polyhedron::setDepth(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D ff){$/;"	f	class:Polyhedron
@@ -201,39 +1609,313 @@ setNormalVectors	polyhedron.cpp	/^void Polyhedron::setNormalVectors(Polyhedron *
 setPhongKCoeff	polyhedron.cpp	/^void Polyhedron::setPhongKCoeff(Color ka, Color kd, Color ks){ $/;"	f	class:Polyhedron
 setPhongKCoeffForEachPolyhedron	polyhedron.cpp	/^void Polyhedron::setPhongKCoeffForEachPolyhedron(Polyhedron **polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
 setPhongParams	polyhedron.cpp	/^void Polyhedron::setPhongParams(Polyhedron**polyhedra, int numberOfPolyhedra, Color ka, Color kd, Color ks){$/;"	f	class:Polyhedron
+set_alignment	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_alignment(int new_align)$/;"	f	class:GLUI_Control
+set_allow_change_dir	glui-2.35/src/include/GL/glui.h	/^    void set_allow_change_dir(int c) { allow_change_dir = c; }$/;"	f	class:GLUI_FileBrowser
+set_angle	glui-2.35/src/quaternion.cpp	/^void quat::set_angle(float f)$/;"	f	class:quat
+set_child_number	glui-2.35/src/include/GL/glui.h	/^    void set_child_number(int c) { child_number = c; } $/;"	f	class:GLUI_Tree
+set_click_type	glui-2.35/src/include/GL/glui.h	/^    void set_click_type(int d) {$/;"	f	class:GLUI_List
+set_color	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::set_color(float r, float g, float b) $/;"	f	class:GLUI_TreePanel
+set_color	glui-2.35/src/include/GL/glui.h	/^    void set_color(float r, float g, float b) { $/;"	f	class:GLUI_Tree
+set_column	glui-2.35/src/include/GL/glui.h	/^    void set_column(GLUI_Column *c) { column = c; }$/;"	f	class:GLUI_Tree
+set_constraints	glui-2.35/src/arcball.cpp	/^void Arcball::set_constraints(bool _constraint_x, bool _constraint_y)$/;"	f	class:Arcball
+set_current	glui-2.35/src/include/GL/glui.h	/^    void set_current(int c) { is_current = c; }$/;"	f	class:GLUI_Tree
+set_current_draw_buffer	glui-2.35/src/glui.cpp	/^int          GLUI_Main::set_current_draw_buffer( void )$/;"	f	class:GLUI_Main
+set_damping	glui-2.35/src/arcball.cpp	/^void Arcball::set_damping(float d)$/;"	f	class:Arcball
+set_distance	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_distance(const float new_distance) $/;"	f	class:ViewModel
+set_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_eye(const float x, const float y, const float z) $/;"	f	class:ViewModel
+set_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_eye(const vec3 &new_eye) $/;"	f	class:ViewModel
+set_float_array_val	glui-2.35/src/glui_control.cpp	/^void  GLUI_Control::set_float_array_val( float *array_ptr )$/;"	f	class:GLUI_Control
+set_float_limits	glui-2.35/src/glui_edittext.cpp	/^void GLUI_EditText::set_float_limits( float low, float high, int limit_type )$/;"	f	class:GLUI_EditText
+set_float_limits	glui-2.35/src/glui_scrollbar.cpp	/^void   GLUI_Scrollbar::set_float_limits( float low, float high, int limit_type )$/;"	f	class:GLUI_Scrollbar
+set_float_limits	glui-2.35/src/glui_spinner.cpp	/^void GLUI_Spinner::set_float_limits( float low, float high, int limit_type )$/;"	f	class:GLUI_Spinner
+set_float_val	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::set_float_val( float new_val )$/;"	f	class:GLUI_EditText
+set_float_val	glui-2.35/src/glui_scrollbar.cpp	/^void   GLUI_Scrollbar::set_float_val( float new_val )$/;"	f	class:GLUI_Scrollbar
+set_float_val	glui-2.35/src/glui_spinner.cpp	/^void   GLUI_Spinner::set_float_val( float new_val )$/;"	f	class:GLUI_Spinner
+set_float_val	glui-2.35/src/include/GL/glui.h	/^    virtual void   set_float_val( float new_float )   { float_val = new_float; output_live(true); }$/;"	f	class:GLUI_Control
+set_font	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_font(void *new_font)$/;"	f	class:GLUI_Control
+set_format	glui-2.35/src/include/GL/glui.h	/^    void            set_format(int f) { format = f; }$/;"	f	class:GLUI_TreePanel
+set_format	glui-2.35/src/include/GL/glui.h	/^    void set_format(int f) { format = f; }$/;"	f	class:GLUI_Tree
+set_glutButtonBoxFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutButtonBoxFunc(Int2_CB f)              {glutButtonBoxFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutDialsFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutDialsFunc(Int2_CB f)                      {glutDialsFunc(f);}  $/;"	f	class:GLUI_Master_Object
+set_glutDisplayFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutDisplayFunc(void (*f)(void)) {glutDisplayFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutIdleFunc	glui-2.35/src/glui.cpp	/^void    GLUI_Master_Object::set_glutIdleFunc(void (*f)(void))$/;"	f	class:GLUI_Master_Object
+set_glutKeyboardFunc	glui-2.35/src/glui.cpp	/^void GLUI_Master_Object::set_glutKeyboardFunc(void (*f)(unsigned char key, $/;"	f	class:GLUI_Master_Object
+set_glutMenuStateFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutMenuStateFunc(Int1_CB f)              {glutMenuStateFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutMenuStatusFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutMenuStatusFunc(Int3_CB f)            {glutMenuStatusFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutMouseFunc	glui-2.35/src/glui.cpp	/^void GLUI_Master_Object::set_glutMouseFunc(void (*f)(int button, int state,$/;"	f	class:GLUI_Master_Object
+set_glutOverlayDisplayFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutOverlayDisplayFunc(void(*f)(void)){glutOverlayDisplayFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutReshapeFunc	glui-2.35/src/glui.cpp	/^void GLUI_Master_Object::set_glutReshapeFunc(void (*f)(int width, int height))$/;"	f	class:GLUI_Master_Object
+set_glutSpaceballButtonFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutSpaceballButtonFunc(Int2_CB f)  {glutSpaceballButtonFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutSpaceballMotionFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutSpaceballMotionFunc(Int3_CB f)  {glutSpaceballMotionFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutSpaceballRotateFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutSpaceballRotateFunc(Int3_CB f)  {glutSpaceballRotateFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutSpecialFunc	glui-2.35/src/glui.cpp	/^void GLUI_Master_Object::set_glutSpecialFunc(void (*f)(int key, $/;"	f	class:GLUI_Master_Object
+set_glutTabletButtonFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutTabletButtonFunc(Int4_CB f)        {glutTabletButtonFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutTabletMotionFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutTabletMotionFunc(Int2_CB f)        {glutTabletMotionFunc(f);}$/;"	f	class:GLUI_Master_Object
+set_glutTimerFunc	glui-2.35/src/include/GL/glui.h	/^    void set_glutTimerFunc(unsigned int millis, void (*f)(int value), int value)$/;"	f	class:GLUI_Master_Object
+set_h	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_h(int new_h)$/;"	f	class:GLUI_Control
+set_h	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::set_h(int h) $/;"	f	class:GLUI_FileBrowser
+set_id	glui-2.35/src/include/GL/glui.h	/^    virtual void   set_id( int id ) { user_id=id; }$/;"	f	class:GLUI_Control
+set_id	glui-2.35/src/include/GL/glui.h	/^    void set_id(int i) { id = i; }$/;"	f	class:GLUI_Tree
+set_int_limits	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::set_int_limits( int low, int high, int limit_type )$/;"	f	class:GLUI_EditText
+set_int_limits	glui-2.35/src/glui_scrollbar.cpp	/^void   GLUI_Scrollbar::set_int_limits( int low, int high, int limit_type )$/;"	f	class:GLUI_Scrollbar
+set_int_limits	glui-2.35/src/glui_spinner.cpp	/^void   GLUI_Spinner::set_int_limits( int low, int high, int limit_type )$/;"	f	class:GLUI_Spinner
+set_int_val	glui-2.35/src/glui_checkbox.cpp	/^void    GLUI_Checkbox::set_int_val( int new_val )$/;"	f	class:GLUI_Checkbox
+set_int_val	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::set_int_val( int new_val )$/;"	f	class:GLUI_EditText
+set_int_val	glui-2.35/src/glui_listbox.cpp	/^void    GLUI_Listbox::set_int_val( int new_val )$/;"	f	class:GLUI_Listbox
+set_int_val	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioGroup::set_int_val( int new_val )$/;"	f	class:GLUI_RadioGroup
+set_int_val	glui-2.35/src/glui_scrollbar.cpp	/^void   GLUI_Scrollbar::set_int_val( int new_val )$/;"	f	class:GLUI_Scrollbar
+set_int_val	glui-2.35/src/glui_spinner.cpp	/^void   GLUI_Spinner::set_int_val( int new_val )$/;"	f	class:GLUI_Spinner
+set_int_val	glui-2.35/src/include/GL/glui.h	/^    virtual void   set_int_val( int new_int )         { int_val = new_int; output_live(true); }$/;"	f	class:GLUI_Control
+set_left_button_glut_menu_control	glui-2.35/src/glui.cpp	/^void  GLUI_Master_Object::set_left_button_glut_menu_control( $/;"	f	class:GLUI_Master_Object
+set_level	glui-2.35/src/include/GL/glui.h	/^    void set_level(int l) { level = l; }$/;"	f	class:GLUI_Tree
+set_level_color	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::set_level_color(float r, float g, float b) $/;"	f	class:GLUI_TreePanel
+set_level_color	glui-2.35/src/include/GL/glui.h	/^    void set_level_color(float r, float g, float b) { $/;"	f	class:GLUI_Tree
+set_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_lookat(const float x, const float y, const float z) $/;"	f	class:ViewModel
+set_lookat	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_lookat(const vec3 &new_lookat) $/;"	f	class:ViewModel
+set_main_gfx_window	glui-2.35/src/glui.cpp	/^void   GLUI::set_main_gfx_window( int window_id )$/;"	f	class:GLUI
+set_name	glui-2.35/src/glui_control.cpp	/^void   GLUI_Control::set_name( const char *str )$/;"	f	class:GLUI_Control
+set_name	glui-2.35/src/glui_panel.cpp	/^void    GLUI_Panel::set_name( const char *new_name )$/;"	f	class:GLUI_Panel
+set_name	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioGroup::set_name( const char *text )$/;"	f	class:GLUI_RadioGroup
+set_numeric_text	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::set_numeric_text( void )$/;"	f	class:GLUI_EditText
+set_object_callback	glui-2.35/src/include/GL/glui.h	/^    void set_object_callback(GLUI_CB cb=GLUI_CB(), GLUI_Control*obj=NULL)$/;"	f	class:GLUI_List
+set_object_callback	glui-2.35/src/include/GL/glui.h	/^    void set_object_callback(GLUI_CB cb=GLUI_CB(), GLUI_Control*obj=NULL)$/;"	f	class:GLUI_Scrollbar
+set_one_val	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_one_val( float val, int index )$/;"	f	class:GLUI_Translation
+set_ortho_projection	glui-2.35/src/glui.cpp	/^void  GLUI_Main::set_ortho_projection( void )$/;"	f	class:GLUI_Main
+set_params	glui-2.35/src/arcball.cpp	/^void Arcball::set_params(const vec2 &_center, float _radius)$/;"	f	class:Arcball
+set_ptr_val	glui-2.35/src/include/GL/glui.h	/^    virtual void   set_ptr_val( void *new_ptr )       { ptr_val = new_ptr; output_live(true); }$/;"	f	class:GLUI_Control
+set_selected	glui-2.35/src/glui_radio.cpp	/^void    GLUI_RadioGroup::set_selected( int int_val )$/;"	f	class:GLUI_RadioGroup
+set_speed	glui-2.35/src/include/GL/glui.h	/^    void set_speed( float s ) { scale_factor = s; }$/;"	f	class:GLUI_Translation
+set_speed	glui-2.35/src/include/GL/glui.h	/^    void set_speed( float speed ) { user_speed = speed; }$/;"	f	class:GLUI_Spinner
+set_speed	glui-2.35/src/include/GL/glui.h	/^    void set_speed( float speed ) { user_speed = speed; };$/;"	f	class:GLUI_Scrollbar
+set_spin	glui-2.35/src/glui_rotation.cpp	/^void   GLUI_Rotation::set_spin( float damp_factor )$/;"	f	class:GLUI_Rotation
+set_start_line	glui-2.35/src/include/GL/glui.h	/^    void set_start_line(int l) { start_line = l; }$/;"	f	class:GLUI_List
+set_start_line	glui-2.35/src/include/GL/glui.h	/^    void set_start_line(int l) { start_line = l; }$/;"	f	class:GLUI_TextBox
+set_tab_w	glui-2.35/src/include/GL/glui.h	/^    void set_tab_w(int w) { tab_width = w; }$/;"	f	class:GLUI_TextBox
+set_text	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::set_text( const char *new_text )$/;"	f	class:GLUI_EditText
+set_text	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::set_text( const char *text )$/;"	f	class:GLUI_StaticText
+set_text	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::set_text( const char *new_text )$/;"	f	class:GLUI_TextBox
+set_text	glui-2.35/src/include/GL/glui.h	/^    virtual void set_text( const char *t )   {}$/;"	f	class:GLUI_Control
+set_text	glui-2.35/src/include/GL/glui.h	/^    void set_text( const GLUI_String &s) { set_text(s.c_str()); }$/;"	f	class:GLUI_EditText
+set_to_bkgd_color	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_to_bkgd_color( void )$/;"	f	class:GLUI_Control
+set_to_glut_window	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::set_to_glut_window()$/;"	f	class:GLUI_Control
+set_type	glui-2.35/src/glui_panel.cpp	/^void    GLUI_Panel::set_type( int new_type )$/;"	f	class:GLUI_Panel
+set_up	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_up(const float x, const float y, const float z) $/;"	f	class:ViewModel
+set_up	glui-2.35/src/viewmodel.cpp	/^ViewModel::set_up(const vec3 &new_up) $/;"	f	class:ViewModel
+set_viewport	glui-2.35/src/glui.cpp	/^void  GLUI_Main::set_viewport( void )$/;"	f	class:GLUI_Main
+set_w	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_w(int new_w)$/;"	f	class:GLUI_Control
+set_w	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::set_w(int w) $/;"	f	class:GLUI_FileBrowser
+set_x	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_x( float val )$/;"	f	class:GLUI_Translation
+set_y	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_y( float val )$/;"	f	class:GLUI_Translation
+set_z	glui-2.35/src/glui_translation.cpp	/^void  GLUI_Translation::set_z( float val )$/;"	f	class:GLUI_Translation
 setupContourPoints	polyhedron.cpp	/^void Polyhedron::setupContourPoints(){$/;"	f	class:Polyhedron
+setup_default_glut_callbacks	glui-2.35/src/glui.cpp	/^void GLUI_Main::setup_default_glut_callbacks( void )$/;"	f	class:GLUI_Main
+setup_lights	glui-2.35/src/glui_rotation.cpp	/^void    GLUI_Rotation::setup_lights( void )$/;"	f	class:GLUI_Rotation
+setup_texture	glui-2.35/src/glui_rotation.cpp	/^void GLUI_Rotation::setup_texture( void )$/;"	f	class:GLUI_Rotation
+should_redraw_now	glui-2.35/src/glui.cpp	/^bool	     GLUI_Main::should_redraw_now(GLUI_Control *ctl)$/;"	f	class:GLUI_Main
+show	glui-2.35/src/glui.cpp	/^void            GLUI::show( void )$/;"	f	class:GLUI
+show_axes	glui-2.35/src/example/example5.cpp	/^int   show_axes = 1;$/;"	v
+show_sphere	glui-2.35/src/example/example4.cpp	/^int   show_sphere=1;$/;"	v
+show_sphere	glui-2.35/src/example/example5.cpp	/^int   show_sphere=1;$/;"	v
+show_text	glui-2.35/src/example/example5.cpp	/^int   show_text = 1;$/;"	v
+show_torus	glui-2.35/src/example/example4.cpp	/^int   show_torus=1;$/;"	v
+show_torus	glui-2.35/src/example/example5.cpp	/^int   show_torus=1;$/;"	v
+side	glui-2.35/src/viewmodel.h	/^  vec3    up, side, forward;$/;"	m	class:ViewModel
+sort_items	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::sort_items( void )$/;"	f	class:GLUI_Listbox
+spacebar_mouse_click	glui-2.35/src/include/GL/glui.h	/^    bool            spacebar_mouse_click; \/\/\/< Spacebar simulates click.$/;"	m	class:GLUI_Control
+special	glui-2.35/src/glui.cpp	/^void    GLUI_Main::special(int key, int x, int y)$/;"	f	class:GLUI_Main
+special_handler	glui-2.35/src/glui_commandline.cpp	/^int    GLUI_CommandLine::special_handler( int key,int modifiers )$/;"	f	class:GLUI_CommandLine
+special_handler	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::special_handler( int key,int modifiers )$/;"	f	class:GLUI_EditText
+special_handler	glui-2.35/src/glui_list.cpp	/^int    GLUI_List::special_handler( int key,int modifiers )$/;"	f	class:GLUI_List
+special_handler	glui-2.35/src/glui_listbox.cpp	/^int    GLUI_Listbox::special_handler( int key,int modifiers )$/;"	f	class:GLUI_Listbox
+special_handler	glui-2.35/src/glui_mouse_iaction.cpp	/^int    GLUI_Mouse_Interaction::special_handler( int key,int modifiers )$/;"	f	class:GLUI_Mouse_Interaction
+special_handler	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::special_handler( int key,int modifiers )$/;"	f	class:GLUI_Scrollbar
+special_handler	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::special_handler( int key,int modifiers )$/;"	f	class:GLUI_Spinner
+special_handler	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::special_handler( int key,int modifiers )$/;"	f	class:GLUI_TextBox
+special_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int special_handler( int key,int modifiers )                       { return false; }$/;"	f	class:GLUI_Control
+sphere_rotate	glui-2.35/src/example/example5.cpp	/^float sphere_rotate[16] = { 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };$/;"	v
+spinner	glui-2.35/src/example/example2.cpp	/^GLUI_Spinner    *spinner;$/;"	v
+spinner	glui-2.35/src/example/example3.cpp	/^GLUI_Spinner     *spinner, *light0_spinner, *light1_spinner, *scale_spinner;$/;"	v
+spinner	glui-2.35/src/example/example4.cpp	/^GLUI_Spinner    *spinner, *light0_spinner, *light1_spinner;$/;"	v
+spinner	glui-2.35/src/include/GL/glui.h	/^    GLUI_Spinner       *spinner;$/;"	m	class:GLUI_EditText
+spinner_edittext_callback	glui-2.35/src/glui_spinner.cpp	/^void  spinner_edittext_callback( int id )$/;"	f
+spinning	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
+start_line	glui-2.35/src/include/GL/glui.h	/^    int                 start_line;$/;"	m	class:GLUI_List
+start_line	glui-2.35/src/include/GL/glui.h	/^    int                 start_line;$/;"	m	class:GLUI_TextBox
 state	common_type.h	/^  int state;$/;"	m	struct:__anon10
+state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Scrollbar
+state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Spinner
+std_bitmaps	glui-2.35/src/include/GL/glui.h	/^    GLUI_StdBitmaps  std_bitmaps;$/;"	m	class:GLUI_Main
 storeOriginalPointsToContourPointsForEachPlane	polyhedron.cpp	/^void Polyhedron::storeOriginalPointsToContourPointsForEachPlane(){$/;"	f	class:Polyhedron
+string_list	glui-2.35/src/example/example5.cpp	/^char *string_list[] = { "Hello World!", "Foo", "Testing...", "Bounding box: on" };$/;"	v
+string_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::string_width(const char *text)$/;"	f	class:GLUI_Control
+string_width	glui-2.35/src/include/GL/glui.h	/^    int          string_width( const GLUI_String &str ) $/;"	f	class:GLUI_Control
+substring_end	glui-2.35/src/include/GL/glui.h	/^    int                 substring_end;  $/;"	m	class:GLUI_EditText
+substring_end	glui-2.35/src/include/GL/glui.h	/^    int                 substring_end;  $/;"	m	class:GLUI_TextBox
+substring_start	glui-2.35/src/include/GL/glui.h	/^    int                 substring_start; \/*substring that gets displayed in box*\/$/;"	m	class:GLUI_EditText
+substring_start	glui-2.35/src/include/GL/glui.h	/^    int                 substring_start; \/*substring that gets displayed in box*\/$/;"	m	class:GLUI_TextBox
+substring_width	glui-2.35/src/glui_edittext.cpp	/^int  GLUI_EditText::substring_width( int start, int end )$/;"	f	class:GLUI_EditText
+substring_width	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::substring_width( const char *t, int start, int end )$/;"	f	class:GLUI_List
+substring_width	glui-2.35/src/glui_textbox.cpp	/^int  GLUI_TextBox::substring_width( int start, int end, int initial_width )$/;"	f	class:GLUI_TextBox
+swap	glui-2.35/src/algebra3.cpp	/^void swap(mat3 &a, mat3 &b)$/;"	f
+swap	glui-2.35/src/algebra3.cpp	/^void swap(mat4 &a, mat4 &b)$/;"	f
+swap	glui-2.35/src/algebra3.cpp	/^void swap(vec2 &a, vec2 &b)$/;"	f
+swap	glui-2.35/src/algebra3.cpp	/^void swap(vec3 &a, vec3 &b)$/;"	f
+swap	glui-2.35/src/algebra3.cpp	/^void swap(vec4 &a, vec4 &b)$/;"	f
 swapXY	graph.cpp	/^void swapXY(Point *p1){$/;"	f
+swap_cols	glui-2.35/src/algebra3.cpp	/^void mat4::swap_cols(int i, int j)$/;"	f	class:mat4
+swap_rows	glui-2.35/src/algebra3.cpp	/^void mat4::swap_rows(int i, int j)$/;"	f	class:mat4
+sync_live	glui-2.35/src/glui.cpp	/^void   GLUI::sync_live( void )$/;"	f	class:GLUI
+sync_live	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::sync_live(int recurse, int draw_it)$/;"	f	class:GLUI_Control
+sync_live_all	glui-2.35/src/glui.cpp	/^void   GLUI_Master_Object::sync_live_all( void ) $/;"	f	class:GLUI_Master_Object
+tab_width	glui-2.35/src/include/GL/glui.h	/^    int                 tab_width;$/;"	m	class:GLUI_TextBox
+text	glui-2.35/src/example/example2.cpp	/^std::string text = "Hello World!";$/;"	v
+text	glui-2.35/src/example/example3.cpp	/^std::string text = "Hello World!";$/;"	v
+text	glui-2.35/src/example/example6.cpp	/^GLUI_StaticText  *text;$/;"	v
+text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String     text;       \/**< The text inside this control *\/$/;"	m	class:GLUI_Control
+text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String text;$/;"	m	class:GLUI_List_Item
+text	glui-2.35/src/include/GL/glui.h	/^    GLUI_String text;$/;"	m	class:GLUI_Listbox_Item
+text_box	glui-2.35/src/example/example6.cpp	/^const char text_box[] = $/;"	v
+text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int                 text_x_offset;$/;"	m	class:GLUI_EditText
+text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset, title_x_offset;$/;"	m	class:GLUI_Listbox
+text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset;$/;"	m	class:GLUI_Checkbox
+text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int text_x_offset;$/;"	m	class:GLUI_RadioButton
 tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon10
+title_x_offset	glui-2.35/src/include/GL/glui.h	/^    int                 title_x_offset;$/;"	m	class:GLUI_EditText
+title_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset, title_x_offset;$/;"	m	class:GLUI_Listbox
+to_mat4	glui-2.35/src/quaternion.cpp	/^mat4 quat::to_mat4() const$/;"	f	class:quat
+top_level_glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int           top_level_glut_window_id;$/;"	m	class:GLUI_Main
+torus_rotate	glui-2.35/src/example/example5.cpp	/^float torus_rotate[16] = { 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };$/;"	v
+tp	glui-2.35/src/example/example6.cpp	/^GLUI_TreePanel   *tp;$/;"	v
+track_length	glui-2.35/src/include/GL/glui.h	/^    int track_length;$/;"	m	class:GLUI_Scrollbar
+trans_mouse_code	glui-2.35/src/include/GL/glui.h	/^    int   trans_mouse_code;$/;"	m	class:GLUI_Translation
+trans_type	glui-2.35/src/include/GL/glui.h	/^    int trans_type;  \/* Is this an XY or a Z controller? *\/$/;"	m	class:GLUI_Translation
 translate	polyhedron.cpp	/^void Polyhedron::translate(float x_offset, float y_offset, float z_offset){$/;"	f	class:Polyhedron
+translate_and_draw_front	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::translate_and_draw_front()$/;"	f	class:GLUI_Control
+translate_to_origin	glui-2.35/src/include/GL/glui.h	/^    void         translate_to_origin( void ) $/;"	f	class:GLUI_Control
+translation2D	glui-2.35/src/algebra3.cpp	/^mat3 translation2D(const vec2 &v)$/;"	f
+translation3D	glui-2.35/src/algebra3.cpp	/^mat4 translation3D(const vec3 &v)$/;"	f
+transpose	glui-2.35/src/algebra3.cpp	/^mat3 mat3::transpose() const $/;"	f	class:mat3
+transpose	glui-2.35/src/algebra3.cpp	/^mat4 mat4::transpose() const  $/;"	f	class:mat4
+tree	glui-2.35/src/example/example6.cpp	/^GLUI             *tree;$/;"	v
+tree_txt	glui-2.35/src/example/example6.cpp	/^const char tree_txt[] = "Tree Widget";$/;"	v
 uint8	common_type.h	/^typedef unsigned char uint8;$/;"	t
+unhide_internal	glui-2.35/src/glui_control.cpp	/^void         GLUI_Control::unhide_internal( int recurse )$/;"	f	class:GLUI_Control
+uniqueID	glui-2.35/src/include/GL/glui.h	/^    int uniqueID( void ) { next_id++; return next_id - 1; }$/;"	f	class:GLUI_TreePanel
 unitVector	vector.cpp	/^Vector unitVector(Point_3D p){$/;"	f
 unitVector	vector.cpp	/^Vector unitVector(Vector p){$/;"	f
+unlink	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::unlink( void )$/;"	f	class:GLUI_Node
+up	glui-2.35/src/viewmodel.h	/^  vec3    up, side, forward;$/;"	m	class:ViewModel
+update	glui-2.35/src/viewmodel.cpp	/^ViewModel::update() $/;"	f	class:ViewModel
 updateRotationAxis	polyhedron.cpp	/^void Polyhedron::updateRotationAxis(Polyhedron **polyhedra, int numberOfPolyhedra, Point_3D *pairOfPoints){$/;"	f	class:Polyhedron
-updateScreen	main.cpp	/^void updateScreen(Polyhedron **polyhedra){$/;"	f
+updateScreen	main.cpp	/^void updateScreen(){$/;"	f
+update_all	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::update_all() $/;"	f	class:GLUI_TreePanel
+update_and_draw_text	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::update_and_draw_text( void )$/;"	f	class:GLUI_EditText
+update_and_draw_text	glui-2.35/src/glui_list.cpp	/^void   GLUI_List::update_and_draw_text( void )$/;"	f	class:GLUI_List
+update_and_draw_text	glui-2.35/src/glui_textbox.cpp	/^void   GLUI_TextBox::update_and_draw_text( void )$/;"	f	class:GLUI_TextBox
+update_scroll_parameters	glui-2.35/src/glui_scrollbar.cpp	/^void GLUI_Scrollbar::update_scroll_parameters() {$/;"	f	class:GLUI_Scrollbar
+update_size	glui-2.35/src/glui_button.cpp	/^void   GLUI_Button::update_size( void )$/;"	f	class:GLUI_Button
+update_size	glui-2.35/src/glui_checkbox.cpp	/^void   GLUI_Checkbox::update_size( void )$/;"	f	class:GLUI_Checkbox
+update_size	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::update_size( void )$/;"	f	class:GLUI_EditText
+update_size	glui-2.35/src/glui_list.cpp	/^void   GLUI_List::update_size( void )$/;"	f	class:GLUI_List
+update_size	glui-2.35/src/glui_listbox.cpp	/^void   GLUI_Listbox::update_size( void )$/;"	f	class:GLUI_Listbox
+update_size	glui-2.35/src/glui_mouse_iaction.cpp	/^void   GLUI_Mouse_Interaction::update_size( void )$/;"	f	class:GLUI_Mouse_Interaction
+update_size	glui-2.35/src/glui_panel.cpp	/^void   GLUI_Panel::update_size( void )$/;"	f	class:GLUI_Panel
+update_size	glui-2.35/src/glui_radio.cpp	/^void   GLUI_RadioButton::update_size( void )$/;"	f	class:GLUI_RadioButton
+update_size	glui-2.35/src/glui_rollout.cpp	/^void   GLUI_Rollout::update_size( void )$/;"	f	class:GLUI_Rollout
+update_size	glui-2.35/src/glui_scrollbar.cpp	/^void   GLUI_Scrollbar::update_size( void )$/;"	f	class:GLUI_Scrollbar
+update_size	glui-2.35/src/glui_spinner.cpp	/^void   GLUI_Spinner::update_size( void )$/;"	f	class:GLUI_Spinner
+update_size	glui-2.35/src/glui_statictext.cpp	/^void   GLUI_StaticText::update_size( void )$/;"	f	class:GLUI_StaticText
+update_size	glui-2.35/src/glui_textbox.cpp	/^void   GLUI_TextBox::update_size( void )$/;"	f	class:GLUI_TextBox
+update_size	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::update_size( void )$/;"	f	class:GLUI_Tree
+update_size	glui-2.35/src/include/GL/glui.h	/^    virtual void update_size( void )     { }$/;"	f	class:GLUI_Control
+update_substring_bounds	glui-2.35/src/glui_edittext.cpp	/^int    GLUI_EditText::update_substring_bounds( void )$/;"	f	class:GLUI_EditText
+update_substring_bounds	glui-2.35/src/glui_textbox.cpp	/^int    GLUI_TextBox::update_substring_bounds( void )$/;"	f	class:GLUI_TextBox
+update_x_offsets	glui-2.35/src/glui_edittext.cpp	/^void    GLUI_EditText::update_x_offsets( void )$/;"	f	class:GLUI_EditText
+update_x_offsets	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::update_x_offsets( void )$/;"	f	class:GLUI_TextBox
+user_id	glui-2.35/src/include/GL/glui.h	/^    long            user_id;  \/\/\/< Integer to pass to callback function.$/;"	m	class:GLUI_Control
+user_speed	glui-2.35/src/include/GL/glui.h	/^    float         user_speed;$/;"	m	class:GLUI_Scrollbar
+user_speed	glui-2.35/src/include/GL/glui.h	/^    float         user_speed;$/;"	m	class:GLUI_Spinner
+v	glui-2.35/src/algebra3.h	/^  vec3 v[3];$/;"	m	class:mat3
+v	glui-2.35/src/algebra3.h	/^  vec4 v[4];$/;"	m	class:mat4
+v	glui-2.35/src/quaternion.h	/^  vec3  v;  \/* vector component *\/$/;"	m	class:quat
+vec2	glui-2.35/src/algebra3.cpp	/^vec2::vec2() $/;"	f	class:vec2
+vec2	glui-2.35/src/algebra3.cpp	/^vec2::vec2(const vec2 &v)$/;"	f	class:vec2
+vec2	glui-2.35/src/algebra3.cpp	/^vec2::vec2(const vec3 &v) \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec2
+vec2	glui-2.35/src/algebra3.cpp	/^vec2::vec2(const vec3 &v, int dropAxis) $/;"	f	class:vec2
+vec2	glui-2.35/src/algebra3.cpp	/^vec2::vec2(float x, float y)$/;"	f	class:vec2
+vec2	glui-2.35/src/algebra3.h	/^class vec2$/;"	c
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3() $/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(const vec2 &v)$/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(const vec2 &v, float d)$/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(const vec3 &v)$/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(const vec4 &v) \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(const vec4 &v, int dropAxis) $/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.cpp	/^vec3::vec3(float x, float y, float z)$/;"	f	class:vec3
+vec3	glui-2.35/src/algebra3.h	/^class vec3$/;"	c
+vec4	glui-2.35/src/algebra3.cpp	/^vec4::vec4() $/;"	f	class:vec4
+vec4	glui-2.35/src/algebra3.cpp	/^vec4::vec4(const vec3 &v)$/;"	f	class:vec4
+vec4	glui-2.35/src/algebra3.cpp	/^vec4::vec4(const vec3 &v, float d)$/;"	f	class:vec4
+vec4	glui-2.35/src/algebra3.cpp	/^vec4::vec4(const vec4 &v)$/;"	f	class:vec4
+vec4	glui-2.35/src/algebra3.cpp	/^vec4::vec4(float x, float y, float z, float w)$/;"	f	class:vec4
+vec4	glui-2.35/src/algebra3.h	/^class vec4$/;"	c
+velocity_limit	glui-2.35/src/include/GL/glui.h	/^    double     velocity_limit; \/\/\/< Maximum distance to advance per second.$/;"	m	class:GLUI_Scrollbar
+view_rotate	glui-2.35/src/example/example5.cpp	/^float view_rotate[16] = { 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 };$/;"	v
+visibility	glui-2.35/src/glui.cpp	/^void    GLUI_Main::visibility(int state)$/;"	f	class:GLUI_Main
+visible_lines	glui-2.35/src/include/GL/glui.h	/^    int                 visible_lines;$/;"	m	class:GLUI_List
+visible_lines	glui-2.35/src/include/GL/glui.h	/^    int                 visible_lines;$/;"	m	class:GLUI_TextBox
+vsnprintf	glui-2.35/src/glui_string.cpp	36;"	d	file:
 vtoc	vector.cpp	/^Color vtoc(Vector v){$/;"	f
+w	glui-2.35/src/include/GL/glui.h	/^    int             w, h;                        \/* dimensions of control *\/$/;"	m	class:GLUI_Control
+w	glui-2.35/src/include/GL/glui.h	/^    int            w, h;$/;"	m	class:GLUI_Bitmap
+w	glui-2.35/src/include/GL/glui.h	/^    int           w, h;$/;"	m	class:GLUI_Main
+wants_tabs	glui-2.35/src/include/GL/glui.h	/^    bool wants_tabs( void ) const { return true; }$/;"	f	class:GLUI_TextBox
+wants_tabs	glui-2.35/src/include/GL/glui.h	/^    virtual bool wants_tabs() const      { return false; }$/;"	f	class:GLUI_Control
 width	common_type.h	/^  int width;$/;"	m	struct:__anon10
+width	glui-2.35/src/glui_bitmaps.cpp	/^int GLUI_StdBitmaps::width(int i) const$/;"	f	class:GLUI_StdBitmaps
 window	main.cpp	/^Window window;$/;"	v
 windowInit	main.cpp	/^void windowInit(Window *window){$/;"	f
 window_height	graph.h	/^  int window_height;$/;"	m	class:Graph
+window_name	glui-2.35/src/include/GL/glui.h	/^    GLUI_String      window_name;$/;"	m	class:GLUI_Main
 window_width	graph.h	/^  int window_width;$/;"	m	class:Graph
+wireframe	glui-2.35/src/example/example1.cpp	/^int   wireframe = 0;$/;"	v
+wireframe	glui-2.35/src/example/example2.cpp	/^int   wireframe = 0;$/;"	v
+wireframe	glui-2.35/src/example/example3.cpp	/^int   wireframe = 0;$/;"	v
+wireframe	glui-2.35/src/example/example4.cpp	/^int   wireframe = 0;$/;"	v
+wireframe	glui-2.35/src/example/example5.cpp	/^int   wireframe = 0;$/;"	v
 x	common_type.h	/^  float x;$/;"	m	struct:__anon3
 x	common_type.h	/^  float x;$/;"	m	struct:__anon4
 x	common_type.h	/^  int x;$/;"	m	struct:__anon2
 xDepth	polyhedron.h	/^  float xDepth; \/\/ with respect to (inf, 0 0)$/;"	m	class:Polyhedron
 xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon7
 xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon7
+x_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
+x_off	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
 x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon8
 xx	common_type.h	/^  Point_3D xx; \/\/ coord. of light src$/;"	m	struct:__anon9
+xy_aspect	glui-2.35/src/example/example2.cpp	/^float xy_aspect;$/;"	v
+xy_aspect	glui-2.35/src/example/example3.cpp	/^float xy_aspect;$/;"	v
+xy_aspect	glui-2.35/src/example/example4.cpp	/^float xy_aspect;$/;"	v
+xy_aspect	glui-2.35/src/example/example5.cpp	/^float xy_aspect;$/;"	v
 y	common_type.h	/^  float y;$/;"	m	struct:__anon3
 y	common_type.h	/^  float y;$/;"	m	struct:__anon4
 y	common_type.h	/^  int y;$/;"	m	struct:__anon2
 yDepth	polyhedron.h	/^  float yDepth; \/\/with respect to (0, inf, 0)$/;"	m	class:Polyhedron
 yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon7
 yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon7
+y_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
+y_off_bot	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
+y_off_top	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
 y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon8
 z	common_type.h	/^  float z;$/;"	m	struct:__anon3
 z	common_type.h	/^  float z;$/;"	m	struct:__anon4
 zDepth	polyhedron.h	/^  float zDepth; \/\/ with respect to (0, 0, inf);$/;"	m	class:Polyhedron
 z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon8
+zero_increment	glui-2.35/src/arcball.h	/^    int   zero_increment;$/;"	m	class:Arcball
+~Curve	curve.cpp	/^Curve::~Curve(){$/;"	f	class:Curve
+~GLUI_Bitmap	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_Bitmap::~GLUI_Bitmap()$/;"	f	class:GLUI_Bitmap
+~GLUI_Control	glui-2.35/src/glui_control.cpp	/^GLUI_Control::~GLUI_Control()$/;"	f	class:GLUI_Control
+~GLUI_DrawingSentinal	glui-2.35/src/glui.cpp	/^GLUI_DrawingSentinal::~GLUI_DrawingSentinal() {$/;"	f	class:GLUI_DrawingSentinal
+~GLUI_Listbox	glui-2.35/src/glui_listbox.cpp	/^GLUI_Listbox::~GLUI_Listbox()$/;"	f	class:GLUI_Listbox
+~GLUI_Master_Object	glui-2.35/src/glui.cpp	/^GLUI_Master_Object::~GLUI_Master_Object()$/;"	f	class:GLUI_Master_Object
+~GLUI_Node	glui-2.35/src/include/GL/glui.h	/^    virtual ~GLUI_Node() {}$/;"	f	class:GLUI_Node
+~GLUI_StdBitmaps	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_StdBitmaps::~GLUI_StdBitmaps()$/;"	f	class:GLUI_StdBitmaps
