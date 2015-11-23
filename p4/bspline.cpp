@@ -84,6 +84,7 @@ void Bspline::drawControlPolygon(){
     p2.y = p2.y * (graph->window_height -1);
 
     graph->drawLine(p1,p2,COLOR_CRIMSON);
+    graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
+    graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
   }
-
 }

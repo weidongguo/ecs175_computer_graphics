@@ -132,6 +132,23 @@ int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method)
   //
   return 0;
 }
+bool Graph::isWithinDot(int x, int y, Point_2D cdot, int size){ //cdot = center of dot
+   return ( cdot.x-(size/2) < x && x< cdot.x+(size/2) && cdot.y-(size/2) < y && y< cdot.y+(size/2)  );
+}
+void Graph::drawBigDot(Point_2D p, Color c, int size){
+  float x = p.x , y = p.y, newX, newY; 
+  for(int i = -(size/2) ; i <= (size/2); i++){
+    for(int j = -(size/2) ; j <= (size/2); j++){
+      //DPRINT("BIGDOT: %.2f, %.2f\n", x+i, y+j);
+      newX = x+i;
+      newY = y+j; 
+      if( outOfBound( (int)round(newX), (int)round(newY) ))
+              continue; 
+      drawPixel( {newX, newY}, c);        
+    }
+  }
+}
+
 
 int Graph::dda( Point p1, Point p2,  float r, float g, float b){ 
   int delta_x, delta_y, x,y, x_begin, x_end, y_begin, y_end; double m;//slope
@@ -346,7 +363,7 @@ int Graph::drawPolygon( Point *listOfPoints, int numberOfPoints, float r, float 
 }
 
 bool Graph::outOfBound(int x, int y){
-  return ( (x) > window_width || (y) > window_height );
+  return ( (x) >= window_width || (y) >= window_height || (x) < 0 || (y) < 0 );
 }
 
 Color Graph::readPixel(int x, int y){

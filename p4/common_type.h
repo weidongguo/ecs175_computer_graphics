@@ -102,6 +102,7 @@ typedef struct{
   int numberOfPolyhedra; 
   int numberOfCurves;
   int selectedObject;
+  int selectedPoint; //index
   ClipRegion cr;
   Transformation tf;   
   int state;

@@ -62,12 +62,22 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
-void callback_mouse(int button, int state, int x, int y){
+void callback_mouse(int button, int state, int x, int _y){
+  int y = window.height - _y; 
+  std::list<Curve*>::iterator itc;
+  std::list<Point_2D>::iterator itp;
   switch(button){
     case GLUT_MIDDLE_BUTTON: 
     case GLUT_LEFT_BUTTON:
       if(state == GLUT_UP){
-        printf("%d, %d\n", x, window.height-y);
+        printf("%d, %d\n", x, y);/*
+        itc = globalCurves->begin();
+        itc->advance(selectedCurve);
+        for(itp = (*itc)->ctrlNDCPoints.begin(); itp != (*itc)->ctrlNDCPoints.end(); itp++){
+          if(globalGraph->isWithinDot(x,y,  , 15)) 
+                printf("HIT\n");
+        }
+        */
       }
       break;
   }

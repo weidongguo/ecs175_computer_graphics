@@ -14,7 +14,7 @@ Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arc
 Arcball	glui-2.35/src/arcball.h	/^class Arcball $/;"	c
 BEZIER_H	bezier.h	2;"	d
 BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon14
-BRESENHAM	graph.h	59;"	d
+BRESENHAM	graph.h	61;"	d
 BSPLINE_H	bspline.h	2;"	d
 Bezier	bezier.cpp	/^Bezier::Bezier(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints)$/;"	f	class:Bezier
 Bezier	bezier.h	/^class Bezier:public Curve {$/;"	c
@@ -42,7 +42,7 @@ ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon8
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 Curve	curve.cpp	/^Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){$/;"	f	class:Curve
 Curve	curve.h	/^class Curve {$/;"	c
-DDA	graph.h	60;"	d
+DDA	graph.h	62;"	d
 DEG2RAD	glui-2.35/src/glui_internal.h	61;"	d
 DISABLE_ID	glui-2.35/src/example/example5.cpp	55;"	d	file:
 DIST	glui-2.35/src/makefile	/^DIST = glui-2.3.0$/;"	m
@@ -697,10 +697,12 @@ draw	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::draw( int x, int y )
 draw	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::draw( int x, int y )$/;"	f	class:GLUI_StaticText
 draw	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw( int x, int y )$/;"	f	class:GLUI_TextBox
 draw	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw( int x, int y )$/;"	f	class:GLUI_Tree
+drawBigDot	graph.cpp	/^void Graph::drawBigDot(Point_2D p, Color c){$/;"	f	class:Graph
 drawControlPolygon	bezier.cpp	/^void Bezier::drawControlPolygon(){$/;"	f	class:Bezier
 drawControlPolygon	bspline.cpp	/^void Bspline::drawControlPolygon(){$/;"	f	class:Bspline
-drawCurve	bezier.cpp	/^void Bezier::drawCurve(float res){$/;"	f	class:Bezier
-drawCurve	bspline.cpp	/^void Bspline::drawCurve(float res){$/;"	f	class:Bspline
+drawControlPolygon	curve.cpp	/^void Curve::drawControlPolygon(Color c){$/;"	f	class:Curve
+drawCurve	bezier.cpp	/^void Bezier::drawCurve(float res, Color c){$/;"	f	class:Bezier
+drawCurve	bspline.cpp	/^void Bspline::drawCurve(float res, Color c){$/;"	f	class:Bspline
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){ \/\/ should have named it scanLine, as I only use this function for horizontal line drawing$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
@@ -869,6 +871,7 @@ get_viewport_area	glui-2.35/src/glui.cpp	/^void     GLUI_Master_Object::get_view
 get_x	glui-2.35/src/include/GL/glui.h	/^    float get_x( void ) {       return float_array_val[0];  }$/;"	f	class:GLUI_Translation
 get_y	glui-2.35/src/include/GL/glui.h	/^    float get_y( void ) {$/;"	f	class:GLUI_Translation
 get_z	glui-2.35/src/include/GL/glui.h	/^    float get_z( void ) {       return float_array_val[0];  }$/;"	f	class:GLUI_Translation
+globalCurves	main.cpp	/^std::list<Curve*> *globalCurves;$/;"	v
 globalGraph	main.cpp	/^Graph *globalGraph;$/;"	v
 glui	glui-2.35/src/example/example3.cpp	/^GLUI *cmd_line_glui=0, *glui;$/;"	v
 glui	glui-2.35/src/example/example4.cpp	/^GLUI *glui;$/;"	v
@@ -1779,7 +1782,7 @@ unitVector	vector.cpp	/^Vector unitVector(Vector p){$/;"	f
 unlink	glui-2.35/src/glui_node.cpp	/^void   GLUI_Node::unlink( void )$/;"	f	class:GLUI_Node
 up	glui-2.35/src/viewmodel.h	/^  vec3    up, side, forward;$/;"	m	class:ViewModel
 update	glui-2.35/src/viewmodel.cpp	/^ViewModel::update() $/;"	f	class:ViewModel
-updateScreen	main.cpp	/^void updateScreen(){$/;"	f
+updateScreen	main.cpp	/^void updateScreen(Graph *graph, std::list<Curve*> *curves){$/;"	f
 update_all	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::update_all() $/;"	f	class:GLUI_TreePanel
 update_and_draw_text	glui-2.35/src/glui_edittext.cpp	/^void   GLUI_EditText::update_and_draw_text( void )$/;"	f	class:GLUI_EditText
 update_and_draw_text	glui-2.35/src/glui_list.cpp	/^void   GLUI_List::update_and_draw_text( void )$/;"	f	class:GLUI_List

@@ -14,6 +14,26 @@ void Curve::print(){
   printf("Curve::Print()\n");
 }
 
+void Curve::drawControlPolygon(Color c){
+  Point_2D p1, p2;
+  for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+    p1 = (*it);
+    it++;
+    if(it == ctrlPointsNDC.end())
+            break;
+    p2 = (*it);          
+    
+    p1.x = p1.x * (graph->window_width - 1);
+    p1.y = p1.y * (graph->window_height -1);
+    p2.x = p2.x * (graph->window_width - 1);
+    p2.y = p2.y * (graph->window_height -1);
+
+    graph->drawLine(p1,p2,c);
+    //graph->drawBigDot(p1, {0.5,0.5,0.5}, 5);
+   // graph->drawBigDot(p2, {0.5,0.5,0.5}, 5);
+  }
+}
+
 void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
   float xMin, yMin, delta;
   std::list<Point_2D>::iterator itp, itpNDC;

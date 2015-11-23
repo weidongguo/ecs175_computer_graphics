@@ -9,6 +9,7 @@
 #include "common_type.h"
 
 class Graph {
+  friend class Curve;
   friend class Bezier; 
   friend class Bspline;
   int window_width;
@@ -36,7 +37,9 @@ class Graph {
     int drawLine(Point p1, Point p2, float r, float g, float b, int method);
     int drawLine(Point p1, Point p2, Color c); 
     int drawLine(Point_2D p1, Point_2D p2, Color c); 
-
+    void drawBigDot(Point_2D, Color c, int size);
+    static bool isWithinDot(int x, int y, Point_2D cdot, int size); //cdot = center of dot
+  
     int dda(Point p1, Point p2, float r, float g, float b);
     int bresenham(Point p1, Point p2, float r, float, float);
     int bresenham(Point p1, Point p2);
