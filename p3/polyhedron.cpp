@@ -402,12 +402,12 @@ Vector Polyhedron::phong(Point_3D p, Vector ka, Vector kd, Vector ks, Vector nn,
   //if eye and ligh are on different sides
   if( ( dotProduct(nn,ll) > 0 && dotProduct(nn, vv) < 0 ) || (dotProduct(nn, ll) < 0 && dotProduct(nn,vv) > 0) )
     return Iamb;
-  
+
   float scalarForDiffSpec = Il / ( magnitude( minus(ff, p) ) + C ); 
   
   diff = multByScalar( kd, dotProduct(ll,nn) );
   
-  if ( dotProduct(rr,vv) <= 0) 
+  if ( dotProduct(rr,vv) <= 0 || dotProduct(nn,ll) <=0 ) 
     spec = {0,0,0}; 
   else
     spec = multByScalar( ks, pow( dotProduct(rr,vv), n ) );
