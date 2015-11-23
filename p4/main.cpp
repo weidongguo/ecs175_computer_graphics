@@ -101,6 +101,13 @@ void callback_keyboard(unsigned char key, int x, int y){
                else
                   window.res--; 
                break;
+    case 'h': if(window.selectedObject == 0)
+                window.selectedObject = window.numberOfCurves - 1;  
+              else
+                window.selectedObject--;
+              break;
+    case 'l':  window.selectedObject = (window.selectedObject+1)%window.numberOfCurves;
+               break;
     default: return;
   }
   
@@ -154,10 +161,14 @@ void windowInit(Window *window){
 void updateScreen(Graph *graph, std::list<Curve*> *curves){
   graph->fillScreen(graph->background_color);
   Curve::normalizeCtrlPoints(curves);
-  for(std::list<Curve*>::iterator it = curves->begin(); it != curves->end(); it++){
+  int i=0;
+  for( std::list<Curve*>::iterator it = curves->begin(); it != curves->end(); it++, i++){
     //(*it)->printAttributes();
     (*it)->drawControlPolygon();
-    (*it)->drawCurve(window.res);
+    if(  i== window.selectedObject )
+      (*it)->drawCurve(window.res, {0,1,0});
+    else
+      (*it)->drawCurve(window.res, {0,0,0});
   }
 }
 

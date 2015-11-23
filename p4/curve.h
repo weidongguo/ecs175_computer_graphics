@@ -17,7 +17,7 @@ class Curve {
   void print();
   virtual void printAttributes() = 0;
   virtual void drawControlPolygon() = 0; 
-  virtual void drawCurve(float res) = 0;
+  virtual void drawCurve(float res, Color c) = 0;
 
   static void normalizeCtrlPoints(std::list<Curve*> *curves);
   static void findNDCParam(std::list<Curve*> *curves, float*xMin, float*yMin, float *delta);

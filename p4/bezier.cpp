@@ -14,13 +14,13 @@ void Bezier::printAttributes(){
   }
 }
 
-void Bezier::drawCurve(float res){
+void Bezier::drawCurve(float res, Color c){
   float inc = 1.0/res;
   for(float t = 0; t+inc <= 1.0; t+=inc){
     //DPRINT("%.2f to %.2f\t", t, t+inc);
     Point_2D p1 = cc(t);
     Point_2D p2 = cc(t+inc);
-    graph->drawLine( p1, p2, {0,0,0}) ;
+    graph->drawLine( p1, p2, c) ;
     //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
   }
   
