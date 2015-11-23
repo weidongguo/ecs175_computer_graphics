@@ -16,22 +16,22 @@ void Curve::print(){
 
 void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
   float xMin, yMin, delta;
-  std::list<Point_2D>::iterator itp;
+  std::list<Point_2D>::iterator itp, itpNDC;
 
   findNDCParam(curves, &xMin, &yMin, &delta);
-  DPRINT("xMin: %.2f, yMin: %.2f, delta: %.2f\n", xMin, yMin, delta);
+  //DPRINT("xMin: %.2f, yMin: %.2f, delta: %.2f\n", xMin, yMin, delta);
  
   for(std::list<Curve*>::iterator itc = curves->begin(); itc!=curves->end(); itc++){
-    for(itp = (*itc)->ctrlPointsNDC.begin() ; itp != (*itc)->ctrlPointsNDC.end(); itp++){
-      (*itp).x = ( (*itp).x - xMin ) / delta; //normalize the x value
-      (*itp).y = ( (*itp).y - yMin ) / delta; //normalize the y value
-      //DPRINT("Normalized (%.2f, %.2f)\n", (*itp).x, (*itp).y);
+    for(itp = (*itc)->ctrlPoints.begin(), itpNDC = (*itc)->ctrlPointsNDC.begin() ; itp != (*itc)->ctrlPoints.end(); itp++, itpNDC++){
+      (*itpNDC).x = ( (*itp).x - xMin ) / delta; //normalize the x value
+      (*itpNDC).y = ( (*itp).y - yMin ) / delta; //normalize the y value
+      //DPRINT("Normalized (%.2f, %.2f)\n", (*itpNDC).x, (*itpNDC).y);
     }
   }
 }
 
 void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){ //static method
-  static bool isInit = true; 
+  bool isInit = true; 
   std::list<Point_2D> ctrlPoints;
   std::list<Point_2D>::iterator itp;
   float xMin, yMin, xMax, yMax; 

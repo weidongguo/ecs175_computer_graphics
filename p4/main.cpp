@@ -8,6 +8,7 @@
 
 float *PixelBuffer; // global pixel buffer
 Graph *globalGraph;
+std::list<Curve*> *globalCurves;
 std::string input_buffer;
 
 Window window;
@@ -18,7 +19,7 @@ void callback_mouse(int button, int state, int x, int y);
 void callback_menu(int state);
 void createMenu();
 void windowInit(Window *window);
-void updateScreen();
+void updateScreen(Graph *graph, std::list<Curve*> *curves);
 
 int main(int argc, char *argv[]){
   glutInit(&argc, argv); //initialize GL Utility Toolkit(GLUT) and  extract command line arguments for GLUT and keep the counts for the remaining arguments 
@@ -54,14 +55,9 @@ int main(int argc, char *argv[]){
   //curves to be manipulated;  
   std::list<Curve*> curves; 
   readCurves(&ifs, &graph, &curves, window.numberOfCurves);
-  
-  Curve::normalizeCtrlPoints(&curves);
-  for(std::list<Curve*>::iterator it = curves.begin(); it != curves.end(); it++){
-    (*it)->printAttributes();
-    (*it)->drawControlPolygon();
-    (*it)->drawCurve(window.res);
-  }
+  globalCurves = &curves; 
 
+  updateScreen(globalGraph, globalCurves);
   glutMainLoop();
   return 0;
 }
@@ -82,23 +78,14 @@ void callback_menu(int state){
     case MENU_STATUS:
       printf("======================Status====================\n");
       printf("Window Size is %d x %d\n", window.width, window.height);
-      printf("Half Tone Color R: %.2f, G: %.2f B: %.2f\n", window.halfTone.r, window.halfTone.g, window.halfTone.b); 
-      printf("** Phong Model Parameter ** \n");
-      printf("Light Source Intensity Il: %.2f\n", window.scene.Il);
-      printf("Ambient Light Intensity Ia: %.2f\n", window.scene.Ia);
-      printf("From Point ff: (%.2f, %.2f, %.2f)\n", window.scene.ff.x, window.scene.ff.y, window.scene.ff.z);
-      printf("Light Source xx: (%.2f, %.2f, %.2f)\n", window.scene.xx.x, window.scene.xx.y, window.scene.xx.z); 
-      printf("Phong Constant n: %d\n", window.scene.n); 
-      printf("Ambient Coeff ka, R: %.2f, G: %.2f B: %.2f\n", window.scene.ka.r, window.scene.ka.g, window.scene.ka.b);
-      printf("Diffuse Coeff kd, R: %.2f, G: %.2f B: %.2f\n", window.scene.kd.r, window.scene.kd.g, window.scene.kd.b);
-      printf("Specular Coeff ks, R: %.2f, G: %.2f B: %.2f\n", window.scene.ks.r, window.scene.ks.g, window.scene.ks.b);
+      printf("Res: %.2f\n",window.res);
       printf("=================End of Status==================\n");
       break;
   }
 }
 
 void callback_keyboard(unsigned char key, int x, int y){
-  //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x-window.width/2, window.height/2 - y);
+  //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x, window.height - y);
   if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
     window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
     printf("\nObject with ID %d is selected\n", window.selectedObject);
@@ -106,14 +93,18 @@ void callback_keyboard(unsigned char key, int x, int y){
     return;
   }
   switch(key){ // control commands
-    case 't': 
-    case 'z': 
-    case 'r': 
-    case 's':// Polyhedron::savePolyhedraToFile(globalPolyhedra, &window, "output"); break;// saving the polygons 
+    case '=':  window.res++; 
+               break;
+
+    case '-':  if(window.res <= 1) 
+                  window.res = 1;
+               else
+                  window.res--; 
+               break;
     default: return;
   }
   
-  //updateScreen(globalPolyhedra);
+  updateScreen(globalGraph, globalCurves);
 
   glutPostRedisplay();
 }
@@ -160,8 +151,14 @@ void windowInit(Window *window){
   window->res = 5;  
 }
 
-void updateScreen(){
-
+void updateScreen(Graph *graph, std::list<Curve*> *curves){
+  graph->fillScreen(graph->background_color);
+  Curve::normalizeCtrlPoints(curves);
+  for(std::list<Curve*>::iterator it = curves->begin(); it != curves->end(); it++){
+    //(*it)->printAttributes();
+    (*it)->drawControlPolygon();
+    (*it)->drawCurve(window.res);
+  }
 }
 
 

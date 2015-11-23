@@ -541,6 +541,7 @@ can_draw	glui-2.35/src/include/GL/glui.h	/^    int          can_draw( void ) { r
 can_spin	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
 cb_click_type	glui-2.35/src/include/GL/glui.h	/^    int                 cb_click_type;$/;"	m	class:GLUI_List
 cc	bezier.cpp	/^Point_2D Bezier::cc(float t){$/;"	f	class:Bezier
+cc	bspline.cpp	/^Point_2D Bspline::cc(float u){$/;"	f	class:Bspline
 center	glui-2.35/src/arcball.h	/^    vec2  center;$/;"	m	class:Arcball
 char_width	glui-2.35/src/glui_control.cpp	/^int GLUI_Control::char_width(char c)$/;"	f	class:GLUI_Control
 char_widths	glui-2.35/src/include/GL/glui.h	/^    int             char_widths[CHAR_WIDTH_HASH_SIZE][2]; \/* Character width hash table *\/$/;"	m	class:GLUI_Control
@@ -707,7 +708,7 @@ drawLine	graph.cpp	/^int Graph::drawLine(Point p1, Point p2, Color c){ $/;"	f	cl
 drawLine	graph.cpp	/^int Graph::drawLine(Point_2D p1, Point_2D p2, Color c){$/;"	f	class:Graph
 drawMegaPixel	graph.cpp	/^void Graph::drawMegaPixel(int numberOfPixels, int maxNumberOfPixels, int r, int c, Color k){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(Point p){$/;"	f	class:Graph
-drawPixel	graph.cpp	/^int Graph::drawPixel(Point p, Color c){$/;"	f	class:Graph
+drawPixel	graph.cpp	/^int Graph::drawPixel(Point_2D p, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(float x, float y, Color c){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(float x, float y, float r, float g, float b){$/;"	f	class:Graph
 drawPixel	graph.cpp	/^int Graph::drawPixel(float x, int y, Color c){$/;"	f	class:Graph

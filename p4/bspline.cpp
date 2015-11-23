@@ -26,12 +26,13 @@ void Bspline::printAttributes(){
 }
 
 void Bspline::drawCurve(float res){
-  float inc = 1.0/100;
+  float inc = 1.0/res;
   Point_2D p1, p2;
-  for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]; u=u+inc){
+  for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
     p1 = cc(u);
-    DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
-    graph->drawPixel(p1, {0,0,0});
+    p2 = cc(u+inc);
+    //DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+    graph->drawLine(p1, p2, {0,0,0});
   }
 }
 
@@ -53,7 +54,7 @@ Point_2D Bspline::cc(float u){
               break;
       }
     }
-    DPRINT("I: %d\n",I); 
+//    DPRINT("I: %d\n",I); 
     for(int j = 1 ; j <= k-1; j++){ //starting from the first generation
       for(int i = (I - (k-1)) ; i <= I-j; i++){
         rightRatio = (knotValues[i+k] - u) / (knotValues[i+k] - knotValues[i+j]) ;
