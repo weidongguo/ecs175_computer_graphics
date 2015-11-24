@@ -65,14 +65,18 @@ int main(int argc, char *argv[]){
 
 void callback_mouse(int button, int state, int x, int _y){
   int y = window.height - _y; 
-  std::list<Curve*>::iterator itc;
-  std::list<Point_2D>::iterator itp;
+  std::list<Curve*>::iterator itc = globalCurves->begin();
   switch(button){
     case GLUT_MIDDLE_BUTTON: 
+      if(state == GLUT_UP && window.numberOfCurves > 0){
+        std::advance(itc, window.selectedObject); 
+        (*itc)->modifySelectedCtrlPoint(x,y);
+        updateScreen(globalGraph, globalCurves); 
+      }
+      break;
     case GLUT_LEFT_BUTTON:
       if(state == GLUT_UP && window.numberOfCurves > 0){
         printf("%d, %d\n", x, y);
-        itc = globalCurves->begin();
         std::advance(itc, window.selectedObject);
         if((*itc)->selectCtrlPoint(x,y)){
           updateScreen(globalGraph, globalCurves); 

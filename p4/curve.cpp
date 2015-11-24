@@ -72,6 +72,10 @@ void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
       p.x = ( (*itp).x - xMin ) / delta; //normalize the x value
       p.y = ( (*itp).y - yMin ) / delta; //normalize the y value
       (*itc)->ctrlPointsNDC.push_back(p);
+      
+      (*itc)->paramNDC.xMin = xMin;
+      (*itc)->paramNDC.yMin = yMin;
+      (*itc)->paramNDC.delta = delta;
     }
   }
 }
@@ -133,4 +137,18 @@ bool Curve::selectCtrlPoint(int xPixel, int yPixel){//return true if succesfully
     return true;
   }
   return false;
+}
+void Curve::modifySelectedCtrlPoint(int xPixel, int yPixel){
+  Point_2D pNDC = graph->pixelToNDC({xPixel,yPixel});
+  Point_2D p = NDCToOriginal(pNDC, paramNDC);    
+  DPRINT("Original (%.2f, %.2f)\n",p.x, p.y); 
+  //modify point right here:
+  std::list<Point_2D>::iterator it = ctrlPoints.begin();
+  std::advance(it, selectedCtrlPoint);
+  (*it) = p;
+}
+
+
+Point_2D Curve::NDCToOriginal(Point_2D pNDC, ParamNDC paramNDC){
+  return { paramNDC.delta *  pNDC.x + paramNDC.xMin, paramNDC.delta * pNDC.y + paramNDC.yMin }; 
 }

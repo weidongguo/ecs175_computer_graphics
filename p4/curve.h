@@ -13,6 +13,7 @@ class Curve {
   int numberOfCtrlPoints;
   int selectedCtrlPoint;//index in ctrlPoints or ctrlPointsNDC
   Color curveColor;
+  ParamNDC paramNDC;
 
   public:
   Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints);
@@ -24,10 +25,13 @@ class Curve {
 
   static void normalizeCtrlPoints(std::list<Curve*> *curves);
   static void findNDCParam(std::list<Curve*> *curves, float*xMin, float*yMin, float *delta);
+  static Point_2D NDCToOriginal(Point_2D pNDC, ParamNDC paramNDC);
   
   int findCtrlPoint(int xPixel, int yPixel);//return an index of the ctrl point on a curve
   bool selectCtrlPoint(int xPixel, int yPixel);//return true if succesfully selected, else point not found
   bool deleteSelectedCtrlPoint();
+  void modifySelectedCtrlPoint(int x,int y); //new control point will be of values relative to x and y
+
 };
 #endif
 

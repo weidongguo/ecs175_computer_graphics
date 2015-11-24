@@ -27,6 +27,12 @@ typedef struct {
 }Color;
 
 typedef struct{
+  float xMin;
+  float yMin;
+  float delta;
+} ParamNDC;
+
+typedef struct{
   int x;
   int y;
   Color normalizedIntensity;
@@ -85,6 +91,7 @@ typedef struct{
   float rotation_angle;
   Point_3D pairOfPointsForRotAxis[2];
 }Transformation;
+
 
 typedef struct{
   float Il; 
