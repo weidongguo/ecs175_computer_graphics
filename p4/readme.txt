@@ -54,4 +54,4 @@ Project 4
 
   7) To save curves to a file called "output", press 's'
 
-5. Please note that I draw a grey square at each control point to aid the user for selecting a control point with the mouse.
+5. Please note that I draw a grey square(bigger than a pixel) at each control point to aid the user for selecting a control point with the mouse. And Bezier curves' control polygons are drawn with blue(Royal Blue) and Bspline curves' control polygons are draw with red(Crimson);

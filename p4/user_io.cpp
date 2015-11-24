@@ -60,9 +60,9 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
       for(int i = 0 ; i < numberOfCtrlPoints; i++){
         ifs->getline(buffer, sizeOfBuffer);
         charPtr = strtok(buffer, ", ");
-        x = atoi(charPtr); 
+        x = atof(charPtr); 
         charPtr = strtok(0, "\0");
-        y = atoi(charPtr);
+        y = atof(charPtr);
         ctrlPoints[i].x = x;
         ctrlPoints[i].y = y;
       }
@@ -85,9 +85,9 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
       for(int i = 0 ; i < numberOfCtrlPoints; i++){
         ifs->getline(buffer, sizeOfBuffer);
         charPtr = strtok(buffer, ", ");
-        x = atoi(charPtr); 
+        x = atof(charPtr); 
         charPtr = strtok(0, "\0");
-        y = atoi(charPtr);
+        y = atof(charPtr);
         ctrlPoints[i].x = x;
         ctrlPoints[i].y = y;
       }
