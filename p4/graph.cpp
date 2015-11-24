@@ -132,7 +132,7 @@ int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method)
   //
   return 0;
 }
-bool Graph::isWithinDot(int x, int y, Point_2D cdot, int size){ //cdot = center of dot
+bool Graph::isWithinDot(int x, int y, Point cdot, int size){ //cdot = center of dot
    return ( cdot.x-(size/2) < x && x< cdot.x+(size/2) && cdot.y-(size/2) < y && y< cdot.y+(size/2)  );
 }
 void Graph::drawBigDot(Point_2D p, Color c, int size){
@@ -485,3 +485,10 @@ void Graph::restorePixelBuffer(){
     PixelBufferBackup = 0;
   }
 }
+Point_2D Graph::pixelToNDC(Point p){
+  return{ ((float)p.x)/window_width , ((float)p.y)/window_height };
+}
+Point Graph::NDCToPixel(Point_2D p){
+  return{ (int)round(p.x * window_width), (int)round(p.y * window_height) };
+}
+

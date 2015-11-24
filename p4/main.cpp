@@ -70,14 +70,12 @@ void callback_mouse(int button, int state, int x, int _y){
     case GLUT_MIDDLE_BUTTON: 
     case GLUT_LEFT_BUTTON:
       if(state == GLUT_UP){
-        printf("%d, %d\n", x, y);/*
+        printf("%d, %d\n", x, y);
         itc = globalCurves->begin();
-        itc->advance(selectedCurve);
-        for(itp = (*itc)->ctrlNDCPoints.begin(); itp != (*itc)->ctrlNDCPoints.end(); itp++){
-          if(globalGraph->isWithinDot(x,y,  , 15)) 
-                printf("HIT\n");
+        std::advance(itc, window.selectedObject);
+        if((*itc)->selectCtrlPoint(x,y)){
+          updateScreen(globalGraph, globalCurves); 
         }
-        */
       }
       break;
   }
@@ -181,5 +179,4 @@ void updateScreen(Graph *graph, std::list<Curve*> *curves){
       (*it)->drawCurve(window.res, {0,0,0});
   }
 }
-
 

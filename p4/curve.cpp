@@ -8,6 +8,7 @@ Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){
   }
   
   numberOfCtrlPoints = _numberOfCtrlPoints;
+  selectedCtrlPoint = 0 ; // init to select the first control point
 }
 
 void Curve::print(){
@@ -37,15 +38,16 @@ void Curve::drawControlPolygon(Color c){
 void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
   float xMin, yMin, delta;
   std::list<Point_2D>::iterator itp, itpNDC;
+  Point_2D p;
 
   findNDCParam(curves, &xMin, &yMin, &delta);
   //DPRINT("xMin: %.2f, yMin: %.2f, delta: %.2f\n", xMin, yMin, delta);
- 
   for(std::list<Curve*>::iterator itc = curves->begin(); itc!=curves->end(); itc++){
-    for(itp = (*itc)->ctrlPoints.begin(), itpNDC = (*itc)->ctrlPointsNDC.begin() ; itp != (*itc)->ctrlPoints.end(); itp++, itpNDC++){
-      (*itpNDC).x = ( (*itp).x - xMin ) / delta; //normalize the x value
-      (*itpNDC).y = ( (*itp).y - yMin ) / delta; //normalize the y value
-      //DPRINT("Normalized (%.2f, %.2f)\n", (*itpNDC).x, (*itpNDC).y);
+    (*itc)->ctrlPointsNDC.clear(); //clear the old NDC points
+    for(itp = (*itc)->ctrlPoints.begin() ; itp != (*itc)->ctrlPoints.end(); itp++){
+      p.x = ( (*itp).x - xMin ) / delta; //normalize the x value
+      p.y = ( (*itp).y - yMin ) / delta; //normalize the y value
+      (*itc)->ctrlPointsNDC.push_back(p);
     }
   }
 }
@@ -81,3 +83,29 @@ void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, fl
   *delta = std::max(xMax-xMin, yMax-yMin);
 }
 
+/* @fn    :   findCtrlPoint(int xPixel, int yPixel);
+ * @brief :   find if the pixelPoint is one of the control points on curve
+ * @return:   positive number - control point is found, return its index in the list<Point_2D>
+ *            -1              - if not found
+ */
+int Curve::findCtrlPoint(int xPixel, int yPixel){
+ Point pixelPoint;
+ int index;
+ for(std::list<Point_2D>::iterator itp = ctrlPointsNDC.begin(); itp != ctrlPointsNDC.end(); itp++){
+          pixelPoint = graph->NDCToPixel(*itp); 
+          if( graph->isWithinDot(xPixel,yPixel,pixelPoint, 15)) {
+            index = std::distance(ctrlPointsNDC.begin(), itp);
+            DPRINT("Hit control point %d\n", index);
+            return index; 
+          }
+ }       
+ return -1;
+}
+bool Curve::selectCtrlPoint(int xPixel, int yPixel){//return true if succesfully selected, else point not found
+  int index = findCtrlPoint(xPixel,yPixel); 
+  if( index != -1){
+    selectedCtrlPoint = index;             
+    return true;
+  }
+  return false;
+}

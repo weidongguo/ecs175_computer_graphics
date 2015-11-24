@@ -49,18 +49,26 @@ Point_2D Bezier::cc(float t){
 void Bezier::drawControlPolygon(){
   Point_2D p1, p2;
   for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+    //first control point 
     p1 = (*it);
+    p1.x = p1.x * (graph->window_width - 1);
+    p1.y = p1.y * (graph->window_height -1);
+    if( std::distance(ctrlPointsNDC.begin(), it) == selectedCtrlPoint)
+      graph->drawBigDot(p1, {0,1,0}, 15);
+    else
+      graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
+
+    //possible next control point 
     it++;
     if(it == ctrlPointsNDC.end())
             break;
     p2 = (*it);          
-    
-    p1.x = p1.x * (graph->window_width - 1);
-    p1.y = p1.y * (graph->window_height -1);
     p2.x = p2.x * (graph->window_width - 1);
     p2.y = p2.y * (graph->window_height -1);
-    graph->drawLine(p1, p2, COLOR_ROYAL_BLUE);
-    graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
+    
     graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
+
+    graph->drawLine(p1, p2, COLOR_ROYAL_BLUE);
+    
   }
 }
