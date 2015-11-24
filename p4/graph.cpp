@@ -96,6 +96,7 @@ int Graph::drawLine( Point p1, Point p2){ // should have named it scanLine, as I
 
 
 int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ 
+  //DPRINT( "drawLine: (%d, %d) and (%d, %d)\n", p1.x, p1.y, p2.x, p2.y);
   if(p1.x == p2.x){ //vertical line
     int y,y_end; 
     if(p1.y <= p2.y){

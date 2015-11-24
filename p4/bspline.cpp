@@ -33,7 +33,8 @@ void Bspline::drawCurve(float res ){
     for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
       p1 = cc(u);
       p2 = cc(u+inc);
-      DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+//      DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+ //     DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p2.x, p2.y, u+inc);
       graph->drawLine(p1, p2, curveColor);
     }
   }
@@ -112,7 +113,9 @@ void Bspline::expandKnotValues() {
   for(int i= 0 ; i < k+numberOfCtrlPoints; i++){// copy everything to temp first
     tmp[i] = knotValues[i];
   }
-  delete [] knotValues;  //deallocate memory for the old knotValues
+  /*if(knotValues !=0)
+    delete [] knotValues;  //deallocate memory for the old knotValues
+    */
   knotValues = new float[knotValuesCap*=2] ;// allocate new memory with double the size of the old
   
   for(int i = 0 ; i < k+numberOfCtrlPoints; i++){ //copy the content back
