@@ -4,6 +4,7 @@
 #include "common_type.h"
 #include "graph.h"
 #include <list>
+#include <fstream>
 
 class Curve {
   protected: 
@@ -34,6 +35,7 @@ class Curve {
   void modifySelectedCtrlPoint(int xPixel,int yPixel); //new control point will be of values relative to x and y
   virtual void addCtrlPoint(int xPixel, int yPixel); // can be overriden by subclass
   virtual void insertCtrlPoint(int xPixel, int yPixel); // can be overriden by subclass
+  static void saveToFile(std::list<Curve *> *curves, const char *filename);
 
 };
 #endif

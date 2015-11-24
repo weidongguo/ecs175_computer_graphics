@@ -3,6 +3,7 @@
 #include "curve.h"
 
 class Bspline:public Curve{
+  public: 
   int k; // k value is the order of the curve, which specifies the number of point defining one segment 
   float* knotValues;
   int knotValuesCap; 

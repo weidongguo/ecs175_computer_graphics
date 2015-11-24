@@ -1,5 +1,6 @@
 #include "curve.h"
 #include <cstring>
+#include "bspline.h"
 Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){
   graph = _graph; //for making pixels to screen (line drawing, etc)
   for(int i = 0 ; i < _numberOfCtrlPoints; i++){
@@ -170,3 +171,36 @@ void Curve::addCtrlPoint(int xPixel, int yPixel){
   numberOfCtrlPoints++;
   selectedCtrlPoint++;// to make the newly added ctrl point the selected control point
 }
+
+
+void Curve::saveToFile(std::list<Curve *> *curves, const char*filename){
+  printf("Saving polyhedra to a file: %s\n...\nDone.\n", filename); fflush(stdout);//
+  std::ofstream ofs(filename, std::ofstream::out);
+  ofs << curves->size() << "\n"; // number of curves
+  
+  for(std::list<Curve *>::iterator itc = curves->begin(); itc!=curves->end(); itc++){ // for each curve
+    ofs << "\n";  
+    if( strcmp( (*itc)->className(), "Bezier" ) == 0 ){
+      ofs << "bz\n";
+      ofs << (*itc)->numberOfCtrlPoints << "\n"; 
+      for(std::list<Point_2D>::iterator itp = (*itc)->ctrlPoints.begin(); itp!=(*itc)->ctrlPoints.end(); itp++){ // for each control point
+        ofs << (*itp).x <<  " " << (*itp).y << "\n";     
+      }
+    }
+    else{
+      ofs << "bs\n";
+      ofs << (*itc)->numberOfCtrlPoints << "\n"; 
+      ofs << ((Bspline*)(*itc))-> k <<"\n";
+      ofs << "T\n"; 
+
+      for(std::list<Point_2D>::iterator itp = (*itc)->ctrlPoints.begin(); itp!=(*itc)->ctrlPoints.end(); itp++){ // for each control point
+        ofs << (*itp).x <<  " " << (*itp).y << "\n";     
+      }
+      for(int i = 0 ; i < (*itc)->numberOfCtrlPoints + ((Bspline*)(*itc))->k; i++){
+        ofs << ((Bspline*)(*itc))->knotValues[i];
+      }
+      ofs << "\n";
+    }
+  }
+}
+

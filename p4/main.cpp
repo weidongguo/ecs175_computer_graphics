@@ -155,6 +155,9 @@ void callback_keyboard(unsigned char key, int x, int _y){
       std::advance(itc, window.selectedObject);
       (*itc)->addCtrlPoint(x, y);
       break;
+    case 's':
+      Curve::saveToFile(globalCurves, "output");
+      return;  
     default: return;
   }
   
