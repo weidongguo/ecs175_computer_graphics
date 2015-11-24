@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include "curve.h"
+#include <unistd.h>
 //#include <AntTweakBar.h>
 
 float *PixelBuffer; // global pixel buffer
@@ -177,7 +178,7 @@ void updateScreen(Graph *graph, std::list<Curve*> *curves){
   Curve::normalizeCtrlPoints(curves);
   int i=0;
   for( std::list<Curve*>::iterator it = curves->begin(); it != curves->end(); it++, i++){
-    //(*it)->printAttributes();
+    (*it)->printAttributes();
     if(  i== window.selectedObject )
        (*it)->drawControlPolygon({0,1,0}, true);
     else

@@ -26,13 +26,15 @@ void Bspline::printAttributes(){
 }
 
 void Bspline::drawCurve(float res ){
-  float inc = 1.0/res;
-  Point_2D p1, p2;
-  for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
-    p1 = cc(u);
-    p2 = cc(u+inc);
-    DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
-    graph->drawLine(p1, p2, curveColor);
+  if(numberOfCtrlPoints > 1){
+    float inc = 1.0/res;
+    Point_2D p1, p2;
+    for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
+      p1 = cc(u);
+      p2 = cc(u+inc);
+//      DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+      graph->drawLine(p1, p2, curveColor);
+    }
   }
 }
 

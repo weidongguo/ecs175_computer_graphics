@@ -15,15 +15,16 @@ void Bezier::printAttributes(){
 }
 
 void Bezier::drawCurve(float res){
-  float inc = 1.0/res;
-  for(float t = 0; t+inc <= 1.0; t+=inc){
-    //DPRINT("%.2f to %.2f\t", t, t+inc);
-    Point_2D p1 = cc(t);
-    Point_2D p2 = cc(t+inc);
-    graph->drawLine( p1, p2, curveColor) ;
-    //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
+  if(numberOfCtrlPoints>1){ 
+    float inc = 1.0/res;
+    for(float t = 0; t+inc <= 1.0; t+=inc){
+      //DPRINT("%.2f to %.2f\t", t, t+inc);
+      Point_2D p1 = cc(t);
+      Point_2D p2 = cc(t+inc);
+      graph->drawLine( p1, p2, curveColor) ;
+      //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
+    }
   }
-  
 }
 
 Point_2D Bezier::cc(float t){
@@ -46,29 +47,4 @@ Point_2D Bezier::cc(float t){
     return c_t;
 }
 
-/*void Bezier::drawControlPolygon(){
-  Point_2D p1, p2;
-  for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
-    //first control point 
-    p1 = (*it);
-    p1.x = p1.x * (graph->window_width - 1);
-    p1.y = p1.y * (graph->window_height -1);
-    if( std::distance(ctrlPointsNDC.begin(), it) == selectedCtrlPoint)
-      graph->drawBigDot(p1, {0,1,0}, 15);
-    else
-      graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
 
-    //possible next control point 
-    it++;
-    if(it == ctrlPointsNDC.end())
-            break;
-    p2 = (*it);          
-    p2.x = p2.x * (graph->window_width - 1);
-    p2.y = p2.y * (graph->window_height -1);
-    
-    graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
-
-    graph->drawLine(p1, p2, COLOR_ROYAL_BLUE);
-    
-  }
-}*/
