@@ -25,7 +25,10 @@ Project 4
       
       After succesfully loading the file, the window will be created and render the curves read from the datafile
       
-      You can find sample input datafiles in the same directory; they are named datafile, datafile2;
+      You can find sample input datafiles in the same directory; they are 
+      named datafile, datafile2; They are very similar to the sample input 
+      given by the TA (on smartsite). The only modifications I made are that 
+      the knot values are separated by spaces, the parentheses around each point are removed, and the x and y values can either be separated by a space or a comma ','. e.g. 1 2 or 1,2
 
 
 4. If user right click within the openGl window, a menu will pop up. User can click on "status" to see the default resolution
