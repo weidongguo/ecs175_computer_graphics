@@ -52,4 +52,6 @@ Project 4
    6) To get input for the K-value and the Knot Values, user can do a right click within the opengl window, a user menu will 
       pop up. User can select input->B-Spline Param. A prompt for entering values will be shown in the terminal.
 
+  7) To save curves to a file called "output", press 's'
+
 5. Please note that I draw a grey square at each control point to aid the user for selecting a control point with the mouse.

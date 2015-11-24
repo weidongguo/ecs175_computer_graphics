@@ -196,9 +196,10 @@ void Curve::saveToFile(std::list<Curve *> *curves, const char*filename){
       for(std::list<Point_2D>::iterator itp = (*itc)->ctrlPoints.begin(); itp!=(*itc)->ctrlPoints.end(); itp++){ // for each control point
         ofs << (*itp).x <<  " " << (*itp).y << "\n";     
       }
-      for(int i = 0 ; i < (*itc)->numberOfCtrlPoints + ((Bspline*)(*itc))->k; i++){
-        ofs << ((Bspline*)(*itc))->knotValues[i];
+      for(int i = 0 ; i < (*itc)->numberOfCtrlPoints + ((Bspline*)(*itc))->k - 1; i++){
+        ofs << ((Bspline*)(*itc))->knotValues[i] << " ";
       }
+      ofs << ((Bspline*)(*itc))->knotValues[(*itc)->numberOfCtrlPoints + ((Bspline*)(*itc))->k - 1] ;
       ofs << "\n";
     }
   }

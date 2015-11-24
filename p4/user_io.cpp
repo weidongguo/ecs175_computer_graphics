@@ -95,9 +95,14 @@ void readCurves(std::ifstream *ifs, Graph *graph, std::list<Curve*> *curves, int
       knotValues = new float[numberOfCtrlPoints+k];
       if(isKnotsSpecified){
         ifs->getline(buffer, sizeOfBuffer);
-        for(int i = 0 ; i < numberOfCtrlPoints+k; i++){
-          knotValues[i] = buffer[i] - '0';
+        charPtr = strtok(buffer, ", ");
+        knotValues[0] = atof(charPtr);
+        for(int i = 1 ; i < numberOfCtrlPoints+k-1; i++){
+          charPtr = strtok(0, ", ");
+          knotValues[i] = atof(charPtr);
         }
+        charPtr = strtok(0, "\0");
+        knotValues[numberOfCtrlPoints+k-1] = atof(charPtr);
       }
       else{ // if not specified, then generate a sequence;
         for(int i = 0 ; i < numberOfCtrlPoints+k; i++){
