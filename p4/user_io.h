@@ -37,5 +37,6 @@ void readFile(std::ifstream &ifs);
 #define MENU_HALF_TONE_TOGGLE         9
 #define MENU_SET_HALF_TONE_COLOR     10
 #define MENU_SET_PHONG_PARAMETERS    11
+#define MENU_SET_BSPLINE_PARAM        12
 
 #endif

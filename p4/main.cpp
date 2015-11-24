@@ -76,7 +76,7 @@ void callback_mouse(int button, int state, int x, int _y){
       break;
     case GLUT_LEFT_BUTTON:
       if(state == GLUT_UP && window.numberOfCurves > 0){
-        printf("%d, %d\n", x, y);
+        //printf("%d, %d\n", x, y);
         std::advance(itc, window.selectedObject);
         if((*itc)->selectCtrlPoint(x,y)){
           updateScreen(globalGraph, globalCurves); 
@@ -87,12 +87,23 @@ void callback_mouse(int button, int state, int x, int _y){
 }
 
 void callback_menu(int state){
+  std::list<Curve *>::iterator it = globalCurves->begin();
   switch(state){
     case MENU_STATUS:
       printf("======================Status====================\n");
       printf("Window Size is %d x %d\n", window.width, window.height);
       printf("Res: %.2f\n",window.res);
       printf("=================End of Status==================\n");
+      break;
+    case MENU_SET_BSPLINE_PARAM:
+      std::advance(it, window.selectedObject); 
+      if( strcmp( (*it)->className(), "Bspline") == 0 ){
+        ( (Bspline*)(*it) )->setParam();
+        updateScreen(globalGraph, globalCurves);
+      }
+      else{
+        printf("The selected object is an Bezier curve.\n");
+      }
       break;
   }
 }
@@ -166,16 +177,11 @@ void callback_display(){
 //create the pop of menu that can be triggered by right cliking within the opengl window
 void createMenu(void){     
   int subMenuId_grabInput = glutCreateMenu(callback_menu);
-  glutAddMenuEntry("Set Half Tone Color", MENU_SET_HALF_TONE_COLOR);
-  glutAddMenuEntry("Set Phong Parameters", MENU_SET_PHONG_PARAMETERS);
+  glutAddMenuEntry("Set Order K and Knot Values", MENU_SET_BSPLINE_PARAM);
  
-  int subMenuId_halfTone = glutCreateMenu(callback_menu);
-  glutAddMenuEntry("Toggle", MENU_HALF_TONE_TOGGLE );
-
   int menuId = glutCreateMenu(callback_menu);
   glutAddMenuEntry("Status", MENU_STATUS);
   glutAddSubMenu("Input", subMenuId_grabInput); 
-  glutAddSubMenu("Half Tone", subMenuId_halfTone);
   glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 

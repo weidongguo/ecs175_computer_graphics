@@ -7,6 +7,7 @@ Bspline::Bspline(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints, 
   knotValues = new float[_numberOfCtrlPoints + _k];// n+1+k
   memcpy(knotValues, _knotValues, sizeof(float)*(_numberOfCtrlPoints+_k));
   setCurveColor(COLOR_CRIMSON);
+  knotValuesCap = _numberOfCtrlPoints +_k;
 }
 
 void Bspline::printAttributes(){
@@ -32,7 +33,7 @@ void Bspline::drawCurve(float res ){
     for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
       p1 = cc(u);
       p2 = cc(u+inc);
-//      DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
+      DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
       graph->drawLine(p1, p2, curveColor);
     }
   }
@@ -70,23 +71,54 @@ Point_2D Bspline::cc(float u){
     return c_t;
 }
 
-/*
-void Bspline::drawControlPolygon(){
-  Point_2D p1, p2;
-  for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
-    p1 = (*it);
-    it++;
-    if(it == ctrlPointsNDC.end())
-            break;
-    p2 = (*it);          
-    
-    p1.x = p1.x * (graph->window_width - 1);
-    p1.y = p1.y * (graph->window_height -1);
-    p2.x = p2.x * (graph->window_width - 1);
-    p2.y = p2.y * (graph->window_height -1);
+const char* Bspline::className(){
+  return "Bspline";
+}
 
-    graph->drawLine(p1,p2,COLOR_CRIMSON);
-    graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
-    graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
+void Bspline::setParam(){
+  float u;
+  printf("For the selected B-Spline curve\nPlease enter its K value:");
+  scanf("%d", &k);
+  printf("K: %d recorded!\n", k);
+  if(knotValues != 0)
+    delete [] knotValues; 
+  knotValues = new float[numberOfCtrlPoints + k];// n+1+k
+  for(int i = 0 ; i < k + numberOfCtrlPoints; i++){
+    printf("u%d: ", i); 
+    scanf("%f", &u);
+    knotValues[i] = u;
   }
-}*/
+  printf("Done Recording B-Spline param\n");
+}
+
+void Bspline::insertCtrlPoint(int xPixel, int yPixel){
+  DPRINT("BSpline overriding\n");
+  if( k+numberOfCtrlPoints >= knotValuesCap) // when space is not enough
+    expandKnotValues();
+  knotValues[k+numberOfCtrlPoints] = knotValues[k+numberOfCtrlPoints-1] + 1; 
+  Curve::insertCtrlPoint(xPixel, yPixel);
+}
+
+void Bspline::addCtrlPoint(int xPixel, int yPixel){
+  DPRINT("BSpline overriding\n");
+  if( k+numberOfCtrlPoints >= knotValuesCap) // when space is not enough
+    expandKnotValues();
+  knotValues[k+numberOfCtrlPoints] = knotValues[k+numberOfCtrlPoints-1] + 1; 
+  Curve::addCtrlPoint(xPixel, yPixel);
+}
+
+void Bspline::expandKnotValues() {
+  float *tmp = new float[k+numberOfCtrlPoints];   
+  for(int i= 0 ; i < k+numberOfCtrlPoints; i++){// copy everything to temp first
+    tmp[i] = knotValues[i];
+  }
+  delete [] knotValues;  //deallocate memory for the old knotValues
+  knotValues = new float[knotValuesCap*=2] ;// allocate new memory with double the size of the old
+  
+  for(int i = 0 ; i < k+numberOfCtrlPoints; i++){ //copy the content back
+    knotValues[i] = tmp[i];  
+  }
+  //now knotValues has the same content as before, but the capacity is doubled 
+  delete[] tmp;
+}
+

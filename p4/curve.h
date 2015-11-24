@@ -21,7 +21,8 @@ class Curve {
   virtual void printAttributes() = 0;
   void drawControlPolygon(Color c, bool isSelected);
   void setCurveColor(Color c);
-  virtual void drawCurve(float res) = 0;
+  virtual void drawCurve(float res) = 0; // ** must ** be overriden by subclass (pure virtual)
+  virtual const char* className() = 0;
 
   static void normalizeCtrlPoints(std::list<Curve*> *curves);
   static void findNDCParam(std::list<Curve*> *curves, float*xMin, float*yMin, float *delta);
@@ -31,8 +32,8 @@ class Curve {
   bool selectCtrlPoint(int xPixel, int yPixel);//return true if succesfully selected, else point not found
   bool deleteSelectedCtrlPoint();
   void modifySelectedCtrlPoint(int xPixel,int yPixel); //new control point will be of values relative to x and y
-  void addCtrlPoint(int xPixel, int yPixel);
-  void insertCtrlPoint(int xPixel, int yPixel);
+  virtual void addCtrlPoint(int xPixel, int yPixel); // can be overriden by subclass
+  virtual void insertCtrlPoint(int xPixel, int yPixel); // can be overriden by subclass
 
 };
 #endif

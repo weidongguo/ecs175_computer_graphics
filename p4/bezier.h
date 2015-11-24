@@ -8,6 +8,7 @@ class Bezier:public Curve {
     Point_2D cc(float t);
     void drawCurve(float res );
 //    void drawControlPolygon();
+    const char* className();
 };
 
 #endif

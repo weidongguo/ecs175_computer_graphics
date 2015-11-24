@@ -168,4 +168,5 @@ void Curve::addCtrlPoint(int xPixel, int yPixel){
   std::advance(it, selectedCtrlPoint+1);
   ctrlPoints.insert(it, p);
   numberOfCtrlPoints++;
+  selectedCtrlPoint++;// to make the newly added ctrl point the selected control point
 }

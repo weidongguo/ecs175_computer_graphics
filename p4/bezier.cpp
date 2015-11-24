@@ -47,4 +47,7 @@ Point_2D Bezier::cc(float t){
     return c_t;
 }
 
+const char* Bezier::className(){
+  return "Bezier";
+}
 
