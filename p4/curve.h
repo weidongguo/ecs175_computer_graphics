@@ -30,7 +30,9 @@ class Curve {
   int findCtrlPoint(int xPixel, int yPixel);//return an index of the ctrl point on a curve
   bool selectCtrlPoint(int xPixel, int yPixel);//return true if succesfully selected, else point not found
   bool deleteSelectedCtrlPoint();
-  void modifySelectedCtrlPoint(int x,int y); //new control point will be of values relative to x and y
+  void modifySelectedCtrlPoint(int xPixel,int yPixel); //new control point will be of values relative to x and y
+  void addCtrlPoint(int xPixel, int yPixel);
+  void insertCtrlPoint(int xPixel, int yPixel);
 
 };
 #endif

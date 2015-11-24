@@ -97,26 +97,31 @@ void callback_menu(int state){
   }
 }
 
-void callback_keyboard(unsigned char key, int x, int y){
+void callback_keyboard(unsigned char key, int x, int _y){
+  int y = window.height - _y;
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x, window.height - y);
     std::list<Curve*>::iterator itc;
    
     switch(key){ // control commands
+    //+ resolution
     case '=':  window.res++; 
                break;
-
+    //- resoltuion
     case '-':  if(window.res <= 1) 
                   window.res = 1;
                else
                   window.res--; 
                break;
+    //- select curve to the left
     case 'h': if(window.selectedObject == 0)
                 window.selectedObject = window.numberOfCurves - 1;  
               else
                 window.selectedObject--;
               break;
+    // -select curve to the right
     case 'l':  window.selectedObject = (window.selectedObject+1)%window.numberOfCurves;
                break;
+    // -delete control point
     case 'd':  if(window.numberOfCurves>0){ 
                  itc = globalCurves->begin(); 
                  std::advance(itc, window.selectedObject);
@@ -127,6 +132,18 @@ void callback_keyboard(unsigned char key, int x, int y){
                  }
                }
                break; 
+    // - add a new point to the left of the selected ctrl point
+    case 'i': 
+      itc = globalCurves->begin();
+      std::advance(itc, window.selectedObject);
+      (*itc)->insertCtrlPoint(x, y);
+      break;   
+    // - add a new point to the right of the selected ctrl point 
+    case 'a':
+      itc = globalCurves->begin();
+      std::advance(itc, window.selectedObject);
+      (*itc)->addCtrlPoint(x, y);
+      break;
     default: return;
   }
   
@@ -174,7 +191,7 @@ void windowInit(Window *window){
   window->tf.pairOfPointsForRotAxis[0] = { 0,0,0};
   window->tf.pairOfPointsForRotAxis[1] = { 1,1,1};
   window->state = STATE_HALF_TONE_OFF;
-  window->res = 5;  
+  window->res = 30;  
 }
 
 void updateScreen(Graph *graph, std::list<Curve*> *curves){

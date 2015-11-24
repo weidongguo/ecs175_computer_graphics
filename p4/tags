@@ -5,7 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ABS	glui-2.35/src/glui_internal.h	19;"	d
-ALPHA	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon14
+ALPHA	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon15
 AND	glui-2.35/src/glui_internal.h	8;"	d
 ARG	Makefile	/^ARG = -lGL -lglut -lm -g -Wall -std=c++11 -DDEBUG_PRINT $/;"	m
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball() $/;"	f	class:Arcball
@@ -13,8 +13,8 @@ Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(const vec2 &_center, float 
 Arcball	glui-2.35/src/arcball.cpp	/^Arcball::Arcball(mat4 *mtx) $/;"	f	class:Arcball
 Arcball	glui-2.35/src/arcball.h	/^class Arcball $/;"	c
 BEZIER_H	bezier.h	2;"	d
-BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon14
-BRESENHAM	graph.h	61;"	d
+BLUE	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon15
+BRESENHAM	graph.h	65;"	d
 BSPLINE_H	bspline.h	2;"	d
 Bezier	bezier.cpp	/^Bezier::Bezier(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints)$/;"	f	class:Bezier
 Bezier	bezier.h	/^class Bezier:public Curve {$/;"	c
@@ -38,11 +38,11 @@ COMMON_TYPE_H	common_type.h	2;"	d
 CTRL	glui-2.35/src/glui_internal.h	102;"	d
 CURVE_H	curve.h	2;"	d
 CXX	glui-2.35/src/makefile	/^CXX       = g++$/;"	m
-ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon8
+ClipRegion	common_type.h	/^}ClipRegion;$/;"	t	typeref:struct:__anon9
 Color	common_type.h	/^}Color;$/;"	t	typeref:struct:__anon1
 Curve	curve.cpp	/^Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){$/;"	f	class:Curve
 Curve	curve.h	/^class Curve {$/;"	c
-DDA	graph.h	62;"	d
+DDA	graph.h	66;"	d
 DEG2RAD	glui-2.35/src/glui_internal.h	61;"	d
 DISABLE_ID	glui-2.35/src/example/example5.cpp	55;"	d	file:
 DIST	glui-2.35/src/makefile	/^DIST = glui-2.3.0$/;"	m
@@ -51,8 +51,8 @@ DPRINT	common_type.h	12;"	d
 DRAW_SEG	glui-2.35/src/glui_translation.cpp	380;"	d	file:
 DRAW_SEG	glui-2.35/src/glui_translation.cpp	477;"	d	file:
 ENABLE_ID	glui-2.35/src/example/example5.cpp	54;"	d	file:
-ES	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon15
-Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon6
+ES	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon16
+Edge	common_type.h	/^} Edge;$/;"	t	typeref:struct:__anon7
 FUDGE	glui-2.35/src/glui_internal.h	90;"	d
 GLUI	glui-2.35/src/include/GL/glui.h	/^class GLUI : public GLUI_Main $/;"	c
 GLUI_ACTIVATE_MOUSE	glui-2.35/src/include/GL/glui.h	166;"	d
@@ -183,11 +183,11 @@ GLUI_Rollout	glui-2.35/src/include/GL/glui.h	/^class GLUI_Rollout : public GLUI_
 GLUI_Rotation	glui-2.35/src/glui_rotation.cpp	/^GLUI_Rotation::GLUI_Rotation( GLUI_Node *parent,$/;"	f	class:GLUI_Rotation
 GLUI_Rotation	glui-2.35/src/include/GL/glui.h	/^    GLUI_Rotation(void) { common_init(); }$/;"	f	class:GLUI_Rotation
 GLUI_Rotation	glui-2.35/src/include/GL/glui.h	/^class GLUI_Rotation : public GLUI_Mouse_Interaction$/;"	c
-GLUI_SCROLL_ARROW_DOWN	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_DOWN,$/;"	e	enum:__anon16	file:
+GLUI_SCROLL_ARROW_DOWN	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_DOWN,$/;"	e	enum:__anon17	file:
 GLUI_SCROLL_ARROW_HEIGHT	glui-2.35/src/include/GL/glui.h	204;"	d
-GLUI_SCROLL_ARROW_LEFT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_LEFT,$/;"	e	enum:__anon16	file:
-GLUI_SCROLL_ARROW_RIGHT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_RIGHT$/;"	e	enum:__anon16	file:
-GLUI_SCROLL_ARROW_UP	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_UP,$/;"	e	enum:__anon16	file:
+GLUI_SCROLL_ARROW_LEFT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_LEFT,$/;"	e	enum:__anon17	file:
+GLUI_SCROLL_ARROW_RIGHT	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_RIGHT$/;"	e	enum:__anon17	file:
+GLUI_SCROLL_ARROW_UP	glui-2.35/src/glui_scrollbar.cpp	/^  GLUI_SCROLL_ARROW_UP,$/;"	e	enum:__anon17	file:
 GLUI_SCROLL_ARROW_WIDTH	glui-2.35/src/include/GL/glui.h	203;"	d
 GLUI_SCROLL_BOX_MIN_HEIGHT	glui-2.35/src/include/GL/glui.h	205;"	d
 GLUI_SCROLL_BOX_STD_HEIGHT	glui-2.35/src/include/GL/glui.h	206;"	d
@@ -313,21 +313,21 @@ GLUI_VIEWMODEL_H	glui-2.35/src/viewmodel.h	105;"	d
 GLUI_XOFF	glui-2.35/src/include/GL/glui.h	109;"	d
 GLUI_YOFF	glui-2.35/src/include/GL/glui.h	110;"	d
 GRAPH_H	graph.h	2;"	d
-GREEN	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon14
+GREEN	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon15
 Graph	graph.cpp	/^Graph::Graph(int width, int height, float *PixelBufferPtr){$/;"	f	class:Graph
 Graph	graph.h	/^class Graph {$/;"	c
 HIDE_ID	glui-2.35/src/example/example5.cpp	57;"	d	file:
-HIST_SIZE	glui-2.35/src/include/GL/glui.h	/^    enum { HIST_SIZE = 100 };$/;"	e	enum:GLUI_CommandLine::__anon17
+HIST_SIZE	glui-2.35/src/include/GL/glui.h	/^    enum { HIST_SIZE = 100 };$/;"	e	enum:GLUI_CommandLine::__anon18
 IN_BOUNDS	glui-2.35/src/glui_internal.h	72;"	d
-Ia	common_type.h	/^  float Ia;$/;"	m	struct:__anon10
-Il	common_type.h	/^  float Il; $/;"	m	struct:__anon10
+Ia	common_type.h	/^  float Ia;$/;"	m	struct:__anon11
+Il	common_type.h	/^  float Il; $/;"	m	struct:__anon11
 Int1_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int1_CB)        (int);$/;"	t
 Int2_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int2_CB)        (int, int);$/;"	t
 Int3_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int3_CB)        (int, int, int);$/;"	t
 Int4_CB	glui-2.35/src/include/GL/glui.h	/^typedef void (*Int4_CB)        (int, int, int, int);$/;"	t
-KA	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon15
-KD	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon15
-KS	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon15
+KA	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon16
+KD	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon16
+KS	glui-2.35/src/algebra3.h	/^enum {KA, KD, KS, ES};           \/\/ phong coefficients$/;"	e	enum:__anon16
 LIBGL	glui-2.35/src/makefile	/^LIBGL   = -lGLU -lGL$/;"	m
 LIBGLUI	glui-2.35/src/makefile	/^LIBGLUI = -L.\/lib -lglui$/;"	m
 LIBGLUT	glui-2.35/src/makefile	/^LIBGLUT   = -L\/usr\/X11R6\/lib -lglut$/;"	m
@@ -364,27 +364,30 @@ MIN	common_type.h	15;"	d
 MIN	glui-2.35/src/glui_internal.h	15;"	d
 M_PI	glui-2.35/src/algebra3.h	95;"	d
 M_PI	glui-2.35/src/glui_internal.h	36;"	d
+NDCToOriginal	curve.cpp	/^Point_2D Curve::NDCToOriginal(Point_2D pNDC, ParamNDC paramNDC){$/;"	f	class:Curve
+NDCToPixel	graph.cpp	/^Point Graph::NDCToPixel(Point_2D p){$/;"	f	class:Graph
 NOT	glui-2.35/src/glui_internal.h	10;"	d
 OPEN_CONSOLE_ID	glui-2.35/src/example/example3.cpp	46;"	d	file:
 OPTS	glui-2.35/src/makefile	/^OPTS=-O0$/;"	m
 OPTS	glui-2.35/src/makefile	/^OPTS=-g$/;"	m
 OR	glui-2.35/src/glui_internal.h	9;"	d
-PA	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon13
-PB	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon13
-PC	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon13
-PD	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon13
+PA	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon14
+PB	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon14
+PC	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon14
+PD	glui-2.35/src/algebra3.h	/^enum {PA, PB, PC, PD};           \/\/ planes$/;"	e	enum:__anon14
 PI	common_type.h	18;"	d
 PPM_VERBOSE	glui-2.35/src/tools/ppm.cpp	13;"	d	file:
 PT_IN_BOX	glui-2.35/src/glui_internal.h	77;"	d
+ParamNDC	common_type.h	/^} ParamNDC;$/;"	t	typeref:struct:__anon2
 PixelBuffer	graph.h	/^    float *PixelBuffer;$/;"	m	class:Graph
 PixelBuffer	main.cpp	/^float *PixelBuffer; \/\/ global pixel buffer$/;"	v
 PixelBufferBackup	graph.h	/^    float *PixelBufferBackup;$/;"	m	class:Graph
-Point	common_type.h	/^} Point;$/;"	t	typeref:struct:__anon2
-Point_2D	common_type.h	/^} Point_2D;$/;"	t	typeref:struct:__anon3
-Point_3D	common_type.h	/^}Point_3D;$/;"	t	typeref:struct:__anon5
+Point	common_type.h	/^} Point;$/;"	t	typeref:struct:__anon3
+Point_2D	common_type.h	/^} Point_2D;$/;"	t	typeref:struct:__anon4
+Point_3D	common_type.h	/^}Point_3D;$/;"	t	typeref:struct:__anon6
 ProcessFiles	glui-2.35/src/glui_filebrowser.cpp	/^void ProcessFiles(const char *path_name)$/;"	f
 RAD2DEG	glui-2.35/src/glui_internal.h	62;"	d
-RED	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon14
+RED	glui-2.35/src/algebra3.h	/^enum {RED, GREEN, BLUE, ALPHA};  \/\/ colors$/;"	e	enum:__anon15
 RGBc	glui-2.35/src/include/GL/glui.h	/^  RGBc( Byte r, Byte g, Byte b ) { set( r, g, b ); }$/;"	f	class:RGBc
 RGBc	glui-2.35/src/include/GL/glui.h	/^  RGBc( void ) {}$/;"	f	class:RGBc
 RGBc	glui-2.35/src/include/GL/glui.h	/^class RGBc {$/;"	c
@@ -409,15 +412,15 @@ STATE_GRAB_DATA_TRANSLATION_FACTORS	user_io.h	19;"	d
 STATE_HALF_TONE_OFF	user_io.h	25;"	d
 STATE_HALF_TONE_ON	user_io.h	24;"	d
 SWAP2	glui-2.35/src/glui_internal.h	96;"	d
-Scene	common_type.h	/^} Scene;$/;"	t	typeref:struct:__anon10
+Scene	common_type.h	/^} Scene;$/;"	t	typeref:struct:__anon11
 Super	glui-2.35/src/include/GL/glui.h	/^    typedef GLUI_EditText Super;$/;"	t	class:GLUI_CommandLine
 Surface	common_type.h	/^typedef TriSurface Surface;$/;"	t
 TEST_AND	glui-2.35/src/glui_internal.h	31;"	d
 TEST_BIT	glui-2.35/src/glui_internal.h	24;"	d
 TOGGLE_BIT	glui-2.35/src/glui_internal.h	27;"	d
-Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon9
+Transformation	common_type.h	/^}Transformation;$/;"	t	typeref:struct:__anon10
 TranslationCodes	glui-2.35/src/include/GL/glui.h	/^enum TranslationCodes  $/;"	g
-TriSurface	common_type.h	/^} TriSurface;$/;"	t	typeref:struct:__anon7
+TriSurface	common_type.h	/^} TriSurface;$/;"	t	typeref:struct:__anon8
 UNAME	glui-2.35/src/makefile	/^UNAME = $(shell uname)$/;"	m
 USER_IO_H	user_io.h	2;"	d
 VEC3_TO_ARRAY	glui-2.35/src/glui_internal.h	99;"	d
@@ -425,16 +428,16 @@ VECTOR_H	vector.h	2;"	d
 VEC_ERROR	glui-2.35/src/algebra3.cpp	81;"	d	file:
 VEC_ERROR	glui-2.35/src/algebra3.cpp	85;"	d	file:
 VFlip	glui-2.35/src/tools/ppm.cpp	/^void VFlip(unsigned char * Pix, int width, int height, int chan)$/;"	f
-VW	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon12
-VX	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon12
-VY	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon12
-VZ	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon12
+VW	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon13
+VX	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon13
+VY	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon13
+VZ	glui-2.35/src/algebra3.h	/^enum {VX, VY, VZ, VW};           \/\/ axes$/;"	e	enum:__anon13
 V_FCT_PTR	glui-2.35/src/algebra3.h	/^typedef float (*V_FCT_PTR)(float);$/;"	t
 V_FCT_PTR	glui-2.35/src/quaternion.h	/^typedef float (*V_FCT_PTR)(float);$/;"	t
-Vector	common_type.h	/^} Vector;$/;"	t	typeref:struct:__anon4
+Vector	common_type.h	/^} Vector;$/;"	t	typeref:struct:__anon5
 ViewModel	glui-2.35/src/viewmodel.cpp	/^ViewModel::ViewModel() $/;"	f	class:ViewModel
 ViewModel	glui-2.35/src/viewmodel.h	/^class ViewModel $/;"	c
-Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon11
+Window	common_type.h	/^} Window;$/;"	t	typeref:struct:__anon12
 WritePPM	glui-2.35/src/tools/ppm.cpp	/^void WritePPM(const char *FileName, unsigned char* Color, int Width, int Height)$/;"	f
 _RGBC_	glui-2.35/src/include/GL/glui.h	89;"	d
 __GLUI_INTERNAL_CONTROL_H	glui-2.35/src/glui_internal_control.h	8;"	d
@@ -454,6 +457,7 @@ active_control_glui	glui-2.35/src/include/GL/glui.h	/^    GLUI         *active_c
 active_type	glui-2.35/src/include/GL/glui.h	/^    int             active_type; \/\/\/< "GLUI_CONTROL_ACTIVE_..."$/;"	m	class:GLUI_Control
 add	vector.cpp	/^Point_2D add(Point_2D p1, Point_2D p2){$/;"	f
 add	vector.cpp	/^Vector add(Vector v1, Vector v2){$/;"	f
+addCtrlPoint	curve.cpp	/^void Curve::addCtrlPoint(int xPixel, int yPixel){$/;"	f	class:Curve
 add_button	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI:: add_button( const char *name, $/;"	f	class:GLUI
 add_button_to_panel	glui-2.35/src/glui_add_controls.cpp	/^GLUI_Button   *GLUI::add_button_to_panel( GLUI_Panel *panel,$/;"	f	class:GLUI
 add_cb_to_glut_window	glui-2.35/src/glui.cpp	/^void     GLUI_Master_Object::add_cb_to_glut_window(int window_id,$/;"	f	class:GLUI_Master_Object
@@ -533,9 +537,9 @@ callback	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB         callback; \/\/\/<
 callback_count	glui-2.35/src/include/GL/glui.h	/^    int           callback_count;$/;"	m	class:GLUI_Scrollbar
 callback_count	glui-2.35/src/include/GL/glui.h	/^    int           callback_count;$/;"	m	class:GLUI_Spinner
 callback_display	main.cpp	/^void callback_display(){$/;"	f
-callback_keyboard	main.cpp	/^void callback_keyboard(unsigned char key, int x, int y){$/;"	f
+callback_keyboard	main.cpp	/^void callback_keyboard(unsigned char key, int x, int _y){$/;"	f
 callback_menu	main.cpp	/^void callback_menu(int state){$/;"	f
-callback_mouse	main.cpp	/^void callback_mouse(int button, int state, int x, int y){$/;"	f
+callback_mouse	main.cpp	/^void callback_mouse(int button, int state, int x, int _y){$/;"	f
 can_activate	glui-2.35/src/include/GL/glui.h	/^    bool            can_activate; \/\/\/< If false, remove from tab order.$/;"	m	class:GLUI_Control
 can_draw	glui-2.35/src/include/GL/glui.h	/^    int          can_draw( void ) { return (glui != NULL && hidden == false); }$/;"	f	class:GLUI_Control
 can_spin	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
@@ -609,7 +613,7 @@ control_cb	glui-2.35/src/example/example6.cpp	/^void control_cb(int control) {$/
 copy_ball_to_float_array	glui-2.35/src/glui_rotation.cpp	/^void     GLUI_Rotation::copy_ball_to_float_array( void )$/;"	f	class:GLUI_Rotation
 copy_float_array_to_ball	glui-2.35/src/glui_rotation.cpp	/^void     GLUI_Rotation::copy_float_array_to_ball( void )$/;"	f	class:GLUI_Rotation
 counter	glui-2.35/src/example/example3.cpp	/^int   counter = 0;$/;"	v
-cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon11
+cr	common_type.h	/^  ClipRegion cr;$/;"	m	struct:__anon12
 createMenu	main.cpp	/^void createMenu(void){     $/;"	f
 create_glui	glui-2.35/src/glui.cpp	/^GLUI *GLUI_Master_Object::create_glui( const char *name, long flags,int x,int y )$/;"	f	class:GLUI_Master_Object
 create_glui_subwindow	glui-2.35/src/glui.cpp	/^GLUI *GLUI_Master_Object::create_glui_subwindow( int parent_window, $/;"	f	class:GLUI_Master_Object
@@ -637,6 +641,7 @@ currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;
 currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_Checkbox
 currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_Listbox
 currently_inside	glui-2.35/src/include/GL/glui.h	/^    bool currently_inside;$/;"	m	class:GLUI_RadioButton
+curveColor	curve.h	/^  Color curveColor;$/;"	m	class:Curve
 damp_factor	glui-2.35/src/arcball.h	/^    float radius, damp_factor;$/;"	m	class:Arcball
 damping	glui-2.35/src/include/GL/glui.h	/^    float          damping;$/;"	m	class:GLUI_Rotation
 data_type	glui-2.35/src/include/GL/glui.h	/^    int                 data_type;$/;"	m	class:GLUI_EditText
@@ -653,11 +658,13 @@ deactivate_current_control	glui-2.35/src/glui.cpp	/^void         GLUI_Main::deac
 debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_EditText
 debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_List
 debug	glui-2.35/src/include/GL/glui.h	/^    int                 debug;$/;"	m	class:GLUI_TextBox
+deleteSelectedCtrlPoint	curve.cpp	/^bool Curve::deleteSelectedCtrlPoint(){ \/\/if there are no more control points, return true;$/;"	f	class:Curve
 delete_all	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_all()$/;"	f	class:GLUI_List
 delete_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_item( const char *text )$/;"	f	class:GLUI_List
 delete_item	glui-2.35/src/glui_list.cpp	/^int  GLUI_List::delete_item( int id )$/;"	f	class:GLUI_List
 delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item( const char *text )$/;"	f	class:GLUI_Listbox
 delete_item	glui-2.35/src/glui_listbox.cpp	/^int  GLUI_Listbox::delete_item(int id)$/;"	f	class:GLUI_Listbox
+delta	common_type.h	/^  float delta;$/;"	m	struct:__anon2
 depressed	glui-2.35/src/include/GL/glui.h	/^    int               depressed;$/;"	m	class:GLUI_Listbox
 descendBranch	glui-2.35/src/glui_treepanel.cpp	/^void            GLUI_TreePanel::descendBranch(GLUI_Panel *root) {$/;"	f	class:GLUI_TreePanel
 determineStartAndEndPoints	graph.cpp	/^void determineStartAndEndPoints(Point p1, Point p2, int*x, int*y, int *x_end, int*y_end){$/;"	f
@@ -697,12 +704,10 @@ draw	glui-2.35/src/glui_spinner.cpp	/^void    GLUI_Spinner::draw( int x, int y )
 draw	glui-2.35/src/glui_statictext.cpp	/^void    GLUI_StaticText::draw( int x, int y )$/;"	f	class:GLUI_StaticText
 draw	glui-2.35/src/glui_textbox.cpp	/^void    GLUI_TextBox::draw( int x, int y )$/;"	f	class:GLUI_TextBox
 draw	glui-2.35/src/glui_tree.cpp	/^void   GLUI_Tree::draw( int x, int y )$/;"	f	class:GLUI_Tree
-drawBigDot	graph.cpp	/^void Graph::drawBigDot(Point_2D p, Color c){$/;"	f	class:Graph
-drawControlPolygon	bezier.cpp	/^void Bezier::drawControlPolygon(){$/;"	f	class:Bezier
-drawControlPolygon	bspline.cpp	/^void Bspline::drawControlPolygon(){$/;"	f	class:Bspline
-drawControlPolygon	curve.cpp	/^void Curve::drawControlPolygon(Color c){$/;"	f	class:Curve
-drawCurve	bezier.cpp	/^void Bezier::drawCurve(float res, Color c){$/;"	f	class:Bezier
-drawCurve	bspline.cpp	/^void Bspline::drawCurve(float res, Color c){$/;"	f	class:Bspline
+drawBigDot	graph.cpp	/^void Graph::drawBigDot(Point_2D p, Color c, int size){$/;"	f	class:Graph
+drawControlPolygon	curve.cpp	/^void Curve::drawControlPolygon(Color c, bool isSelected){$/;"	f	class:Curve
+drawCurve	bezier.cpp	/^void Bezier::drawCurve(float res){$/;"	f	class:Bezier
+drawCurve	bspline.cpp	/^void Bspline::drawCurve(float res ){$/;"	f	class:Bspline
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2){ \/\/ should have named it scanLine, as I only use this function for horizontal line drawing$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b){$/;"	f	class:Graph
 drawLine	graph.cpp	/^int Graph::drawLine( Point p1, Point p2,  float r, float g, float b, int method){ $/;"	f	class:Graph
@@ -792,11 +797,12 @@ eye_yaw_abs	glui-2.35/src/viewmodel.cpp	/^ViewModel::eye_yaw_abs(const float ang
 fb	glui-2.35/src/example/example6.cpp	/^GLUI_FileBrowser *fb;$/;"	v
 fb	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::fb(GLUI_Tree *branch) $/;"	f	class:GLUI_TreePanel
 fbreaddir	glui-2.35/src/glui_filebrowser.cpp	/^void GLUI_FileBrowser::fbreaddir(const char *d) {$/;"	f	class:GLUI_FileBrowser
-ff	common_type.h	/^  Point_3D ff; \/\/coord of FROM POINTS, $/;"	m	struct:__anon10
+ff	common_type.h	/^  Point_3D ff; \/\/coord of FROM POINTS, $/;"	m	struct:__anon11
 file	glui-2.35/src/include/GL/glui.h	/^    GLUI_String file;$/;"	m	class:GLUI_FileBrowser
 filebrowser	glui-2.35/src/example/example6.cpp	/^const char filebrowser[] = $/;"	v
 fillScreen	graph.cpp	/^int Graph::fillScreen(Color c){$/;"	f	class:Graph
 fillScreen	graph.cpp	/^int Graph::fillScreen(float r, float g, float b){$/;"	f	class:Graph
+findCtrlPoint	curve.cpp	/^int Curve::findCtrlPoint(int xPixel, int yPixel){$/;"	f	class:Curve
 findNDCParam	curve.cpp	/^void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, float *delta){ \/\/static method$/;"	f	class:Curve
 find_arrow	glui-2.35/src/glui_scrollbar.cpp	/^int    GLUI_Scrollbar::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Scrollbar
 find_arrow	glui-2.35/src/glui_spinner.cpp	/^int    GLUI_Spinner::find_arrow( int local_x, int local_y )$/;"	f	class:GLUI_Spinner
@@ -958,7 +964,7 @@ glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int           glut_window_i
 glut_window_id	glui-2.35/src/include/GL/glui.h	/^    int    glut_window_id;$/;"	m	class:GLUI_Glut_Window
 glut_windows	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node     glut_windows;$/;"	m	class:GLUI_Master_Object
 graph	curve.h	/^  Graph *graph;$/;"	m	class:Curve
-graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon11
+graphs	common_type.h	/^  void **graphs;$/;"	m	struct:__anon12
 green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_Tree
 green	glui-2.35/src/include/GL/glui.h	/^    float green;$/;"	m	class:GLUI_TreePanel
 group	glui-2.35/src/include/GL/glui.h	/^    GLUI_RadioGroup *group;$/;"	m	class:GLUI_RadioButton
@@ -971,10 +977,10 @@ h	glui-2.35/src/include/GL/glui.h	/^    int             w, h;                   
 h	glui-2.35/src/include/GL/glui.h	/^    int            w, h;$/;"	m	class:GLUI_Bitmap
 h	glui-2.35/src/include/GL/glui.h	/^    int           w, h;$/;"	m	class:GLUI_Main
 hah	glui-2.35/src/example/example6.cpp	/^GLUI_List        *hah;$/;"	v
-halfTone	common_type.h	/^  Color halfTone; $/;"	m	struct:__anon11
+halfTone	common_type.h	/^  Color halfTone; $/;"	m	struct:__anon12
 halfTone	graph.cpp	/^void Graph::halfTone(Color color){$/;"	f	class:Graph
 has_limits	glui-2.35/src/include/GL/glui.h	/^    int                 has_limits;$/;"	m	class:GLUI_EditText
-height	common_type.h	/^  int height;$/;"	m	struct:__anon11
+height	common_type.h	/^  int height;$/;"	m	struct:__anon12
 height	glui-2.35/src/glui_bitmaps.cpp	/^int GLUI_StdBitmaps::height(int i) const$/;"	f	class:GLUI_StdBitmaps
 hidden	glui-2.35/src/include/GL/glui.h	/^    bool            hidden; \/* Collapsed controls (and children) are hidden *\/$/;"	m	class:GLUI_Control
 hide	glui-2.35/src/glui.cpp	/^void            GLUI::hide( void )$/;"	f	class:GLUI
@@ -1022,8 +1028,9 @@ init_grey	glui-2.35/src/glui_bitmaps.cpp	/^void GLUI_Bitmap::init_grey(unsigned 
 init_live	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::init_live()$/;"	f	class:GLUI_Control
 initially_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Rollout
 initially_inside	glui-2.35/src/include/GL/glui.h	/^    bool        currently_inside, initially_inside;$/;"	m	class:GLUI_Tree
-inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon11
+inputBuffer	common_type.h	/^  std::string *inputBuffer;$/;"	m	struct:__anon12
 input_buffer	main.cpp	/^std::string input_buffer;$/;"	v
+insertCtrlPoint	curve.cpp	/^void Curve::insertCtrlPoint(int xPixel, int yPixel){$/;"	f	class:Curve
 insert_x	glui-2.35/src/include/GL/glui.h	/^    int                 insert_x;        \/* Similar to "insertion_pt", these variables keep *\/$/;"	m	class:GLUI_TextBox
 insert_y	glui-2.35/src/include/GL/glui.h	/^    int                 insert_y;        \/* track of where the ptr is, but in pixels *\/$/;"	m	class:GLUI_TextBox
 insertion_pt	glui-2.35/src/include/GL/glui.h	/^    int                 insertion_pt;$/;"	m	class:GLUI_EditText
@@ -1034,9 +1041,10 @@ int_low	glui-2.35/src/include/GL/glui.h	/^    int                 int_low, int_h
 int_max	glui-2.35/src/include/GL/glui.h	/^    int           int_min, int_max;$/;"	m	class:GLUI_Scrollbar
 int_min	glui-2.35/src/include/GL/glui.h	/^    int           int_min, int_max;$/;"	m	class:GLUI_Scrollbar
 int_val	glui-2.35/src/include/GL/glui.h	/^    int             int_val;          \/**< Our integer value *\/$/;"	m	class:GLUI_Control
-intensity	common_type.h	/^  Color intensity; \/\/ directly from phont model$/;"	m	struct:__anon5
+intensity	common_type.h	/^  Color intensity; \/\/ directly from phont model$/;"	m	struct:__anon6
 inverse	glui-2.35/src/algebra3.cpp	/^mat3 mat3::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat3
 inverse	glui-2.35/src/algebra3.cpp	/^mat4 mat4::inverse() const       \/\/ Gauss-Jordan elimination with partial pivoting$/;"	f	class:mat4
+isWithinDot	graph.cpp	/^bool Graph::isWithinDot(int x, int y, Point cdot, int size){ \/\/cdot = center of dot$/;"	f	class:Graph
 is_container	glui-2.35/src/include/GL/glui.h	/^    bool            is_container;  \/**< Is this a container class (e.g., panel) *\/$/;"	m	class:GLUI_Control
 is_current	glui-2.35/src/include/GL/glui.h	/^    int is_current;          \/\/ Whether this tree is the$/;"	m	class:GLUI_Tree
 is_mouse_down	glui-2.35/src/arcball.h	/^    int   is_mouse_down;  \/* true for down, false for up *\/$/;"	m	class:Arcball
@@ -1045,10 +1053,10 @@ is_spinning	glui-2.35/src/arcball.h	/^    int   is_spinning;$/;"	m	class:Arcball
 items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_List_Item      items_list;$/;"	m	class:GLUI_List
 items_list	glui-2.35/src/include/GL/glui.h	/^    GLUI_Listbox_Item items_list;$/;"	m	class:GLUI_Listbox
 k	bspline.h	/^  int k; \/\/ k value is the order of the curve, which specifies the number of point defining one segment $/;"	m	class:Bspline
-ka	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon10
-ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon5
-kd	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon10
-kd	common_type.h	/^  Color kd; \/\/diffusive  coefficient(the color of a point in the original object) ;$/;"	m	struct:__anon5
+ka	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon11
+ka	common_type.h	/^  Color ka; \/\/ambient light coeff$/;"	m	struct:__anon6
+kd	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon11
+kd	common_type.h	/^  Color kd; \/\/diffusive  coefficient(the color of a point in the original object) ;$/;"	m	struct:__anon6
 key_handler	glui-2.35/src/glui_button.cpp	/^int    GLUI_Button::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Button
 key_handler	glui-2.35/src/glui_checkbox.cpp	/^int    GLUI_Checkbox::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_Checkbox
 key_handler	glui-2.35/src/glui_commandline.cpp	/^int    GLUI_CommandLine::key_handler( unsigned char key,int modifiers )$/;"	f	class:GLUI_CommandLine
@@ -1062,8 +1070,8 @@ key_handler	glui-2.35/src/include/GL/glui.h	/^    virtual int key_handler( unsig
 keyboard	glui-2.35/src/glui.cpp	/^void    GLUI_Main::keyboard(unsigned char key, int x, int y)$/;"	f	class:GLUI_Main
 keygoal_x	glui-2.35/src/include/GL/glui.h	/^    int                 keygoal_x;       \/* where up down keys would like to put insertion pt*\/$/;"	m	class:GLUI_TextBox
 knotValues	bspline.h	/^  float *knotValues;$/;"	m	class:Bspline
-ks	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon10
-ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon5
+ks	common_type.h	/^  Color ka, kd, ks;$/;"	m	struct:__anon11
+ks	common_type.h	/^  Color ks; \/\/ specular coefficient(the highlightness of the material)$/;"	m	struct:__anon6
 last_child	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *last_child()    { return child_tail; }$/;"	f	class:GLUI_Node
 last_click_time	glui-2.35/src/include/GL/glui.h	/^    int                 last_click_time;$/;"	m	class:GLUI_List
 last_float_val	glui-2.35/src/include/GL/glui.h	/^    float         last_float_val;$/;"	m	class:GLUI_Scrollbar
@@ -1195,6 +1203,7 @@ min_vec	glui-2.35/src/algebra3.cpp	/^vec3 min_vec(const vec3 &a, const vec3 &b)$
 min_vec	glui-2.35/src/algebra3.cpp	/^vec4 min_vec(const vec4 &a, const vec4 &b)$/;"	f
 minus	vector.cpp	/^Vector minus(Point_3D p2, Point_3D p1){$/;"	f
 minus	vector.cpp	/^Vector minus(Vector v1, Vector v2) {$/;"	f
+modifySelectedCtrlPoint	curve.cpp	/^void Curve::modifySelectedCtrlPoint(int xPixel, int yPixel){$/;"	f	class:Curve
 moo	glui-2.35/src/example/example6.cpp	/^GLUI_TextBox     *moo;$/;"	v
 motion	glui-2.35/src/glui.cpp	/^void    GLUI_Main::motion(int x, int y)$/;"	f	class:GLUI_Main
 mouse	glui-2.35/src/glui.cpp	/^void    GLUI_Main::mouse(int button, int state, int x, int y)$/;"	f	class:GLUI_Main
@@ -1287,7 +1296,7 @@ myGlutReshape	glui-2.35/src/example/example2.cpp	/^void myGlutReshape( int x, in
 myGlutReshape	glui-2.35/src/example/example3.cpp	/^void myGlutReshape( int x, int y )$/;"	f
 myGlutReshape	glui-2.35/src/example/example4.cpp	/^void myGlutReshape( int x, int y )$/;"	f
 myGlutReshape	glui-2.35/src/example/example5.cpp	/^void myGlutReshape( int x, int y )$/;"	f
-n	common_type.h	/^  int n; \/\/ controls reflection intensity $/;"	m	struct:__anon10
+n	common_type.h	/^  int n; \/\/ controls reflection intensity $/;"	m	struct:__anon11
 n	glui-2.35/src/algebra3.h	/^  float n[2];$/;"	m	class:vec2
 n	glui-2.35/src/algebra3.h	/^  float n[3];$/;"	m	class:vec3
 n	glui-2.35/src/algebra3.h	/^  float n[4];$/;"	m	class:vec4
@@ -1302,14 +1311,14 @@ next	glui-2.35/src/glui_node.cpp	/^GLUI_Node    *GLUI_Node::next( void )$/;"	f	c
 next	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::next() $/;"	f	class:GLUI_TreePanel
 next_id	glui-2.35/src/include/GL/glui.h	/^    int next_id;$/;"	m	class:GLUI_TreePanel
 next_sibling	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *next_sibling;$/;"	m	class:GLUI_Node
-nn	common_type.h	/^  Vector nn;\/\/normal vector;$/;"	m	struct:__anon5
-normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon7
+nn	common_type.h	/^  Vector nn;\/\/normal vector;$/;"	m	struct:__anon6
+normalVector	common_type.h	/^  Vector normalVector;$/;"	m	struct:__anon8
 normalize	glui-2.35/src/algebra3.cpp	/^vec2 &vec2::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec2
 normalize	glui-2.35/src/algebra3.cpp	/^vec3 &vec3::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec3
 normalize	glui-2.35/src/algebra3.cpp	/^vec4 &vec4::normalize() \/\/ it is up to caller to avoid divide-by-zero$/;"	f	class:vec4
 normalizeCtrlPoints	curve.cpp	/^void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ \/\/static method$/;"	f	class:Curve
-normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon5
-normalizedIntensity	common_type.h	/^  Color normalizedIntensity;$/;"	m	struct:__anon2
+normalizedIntensity	common_type.h	/^  Color normalizedIntensity; \/\/ relative to all points in the scene$/;"	m	struct:__anon6
+normalizedIntensity	common_type.h	/^  Color normalizedIntensity;$/;"	m	struct:__anon3
 num_buttons	glui-2.35/src/include/GL/glui.h	/^    int  num_buttons;$/;"	m	class:GLUI_RadioGroup
 num_display	glui-2.35/src/example/example6.cpp	/^int num_display  = 0;$/;"	v
 num_format	glui-2.35/src/example/example6.cpp	/^int num_format  = 0;$/;"	v
@@ -1317,9 +1326,9 @@ num_lines	glui-2.35/src/include/GL/glui.h	/^    int                 num_lines;$/
 num_lines	glui-2.35/src/include/GL/glui.h	/^    int                 num_lines;$/;"	m	class:GLUI_TextBox
 num_periods	glui-2.35/src/include/GL/glui.h	/^    int                 num_periods;$/;"	m	class:GLUI_EditText
 numberOfCtrlPoints	curve.h	/^  int numberOfCtrlPoints;$/;"	m	class:Curve
-numberOfCurves	common_type.h	/^  int numberOfCurves;$/;"	m	struct:__anon11
-numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon11
-numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon11
+numberOfCurves	common_type.h	/^  int numberOfCurves;$/;"	m	struct:__anon12
+numberOfPolygons	common_type.h	/^  int numberOfPolygons;$/;"	m	struct:__anon12
+numberOfPolyhedra	common_type.h	/^  int numberOfPolyhedra; $/;"	m	struct:__anon12
 obj	glui-2.35/src/example/example2.cpp	/^int   obj = 0;$/;"	v
 objCB	glui-2.35/src/include/GL/glui.h	/^  GLUI_Control_CB objCB;$/;"	m	class:GLUI_CB
 obj_cb	glui-2.35/src/include/GL/glui.h	/^    GLUI_CB             obj_cb;$/;"	m	class:GLUI_List
@@ -1448,21 +1457,23 @@ orig_y	glui-2.35/src/include/GL/glui.h	/^    float orig_x, orig_y, orig_z;$/;"	m
 orig_z	glui-2.35/src/include/GL/glui.h	/^    float orig_x, orig_y, orig_z;$/;"	m	class:GLUI_Translation
 outOfBound	graph.cpp	/^bool Graph::outOfBound(int x, int y){$/;"	f	class:Graph
 output_live	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::output_live(int update_main_gfx)$/;"	f	class:GLUI_Control
-p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon6
-p1Index	common_type.h	/^  int p1Index;$/;"	m	struct:__anon7
-p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon6
+p1Index	common_type.h	/^  int p1Index;  $/;"	m	struct:__anon7
+p1Index	common_type.h	/^  int p1Index;$/;"	m	struct:__anon8
 p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon7
-p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon7
+p2Index	common_type.h	/^  int p2Index;$/;"	m	struct:__anon8
+p3Index	common_type.h	/^  int p3Index;$/;"	m	struct:__anon8
 pack	glui-2.35/src/glui_control.cpp	/^void    GLUI_Control::pack( int x, int y )$/;"	f	class:GLUI_Control
 pack_controls	glui-2.35/src/glui.cpp	/^void      GLUI_Main::pack_controls( void )$/;"	f	class:GLUI_Main
 pack_old	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::pack_old(int x, int y)$/;"	f	class:GLUI_Control
-pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon9
+pairOfPointsForRotAxis	common_type.h	/^  Point_3D pairOfPointsForRotAxis[2];$/;"	m	struct:__anon10
 panel	glui-2.35/src/include/GL/glui.h	/^    GLUI_TreePanel *panel; $/;"	m	class:GLUI_Tree
+paramNDC	curve.h	/^  ParamNDC paramNDC;$/;"	m	class:Curve
 parent	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent()        { return parent_node; }$/;"	f	class:GLUI_Node
 parent_node	glui-2.35/src/include/GL/glui.h	/^    GLUI_Node *parent_node;$/;"	m	class:GLUI_Node
 parent_window	glui-2.35/src/include/GL/glui.h	/^    int           parent_window;$/;"	m	class:GLUI_Main
 passive_motion	glui-2.35/src/glui.cpp	/^void    GLUI_Main::passive_motion(int x, int y)$/;"	f	class:GLUI_Main
 perspective3D	glui-2.35/src/algebra3.cpp	/^mat4 perspective3D(float d)$/;"	f
+pixelToNDC	graph.cpp	/^Point_2D Graph::pixelToNDC(Point p){$/;"	f	class:Graph
 pixels	glui-2.35/src/include/GL/glui.h	/^    unsigned char *pixels;$/;"	m	class:GLUI_Bitmap
 pointer_cb	glui-2.35/src/example/example3.cpp	/^void pointer_cb( GLUI_Control* control )$/;"	f
 post_update_main_gfx	glui-2.35/src/glui.cpp	/^void   GLUI_Main::post_update_main_gfx( void )$/;"	f	class:GLUI_Main
@@ -1518,7 +1529,7 @@ redraw	glui-2.35/src/glui_control.cpp	/^void	      GLUI_Control::redraw(void) {$
 redraw_window	glui-2.35/src/glui_control.cpp	/^void	     GLUI_Control::redraw_window(void) {$/;"	f	class:GLUI_Control
 refresh	glui-2.35/src/glui.cpp	/^void    GLUI_Main::refresh( void )$/;"	f	class:GLUI_Main
 refresh	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::refresh() $/;"	f	class:GLUI_TreePanel
-res	common_type.h	/^  float res;$/;"	m	struct:__anon11
+res	common_type.h	/^  float res;$/;"	m	struct:__anon12
 reset	glui-2.35/src/glui_rotation.cpp	/^void  GLUI_Rotation::reset( void )$/;"	f	class:GLUI_Rotation
 reset	glui-2.35/src/viewmodel.cpp	/^ViewModel::reset() $/;"	f	class:ViewModel
 resetToRoot	glui-2.35/src/glui_treepanel.cpp	/^void GLUI_TreePanel::resetToRoot(GLUI_Panel *new_root) $/;"	f	class:GLUI_TreePanel
@@ -1533,7 +1544,7 @@ restorePixelBuffer	graph.cpp	/^void Graph::restorePixelBuffer(){$/;"	f	class:Gra
 restore_draw_buffer	glui-2.35/src/glui.cpp	/^void         GLUI_Main::restore_draw_buffer( int buffer_state )$/;"	f	class:GLUI_Main
 restore_window	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::restore_window(int orig)$/;"	f	class:GLUI_Control
 roll	glui-2.35/src/viewmodel.cpp	/^ViewModel::roll(const float angle) $/;"	f	class:ViewModel
-rollout_height_pixels	glui-2.35/src/glui_rollout.cpp	/^enum {rollout_height_pixels=GLUI_DEFAULT_CONTROL_HEIGHT + 7};$/;"	e	enum:__anon18	file:
+rollout_height_pixels	glui-2.35/src/glui_rollout.cpp	/^enum {rollout_height_pixels=GLUI_DEFAULT_CONTROL_HEIGHT + 7};$/;"	e	enum:__anon19	file:
 root_children	glui-2.35/src/include/GL/glui.h	/^    int root_children;$/;"	m	class:GLUI_TreePanel
 rot	glui-2.35/src/arcball.h	/^    mat4  rot, rot_increment;$/;"	m	class:Arcball
 rot_about_eye	glui-2.35/src/viewmodel.cpp	/^ViewModel::rot_about_eye(const mat4 &rot) $/;"	f	class:ViewModel
@@ -1551,18 +1562,18 @@ rotationY	glui-2.35/src/example/example2.cpp	/^float rotationX = 0.0, rotationY 
 rotationY	glui-2.35/src/example/example3.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
 rotationY	glui-2.35/src/example/example4.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
 rotationY	glui-2.35/src/example/example5.cpp	/^float rotationX = 0.0, rotationY = 0.0;$/;"	v
-rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon9
+rotation_angle	common_type.h	/^  float rotation_angle;$/;"	m	struct:__anon10
 s	glui-2.35/src/quaternion.h	/^  float s;  \/* scalar component *\/$/;"	m	class:quat
 scale	glui-2.35/src/example/example3.cpp	/^float scale = 1.0;$/;"	v
 scale	glui-2.35/src/example/example4.cpp	/^float scale = 1.0;$/;"	v
 scale	glui-2.35/src/example/example5.cpp	/^float scale = 1.0;$/;"	v
-scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon9
+scale_alpha	common_type.h	/^  float scale_alpha;$/;"	m	struct:__anon10
 scale_angle	glui-2.35/src/quaternion.cpp	/^void quat::scale_angle(float f)$/;"	f	class:quat
 scale_factor	glui-2.35/src/include/GL/glui.h	/^    float scale_factor;$/;"	m	class:GLUI_Translation
 scale_spinner	glui-2.35/src/example/example3.cpp	/^GLUI_Spinner     *spinner, *light0_spinner, *light1_spinner, *scale_spinner;$/;"	v
 scaling2D	glui-2.35/src/algebra3.cpp	/^mat3 scaling2D(const vec2 &scaleVector)$/;"	f
 scaling3D	glui-2.35/src/algebra3.cpp	/^mat4 scaling3D(const vec3 &scaleVector)$/;"	f
-scene	common_type.h	/^  Scene scene;$/;"	m	struct:__anon11
+scene	common_type.h	/^  Scene scene;$/;"	m	struct:__anon12
 scroll	glui-2.35/src/example/example6.cpp	/^const char scroll[] = $/;"	v
 scroll_history	glui-2.35/src/glui_commandline.cpp	/^void    GLUI_CommandLine::scroll_history( int direction )$/;"	f	class:GLUI_CommandLine
 scrollbar	glui-2.35/src/include/GL/glui.h	/^    GLUI_Scrollbar      *scrollbar;$/;"	m	class:GLUI_List
@@ -1581,13 +1592,17 @@ sel_end	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel
 sel_end	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_TextBox
 sel_start	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_EditText
 sel_start	glui-2.35/src/include/GL/glui.h	/^    int                 sel_start, sel_end;  \/* current selection *\/$/;"	m	class:GLUI_TextBox
-selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon11
+selectCtrlPoint	curve.cpp	/^bool Curve::selectCtrlPoint(int xPixel, int yPixel){\/\/return true if succesfully selected, else point not found$/;"	f	class:Curve
+selectedCtrlPoint	curve.h	/^  int selectedCtrlPoint;\/\/index in ctrlPoints or ctrlPointsNDC$/;"	m	class:Curve
+selectedObject	common_type.h	/^  int selectedObject;$/;"	m	struct:__anon12
+selectedPoint	common_type.h	/^  int selectedPoint; \/\/index$/;"	m	struct:__anon12
 set	glui-2.35/src/algebra3.cpp	/^void mat3::set(const vec3 &v0, const vec3 &v1, const vec3 &v2) $/;"	f	class:mat3
 set	glui-2.35/src/algebra3.cpp	/^void vec2::set( float x, float y )$/;"	f	class:vec2
 set	glui-2.35/src/algebra3.cpp	/^void vec3::set(float x, float y, float z)   \/\/ set vector$/;"	f	class:vec3
 set	glui-2.35/src/algebra3.cpp	/^void vec4::set(float x, float y, float z, float a)$/;"	f	class:vec4
 set	glui-2.35/src/include/GL/glui.h	/^  void set(Byte r,Byte g,Byte b) {this->r=r;this->g=g;this->b=b;}$/;"	f	class:RGBc
 set	glui-2.35/src/quaternion.cpp	/^void quat::set(const vec3 &_v, const float _s)$/;"	f	class:quat
+setCurveColor	curve.cpp	/^void Curve::setCurveColor(Color c){$/;"	f	class:Curve
 set_alignment	glui-2.35/src/glui_control.cpp	/^void GLUI_Control::set_alignment(int new_align)$/;"	f	class:GLUI_Control
 set_allow_change_dir	glui-2.35/src/include/GL/glui.h	/^    void set_allow_change_dir(int c) { allow_change_dir = c; }$/;"	f	class:GLUI_FileBrowser
 set_angle	glui-2.35/src/quaternion.cpp	/^void quat::set_angle(float f)$/;"	f	class:quat
@@ -1719,7 +1734,7 @@ spinner_edittext_callback	glui-2.35/src/glui_spinner.cpp	/^void  spinner_edittex
 spinning	glui-2.35/src/include/GL/glui.h	/^    bool           can_spin, spinning;$/;"	m	class:GLUI_Rotation
 start_line	glui-2.35/src/include/GL/glui.h	/^    int                 start_line;$/;"	m	class:GLUI_List
 start_line	glui-2.35/src/include/GL/glui.h	/^    int                 start_line;$/;"	m	class:GLUI_TextBox
-state	common_type.h	/^  int state;$/;"	m	struct:__anon11
+state	common_type.h	/^  int state;$/;"	m	struct:__anon12
 state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Scrollbar
 state	glui-2.35/src/include/GL/glui.h	/^    int           state;$/;"	m	class:GLUI_Spinner
 std_bitmaps	glui-2.35/src/include/GL/glui.h	/^    GLUI_StdBitmaps  std_bitmaps;$/;"	m	class:GLUI_Main
@@ -1756,7 +1771,7 @@ text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int                 text_x_o
 text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset, title_x_offset;$/;"	m	class:GLUI_Listbox
 text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset;$/;"	m	class:GLUI_Checkbox
 text_x_offset	glui-2.35/src/include/GL/glui.h	/^    int text_x_offset;$/;"	m	class:GLUI_RadioButton
-tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon11
+tf	common_type.h	/^  Transformation tf;   $/;"	m	struct:__anon12
 title_x_offset	glui-2.35/src/include/GL/glui.h	/^    int                 title_x_offset;$/;"	m	class:GLUI_EditText
 title_x_offset	glui-2.35/src/include/GL/glui.h	/^    int  text_x_offset, title_x_offset;$/;"	m	class:GLUI_Listbox
 to_mat4	glui-2.35/src/quaternion.cpp	/^mat4 quat::to_mat4() const$/;"	f	class:quat
@@ -1845,7 +1860,7 @@ w	glui-2.35/src/include/GL/glui.h	/^    int            w, h;$/;"	m	class:GLUI_Bi
 w	glui-2.35/src/include/GL/glui.h	/^    int           w, h;$/;"	m	class:GLUI_Main
 wants_tabs	glui-2.35/src/include/GL/glui.h	/^    bool wants_tabs( void ) const { return true; }$/;"	f	class:GLUI_TextBox
 wants_tabs	glui-2.35/src/include/GL/glui.h	/^    virtual bool wants_tabs() const      { return false; }$/;"	f	class:GLUI_Control
-width	common_type.h	/^  int width;$/;"	m	struct:__anon11
+width	common_type.h	/^  int width;$/;"	m	struct:__anon12
 width	glui-2.35/src/glui_bitmaps.cpp	/^int GLUI_StdBitmaps::width(int i) const$/;"	f	class:GLUI_StdBitmaps
 window	main.cpp	/^Window window;$/;"	v
 windowInit	main.cpp	/^void windowInit(Window *window){$/;"	f
@@ -1857,33 +1872,35 @@ wireframe	glui-2.35/src/example/example2.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example3.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example4.cpp	/^int   wireframe = 0;$/;"	v
 wireframe	glui-2.35/src/example/example5.cpp	/^int   wireframe = 0;$/;"	v
-x	common_type.h	/^  float x;$/;"	m	struct:__anon3
 x	common_type.h	/^  float x;$/;"	m	struct:__anon4
 x	common_type.h	/^  float x;$/;"	m	struct:__anon5
-x	common_type.h	/^  int x;$/;"	m	struct:__anon2
-xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon8
-xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon8
+x	common_type.h	/^  float x;$/;"	m	struct:__anon6
+x	common_type.h	/^  int x;$/;"	m	struct:__anon3
+xMax	common_type.h	/^  int xMax;$/;"	m	struct:__anon9
+xMin	common_type.h	/^  float xMin;$/;"	m	struct:__anon2
+xMin	common_type.h	/^  int xMin;$/;"	m	struct:__anon9
 x_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
 x_off	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
-x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon9
-xx	common_type.h	/^  Point_3D xx; \/\/ coord. of light src$/;"	m	struct:__anon10
+x_offset	common_type.h	/^  float x_offset;$/;"	m	struct:__anon10
+xx	common_type.h	/^  Point_3D xx; \/\/ coord. of light src$/;"	m	struct:__anon11
 xy_aspect	glui-2.35/src/example/example2.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example3.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example4.cpp	/^float xy_aspect;$/;"	v
 xy_aspect	glui-2.35/src/example/example5.cpp	/^float xy_aspect;$/;"	v
-y	common_type.h	/^  float y; $/;"	m	struct:__anon3
-y	common_type.h	/^  float y;$/;"	m	struct:__anon4
+y	common_type.h	/^  float y; $/;"	m	struct:__anon4
 y	common_type.h	/^  float y;$/;"	m	struct:__anon5
-y	common_type.h	/^  int y;$/;"	m	struct:__anon2
-yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon8
-yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon8
+y	common_type.h	/^  float y;$/;"	m	struct:__anon6
+y	common_type.h	/^  int y;$/;"	m	struct:__anon3
+yMax	common_type.h	/^  int yMax;$/;"	m	struct:__anon9
+yMin	common_type.h	/^  float yMin;$/;"	m	struct:__anon2
+yMin	common_type.h	/^  int yMin;$/;"	m	struct:__anon9
 y_abs	glui-2.35/src/include/GL/glui.h	/^    int             x_abs, y_abs;$/;"	m	class:GLUI_Control
 y_off_bot	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
 y_off_top	glui-2.35/src/include/GL/glui.h	/^    int             x_off, y_off_top, y_off_bot; \/* INNER margins, by which child$/;"	m	class:GLUI_Control
-y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon9
-z	common_type.h	/^  float z;$/;"	m	struct:__anon4
+y_offset	common_type.h	/^  float y_offset;$/;"	m	struct:__anon10
 z	common_type.h	/^  float z;$/;"	m	struct:__anon5
-z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon9
+z	common_type.h	/^  float z;$/;"	m	struct:__anon6
+z_offset	common_type.h	/^  float z_offset;$/;"	m	struct:__anon10
 zero_increment	glui-2.35/src/arcball.h	/^    int   zero_increment;$/;"	m	class:Arcball
 ~GLUI_Bitmap	glui-2.35/src/glui_bitmaps.cpp	/^GLUI_Bitmap::~GLUI_Bitmap()$/;"	f	class:GLUI_Bitmap
 ~GLUI_Control	glui-2.35/src/glui_control.cpp	/^GLUI_Control::~GLUI_Control()$/;"	f	class:GLUI_Control

@@ -148,7 +148,24 @@ void Curve::modifySelectedCtrlPoint(int xPixel, int yPixel){
   (*it) = p;
 }
 
-
 Point_2D Curve::NDCToOriginal(Point_2D pNDC, ParamNDC paramNDC){
   return { paramNDC.delta *  pNDC.x + paramNDC.xMin, paramNDC.delta * pNDC.y + paramNDC.yMin }; 
+}
+
+void Curve::insertCtrlPoint(int xPixel, int yPixel){
+  Point_2D pNDC = graph->pixelToNDC({xPixel,yPixel});
+  Point_2D p = NDCToOriginal(pNDC, paramNDC);    
+  std::list<Point_2D>::iterator it = ctrlPoints.begin();
+  std::advance(it, selectedCtrlPoint);
+  ctrlPoints.insert(it, p);
+  numberOfCtrlPoints++;
+}
+
+void Curve::addCtrlPoint(int xPixel, int yPixel){
+  Point_2D pNDC = graph->pixelToNDC({xPixel,yPixel});
+  Point_2D p = NDCToOriginal(pNDC, paramNDC);    
+  std::list<Point_2D>::iterator it = ctrlPoints.begin();
+  std::advance(it, selectedCtrlPoint+1);
+  ctrlPoints.insert(it, p);
+  numberOfCtrlPoints++;
 }
