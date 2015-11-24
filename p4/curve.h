@@ -12,21 +12,22 @@ class Curve {
   std::list<Point_2D> ctrlPointsNDC;
   int numberOfCtrlPoints;
   int selectedCtrlPoint;//index in ctrlPoints or ctrlPointsNDC
+  Color curveColor;
 
   public:
   Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints);
   void print();
   virtual void printAttributes() = 0;
-  virtual void drawControlPolygon() = 0;//dynamic binding
-  void drawControlPolygon(Color c);
-  virtual void drawCurve(float res, Color c) = 0;
-//  void drawBigDot(Point_2D, Color c);
+  void drawControlPolygon(Color c, bool isSelected);
+  void setCurveColor(Color c);
+  virtual void drawCurve(float res) = 0;
 
   static void normalizeCtrlPoints(std::list<Curve*> *curves);
   static void findNDCParam(std::list<Curve*> *curves, float*xMin, float*yMin, float *delta);
   
   int findCtrlPoint(int xPixel, int yPixel);//return an index of the ctrl point on a curve
   bool selectCtrlPoint(int xPixel, int yPixel);//return true if succesfully selected, else point not found
+  bool deleteSelectedCtrlPoint();
 };
 #endif
 

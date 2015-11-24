@@ -69,7 +69,7 @@ void callback_mouse(int button, int state, int x, int _y){
   switch(button){
     case GLUT_MIDDLE_BUTTON: 
     case GLUT_LEFT_BUTTON:
-      if(state == GLUT_UP){
+      if(state == GLUT_UP && window.numberOfCurves > 0){
         printf("%d, %d\n", x, y);
         itc = globalCurves->begin();
         std::advance(itc, window.selectedObject);
@@ -94,13 +94,9 @@ void callback_menu(int state){
 
 void callback_keyboard(unsigned char key, int x, int y){
   //DPRINT("ASCII: %d CHAR:%c <==> Cursor at (%d, %d)\n", key, key, x, window.height - y);
-  if( isdigit(key) ){ // selecting object to be manipulated, object are represtend by numeric id e.g. 0, 1, 2 ...
-    window.selectedObject = key % (window.numberOfPolyhedra - 1); // -1 to make it not possible to select the rotional axis, the last element
-    printf("\nObject with ID %d is selected\n", window.selectedObject);
-    //globalPolyhedra[window.selectedObject]->printAttributes();
-    return;
-  }
-  switch(key){ // control commands
+    std::list<Curve*>::iterator itc;
+   
+    switch(key){ // control commands
     case '=':  window.res++; 
                break;
 
@@ -116,6 +112,16 @@ void callback_keyboard(unsigned char key, int x, int y){
               break;
     case 'l':  window.selectedObject = (window.selectedObject+1)%window.numberOfCurves;
                break;
+    case 'd':  if(window.numberOfCurves>0){ 
+                 itc = globalCurves->begin(); 
+                 std::advance(itc, window.selectedObject);
+                 if( (*itc)->deleteSelectedCtrlPoint() ){ // if true, that curve has no more ctrl points;
+                  globalCurves->erase(itc); //remove that curve
+                  window.numberOfCurves--;
+                  window.selectedObject=0; //reset selected object
+                 }
+               }
+               break; 
     default: return;
   }
   
@@ -172,11 +178,12 @@ void updateScreen(Graph *graph, std::list<Curve*> *curves){
   int i=0;
   for( std::list<Curve*>::iterator it = curves->begin(); it != curves->end(); it++, i++){
     //(*it)->printAttributes();
-    (*it)->drawControlPolygon();
     if(  i== window.selectedObject )
-      (*it)->drawCurve(window.res, {0,1,0});
+       (*it)->drawControlPolygon({0,1,0}, true);
     else
-      (*it)->drawCurve(window.res, {0,0,0});
+       (*it)->drawControlPolygon( {0.5,0.5,0.5}, false);
+    
+    (*it)->drawCurve(window.res);
   }
 }
 

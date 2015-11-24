@@ -11,29 +11,53 @@ Curve::Curve(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints){
   selectedCtrlPoint = 0 ; // init to select the first control point
 }
 
+bool Curve::deleteSelectedCtrlPoint(){ //if there are no more control points, return true;
+  if(!ctrlPoints.empty()){
+    std::list<Point_2D>::iterator it = ctrlPoints.begin();
+    std::advance(it, selectedCtrlPoint); //go to that postion;
+    ctrlPoints.erase(it);//delete it
+    numberOfCtrlPoints--;
+    selectedCtrlPoint = 0;//reset selectedCtrlPoint
+  }
+  return ctrlPoints.empty();
+}
+
 void Curve::print(){
   printf("Curve::Print()\n");
 }
 
-void Curve::drawControlPolygon(Color c){
+void Curve::setCurveColor(Color c){
+  curveColor = c;
+}
+
+void Curve::drawControlPolygon(Color c, bool isSelected){
   Point_2D p1, p2;
   for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
+    //first control point 
     p1 = (*it);
+    p1.x = p1.x * (graph->window_width - 1);
+    p1.y = p1.y * (graph->window_height -1);
+    if( std::distance(ctrlPointsNDC.begin(), it) == selectedCtrlPoint && isSelected)
+      graph->drawBigDot(p1, {0,1,0}, 15);
+    else
+      graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
+
+    //possible next control point 
     it++;
     if(it == ctrlPointsNDC.end())
             break;
     p2 = (*it);          
-    
-    p1.x = p1.x * (graph->window_width - 1);
-    p1.y = p1.y * (graph->window_height -1);
     p2.x = p2.x * (graph->window_width - 1);
     p2.y = p2.y * (graph->window_height -1);
+    
+    graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
 
-    graph->drawLine(p1,p2,c);
-    //graph->drawBigDot(p1, {0.5,0.5,0.5}, 5);
-   // graph->drawBigDot(p2, {0.5,0.5,0.5}, 5);
+    graph->drawLine(p1, p2, c);
+    
   }
 }
+
+
 
 void Curve::normalizeCtrlPoints(std::list<Curve*> *curves){ //static method
   float xMin, yMin, delta;
@@ -82,6 +106,7 @@ void Curve::findNDCParam(std::list<Curve*> *curves, float*_xMin, float*_yMin, fl
   *_yMin = yMin;
   *delta = std::max(xMax-xMin, yMax-yMin);
 }
+
 
 /* @fn    :   findCtrlPoint(int xPixel, int yPixel);
  * @brief :   find if the pixelPoint is one of the control points on curve

@@ -3,7 +3,7 @@
 Bezier::Bezier(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints)
 :Curve(_graph, _ctrlPoints, _numberOfCtrlPoints)
 {
-
+  setCurveColor(COLOR_ROYAL_BLUE);
 }
 
 void Bezier::printAttributes(){
@@ -14,13 +14,13 @@ void Bezier::printAttributes(){
   }
 }
 
-void Bezier::drawCurve(float res, Color c){
+void Bezier::drawCurve(float res){
   float inc = 1.0/res;
   for(float t = 0; t+inc <= 1.0; t+=inc){
     //DPRINT("%.2f to %.2f\t", t, t+inc);
     Point_2D p1 = cc(t);
     Point_2D p2 = cc(t+inc);
-    graph->drawLine( p1, p2, c) ;
+    graph->drawLine( p1, p2, curveColor) ;
     //DPRINT( "(%.2f, %.2f), (%.2f, %.2f)\n",p1.x, p1.y, p2.x, p2.y); 
   }
   
@@ -46,7 +46,7 @@ Point_2D Bezier::cc(float t){
     return c_t;
 }
 
-void Bezier::drawControlPolygon(){
+/*void Bezier::drawControlPolygon(){
   Point_2D p1, p2;
   for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
     //first control point 
@@ -71,4 +71,4 @@ void Bezier::drawControlPolygon(){
     graph->drawLine(p1, p2, COLOR_ROYAL_BLUE);
     
   }
-}
+}*/

@@ -6,7 +6,7 @@ Bspline::Bspline(Graph *_graph, Point_2D *_ctrlPoints, int _numberOfCtrlPoints, 
   k = _k;
   knotValues = new float[_numberOfCtrlPoints + _k];// n+1+k
   memcpy(knotValues, _knotValues, sizeof(float)*(_numberOfCtrlPoints+_k));
-
+  setCurveColor(COLOR_CRIMSON);
 }
 
 void Bspline::printAttributes(){
@@ -25,14 +25,14 @@ void Bspline::printAttributes(){
   printf("\n");
 }
 
-void Bspline::drawCurve(float res, Color c){
+void Bspline::drawCurve(float res ){
   float inc = 1.0/res;
   Point_2D p1, p2;
   for(float u = knotValues[k-1] ; u <= knotValues[numberOfCtrlPoints]-inc; u=u+inc){
     p1 = cc(u);
     p2 = cc(u+inc);
     DPRINT("Bspline: (%.2f, %.2f) @ u: %.2f\n", p1.x, p1.y, u);
-    graph->drawLine(p1, p2, c);
+    graph->drawLine(p1, p2, curveColor);
   }
 }
 
@@ -68,7 +68,7 @@ Point_2D Bspline::cc(float u){
     return c_t;
 }
 
-
+/*
 void Bspline::drawControlPolygon(){
   Point_2D p1, p2;
   for(std::list<Point_2D>::iterator it = ctrlPointsNDC.begin(); it != ctrlPointsNDC.end(); ){
@@ -87,4 +87,4 @@ void Bspline::drawControlPolygon(){
     graph->drawBigDot(p1, {0.5,0.5,0.5}, 15);
     graph->drawBigDot(p2, {0.5,0.5,0.5}, 15);
   }
-}
+}*/
